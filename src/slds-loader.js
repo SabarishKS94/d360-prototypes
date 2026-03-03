@@ -5,16 +5,24 @@
  * uses them (slds-plus, SLDS itself) must be loaded at runtime via <link> tags
  * rather than through ES module imports.
  *
- * @param {Object} [options]
- * @param {boolean} [options.slds1=false] - Also load the SLDS 1 stylesheet
- *   (/slds/styles/salesforce-lightning-design-system.min.css) alongside slds-plus.
+ * Strategy: prefer SLDS 2 (slds-plus.css). Only fall back to SLDS 1
+ * (salesforce-lightning-design-system.min.css) when SLDS 2 is unavailable.
  */
-export function loadSLDS({ slds1 = false } = {}) {
-    injectLink('/css/slds-plus.css', 'slds-plus');
+export function loadSLDS() {
+    const slds2Href = '/css/slds-plus.css';
+    const slds1Href = '/slds/styles/salesforce-lightning-design-system.min.css';
 
-    if (slds1) {
-        injectLink('/slds/styles/salesforce-lightning-design-system.min.css', 'salesforce-lightning-design-system');
-    }
+    fetch(slds2Href, { method: 'HEAD' })
+        .then((res) => {
+            if (res.ok) {
+                injectLink(slds2Href, 'slds-plus');
+            } else {
+                injectLink(slds1Href, 'salesforce-lightning-design-system');
+            }
+        })
+        .catch(() => {
+            injectLink(slds1Href, 'salesforce-lightning-design-system');
+        });
 
     if (!document.body.classList.contains('slds-scope')) {
         document.body.classList.add('slds-scope');
