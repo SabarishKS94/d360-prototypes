@@ -20,9 +20,4 @@ const app = createElement('demo-app', {
 // Mount the app to the DOM
 document.querySelector('#app').appendChild(app);
 
-// Icons are already loaded (static imports above), so hide the spinner and
-// reveal the app immediately after mount — no flash, no race condition.
-const spinner = document.getElementById('app-spinner');
-const appEl = document.getElementById('app');
-spinner.classList.add('is-hidden');
-appEl.classList.add('is-ready');
+document.getElementById('app').classList.add('is-ready');
