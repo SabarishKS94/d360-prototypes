@@ -3,6 +3,8 @@ node_modules/
 
 # Build outputs
 dist/
+dist-ssr/
+*.local
 src/generated/
 
 # Editor directories and files

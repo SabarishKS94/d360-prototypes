@@ -20,7 +20,7 @@ export default defineConfig({
       // Enable synthetic shadow (like Salesforce platform)
       // false = use synthetic shadow, true = use native shadow
       disableSyntheticShadowSupport: false,
-      exclude: [path.resolve('./index.html')]
+      exclude: [path.resolve('./index.html'), path.resolve('./src/generated')]
     })
   ],
   appType: 'spa',
@@ -30,7 +30,14 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@salesforce-ux/design-system': path.resolve('./node_modules/@salesforce-ux/design-system')
+      '@salesforce-ux/design-system': path.resolve('./node_modules/@salesforce-ux/design-system'),
+      // Redirect icon template dynamic imports to pre-compiled bundles.
+      // These aliases run at enforce:'pre', before the LWC plugin resolves them
+      // to the npm package (which would trigger 1,614 individual HTML file requests).
+      'lightning/iconSvgTemplatesUtility': path.resolve('./src/modules/lightning/iconSvgTemplatesUtility/iconSvgTemplatesUtility.js'),
+      'lightning/iconSvgTemplatesStandard': path.resolve('./src/modules/lightning/iconSvgTemplatesStandard/iconSvgTemplatesStandard.js'),
+      'lightning/iconSvgTemplatesDoctype': path.resolve('./src/modules/lightning/iconSvgTemplatesDoctype/iconSvgTemplatesDoctype.js'),
+      'lightning/iconSvgTemplatesAction': path.resolve('./src/modules/lightning/iconSvgTemplatesAction/iconSvgTemplatesAction.js'),
     }
   }
 });

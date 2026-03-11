@@ -11,7 +11,7 @@ function pageFromPath(pathname) {
 
 export default class App extends LightningElement {
     @track currentPage = pageFromPath(window.location.pathname);
-    @track _sldsVersion = activeSLDSVersion();
+    @track _sldsVersion = 2;
     @track _darkMode = false;
 
     get sldsToggleLabel() {
@@ -41,6 +41,7 @@ export default class App extends LightningElement {
     }
 
     connectedCallback() {
+        this._sldsVersion = activeSLDSVersion();
         this._onPopState = (event) => {
             this.currentPage = event.state?.page ?? pageFromPath(window.location.pathname);
         };
