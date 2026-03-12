@@ -9,6 +9,7 @@
  *   navPage    - Id for nav active state and navigate({ page }) (omit to hide from nav)
  *   navLabel   - Label shown in nav bar and waffle
  *   navPath    - Optional; for dynamic routes, path used in nav links (e.g. /users/42)
+ *   navHighlight - Optional; nav page id to highlight when this route is active (for child routes that don't create a tab)
  */
 
 export const routes = [
@@ -40,5 +41,18 @@ export const routes = [
     navPage: 'user',
     navLabel: 'User',
     navPath: '/users/42',
+  },
+  {
+    path: '/contacts',
+    component: 'page-contacts',
+    title: 'Contacts',
+    navPage: 'contacts',
+    navLabel: 'Contacts',
+  },
+  {
+    path: '/contacts/:id',
+    component: 'page-contact-detail',
+    title: (params) => `Contact ${params.id}`,
+    navHighlight: 'contacts',
   },
 ];

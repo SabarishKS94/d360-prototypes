@@ -6,6 +6,8 @@ import Home from 'page/home';
 import IconTest from 'page/iconTest';
 import Settings from 'page/settings';
 import User from 'page/user';
+import Contacts from 'page/contacts';
+import ContactDetail from 'page/contactDetail';
 
 /** Option A: explicit registration – add one import + one entry here when adding a route */
 const ROUTE_COMPONENTS = {
@@ -13,11 +15,13 @@ const ROUTE_COMPONENTS = {
     'page-icon-test': IconTest,
     'page-settings': Settings,
     'page-user': User,
+    'page-contacts': Contacts,
+    'page-contact-detail': ContactDetail,
 };
 
-/** Derived from routes.config: component name → nav page id */
+/** Derived from routes.config: component name → nav page id (includes navHighlight for child routes) */
 const ROUTE_TO_NAV_PAGE = Object.fromEntries(
-    routes.filter((r) => r.navPage).map((r) => [r.component, r.navPage])
+    routes.filter((r) => r.navPage || r.navHighlight).map((r) => [r.component, r.navPage ?? r.navHighlight])
 );
 
 /** Derived from routes.config: nav page id → path for navigate() */

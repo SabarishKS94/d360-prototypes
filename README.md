@@ -82,8 +82,9 @@ Only add components under **page/** or **ui/**. Do not add custom components und
 
 1. Clone or copy the repo, then `npm install` and `npm run dev`.
 2. **Add a page:** Create a folder under `src/modules/page/<name>/`, then:
-   - Add a route in `src/router.js` (e.g. `{ path: '/dashboard', component: 'page-dashboard', title: 'Dashboard' }`).
-   - In `src/modules/main/app/app.js`, import the component and add it to `ROUTE_COMPONENTS` (and optionally to `ROUTE_TO_NAV_PAGE` / `NAV_PAGE_TO_PATH` if it should appear in the global nav).
+   - Add a route in `src/routes.config.js` (e.g. `{ path: '/dashboard', component: 'page-dashboard', title: 'Dashboard', navPage: 'dashboard', navLabel: 'Dashboard' }`).
+   - In `src/modules/main/app/app.js`, import the component and add it to `ROUTE_COMPONENTS`.
+   - For child routes under an existing tab (e.g. `/contacts/:id`), use `navHighlight: '<parentNavPage>'` instead of `navPage` so the parent tab is highlighted without creating a new nav entry.
 3. **Add a reusable component:** Create a folder under `src/modules/ui/<name>/` and use it as `<ui-<name>>` in any page or other component.
 4. Follow the namespace rules above and the SLDS/LWC conventions referenced in this repo (e.g. `.cursor/rules` if present).
 
@@ -93,8 +94,9 @@ Only add components under **page/** or **ui/**. Do not add custom components und
 
 The app uses a small client-side router in `src/router.js`:
 
-- **Declarative routes** — Array of `{ path, component, title }`; `title` can be a string or function of route params.
+- **Route config** — Routes are defined in `src/routes.config.js` as `{ path, component, title, navPage?, navLabel?, navPath?, navHighlight? }`. `title` can be a string or function of route params.
 - **Path params** — Use `:id` (e.g. `/users/:id`); params are available to the page component via `getCurrentRoute()` from `src/router.js`.
+- **Nav tabs** — Only routes with `navPage` create a tab in the global nav. Child routes that should highlight a parent tab use `navHighlight` instead (e.g. `navHighlight: 'contacts'` on `/contacts/:id`).
 - **Navigation** — Use `navigate(path)` from the router; the app shell subscribes to route changes and renders the matching `page-*` component.
 - **History** — Uses the History API; back/forward work without full page reload.
 
