@@ -19,11 +19,4 @@ try {
     document.getElementById('app')?.classList.add('is-ready');
 }
 
-// Load icon template modules in the background. lightning-icon will request them
-// on demand; this preloads so they're likely ready when the first icons render.
-Promise.all([
-    import('/node_modules/lightning-base-components/src/lightning/iconSvgTemplatesUtility/iconSvgTemplatesUtility.js'),
-    import('/node_modules/lightning-base-components/src/lightning/iconSvgTemplatesStandard/iconSvgTemplatesStandard.js'),
-    import('/node_modules/lightning-base-components/src/lightning/iconSvgTemplatesDoctype/iconSvgTemplatesDoctype.js'),
-    import('/node_modules/lightning-base-components/src/lightning/iconSvgTemplatesAction/iconSvgTemplatesAction.js'),
-]).catch(() => {});
+// Icon templates are bundled during build, no need to import dynamically
