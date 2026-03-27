@@ -9,6 +9,9 @@ import {
 
 export default defineConfig({
   base: '/',
+  build: {
+    outDir: 'docs',
+  },
   plugins: [
     resolveIconTemplatesPlugin(),
     lwc({
