@@ -14,4 +14,4 @@ src/build/generated/
 .DS_Store
 
 # Logs
-*.log
+*.logdeploy.sh
