@@ -2,7 +2,6 @@
 node_modules/
 
 # Build
-dist/
 dist-ssr/
 src/build/generated/
 
@@ -14,4 +13,5 @@ src/build/generated/
 .DS_Store
 
 # Logs
-*.logdeploy.sh
+*.log
+deploy.sh
