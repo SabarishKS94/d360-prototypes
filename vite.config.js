@@ -8,7 +8,7 @@ import {
 } from './vite-plugins/icon-templates.js';
 
 export default defineConfig({
-  base: '/data360-enigma/',
+  base: '/',
   plugins: [
     resolveIconTemplatesPlugin(),
     lwc({
