@@ -17,6 +17,7 @@
   "type": "module",
   "dependencies": {
     "@lwc/synthetic-shadow": "^9.0.2",
+    "@salesforce-ux-emu/lwc-annotator": "^0.1.8",
     "@salesforce-ux/design-system": "^2.29.0",
     "@salesforce-ux/design-system-2": "^0.0.0-alpha.0",
     "lightning-base-components": "^1.28.15-alpha",

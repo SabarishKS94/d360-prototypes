@@ -26,6 +26,9 @@ export default defineConfig({
         {
           npm: 'lightning-base-components',
         },
+        {
+          npm: '@salesforce-ux-emu/lwc-annotator',
+        },
       ],
       disableSyntheticShadowSupport: false,
       enableDynamicComponents: true,
@@ -45,7 +48,7 @@ export default defineConfig({
     open: false,
   },
   optimizeDeps: {
-    exclude: ['lightning/modal', 'lightning/primitiveOverlay', 'lightning/overlayUtils', 'lightning/modalBase', 'lightning/utilsPrivate'],
+    exclude: ['lightning/modal', 'lightning/primitiveOverlay', 'lightning/overlayUtils', 'lightning/modalBase', 'lightning/utilsPrivate', 'dev/annotatorToolbar', 'dev/annotatorOverlay', 'dev/annotatorPopup'],
   },
   resolve: {
     alias: {
