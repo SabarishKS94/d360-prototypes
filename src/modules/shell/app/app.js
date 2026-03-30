@@ -5,6 +5,7 @@ import { toggleSLDS, activeSLDSVersion } from '../../../build/slds-loader';
 import Home from 'page/home';
 import IconTest from 'page/iconTest';
 import Settings from 'page/settings';
+import ChurnRateSegment from 'page/churnRateSegment';
 import User from 'page/user';
 import Contacts from 'page/contacts';
 import ContactDetail from 'page/contactDetail';
@@ -14,6 +15,7 @@ const ROUTE_COMPONENTS = {
     'page-home': Home,
     'page-icon-test': IconTest,
     'page-settings': Settings,
+    'page-churn-rate-segment': ChurnRateSegment,
     'page-user': User,
     'page-contacts': Contacts,
     'page-contact-detail': ContactDetail,
