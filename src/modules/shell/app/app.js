@@ -1,4 +1,5 @@
 import { LightningElement, track } from 'lwc';
+import _devAnnotatorToolbar from 'dev/annotatorToolbar';
 import { subscribe, navigate } from '../../../router';
 import { routes } from '../../../routes.config';
 import { toggleSLDS, activeSLDSVersion } from '../../../build/slds-loader';
