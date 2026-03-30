@@ -23,7 +23,7 @@
     "lwc": "^9.0.2"
   },
   "devDependencies": {
-    "@salesforce-ux-emu/lwc-annotator": "^0.1.8",
+    "@salesforce-ux-emu/lwc-annotator": "^0.2.1",
     "vite": "^7.3.1",
     "vite-plugin-lwc": "^4.1.0"
   }
