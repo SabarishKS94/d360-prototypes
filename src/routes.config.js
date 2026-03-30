@@ -35,6 +35,13 @@ export const routes = [
     navLabel: 'Settings',
   },
   {
+    path: '/churn-rate-segment',
+    component: 'page-churn-rate-segment',
+    title: 'Churn Rate Segment',
+    navPage: 'churn-rate-segment',
+    navLabel: 'Churn Rate Segment',
+  },
+  {
     path: '/users/:id',
     component: 'page-user',
     title: (params) => `User ${params.id}`,
