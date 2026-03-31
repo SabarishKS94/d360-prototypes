@@ -9,6 +9,9 @@ src/build/generated/
 .env
 .env.*.local
 
+# Worktrees
+.worktrees/
+
 # OS
 .DS_Store
 
