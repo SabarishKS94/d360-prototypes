@@ -121,6 +121,7 @@ export default class App extends LightningElement {
     }
 
     handleNavNavigate(event) {
+        // vertical nav fires { path }, horizontal nav fires { page } — check path first
         const { page, path } = event.detail ?? {};
         if (path) {
             navigate(path);
