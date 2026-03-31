@@ -1,4 +1,5 @@
 import { LightningElement } from 'lwc';
+import { signOut } from '../../../data/firebaseAuth.js';
 
 export default class GlobalHeader extends LightningElement {
     handleAgentforceClick() {
@@ -31,5 +32,10 @@ export default class GlobalHeader extends LightningElement {
             bubbles: true,
             composed: true
         }));
+    }
+
+    handleSignOut() {
+        signOut();
+        // onAuthStateChanged in shell/app fires with null and shows the login screen automatically
     }
 }
