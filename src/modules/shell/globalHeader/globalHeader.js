@@ -34,8 +34,12 @@ export default class GlobalHeader extends LightningElement {
         }));
     }
 
-    handleSignOut() {
-        signOut();
+    async handleSignOut() {
+        try {
+            await signOut();
+        } catch (err) {
+            console.error('Sign-out failed:', err);
+        }
         // onAuthStateChanged in shell/app fires with null and shows the login screen automatically
     }
 }

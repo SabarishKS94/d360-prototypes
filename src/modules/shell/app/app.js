@@ -97,7 +97,7 @@ export default class App extends LightningElement {
             }
         });
 
-        this.unsubscribe = subscribe((route) => {
+        this._unsubscribe = subscribe((route) => {
             this.route = route;
         });
     }
@@ -116,7 +116,7 @@ export default class App extends LightningElement {
     }
 
     disconnectedCallback() {
-        this.unsubscribe?.();
+        this._unsubscribe?.();
         this._unsubscribeAuth?.();
     }
 
