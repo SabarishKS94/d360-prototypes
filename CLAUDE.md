@@ -11,7 +11,7 @@ A Salesforce Lightning Web Components (LWC) starter kit for prototyping and deve
 ```bash
 npm install          # Install dependencies
 npm run dev          # Start dev server at http://localhost:3000 (auto-runs icon prebuild)
-npm run build        # Production build to docs/ (GitHub Pages)
+npm run build        # Production build to dist/
 npm run preview      # Preview production bundle locally
 npm run clean        # Remove dist, .vite, node_modules
 ```
@@ -55,7 +55,7 @@ All LWC components live under `src/modules/` organized by namespace:
 
 ### Build Output
 
-Production builds go to `docs/` (for GitHub Pages deployment), not `dist/`.
+Production builds go to `dist/`.
 
 ## Key Conventions
 
