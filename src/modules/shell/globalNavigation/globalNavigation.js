@@ -3,6 +3,7 @@ import { LightningElement, api, track } from 'lwc';
 export default class GlobalNavigation extends LightningElement {
     @api currentPage = 'home';
     @api navItems = [];
+    @api apps = [];
     @track isWaffleMenuOpen = false;
 
     get waffleDropdownTriggerClass() {
@@ -35,17 +36,6 @@ export default class GlobalNavigation extends LightningElement {
         );
     }
 
-    handleMenuNavigate(event) {
-        const page = event.detail.value;
-        this.dispatchEvent(
-            new CustomEvent('navigate', {
-                detail: { page },
-                bubbles: true,
-                composed: true,
-            })
-        );
-    }
-
     handleWaffleOpen() {
         const wasOpen = this.isWaffleMenuOpen;
         this.isWaffleMenuOpen = !this.isWaffleMenuOpen;
@@ -57,10 +47,10 @@ export default class GlobalNavigation extends LightningElement {
     handleWaffleMenuItemClick(event) {
         event.preventDefault();
         this.isWaffleMenuOpen = false;
-        const page = event.currentTarget.dataset.value;
+        const appId = event.currentTarget.dataset.value;
         this.dispatchEvent(
-            new CustomEvent('navigate', {
-                detail: { page },
+            new CustomEvent('appswitch', {
+                detail: { appId },
                 bubbles: true,
                 composed: true,
             })

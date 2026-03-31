@@ -7,7 +7,7 @@
                 <div class="slds-context-bar__icon-action">
                     <lightning-dynamic-icon
                         type="waffle"
-                        alternative-text="Application launcher"
+                        alternative-text="App Launcher"
                         onclick={handleWaffleOpen}>
                     </lightning-dynamic-icon>
                 </div>
@@ -18,15 +18,15 @@
                     if:true={isWaffleMenuOpen}
                     onkeydown={handleWaffleMenuKeydown}>
                     <ul class="slds-dropdown__list" role="group">
-                        <template for:each={navItems} for:item="item">
-                            <li key={item.page} class="slds-dropdown__item" role="presentation">
+                        <template for:each={apps} for:item="app">
+                            <li key={app.id} class="slds-dropdown__item" role="presentation">
                                 <a
-                                    href={item.path}
+                                    href="javascript:void(0)"
                                     role="menuitem"
                                     tabindex="-1"
-                                    data-value={item.page}
+                                    data-value={app.id}
                                     onclick={handleWaffleMenuItemClick}>
-                                    {item.label}
+                                    {app.label}
                                 </a>
                             </li>
                         </template>
