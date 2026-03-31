@@ -4,6 +4,8 @@ export default class GlobalShell extends LightningElement {
     @api currentPage = 'home';
     @api navItems = [];
     @api apps = [];
+    @api activeAppLabel = '';
+    @api activeAppId = '';
 
     handleNavigate(event) {
         event.stopPropagation();

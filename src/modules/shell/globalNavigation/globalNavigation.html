@@ -12,28 +12,31 @@
                     </lightning-dynamic-icon>
                 </div>
                 <div
-                    class="slds-dropdown slds-dropdown_left"
+                    class="slds-dropdown slds-dropdown_left app-launcher-dropdown"
                     role="menu"
                     aria-label="App Launcher"
                     if:true={isWaffleMenuOpen}
                     onkeydown={handleWaffleMenuKeydown}>
                     <ul class="slds-dropdown__list" role="group">
-                        <template for:each={apps} for:item="app">
-                            <li key={app.id} class="slds-dropdown__item" role="presentation">
+                        <template for:each={appsWithActive} for:item="app">
+                            <li key={app.id} class={app.itemClass} role="presentation">
                                 <a
                                     href="javascript:void(0)"
-                                    role="menuitem"
+                                    role="menuitemradio"
+                                    aria-checked={app.isActive}
                                     tabindex="-1"
                                     data-value={app.id}
                                     onclick={handleWaffleMenuItemClick}>
-                                    {app.label}
+                                    <span class="slds-truncate slds-grow">{app.label}</span>
+                                    <lightning-icon if:true={app.isActive} icon-name="utility:check" size="x-small"></lightning-icon>
+                                    <span if:false={app.isActive} class="app-check-placeholder"></span>
                                 </a>
                             </li>
                         </template>
                     </ul>
                 </div>
                 <span class="slds-context-bar__label-action slds-context-bar__app-name">
-                    <span class="slds-truncate" title="Data 360">Data 360</span>
+                    <span class="slds-truncate" title={activeAppLabel}>{activeAppLabel}</span>
                 </span>
             </div>
         </div>

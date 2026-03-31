@@ -110,6 +110,14 @@ export default class App extends LightningElement {
         return apps;
     }
 
+    get activeAppLabel() {
+        return this.activeApp.label;
+    }
+
+    get activeAppId() {
+        return this.activeApp.id;
+    }
+
     connectedCallback() {
         this._restorePreferences();
         this._sldsVersion = activeSLDSVersion();

@@ -4,11 +4,23 @@ export default class GlobalNavigation extends LightningElement {
     @api currentPage = 'home';
     @api navItems = [];
     @api apps = [];
+    @api activeAppLabel = '';
+    @api activeAppId = '';
     @track isWaffleMenuOpen = false;
 
     get waffleDropdownTriggerClass() {
         const base = 'slds-context-bar__item slds-context-bar__dropdown-trigger slds-dropdown-trigger slds-dropdown-trigger_click slds-no-hover';
         return this.isWaffleMenuOpen ? `${base} slds-is-open` : base;
+    }
+
+    get appsWithActive() {
+        return (this.apps || []).map((app) => ({
+            ...app,
+            isActive: app.id === this.activeAppId,
+            itemClass: app.id === this.activeAppId
+                ? 'slds-dropdown__item slds-is-selected'
+                : 'slds-dropdown__item',
+        }));
     }
 
     /** Nav items with isActive and tabClass derived from currentPage (for template) */
