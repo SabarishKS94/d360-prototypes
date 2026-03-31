@@ -2,7 +2,7 @@
     <!-- Auth check in progress: render nothing to avoid flash -->
     <template lwc:if={isAuthenticated}>
         <!-- Global shell: top, edge to edge, height by content -->
-        <shell-global-shell current-page={currentNavPage} nav-items={navItems} onnavigate={handleNavNavigate} onpanelselect={handlePanelSelect}>
+        <shell-global-shell current-page={currentNavPage} nav-items={navItems} user={_authUser} onnavigate={handleNavNavigate} onpanelselect={handlePanelSelect}>
         </shell-global-shell>
 
         <!-- Main content and docked panel -->
