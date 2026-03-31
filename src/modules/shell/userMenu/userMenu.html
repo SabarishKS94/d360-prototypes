@@ -1,0 +1,48 @@
+<template>
+    <div class="user-menu-trigger">
+        <button class="slds-button" onclick={handleAvatarClick} aria-haspopup="true" aria-expanded={ariaExpanded}>
+            <lightning-avatar
+                src={avatarSrc}
+                fallback-icon-name="standard:user"
+                alternative-text={userName}
+                size="small">
+            </lightning-avatar>
+        </button>
+
+        <div class={dropdownClass}>
+            <!-- User info -->
+            <div class="user-info-section">
+                <div class="user-name slds-truncate">{userName}</div>
+                <div class="user-email slds-truncate">{userEmail}</div>
+                <div class="user-actions">
+                    <button class="user-action-link" disabled>Settings</button>
+                    <button class="user-action-link" onclick={handleSignOut}>Log Out</button>
+                </div>
+            </div>
+
+            <!-- Display Density -->
+            <div class="density-section slds-has-divider_top-space">
+                <div class="section-header">Display Density</div>
+                <div class="density-option">
+                    <lightning-icon icon-name="utility:check" size="xx-small" alternative-text="Selected"></lightning-icon>
+                    <span>Comfy</span>
+                </div>
+                <div class="density-option slds-p-left_medium">
+                    <span>Compact</span>
+                </div>
+            </div>
+
+            <!-- Options -->
+            <div class="options-section slds-has-divider_top-space">
+                <div class="section-header">Options</div>
+                <div class="options-link">
+                    <span>Switch to Salesforce Classic</span>
+                    <lightning-icon icon-name="utility:info" size="xx-small" alternative-text="Info"></lightning-icon>
+                </div>
+                <div class="options-link">
+                    <span>Add Username</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,6 +1,8 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, api } from 'lwc';
 
 export default class GlobalHeader extends LightningElement {
+    @api user;
+
     handleAgentforceClick() {
         this.dispatchEvent(new CustomEvent('panelselect', {
             detail: { name: 'agentforce_panel' },

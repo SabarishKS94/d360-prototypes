@@ -6,6 +6,7 @@ export default class GlobalShell extends LightningElement {
     @api apps = [];
     @api activeAppLabel = '';
     @api activeAppId = '';
+    @api user;
 
     handleNavigate(event) {
         event.stopPropagation();
