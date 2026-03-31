@@ -1,7 +1,8 @@
-import { LightningElement } from 'lwc';
-import { signOut } from '../../../data/firebaseAuth.js';
+import { LightningElement, api } from 'lwc';
 
 export default class GlobalHeader extends LightningElement {
+    @api user;
+
     handleAgentforceClick() {
         this.dispatchEvent(new CustomEvent('panelselect', {
             detail: { name: 'agentforce_panel' },
@@ -32,14 +33,5 @@ export default class GlobalHeader extends LightningElement {
             bubbles: true,
             composed: true
         }));
-    }
-
-    async handleSignOut() {
-        try {
-            await signOut();
-        } catch (err) {
-            console.error('Sign-out failed:', err);
-        }
-        // onAuthStateChanged in shell/app fires with null and shows the login screen automatically
     }
 }

@@ -53,15 +53,7 @@
                     </lightning-button-icon>
                 </lightning-layout-item>
                 <lightning-layout-item class="slds-p-left_small">
-                    <lightning-avatar
-                        src="https://v1.lightningdesignsystem.com/assets/images/avatar2.jpg"></lightning-avatar>
-                </lightning-layout-item>
-                <lightning-layout-item class="slds-p-left_small">
-                    <lightning-button
-                        label="Sign out"
-                        variant="base"
-                        onclick={handleSignOut}>
-                    </lightning-button>
+                    <shell-user-menu user={user}></shell-user-menu>
                 </lightning-layout-item>
             </lightning-layout>
         </lightning-layout-item>
