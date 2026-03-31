@@ -62,4 +62,94 @@ export const routes = [
     title: (params) => `Contact ${params.id}`,
     navHighlight: 'contacts',
   },
+  {
+    path: '/connect-unify/item-1',
+    component: 'page-connect-unify1',
+    title: 'Connect & Unify — Item 1',
+  },
+  {
+    path: '/connect-unify/item-2',
+    component: 'page-connect-unify2',
+    title: 'Connect & Unify — Item 2',
+  },
+  {
+    path: '/connect-unify/item-3',
+    component: 'page-connect-unify3',
+    title: 'Connect & Unify — Item 3',
+  },
+  {
+    path: '/govern-secure/item-1',
+    component: 'page-govern-secure1',
+    title: 'Govern & Secure — Item 1',
+  },
+  {
+    path: '/govern-secure/item-2',
+    component: 'page-govern-secure2',
+    title: 'Govern & Secure — Item 2',
+  },
+  {
+    path: '/govern-secure/item-3',
+    component: 'page-govern-secure3',
+    title: 'Govern & Secure — Item 3',
+  },
+  {
+    path: '/process-enrich/item-1',
+    component: 'page-process-enrich1',
+    title: 'Process & Enrich — Item 1',
+  },
+  {
+    path: '/process-enrich/item-2',
+    component: 'page-process-enrich2',
+    title: 'Process & Enrich — Item 2',
+  },
+  {
+    path: '/process-enrich/item-3',
+    component: 'page-process-enrich3',
+    title: 'Process & Enrich — Item 3',
+  },
+  {
+    path: '/explore-optimize/item-1',
+    component: 'page-explore-optimize1',
+    title: 'Explore & Optimize — Item 1',
+  },
+  {
+    path: '/explore-optimize/item-2',
+    component: 'page-explore-optimize2',
+    title: 'Explore & Optimize — Item 2',
+  },
+  {
+    path: '/explore-optimize/item-3',
+    component: 'page-explore-optimize3',
+    title: 'Explore & Optimize — Item 3',
+  },
+  {
+    path: '/analyze-predict/item-1',
+    component: 'page-analyze-predict1',
+    title: 'Analyze & Predict — Item 1',
+  },
+  {
+    path: '/analyze-predict/item-2',
+    component: 'page-analyze-predict2',
+    title: 'Analyze & Predict — Item 2',
+  },
+  {
+    path: '/analyze-predict/item-3',
+    component: 'page-analyze-predict3',
+    title: 'Analyze & Predict — Item 3',
+  },
+  {
+    path: '/segment-act/item-1',
+    component: 'page-segment-act1',
+    title: 'Segment & Act — Item 1',
+  },
+  {
+    path: '/segment-act/item-2',
+    component: 'page-segment-act2',
+    title: 'Segment & Act — Item 2',
+  },
+  {
+    path: '/segment-act/item-3',
+    component: 'page-segment-act3',
+    title: 'Segment & Act — Item 3',
+  },
 ];

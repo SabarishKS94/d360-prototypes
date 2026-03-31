@@ -12,6 +12,24 @@ import ChurnRateSegment from 'page/churnRateSegment';
 import User from 'page/user';
 import Contacts from 'page/contacts';
 import ContactDetail from 'page/contactDetail';
+import ConnectUnify1 from 'page/connectUnify1';
+import ConnectUnify2 from 'page/connectUnify2';
+import ConnectUnify3 from 'page/connectUnify3';
+import GovernSecure1 from 'page/governSecure1';
+import GovernSecure2 from 'page/governSecure2';
+import GovernSecure3 from 'page/governSecure3';
+import ProcessEnrich1 from 'page/processEnrich1';
+import ProcessEnrich2 from 'page/processEnrich2';
+import ProcessEnrich3 from 'page/processEnrich3';
+import ExploreOptimize1 from 'page/exploreOptimize1';
+import ExploreOptimize2 from 'page/exploreOptimize2';
+import ExploreOptimize3 from 'page/exploreOptimize3';
+import AnalyzePredict1 from 'page/analyzePredict1';
+import AnalyzePredict2 from 'page/analyzePredict2';
+import AnalyzePredict3 from 'page/analyzePredict3';
+import SegmentAct1 from 'page/segmentAct1';
+import SegmentAct2 from 'page/segmentAct2';
+import SegmentAct3 from 'page/segmentAct3';
 
 const ROUTE_COMPONENTS = {
     'page-home': Home,
@@ -21,6 +39,24 @@ const ROUTE_COMPONENTS = {
     'page-user': User,
     'page-contacts': Contacts,
     'page-contact-detail': ContactDetail,
+    'page-connect-unify1': ConnectUnify1,
+    'page-connect-unify2': ConnectUnify2,
+    'page-connect-unify3': ConnectUnify3,
+    'page-govern-secure1': GovernSecure1,
+    'page-govern-secure2': GovernSecure2,
+    'page-govern-secure3': GovernSecure3,
+    'page-process-enrich1': ProcessEnrich1,
+    'page-process-enrich2': ProcessEnrich2,
+    'page-process-enrich3': ProcessEnrich3,
+    'page-explore-optimize1': ExploreOptimize1,
+    'page-explore-optimize2': ExploreOptimize2,
+    'page-explore-optimize3': ExploreOptimize3,
+    'page-analyze-predict1': AnalyzePredict1,
+    'page-analyze-predict2': AnalyzePredict2,
+    'page-analyze-predict3': AnalyzePredict3,
+    'page-segment-act1': SegmentAct1,
+    'page-segment-act2': SegmentAct2,
+    'page-segment-act3': SegmentAct3,
 };
 
 const ROUTE_TO_NAV_PAGE = Object.fromEntries(

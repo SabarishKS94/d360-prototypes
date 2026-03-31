@@ -16,9 +16,9 @@ export const apps = [
                 label: 'Connect & Unify',
                 icon: 'utility:connected_apps',
                 children: [
-                    { id: 'cu-item-1', label: 'Item 1', path: '/' },
-                    { id: 'cu-item-2', label: 'Item 2', path: '/' },
-                    { id: 'cu-item-3', label: 'Item 3', path: '/' },
+                    { id: 'cu-item-1', label: 'Item 1', path: '/connect-unify/item-1', component: 'page-connect-unify1' },
+                    { id: 'cu-item-2', label: 'Item 2', path: '/connect-unify/item-2', component: 'page-connect-unify2' },
+                    { id: 'cu-item-3', label: 'Item 3', path: '/connect-unify/item-3', component: 'page-connect-unify3' },
                 ],
             },
             {
@@ -26,9 +26,9 @@ export const apps = [
                 label: 'Govern & Secure',
                 icon: 'utility:shield',
                 children: [
-                    { id: 'gs-item-1', label: 'Item 1', path: '/' },
-                    { id: 'gs-item-2', label: 'Item 2', path: '/' },
-                    { id: 'gs-item-3', label: 'Item 3', path: '/' },
+                    { id: 'gs-item-1', label: 'Item 1', path: '/govern-secure/item-1', component: 'page-govern-secure1' },
+                    { id: 'gs-item-2', label: 'Item 2', path: '/govern-secure/item-2', component: 'page-govern-secure2' },
+                    { id: 'gs-item-3', label: 'Item 3', path: '/govern-secure/item-3', component: 'page-govern-secure3' },
                 ],
             },
             {
@@ -36,9 +36,9 @@ export const apps = [
                 label: 'Process & Enrich',
                 icon: 'utility:process',
                 children: [
-                    { id: 'pe-item-1', label: 'Item 1', path: '/' },
-                    { id: 'pe-item-2', label: 'Item 2', path: '/' },
-                    { id: 'pe-item-3', label: 'Item 3', path: '/' },
+                    { id: 'pe-item-1', label: 'Item 1', path: '/process-enrich/item-1', component: 'page-process-enrich1' },
+                    { id: 'pe-item-2', label: 'Item 2', path: '/process-enrich/item-2', component: 'page-process-enrich2' },
+                    { id: 'pe-item-3', label: 'Item 3', path: '/process-enrich/item-3', component: 'page-process-enrich3' },
                 ],
             },
             {
@@ -46,9 +46,9 @@ export const apps = [
                 label: 'Explore & Optimize',
                 icon: 'utility:search',
                 children: [
-                    { id: 'eo-item-1', label: 'Item 1', path: '/' },
-                    { id: 'eo-item-2', label: 'Item 2', path: '/' },
-                    { id: 'eo-item-3', label: 'Item 3', path: '/' },
+                    { id: 'eo-item-1', label: 'Item 1', path: '/explore-optimize/item-1', component: 'page-explore-optimize1' },
+                    { id: 'eo-item-2', label: 'Item 2', path: '/explore-optimize/item-2', component: 'page-explore-optimize2' },
+                    { id: 'eo-item-3', label: 'Item 3', path: '/explore-optimize/item-3', component: 'page-explore-optimize3' },
                 ],
             },
             {
@@ -56,9 +56,9 @@ export const apps = [
                 label: 'Analyze & Predict',
                 icon: 'utility:chart',
                 children: [
-                    { id: 'ap-item-1', label: 'Item 1', path: '/' },
-                    { id: 'ap-item-2', label: 'Item 2', path: '/' },
-                    { id: 'ap-item-3', label: 'Item 3', path: '/' },
+                    { id: 'ap-item-1', label: 'Item 1', path: '/analyze-predict/item-1', component: 'page-analyze-predict1' },
+                    { id: 'ap-item-2', label: 'Item 2', path: '/analyze-predict/item-2', component: 'page-analyze-predict2' },
+                    { id: 'ap-item-3', label: 'Item 3', path: '/analyze-predict/item-3', component: 'page-analyze-predict3' },
                 ],
             },
             {
@@ -66,9 +66,9 @@ export const apps = [
                 label: 'Segment & Act',
                 icon: 'utility:segments',
                 children: [
-                    { id: 'sa-item-1', label: 'Item 1', path: '/' },
-                    { id: 'sa-item-2', label: 'Item 2', path: '/' },
-                    { id: 'sa-item-3', label: 'Item 3', path: '/' },
+                    { id: 'sa-item-1', label: 'Item 1', path: '/segment-act/item-1', component: 'page-segment-act1' },
+                    { id: 'sa-item-2', label: 'Item 2', path: '/segment-act/item-2', component: 'page-segment-act2' },
+                    { id: 'sa-item-3', label: 'Item 3', path: '/segment-act/item-3', component: 'page-segment-act3' },
                 ],
             },
         ],
