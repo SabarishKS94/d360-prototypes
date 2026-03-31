@@ -3,6 +3,7 @@ import _devAnnotatorToolbar from 'dev/annotatorToolbar';
 import { subscribe, navigate } from '../../../router';
 import { routes } from '../../../routes.config';
 import { toggleSLDS, activeSLDSVersion } from '../../../build/slds-loader';
+import { onAuthStateChanged } from '../../../data/firebaseAuth.js';
 import Home from 'page/home';
 import IconTest from 'page/iconTest';
 import Settings from 'page/settings';
@@ -46,6 +47,11 @@ export default class App extends LightningElement {
     @track _darkMode = false;
     @track selectedPanel = 'agentforce_panel';
     @track isPanelOpen = false;
+    @track _authUser = null;
+    @track _authChecked = false;
+
+    _redirectPath = '/';
+    _unsubscribeAuth;
 
     get componentCtor() {
         const name = this.route?.component;
@@ -61,9 +67,36 @@ export default class App extends LightningElement {
         return NAV_ITEMS;
     }
 
+    get isAuthenticated() {
+        return this._authChecked && this._authUser != null;
+    }
+
+    get isAuthChecked() {
+        return this._authChecked;
+    }
+
     connectedCallback() {
         this._restorePreferences();
         this._sldsVersion = activeSLDSVersion();
+
+        // Capture the URL the user wants to visit before auth check
+        this._redirectPath = window.location.pathname || '/';
+
+        this._unsubscribeAuth = onAuthStateChanged((user) => {
+            // wasUnauthenticated is true only after we already confirmed no user was logged in
+            const wasUnauthenticated = this._authChecked && !this._authUser;
+            this._authChecked = true;
+            this._authUser = user;
+            if (user && wasUnauthenticated) {
+                // User just signed in from the login screen — go to their intended destination
+                navigate(this._redirectPath);
+                this._redirectPath = '/';
+            } else if (!user) {
+                // Capture current path so we can return here after sign-in
+                this._redirectPath = window.location.pathname || '/';
+            }
+        });
+
         this.unsubscribe = subscribe((route) => {
             this.route = route;
         });
@@ -84,6 +117,7 @@ export default class App extends LightningElement {
 
     disconnectedCallback() {
         this.unsubscribe?.();
+        this._unsubscribeAuth?.();
     }
 
     async handleToggleSLDS() {
