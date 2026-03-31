@@ -70,6 +70,22 @@
     border-top: 1px solid var(--slds-g-color-border-1, #c9c9c9);
 }
 
+.vertical-nav__footer-link {
+    display: flex;
+    align-items: center;
+    padding: var(--slds-g-spacing-2, 0.5rem);
+    color: var(--slds-g-color-on-surface-2, #444);
+    text-decoration: none;
+    font-size: var(--slds-g-font-size-3, 0.75rem);
+    border-bottom: 1px solid var(--slds-g-color-border-1, #c9c9c9);
+    margin-bottom: var(--slds-g-spacing-1, 0.25rem);
+}
+
+.vertical-nav__footer-link:hover {
+    background-color: var(--slds-g-color-surface-2, #f3f3f3);
+    text-decoration: none;
+}
+
 .vertical-nav__collapse-btn {
     display: flex;
     align-items: center;

@@ -53,6 +53,16 @@
         </div>
 
         <div class="vertical-nav__footer">
+            <a
+                href="/"
+                class="vertical-nav__footer-link"
+                onclick={handleItemClick}
+                data-path="/">
+                <lightning-icon icon-name="utility:apex" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                <template if:false={isCollapsed}>
+                    <span class="slds-truncate">Quick Start Library</span>
+                </template>
+            </a>
             <button
                 class="slds-button slds-button_reset vertical-nav__collapse-btn"
                 onclick={handleCollapseToggle}
