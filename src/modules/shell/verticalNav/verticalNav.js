@@ -20,7 +20,7 @@ export default class VerticalNav extends LightningElement {
     _initExpandedGroups() {
         const expanded = {};
         (this.navItems || []).forEach((group) => {
-            expanded[group.id] = true;
+            expanded[group.id] = false;
         });
         this._expandedGroups = expanded;
     }
