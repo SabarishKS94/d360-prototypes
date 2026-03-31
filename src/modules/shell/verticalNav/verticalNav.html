@@ -1,0 +1,67 @@
+<!-- src/modules/shell/verticalNav/verticalNav.html -->
+<template>
+    <nav class={navClass} aria-label="App navigation">
+        <div class="vertical-nav__search">
+            <lightning-input
+                type="search"
+                label="Quick find"
+                variant="label-hidden"
+                placeholder="Quick find"
+                value={quickFindValue}
+                onchange={handleQuickFindChange}>
+            </lightning-input>
+        </div>
+
+        <div class="vertical-nav__body">
+            <template for:each={filteredGroups} for:item="group">
+                <div key={group.id} class="slds-nav-vertical__section">
+                    <button
+                        class="slds-button slds-button_reset vertical-nav__group-header"
+                        onclick={handleGroupToggle}
+                        data-group-id={group.id}
+                        aria-expanded={group.isExpanded}>
+                        <lightning-icon
+                            icon-name={group.icon}
+                            size="x-small"
+                            class="slds-m-right_x-small">
+                        </lightning-icon>
+                        <span class="slds-truncate vertical-nav__group-label">{group.label}</span>
+                        <lightning-icon
+                            icon-name={group.chevronIcon}
+                            size="xx-small"
+                            class="vertical-nav__chevron">
+                        </lightning-icon>
+                    </button>
+
+                    <template if:true={group.isExpanded}>
+                        <ul class="slds-nav-vertical__items">
+                            <template for:each={group.filteredChildren} for:item="item">
+                                <li key={item.id} class="slds-nav-vertical__item">
+                                    <a
+                                        href={item.path}
+                                        class="slds-nav-vertical__action"
+                                        data-path={item.path}
+                                        onclick={handleItemClick}>
+                                        <span class="slds-truncate">{item.label}</span>
+                                    </a>
+                                </li>
+                            </template>
+                        </ul>
+                    </template>
+                </div>
+            </template>
+        </div>
+
+        <div class="vertical-nav__footer">
+            <button
+                class="slds-button slds-button_reset vertical-nav__collapse-btn"
+                onclick={handleCollapseToggle}
+                title={collapseLabel}>
+                <lightning-icon icon-name={collapseIcon} size="x-small"></lightning-icon>
+                <template if:false={isCollapsed}>
+                    <span class="slds-m-left_x-small">Collapse</span>
+                </template>
+            </button>
+        </div>
+    </nav>
+</template>
