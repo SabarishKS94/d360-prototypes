@@ -74,3 +74,9 @@
 lightning-badge {
     display: inline-block;
 }
+
+/* Sidebar cell for vertical nav — sizes to content (nav controls its own width) */
+.app-body__sidebar {
+    min-width: 0;
+    flex-shrink: 0;
+}

@@ -1,7 +1,9 @@
+// src/modules/shell/app/app.js
 import { LightningElement, track } from 'lwc';
 import _devAnnotatorToolbar from 'dev/annotatorToolbar';
 import { subscribe, navigate } from '../../../router';
 import { routes } from '../../../routes.config';
+import { apps, getDefaultApp, getAppById, ACTIVE_APP_STORAGE_KEY } from '../../../apps.config';
 import { toggleSLDS, activeSLDSVersion } from '../../../build/slds-loader';
 import Home from 'page/home';
 import IconTest from 'page/iconTest';
@@ -11,7 +13,6 @@ import User from 'page/user';
 import Contacts from 'page/contacts';
 import ContactDetail from 'page/contactDetail';
 
-/** Option A: explicit registration – add one import + one entry here when adding a route */
 const ROUTE_COMPONENTS = {
     'page-home': Home,
     'page-icon-test': IconTest,
@@ -22,20 +23,15 @@ const ROUTE_COMPONENTS = {
     'page-contact-detail': ContactDetail,
 };
 
-/** Derived from routes.config: component name → nav page id (includes navHighlight for child routes) */
 const ROUTE_TO_NAV_PAGE = Object.fromEntries(
-    routes.filter((r) => r.navPage || r.navHighlight).map((r) => [r.component, r.navPage ?? r.navHighlight])
+    routes
+        .filter((r) => r.navPage || r.navHighlight)
+        .map((r) => [r.component, r.navPage ?? r.navHighlight])
 );
 
-/** Derived from routes.config: nav page id → path for navigate() */
 const NAV_PAGE_TO_PATH = Object.fromEntries(
     routes.filter((r) => r.navPage).map((r) => [r.navPage, r.navPath ?? r.path])
 );
-
-/** Nav items for global navigation (tabs + waffle). From routes with navPage. */
-const NAV_ITEMS = routes
-    .filter((r) => r.navPage)
-    .map((r) => ({ page: r.navPage, label: r.navLabel, path: r.navPath ?? r.path }));
 
 const STORAGE_KEY_SLDS_VERSION = 'slds-ui-slds-version';
 const STORAGE_KEY_DARK_MODE = 'slds-ui-dark-mode';
@@ -46,6 +42,15 @@ export default class App extends LightningElement {
     @track _darkMode = false;
     @track selectedPanel = 'agentforce_panel';
     @track isPanelOpen = false;
+    @track _activeAppId = getDefaultApp().id;
+
+    get activeApp() {
+        return getAppById(this._activeAppId);
+    }
+
+    get isVerticalNav() {
+        return this.activeApp.navType === 'vertical';
+    }
 
     get componentCtor() {
         const name = this.route?.component;
@@ -58,12 +63,24 @@ export default class App extends LightningElement {
     }
 
     get navItems() {
-        return NAV_ITEMS;
+        return this.activeApp.contextBarItems;
+    }
+
+    get verticalNavItems() {
+        return this.activeApp.navItems;
+    }
+
+    get allApps() {
+        return apps;
     }
 
     connectedCallback() {
         this._restorePreferences();
         this._sldsVersion = activeSLDSVersion();
+        const savedAppId = localStorage.getItem(ACTIVE_APP_STORAGE_KEY);
+        if (savedAppId) {
+            this._activeAppId = getAppById(savedAppId).id;
+        }
         this.unsubscribe = subscribe((route) => {
             this.route = route;
         });
@@ -104,9 +121,20 @@ export default class App extends LightningElement {
     }
 
     handleNavNavigate(event) {
-        const page = event.detail?.page;
-        const path = page ? NAV_PAGE_TO_PATH[page] : '/';
-        navigate(path);
+        const { page, path } = event.detail ?? {};
+        if (path) {
+            navigate(path);
+        } else if (page) {
+            navigate(NAV_PAGE_TO_PATH[page] ?? '/');
+        }
+    }
+
+    handleAppSwitch(event) {
+        const appId = event.detail?.appId;
+        if (appId) {
+            this._activeAppId = getAppById(appId).id;
+            localStorage.setItem(ACTIVE_APP_STORAGE_KEY, this._activeAppId);
+        }
     }
 
     handlePanelSelect(event) {
@@ -119,7 +147,9 @@ export default class App extends LightningElement {
     }
 
     get panelClasses() {
-        return `slds-panel slds-size_medium slds-panel_docked slds-panel_docked-right ${this.isPanelOpen ? 'slds-is-open' : ''}`;
+        return `slds-panel slds-size_medium slds-panel_docked slds-panel_docked-right ${
+            this.isPanelOpen ? 'slds-is-open' : ''
+        }`;
     }
 
     handleNavigateBack() {
