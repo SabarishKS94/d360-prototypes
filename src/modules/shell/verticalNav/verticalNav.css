@@ -3,6 +3,7 @@
     display: block;
     overflow: hidden;
     flex-shrink: 0;
+    height: 100%;
     border-right: 1px solid var(--slds-g-color-border-1, #c9c9c9);
 }
 
