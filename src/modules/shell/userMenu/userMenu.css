@@ -30,9 +30,6 @@
 .user-email {
     color: var(--sds-g-color-neutral-base-50, #706e6b);
     font-size: 0.75rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     max-width: 16rem;
 }
 

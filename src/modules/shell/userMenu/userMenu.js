@@ -1,13 +1,12 @@
-import { LightningElement, api, track } from 'lwc';
+import { LightningElement, api } from 'lwc';
 import { signOut } from '../../../data/firebaseAuth.js';
 
 export default class UserMenu extends LightningElement {
     @api user;
-    @track _isOpen = false;
+    _isOpen = false;
 
     _handleOutsideClick = (event) => {
-        const trigger = this.template.querySelector('.user-menu-trigger');
-        if (trigger && !trigger.contains(event.target)) {
+        if (!this.template.host.contains(event.target)) {
             this._isOpen = false;
         }
     };
@@ -30,6 +29,10 @@ export default class UserMenu extends LightningElement {
 
     get userEmail() {
         return this.user?.email || '';
+    }
+
+    get ariaExpanded() {
+        return String(this._isOpen);
     }
 
     get dropdownClass() {

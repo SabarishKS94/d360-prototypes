@@ -1,6 +1,6 @@
 <template>
     <div class="user-menu-trigger">
-        <button class="slds-button" onclick={handleAvatarClick} aria-haspopup="true" aria-expanded={_isOpen}>
+        <button class="slds-button" onclick={handleAvatarClick} aria-haspopup="true" aria-expanded={ariaExpanded}>
             <lightning-avatar
                 src={avatarSrc}
                 fallback-icon-name="standard:user"
@@ -13,9 +13,9 @@
             <!-- User info -->
             <div class="user-info-section">
                 <div class="user-name slds-truncate">{userName}</div>
-                <div class="user-email">{userEmail}</div>
+                <div class="user-email slds-truncate">{userEmail}</div>
                 <div class="user-actions">
-                    <span class="user-action-link">Settings</span>
+                    <button class="user-action-link" disabled>Settings</button>
                     <button class="user-action-link" onclick={handleSignOut}>Log Out</button>
                 </div>
             </div>
