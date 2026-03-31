@@ -4,12 +4,13 @@ import { LightningElement, api, track } from 'lwc';
 const STORAGE_KEY = 'vertical-nav-collapsed';
 
 export default class VerticalNav extends LightningElement {
+    // TODO: wire active-item highlighting when real routes are assigned to nav items
     @api currentPage = '';
     @api navItems = [];
 
-    @track quickFindValue = '';
+    quickFindValue = '';
     @track _expandedGroups = {};
-    @track isCollapsed = false;
+    isCollapsed = false;
 
     connectedCallback() {
         this.isCollapsed = localStorage.getItem(STORAGE_KEY) === 'true';
@@ -64,7 +65,7 @@ export default class VerticalNav extends LightningElement {
     }
 
     handleQuickFindChange(event) {
-        this.quickFindValue = event.target.value;
+        this.quickFindValue = event.detail.value;
     }
 
     handleGroupToggle(event) {
