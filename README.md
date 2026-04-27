@@ -8,6 +8,15 @@ A **starter template** for prototyping and developing Salesforce experiences loc
 - Teams designing or evaluating experiences with LWC and SLDS  
 - Anyone who wants a local dev environment that matches Salesforce behavior (synthetic shadow, global SLDS styles, Lightning Base Components)
 
+## Repository (clone from either)
+
+| | URL |
+|---|-----|
+| **Soma (for Salesforce product partners and teammates without GitHub EMU)** | `https://git.soma.salesforce.com/dvora/d360-starter-kit.git` |
+| **GitHub EMU (upstream for open workflow)** | `https://github.com/salesforce-ux-emu/data360-starter-kit` |
+
+The same `npm` workflow applies after you clone. Maintainers can add **both** as `git` remotes to push the same `main` to Soma and GitHub; see [**docs/setup-with-agent.md**](docs/setup-with-agent.md#where-to-clone-the-repo-mirrors).
+
 ## What you get
 
 - **App shell** — Header, global navigation, theme switcher (light/dark, SLDS 1/2), and panel layout  
@@ -16,6 +25,20 @@ A **starter template** for prototyping and developing Salesforce experiences loc
 - **Synthetic Shadow DOM** — Matches Salesforce platform behavior so styles and DOM semantics align with production  
 - **Icon setup** — Prebuild script, Vite aliases for `lightning/iconSvgTemplates*`, and shim modules under `src/build/lightning-icon/shims/`; generated bundles in `src/build/generated/`  
 - **Example pages** — Home, Settings, Icons, and a sample parameterized page (`/users/:id`). See `src/modules/page/` and `src/modules/ui/` for patterns.
+
+## First-time setup (recommended)
+
+From the repo root, run the setup script — it checks **Node.js**, creates **`.env`** from **`.env.example`** if you don’t have one yet, and runs **`npm install`**. Safe to re-run anytime.
+
+```bash
+sh scripts/setup.sh
+```
+
+**Prefer an AI agent to do it?** Open [**docs/setup-with-agent.md**](docs/setup-with-agent.md) and paste the **base prompt** there into Cursor Agent, Claude Code, or a similar tool. It will run the same flow (or give you a manual checklist if the agent cannot run commands).
+
+If you prefer to install manually: install Node.js LTS, copy **`.env.example`** to **`.env`**, then **`npm install`**.
+
+> The **d360-qsl-ux-prototype** repo (built on this starter) ships a larger `setup.sh` for Salesforce-internal workflows — Homebrew, `gh` for git.soma, SSH checks, and Claude Code plugins. This template keeps **only** what most contributors need: Node, `.env`, and `npm install`.
 
 ## Quick start
 
@@ -30,6 +53,16 @@ Dev server runs at **http://localhost:3000**. Global SLDS styles are resolved fr
 npm run build
 npm run preview
 ```
+
+### Local auth and environment
+
+Vite reads **`VITE_*` variables** from a **`.env`** file in the project root (see **`.env.example`**). If you use **`sh scripts/setup.sh`**, a default **`.env`** is created for you when missing.
+
+- **`VITE_AUTH_MODE=none`** (the example default) — no login for local work; a placeholder user is shown in the shell.  
+- **`VITE_AUTH_MODE=salesforce`** — Firebase + Google sign-in (`@salesforce.com` only); you must set the `VITE_FIREBASE_*` keys in **`.env`**.  
+- Legacy: **`VITE_REQUIRE_AUTH=false`** is treated the same as **`none`**.
+
+After changing **`.env`**, restart the dev server.
 
 ## Project structure
 
@@ -62,7 +95,10 @@ salesforce-ui/
 │   ├── router.js                  # Route definitions and navigation
 │   └── index.js                   # App entry point
 ├── scripts/
-│   └── prebuild-icons.mjs         # Icon codegen (run via npm scripts)
+│   ├── prebuild-icons.mjs         # Icon codegen (run via npm scripts)
+│   └── setup.sh                    # First-time: Node check, .env, npm install
+├── docs/
+│   └── setup-with-agent.md        # Copy-paste prompt to have an agent run setup
 ├── index.html
 ├── vite.config.js
 └── package.json
@@ -85,7 +121,7 @@ Only add components under **page/** or **ui/**. Put shell chrome in **`shell/`**
 
 ## Using this as a template
 
-1. Clone or copy the repo, then `npm install` and `npm run dev`.
+1. Clone or copy the repo, then `sh scripts/setup.sh` (or `npm install` and `npm run dev` if your environment is already configured).
 2. **Add a page:** Create a folder under `src/modules/page/<name>/`, then:
    - Add a route in `src/routes.config.js` (e.g. `{ path: '/dashboard', component: 'page-dashboard', title: 'Dashboard', navPage: 'dashboard', navLabel: 'Dashboard' }`).
    - In `src/modules/shell/app/app.js`, import the component and add it to `ROUTE_COMPONENTS`.
