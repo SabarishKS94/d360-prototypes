@@ -69,6 +69,16 @@ body.cosmos-dark {
     --slds-g-color-surface-container-2: transparent;
 }
 
+/* Must beat .slds-color-scheme_dark specificity from SLDS 2 */
+body.cosmos-dark.slds-color-scheme_dark {
+    --slds-g-color-surface-1: transparent;
+    --slds-g-color-surface-2: transparent;
+    --slds-g-color-surface-container-1: transparent;
+    --slds-g-color-surface-container-2: transparent;
+    --slds-g-color-border-1: rgba(255, 255, 255, 0.06);
+    --slds-g-color-border-2: rgba(255, 255, 255, 0.14);
+}
+
 /* ── Cosmos Dark: frosted-glass surfaces ─────────────────────────── */
 
 body.cosmos-dark .global-header,

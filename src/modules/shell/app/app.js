@@ -70,13 +70,11 @@ const NAV_PAGE_TO_PATH = Object.fromEntries(
     routes.filter((r) => r.navPage).map((r) => [r.navPage, r.navPath ?? r.path])
 );
 
-const STORAGE_KEY_DARK_MODE = 'slds-ui-dark-mode';
-const STORAGE_KEY_COSMOS_THEME = 'slds-ui-cosmos-theme';
+const STORAGE_KEY_THEME = 'slds-ui-theme';
 
 export default class App extends LightningElement {
     @track route;
-    @track _darkMode = false;
-    @track _cosmosTheme = '';
+    @track _activeTheme = 'light';
     @track selectedPanel = 'agentforce_panel';
     @track isPanelOpen = false;
     @track _activeAppId = getDefaultApp().id;
@@ -168,20 +166,25 @@ export default class App extends LightningElement {
     }
 
     _restorePreferences() {
-        const savedDarkMode = localStorage.getItem(STORAGE_KEY_DARK_MODE);
-        if (savedDarkMode === 'true') {
-            this._darkMode = true;
-            document.body.classList.add('slds-color-scheme_dark');
-        } else {
-            this._darkMode = false;
-            document.body.classList.remove('slds-color-scheme_dark');
+        let saved = localStorage.getItem(STORAGE_KEY_THEME);
+
+        if (!saved) {
+            const legacyDark = localStorage.getItem('slds-ui-dark-mode');
+            const legacyCosmos = localStorage.getItem('slds-ui-cosmos-theme');
+            if (legacyCosmos === 'cosmos-light' || legacyCosmos === 'cosmos-dark') {
+                saved = legacyCosmos;
+            } else if (legacyDark === 'true') {
+                saved = 'dark';
+            }
+            localStorage.removeItem('slds-ui-dark-mode');
+            localStorage.removeItem('slds-ui-cosmos-theme');
+            if (saved) localStorage.setItem(STORAGE_KEY_THEME, saved);
         }
 
-        const savedCosmos = localStorage.getItem(STORAGE_KEY_COSMOS_THEME);
-        if (savedCosmos === 'cosmos-light' || savedCosmos === 'cosmos-dark') {
-            this._cosmosTheme = savedCosmos;
-            document.body.classList.add(savedCosmos);
+        if (saved) {
+            this._activeTheme = saved;
         }
+        this._applyThemeClasses(this._activeTheme);
     }
 
     disconnectedCallback() {
@@ -189,23 +192,24 @@ export default class App extends LightningElement {
         this._unsubscribeAuth?.();
     }
 
-    handleToggleDarkMode() {
-        this._darkMode = !this._darkMode;
-        document.body.classList.toggle('slds-color-scheme_dark', this._darkMode);
-        localStorage.setItem(STORAGE_KEY_DARK_MODE, String(this._darkMode));
+    handleApplyTheme(event) {
+        const theme = event.detail?.theme;
+        if (!theme) return;
+        this._activeTheme = theme;
+        this._applyThemeClasses(theme);
+        localStorage.setItem(STORAGE_KEY_THEME, theme);
     }
 
-    handleSetCosmosTheme(event) {
-        const theme = event.detail?.theme;
-        document.body.classList.remove('cosmos-light', 'cosmos-dark');
+    _applyThemeClasses(theme) {
+        const { classList } = document.body;
+        classList.remove('slds-color-scheme_dark', 'cosmos-light', 'cosmos-dark');
 
-        if (this._cosmosTheme === theme) {
-            this._cosmosTheme = '';
-            localStorage.removeItem(STORAGE_KEY_COSMOS_THEME);
-        } else {
-            this._cosmosTheme = theme;
-            document.body.classList.add(theme);
-            localStorage.setItem(STORAGE_KEY_COSMOS_THEME, theme);
+        if (theme === 'dark') {
+            classList.add('slds-color-scheme_dark');
+        } else if (theme === 'cosmos-light') {
+            classList.add('cosmos-light');
+        } else if (theme === 'cosmos-dark') {
+            classList.add('slds-color-scheme_dark', 'cosmos-dark');
         }
     }
 

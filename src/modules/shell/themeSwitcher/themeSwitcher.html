@@ -15,28 +15,14 @@
             <div class="theme-switcher-card-wrapper">
                 <lightning-card title="Theme" class="theme-switcher-card">
                     <div class="slds-p-around_small">
-                        <div class="slds-button-group slds-m-bottom_small">
-                            <lightning-button
-                                variant="neutral"
-                                label={darkModeLabel}
-                                icon-name="utility:light_bulb"
-                                onclick={handleToggleDarkModeClick}>
-                            </lightning-button>
-                        </div>
-                        <div class="slds-button-group">
-                            <lightning-button
-                                variant={cosmosLightVariant}
-                                label="Cosmos Light"
-                                icon-name="utility:daylight"
-                                onclick={handleCosmosLightClick}>
-                            </lightning-button>
-                            <lightning-button
-                                variant={cosmosDarkVariant}
-                                label="Cosmos Dark"
-                                icon-name="utility:moon"
-                                onclick={handleCosmosDarkClick}>
-                            </lightning-button>
-                        </div>
+                        <lightning-combobox
+                            label="Select theme"
+                            value={activeTheme}
+                            options={themeOptions}
+                            onchange={handleThemeChange}
+                            variant="label-hidden"
+                            dropdown-alignment="bottom-right">
+                        </lightning-combobox>
                     </div>
                 </lightning-card>
             </div>

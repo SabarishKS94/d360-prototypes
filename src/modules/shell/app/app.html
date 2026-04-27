@@ -38,10 +38,8 @@
                                 </template>
                             </div>
                             <shell-theme-switcher
-                                dark-mode={_darkMode}
-                                cosmos-theme={_cosmosTheme}
-                                ontoggledarkmode={handleToggleDarkMode}
-                                onsetcosmostheme={handleSetCosmosTheme}>
+                                active-theme={_activeTheme}
+                                onapplytheme={handleApplyTheme}>
                             </shell-theme-switcher>
                         </div>
                     </div>

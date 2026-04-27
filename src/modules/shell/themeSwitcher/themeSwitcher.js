@@ -1,20 +1,18 @@
 import { LightningElement, api, track } from 'lwc';
 
+const THEME_OPTIONS = [
+    { label: 'Light', value: 'light' },
+    { label: 'Dark', value: 'dark' },
+    { label: 'Cosmos Light', value: 'cosmos-light' },
+    { label: 'Cosmos Dark', value: 'cosmos-dark' }
+];
+
 export default class ThemeSwitcher extends LightningElement {
-    @api darkMode = false;
-    @api cosmosTheme = '';
+    @api activeTheme = 'light';
     @track isCardOpen = false;
 
-    get darkModeLabel() {
-        return this.darkMode ? 'Light Mode' : 'Dark Mode';
-    }
-
-    get cosmosLightVariant() {
-        return this.cosmosTheme === 'cosmos-light' ? 'brand' : 'neutral';
-    }
-
-    get cosmosDarkVariant() {
-        return this.cosmosTheme === 'cosmos-dark' ? 'brand' : 'neutral';
+    get themeOptions() {
+        return THEME_OPTIONS;
     }
 
     handleIconClick() {
@@ -25,28 +23,12 @@ export default class ThemeSwitcher extends LightningElement {
         this.isCardOpen = false;
     }
 
-    handleToggleDarkModeClick() {
+    handleThemeChange(event) {
         this.dispatchEvent(
-            new CustomEvent('toggledarkmode', { bubbles: true, composed: true })
-        );
-    }
-
-    handleCosmosLightClick() {
-        this.dispatchEvent(
-            new CustomEvent('setcosmostheme', {
+            new CustomEvent('applytheme', {
                 bubbles: true,
                 composed: true,
-                detail: { theme: 'cosmos-light' }
-            })
-        );
-    }
-
-    handleCosmosDarkClick() {
-        this.dispatchEvent(
-            new CustomEvent('setcosmostheme', {
-                bubbles: true,
-                composed: true,
-                detail: { theme: 'cosmos-dark' }
+                detail: { theme: event.detail.value }
             })
         );
     }
