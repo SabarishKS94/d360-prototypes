@@ -19,7 +19,7 @@ A **Data 360–aligned** app shell for **Lightning Web Components (LWC)** in the
 | **Soma (product partners, git.soma only)** | `https://git.soma.salesforce.com/dvora/d360-starter-kit.git` |
 | **GitHub EMU (upstream, PRs, open style workflow)** | `https://github.com/salesforce-ux-emu/data360-starter-kit` |
 
-The workflow is the same: Node LTS, then setup below. Pushing to **both** remotes: [**`docs/setup-with-agent.md`**](docs/setup-with-agent.md#where-to-clone-the-repo-mirrors).
+The workflow is the same: Node LTS, then setup below. To **push to Soma over HTTPS**, use the **GitHub CLI** (`gh auth login` to `git.soma.salesforce.com`, then `gh auth setup-git` before `git push`); see [**Pushing to Soma with `gh`**](docs/setup-with-agent.md#push-to-soma-with-gh-recommended). Cloning, EMU, and using **SSH** instead of `gh` are covered in the same [setup doc](docs/setup-with-agent.md#where-to-clone-the-repo-mirrors).
 
 ## First-time setup
 

@@ -45,19 +45,43 @@ Confirm `npm run dev` works and the app loads at http://localhost:3000. If the d
 
 The same `scripts/setup.sh` and agent prompt apply after you clone from either place.
 
-To **push to both** from a single clone, add a second remote (example names):
+### Push to Soma with `gh` (recommended)
 
-```bash
-# Already cloned; origin points at GitHub EMU
-git remote add soma https://git.soma.salesforce.com/dvora/d360-starter-kit.git
-git push -u soma main
-```
+Soma is a GitHub Enterprise host. The **GitHub CLI** (`gh`) is the most reliable way to get HTTPS `git` operations working without a browser password loop.
 
-SSH (if you use it on git.soma):
+1. **Install** `gh` if needed (e.g. on macOS: `brew install gh`).
+
+2. **Log in to git.soma** (one-time per machine):
+
+   ```bash
+   gh auth login
+   ```
+
+   - **GitHub hostname:** choose **Other** and enter `git.soma.salesforce.com`.
+   - Prefer **HTTPS** and complete the device/browser flow, or use **SSH** if you already use a soma SSH key.
+
+3. **Wire `git` to your `gh` credentials** (enables `git push` to pick up the right token):
+
+   ```bash
+   gh auth setup-git
+   ```
+
+4. **Add the Soma remote and push** (repo on Soma must already exist, and you need access):
+
+   ```bash
+   # Already cloned; `origin` may point at GitHub EMU
+   git remote add soma https://git.soma.salesforce.com/dvora/d360-starter-kit.git
+   # if `soma` is already set, skip the line above
+   git push -u soma main
+   ```
+
+5. **Check** you’re on the right host: `gh auth status --hostname git.soma.salesforce.com` should be logged in.
+
+### Without `gh` (SSH only)
+
+If you use soma’s SSH key with git (no `gh`):
 
 ```bash
 git remote add soma git@git.soma.salesforce.com:dvora/d360-starter-kit.git
 git push -u soma main
 ```
-
-You need credentials with access to the Soma project (and the empty repo must exist on Soma before the first push).
