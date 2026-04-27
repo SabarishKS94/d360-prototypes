@@ -31,7 +31,7 @@ These URLs point at the **maintained** starter, not at your project after you te
 | **GitHub EMU (canonical: create new repos with “Use this template”)** | [github.com/salesforce-ux-emu/data360-starter-kit](https://github.com/salesforce-ux-emu/data360-starter-kit) |
 | **Soma mirror (partners without GitHub EMU; maintainer push)** | `https://git.soma.salesforce.com/dvora/d360-starter-template.git` |
 
-After you **Use this template** and name your app, clone **your** repository’s URL, then run setup below. To **merge improvements from upstream** later, add a `git remote` to this repo and `git pull` / cherry-pick as you prefer. Pushing **to the soma mirror** with **HTTPS** is easiest with the **GitHub CLI** — see [**Pushing to Soma with `gh`**](docs/setup-with-agent.md#push-to-soma-with-gh-recommended). Cloning, EMU, and **SSH** are in [`docs/setup-with-agent.md`](docs/setup-with-agent.md#where-to-clone-the-repo-mirrors).
+After you **Use this template** and name your app, clone **your** repository’s URL, then run setup below. You **push only to your repo** (`origin`); you do not need a `soma` remote for normal work. To **merge improvements from upstream** later, add a `remote` and `pull` / cherry-pick as you prefer. **Maintainers** who publish the mirror to soma: [Maintainers (Soma mirror)](docs/setup-with-agent.md#maintainers-soma-mirror). The same file explains [using an agent after you clone *your* repo](docs/setup-with-agent.md).
 
 ## First-time setup
 
