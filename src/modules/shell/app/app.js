@@ -5,6 +5,7 @@ import { subscribe, navigate } from '../../../router';
 import { routes } from '../../../routes.config';
 import { apps, getDefaultApp, getAppById, ACTIVE_APP_STORAGE_KEY } from '../../../apps.config';
 import { toggleSLDS, activeSLDSVersion } from '../../../build/slds-loader';
+import { isAuthDisabled } from '../../../data/authMode.js';
 import { onAuthStateChanged } from '../../../data/firebaseAuth.js';
 import Home from 'page/home';
 import IconTest from 'page/iconTest';
@@ -143,20 +144,25 @@ export default class App extends LightningElement {
         // Capture the URL the user wants to visit before auth check
         this._redirectPath = window.location.pathname || '/';
 
-        this._unsubscribeAuth = onAuthStateChanged((user) => {
-            // wasUnauthenticated is true only after we already confirmed no user was logged in
-            const wasUnauthenticated = this._authChecked && !this._authUser;
+        if (isAuthDisabled()) {
             this._authChecked = true;
-            this._authUser = user;
-            if (user && wasUnauthenticated) {
-                // User just signed in from the login screen — go to their intended destination
-                navigate(this._redirectPath);
-                this._redirectPath = '/';
-            } else if (!user) {
-                // Capture current path so we can return here after sign-in
-                this._redirectPath = window.location.pathname || '/';
-            }
-        });
+            this._authUser = { displayName: 'Local Prototype User' };
+        } else {
+            this._unsubscribeAuth = onAuthStateChanged((user) => {
+                // wasUnauthenticated is true only after we already confirmed no user was logged in
+                const wasUnauthenticated = this._authChecked && !this._authUser;
+                this._authChecked = true;
+                this._authUser = user;
+                if (user && wasUnauthenticated) {
+                    // User just signed in from the login screen — go to their intended destination
+                    navigate(this._redirectPath);
+                    this._redirectPath = '/';
+                } else if (!user) {
+                    // Capture current path so we can return here after sign-in
+                    this._redirectPath = window.location.pathname || '/';
+                }
+            });
+        }
 
         this._unsubscribe = subscribe((route) => {
             this.route = route;
