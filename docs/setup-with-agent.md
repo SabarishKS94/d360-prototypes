@@ -36,14 +36,16 @@ Confirm `npm run dev` works and the app loads at http://localhost:3000. If the d
 
 ---
 
-## Where to clone the repo (mirrors)
+## Create your repo (normal path) vs clone upstream
+
+**Most people** should not clone the URL below for day-to-day work. On **GitHub**, open the **canonical** repo and click **Use this template** to create a **new** repository (your name, your org), then `git clone` **your** repo’s URL. Run `scripts/setup.sh` there.
+
+The table below is the **maintained source** (for mirroring, staying in sync, or internal git.soma access). The same `scripts/setup.sh` and agent prompt apply after you have a working tree from either a **templated** copy or a **direct** clone of these.
 
 | Location | Use case |
 |----------|----------|
-| **git.soma** — `https://git.soma.salesforce.com/dvora/d360-starter-kit.git` | **Salesforce partners and teammates** who do not have access to the GitHub EMU org. |
-| **GitHub EMU** — `https://github.com/salesforce-ux-emu/data360-starter-kit` | Public/open workflow for teams using the EMU account. |
-
-The same `scripts/setup.sh` and agent prompt apply after you clone from either place.
+| **git.soma** — `https://git.soma.salesforce.com/dvora/d360-starter-kit.git` | **Salesforce partners and teammates** who do not have access to the GitHub EMU org; or maintainers pushing the mirror. |
+| **GitHub EMU** — `https://github.com/salesforce-ux-emu/data360-starter-kit` | **“Use this template”** (preferred), browsing **Issues** / **history**, or direct clone in edge cases. |
 
 ### Push to Soma with `gh` (recommended)
 
