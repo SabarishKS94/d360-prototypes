@@ -44,7 +44,7 @@ The table below is the **maintained source** (for mirroring, staying in sync, or
 
 | Location | Use case |
 |----------|----------|
-| **git.soma** — `https://git.soma.salesforce.com/dvora/d360-starter-kit.git` | **Salesforce partners and teammates** who do not have access to the GitHub EMU org; or maintainers pushing the mirror. |
+| **git.soma** — `https://git.soma.salesforce.com/dvora/d360-starter-template.git` | **Salesforce partners and teammates** who do not have access to the GitHub EMU org; or maintainers pushing the mirror. |
 | **GitHub EMU** — `https://github.com/salesforce-ux-emu/data360-starter-kit` | **“Use this template”** (preferred), browsing **Issues** / **history**, or direct clone in edge cases. |
 
 ### Push to Soma with `gh` (recommended)
@@ -72,7 +72,7 @@ Soma is a GitHub Enterprise host. The **GitHub CLI** (`gh`) is the most reliable
 
    ```bash
    # Already cloned; `origin` may point at GitHub EMU
-   git remote add soma https://git.soma.salesforce.com/dvora/d360-starter-kit.git
+   git remote add soma https://git.soma.salesforce.com/dvora/d360-starter-template.git
    # if `soma` is already set, skip the line above
    git push -u soma main
    ```
@@ -84,6 +84,6 @@ Soma is a GitHub Enterprise host. The **GitHub CLI** (`gh`) is the most reliable
 If you use soma’s SSH key with git (no `gh`):
 
 ```bash
-git remote add soma git@git.soma.salesforce.com:dvora/d360-starter-kit.git
+git remote add soma git@git.soma.salesforce.com:dvora/d360-starter-template.git
 git push -u soma main
 ```
