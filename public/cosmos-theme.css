@@ -1,5 +1,7 @@
 /* Cosmos ambient background themes — toggled via class on document.body */
 
+/* ── Ambient gradient (::before) and glow orb (::after) ───────────── */
+
 body.cosmos-light::before,
 body.cosmos-dark::before {
     content: '';
@@ -57,7 +59,164 @@ body.cosmos-dark > #app {
     z-index: 1;
 }
 
+/* ── Shared: make surfaces transparent so the gradient shows through ─ */
+
 body.cosmos-light,
 body.cosmos-dark {
     --slds-g-color-surface-2: transparent;
+    --slds-g-color-surface-1: transparent;
+    --slds-g-color-surface-container-1: transparent;
+    --slds-g-color-surface-container-2: transparent;
+}
+
+/* ── Cosmos Dark: frosted-glass surfaces ─────────────────────────── */
+
+body.cosmos-dark .global-header,
+body.cosmos-dark .global-shell {
+    background: rgba(255, 255, 255, 0.04);
+    border: 2px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+body.cosmos-dark .global-shell::before {
+    display: none;
+}
+
+body.cosmos-dark .vertical-nav {
+    background: rgba(255, 255, 255, 0.04);
+    border: 2px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
+}
+
+body.cosmos-dark .slds-section {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.cosmos-dark lightning-card {
+    --slds-c-card-color-background: rgba(255, 255, 255, 0.04);
+    --slds-c-card-color-border: rgba(255, 255, 255, 0.06);
+}
+
+body.cosmos-dark .slds-card {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+body.cosmos-dark lightning-datatable .slds-table {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+body.cosmos-dark lightning-datatable .slds-table thead th {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+body.cosmos-dark lightning-datatable .slds-table tbody td,
+body.cosmos-dark lightning-datatable .slds-table tbody th {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+body.cosmos-dark .slds-context-bar {
+    background: transparent;
+    border-color: transparent;
+}
+
+body.cosmos-dark .slds-panel {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.06);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+body.cosmos-dark lightning-input .slds-input,
+body.cosmos-dark lightning-textarea .slds-textarea,
+body.cosmos-dark lightning-combobox .slds-combobox__input {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* ── Cosmos Light: frosted-glass surfaces ────────────────────────── */
+
+body.cosmos-light .global-header,
+body.cosmos-light .global-shell {
+    background: rgba(255, 255, 255, 0.12);
+    border: 2px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+body.cosmos-light .global-shell::before {
+    display: none;
+}
+
+body.cosmos-light .vertical-nav {
+    background: rgba(255, 255, 255, 0.12);
+    border: 2px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+body.cosmos-light .slds-section {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.6);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+body.cosmos-light lightning-card {
+    --slds-c-card-color-background: rgba(255, 255, 255, 0.5);
+    --slds-c-card-color-border: rgba(255, 255, 255, 0.6);
+}
+
+body.cosmos-light .slds-card {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+body.cosmos-light lightning-datatable .slds-table {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+body.cosmos-light lightning-datatable .slds-table thead th {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+body.cosmos-light lightning-datatable .slds-table tbody td,
+body.cosmos-light lightning-datatable .slds-table tbody th {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+body.cosmos-light .slds-context-bar {
+    background: transparent;
+    border-color: transparent;
+}
+
+body.cosmos-light .slds-panel {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.6);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+body.cosmos-light lightning-input .slds-input,
+body.cosmos-light lightning-textarea .slds-textarea,
+body.cosmos-light lightning-combobox .slds-combobox__input {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.6);
 }
