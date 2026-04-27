@@ -1,0 +1,63 @@
+/* Cosmos ambient background themes — toggled via class on document.body */
+
+body.cosmos-light::before,
+body.cosmos-dark::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+body.cosmos-light::after,
+body.cosmos-dark::after {
+    content: '';
+    position: fixed;
+    width: 75vw;
+    height: 75vw;
+    max-width: 1444px;
+    max-height: 1444px;
+    top: 15%;
+    left: 12%;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(600px);
+}
+
+body.cosmos-dark::before {
+    background: linear-gradient(
+        135deg,
+        rgb(18, 10, 31) 0%,
+        rgb(13, 13, 26) 50%,
+        rgb(5, 15, 28) 100%
+    );
+}
+
+body.cosmos-dark::after {
+    background: rgba(59, 130, 246, 0.12);
+}
+
+body.cosmos-light::before {
+    background: linear-gradient(
+        135deg,
+        rgb(215, 194, 251) 0%,
+        rgb(219, 219, 253) 50%,
+        rgb(227, 230, 253) 100%
+    );
+}
+
+body.cosmos-light::after {
+    background: rgba(0, 0, 0, 0.12);
+}
+
+body.cosmos-light > #app,
+body.cosmos-dark > #app {
+    position: relative;
+    z-index: 1;
+}
+
+body.cosmos-light,
+body.cosmos-dark {
+    --slds-g-color-surface-2: transparent;
+}

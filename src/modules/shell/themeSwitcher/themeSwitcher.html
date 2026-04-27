@@ -18,19 +18,24 @@
                         <div class="slds-button-group slds-m-bottom_small">
                             <lightning-button
                                 variant="neutral"
-                                label={sldsToggleLabel}
-                                icon-name="utility:palette"
-                                onclick={handleToggleSLDSClick}>
+                                label={darkModeLabel}
+                                icon-name="utility:light_bulb"
+                                onclick={handleToggleDarkModeClick}>
                             </lightning-button>
-                            <template if:true={showDarkModeButton}>
-                                <lightning-button
-                                    class="slds-m-left_small"
-                                    variant="neutral"
-                                    label={darkModeLabel}
-                                    icon-name="utility:light_bulb"
-                                    onclick={handleToggleDarkModeClick}>
-                                </lightning-button>
-                            </template>
+                        </div>
+                        <div class="slds-button-group">
+                            <lightning-button
+                                variant={cosmosLightVariant}
+                                label="Cosmos Light"
+                                icon-name="utility:daylight"
+                                onclick={handleCosmosLightClick}>
+                            </lightning-button>
+                            <lightning-button
+                                variant={cosmosDarkVariant}
+                                label="Cosmos Dark"
+                                icon-name="utility:moon"
+                                onclick={handleCosmosDarkClick}>
+                            </lightning-button>
                         </div>
                     </div>
                 </lightning-card>

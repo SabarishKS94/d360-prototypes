@@ -4,7 +4,6 @@ import _devAnnotatorToolbar from 'dev/annotatorToolbar';
 import { subscribe, navigate } from '../../../router';
 import { routes } from '../../../routes.config';
 import { apps, getDefaultApp, getAppById, ACTIVE_APP_STORAGE_KEY } from '../../../apps.config';
-import { toggleSLDS, activeSLDSVersion } from '../../../build/slds-loader';
 import { isAuthDisabled } from '../../../data/authMode.js';
 import { onAuthStateChanged } from '../../../data/firebaseAuth.js';
 import Home from 'page/home';
@@ -71,13 +70,13 @@ const NAV_PAGE_TO_PATH = Object.fromEntries(
     routes.filter((r) => r.navPage).map((r) => [r.navPage, r.navPath ?? r.path])
 );
 
-const STORAGE_KEY_SLDS_VERSION = 'slds-ui-slds-version';
 const STORAGE_KEY_DARK_MODE = 'slds-ui-dark-mode';
+const STORAGE_KEY_COSMOS_THEME = 'slds-ui-cosmos-theme';
 
 export default class App extends LightningElement {
     @track route;
-    @track _sldsVersion = 2;
     @track _darkMode = false;
+    @track _cosmosTheme = '';
     @track selectedPanel = 'agentforce_panel';
     @track isPanelOpen = false;
     @track _activeAppId = getDefaultApp().id;
@@ -135,7 +134,6 @@ export default class App extends LightningElement {
 
     connectedCallback() {
         this._restorePreferences();
-        this._sldsVersion = activeSLDSVersion();
         const savedAppId = localStorage.getItem(ACTIVE_APP_STORAGE_KEY);
         if (savedAppId) {
             this._activeAppId = getAppById(savedAppId).id;
@@ -170,15 +168,19 @@ export default class App extends LightningElement {
     }
 
     _restorePreferences() {
-        const savedVersion = localStorage.getItem(STORAGE_KEY_SLDS_VERSION);
         const savedDarkMode = localStorage.getItem(STORAGE_KEY_DARK_MODE);
-        const version = savedVersion === '1' ? 1 : 2;
-        if (savedDarkMode === 'true' && version === 2) {
+        if (savedDarkMode === 'true') {
             this._darkMode = true;
             document.body.classList.add('slds-color-scheme_dark');
-        } else if (savedDarkMode === 'false') {
+        } else {
             this._darkMode = false;
             document.body.classList.remove('slds-color-scheme_dark');
+        }
+
+        const savedCosmos = localStorage.getItem(STORAGE_KEY_COSMOS_THEME);
+        if (savedCosmos === 'cosmos-light' || savedCosmos === 'cosmos-dark') {
+            this._cosmosTheme = savedCosmos;
+            document.body.classList.add(savedCosmos);
         }
     }
 
@@ -187,21 +189,24 @@ export default class App extends LightningElement {
         this._unsubscribeAuth?.();
     }
 
-    async handleToggleSLDS() {
-        await toggleSLDS();
-        this._sldsVersion = activeSLDSVersion();
-        localStorage.setItem(STORAGE_KEY_SLDS_VERSION, String(this._sldsVersion));
-        if (this._sldsVersion !== 2 && this._darkMode) {
-            this._darkMode = false;
-            document.body.classList.remove('slds-color-scheme_dark');
-            localStorage.setItem(STORAGE_KEY_DARK_MODE, 'false');
-        }
-    }
-
     handleToggleDarkMode() {
         this._darkMode = !this._darkMode;
         document.body.classList.toggle('slds-color-scheme_dark', this._darkMode);
         localStorage.setItem(STORAGE_KEY_DARK_MODE, String(this._darkMode));
+    }
+
+    handleSetCosmosTheme(event) {
+        const theme = event.detail?.theme;
+        document.body.classList.remove('cosmos-light', 'cosmos-dark');
+
+        if (this._cosmosTheme === theme) {
+            this._cosmosTheme = '';
+            localStorage.removeItem(STORAGE_KEY_COSMOS_THEME);
+        } else {
+            this._cosmosTheme = theme;
+            document.body.classList.add(theme);
+            localStorage.setItem(STORAGE_KEY_COSMOS_THEME, theme);
+        }
     }
 
     handleNavNavigate(event) {

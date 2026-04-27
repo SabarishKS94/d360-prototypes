@@ -1,20 +1,20 @@
 import { LightningElement, api, track } from 'lwc';
 
 export default class ThemeSwitcher extends LightningElement {
-    @api sldsVersion = 2;
     @api darkMode = false;
+    @api cosmosTheme = '';
     @track isCardOpen = false;
-
-    get sldsToggleLabel() {
-        return this.sldsVersion === 2 ? 'Switch to SLDS 1' : 'Switch to SLDS 2';
-    }
-
-    get showDarkModeButton() {
-        return this.sldsVersion === 2;
-    }
 
     get darkModeLabel() {
         return this.darkMode ? 'Light Mode' : 'Dark Mode';
+    }
+
+    get cosmosLightVariant() {
+        return this.cosmosTheme === 'cosmos-light' ? 'brand' : 'neutral';
+    }
+
+    get cosmosDarkVariant() {
+        return this.cosmosTheme === 'cosmos-dark' ? 'brand' : 'neutral';
     }
 
     handleIconClick() {
@@ -25,11 +25,29 @@ export default class ThemeSwitcher extends LightningElement {
         this.isCardOpen = false;
     }
 
-    handleToggleSLDSClick() {
-        this.dispatchEvent(new CustomEvent('toggleslds', { bubbles: true, composed: true }));
+    handleToggleDarkModeClick() {
+        this.dispatchEvent(
+            new CustomEvent('toggledarkmode', { bubbles: true, composed: true })
+        );
     }
 
-    handleToggleDarkModeClick() {
-        this.dispatchEvent(new CustomEvent('toggledarkmode', { bubbles: true, composed: true }));
+    handleCosmosLightClick() {
+        this.dispatchEvent(
+            new CustomEvent('setcosmostheme', {
+                bubbles: true,
+                composed: true,
+                detail: { theme: 'cosmos-light' }
+            })
+        );
+    }
+
+    handleCosmosDarkClick() {
+        this.dispatchEvent(
+            new CustomEvent('setcosmostheme', {
+                bubbles: true,
+                composed: true,
+                detail: { theme: 'cosmos-dark' }
+            })
+        );
     }
 }
