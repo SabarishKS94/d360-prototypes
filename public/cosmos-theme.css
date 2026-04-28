@@ -122,6 +122,17 @@ body.cosmos-dark .slds-card {
     border-color: rgba(255, 255, 255, 0.06);
 }
 
+body.cosmos-dark lightning-datatable {
+    --_slds-c-datagrid-color-background: rgba(255, 255, 255, 0.04);
+    --_slds-c-datagrid-header-color-background: rgba(255, 255, 255, 0.08);
+    --_slds-c-datagrid-headercell-color-background-hover: rgba(255, 255, 255, 0.12);
+    --_slds-c-datagrid-row-color-background-hover: rgba(255, 255, 255, 0.08);
+    --_slds-c-datagrid-row-color-background-selected: rgba(255, 255, 255, 0.12);
+    --_slds-c-datagrid-cell-color-background-hover: rgba(255, 255, 255, 0.08);
+    --slds-g-color-neutral-base-100: rgba(255, 255, 255, 0.04);
+    --slds-g-color-neutral-base-95: rgba(255, 255, 255, 0.08);
+}
+
 body.cosmos-dark lightning-datatable .slds-table {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.14);
@@ -231,6 +242,17 @@ body.cosmos-light lightning-card {
 body.cosmos-light .slds-card {
     background: rgba(255, 255, 255, 0.5);
     border-color: rgba(255, 255, 255, 0.6);
+}
+
+body.cosmos-light lightning-datatable {
+    --_slds-c-datagrid-color-background: rgba(255, 255, 255, 0.25);
+    --_slds-c-datagrid-header-color-background: rgba(255, 255, 255, 0.15);
+    --_slds-c-datagrid-headercell-color-background-hover: rgba(255, 255, 255, 0.3);
+    --_slds-c-datagrid-row-color-background-hover: rgba(255, 255, 255, 0.2);
+    --_slds-c-datagrid-row-color-background-selected: rgba(255, 255, 255, 0.3);
+    --_slds-c-datagrid-cell-color-background-hover: rgba(255, 255, 255, 0.2);
+    --slds-g-color-neutral-base-100: rgba(255, 255, 255, 0.25);
+    --slds-g-color-neutral-base-95: rgba(255, 255, 255, 0.15);
 }
 
 body.cosmos-light lightning-datatable .slds-table {
