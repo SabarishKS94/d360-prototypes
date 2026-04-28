@@ -123,10 +123,12 @@ body.cosmos-dark .slds-card {
 }
 
 body.cosmos-dark lightning-datatable .slds-table {
-    background: transparent;
+    background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 12px;
     overflow: hidden;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
 }
 
 body.cosmos-dark lightning-datatable .slds-table thead th {
@@ -235,6 +237,8 @@ body.cosmos-light lightning-datatable .slds-table {
     border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 12px;
     overflow: hidden;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
 }
 
 body.cosmos-light lightning-datatable .slds-table thead th {
