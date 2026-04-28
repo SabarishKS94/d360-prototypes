@@ -93,6 +93,12 @@ body.cosmos-dark .global-shell::before {
     display: none;
 }
 
+body.cosmos-dark shell-global-header,
+body.cosmos-dark shell-global-navigation {
+    border: none;
+    box-shadow: none;
+}
+
 body.cosmos-dark .vertical-nav {
     background: rgba(255, 255, 255, 0.04);
     border: 2px solid rgba(255, 255, 255, 0.06);
@@ -134,9 +140,11 @@ body.cosmos-dark lightning-datatable .slds-table tbody th {
     border-color: rgba(255, 255, 255, 0.14);
 }
 
+body.cosmos-dark .slds-global-header,
 body.cosmos-dark .slds-context-bar {
     background: transparent;
     border-color: transparent;
+    box-shadow: none;
 }
 
 body.cosmos-dark .slds-panel {
@@ -191,6 +199,12 @@ body.cosmos-light .global-shell::before {
     display: none;
 }
 
+body.cosmos-light shell-global-header,
+body.cosmos-light shell-global-navigation {
+    border: none;
+    box-shadow: none;
+}
+
 body.cosmos-light .vertical-nav {
     background: rgba(255, 255, 255, 0.12);
     border: 2px solid rgba(255, 255, 255, 0.14);
@@ -234,9 +248,11 @@ body.cosmos-light lightning-datatable .slds-table tbody th {
     border-color: rgba(255, 255, 255, 0.6);
 }
 
+body.cosmos-light .slds-global-header,
 body.cosmos-light .slds-context-bar {
     background: transparent;
     border-color: transparent;
+    box-shadow: none;
 }
 
 body.cosmos-light .slds-panel {

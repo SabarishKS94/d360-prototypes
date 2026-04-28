@@ -114,6 +114,18 @@
         </lightning-layout-item>
 
         <lightning-layout-item size="12" class="slds-m-bottom_large">
+        <!-- Data Table -->
+        <lightning-card title="Data Table">
+            <lightning-datatable
+                key-field="id"
+                data={datatableData}
+                columns={datatableColumns}
+                hide-checkbox-column>
+            </lightning-datatable>
+        </lightning-card>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" class="slds-m-bottom_large">
         <!-- Button Variants -->
         <lightning-card title="Button Variants">
             <div class="slds-button-group">
