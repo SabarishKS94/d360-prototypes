@@ -125,8 +125,13 @@ body.cosmos-dark .slds-card {
 body.cosmos-dark lightning-datatable .slds-table_header-fixed_container {
     background: rgba(255, 255, 255, 0.04);
     border-color: rgba(255, 255, 255, 0.1);
+    --slds-s-table-header-color-background: rgba(255, 255, 255, 0.08);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
+}
+
+body.cosmos-dark lightning-datatable .slds-cell-fixed {
+    background: rgba(255, 255, 255, 0.08);
 }
 
 body.cosmos-dark lightning-datatable .slds-table {
@@ -238,8 +243,13 @@ body.cosmos-light .slds-card {
 body.cosmos-light lightning-datatable .slds-table_header-fixed_container {
     background: rgba(255, 255, 255, 0.25);
     border-color: rgba(255, 255, 255, 0.4);
+    --slds-s-table-header-color-background: rgba(255, 255, 255, 0.15);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
+}
+
+body.cosmos-light lightning-datatable .slds-cell-fixed {
+    background: rgba(255, 255, 255, 0.15);
 }
 
 body.cosmos-light lightning-datatable .slds-table {
