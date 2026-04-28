@@ -2,6 +2,7 @@
 node_modules/
 
 # Build
+dist/
 dist-ssr/
 src/build/generated/
 
@@ -12,6 +13,9 @@ src/build/generated/
 
 # Worktrees
 .worktrees/
+
+# Playwright MCP
+.playwright-mcp/
 
 # OS
 .DS_Store
