@@ -264,3 +264,17 @@ body.cosmos-light .theme-switcher-card-wrapper {
     --slds-c-card-color-background: rgba(255, 255, 255, 0.88);
     --slds-c-card-color-border: rgba(255, 255, 255, 0.8);
 }
+
+/* ── Cosmos floating layout: gaps between regions ──────────────────── */
+
+body.cosmos-light shell-app,
+body.cosmos-dark shell-app {
+    padding: var(--slds-g-spacing-4, 1rem);
+    gap: var(--slds-g-spacing-4, 1rem);
+    box-sizing: border-box;
+}
+
+body.cosmos-light .app-body lightning-layout,
+body.cosmos-dark .app-body lightning-layout {
+    gap: var(--slds-g-spacing-4, 1rem);
+}
