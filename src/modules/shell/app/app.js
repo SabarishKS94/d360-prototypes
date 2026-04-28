@@ -1,6 +1,5 @@
 // src/modules/shell/app/app.js
 import { LightningElement, track } from 'lwc';
-import _devAnnotatorToolbar from 'dev/annotatorToolbar';
 import { subscribe, navigate } from '../../../router';
 import { routes } from '../../../routes.config';
 import { apps, getDefaultApp, getAppById, ACTIVE_APP_STORAGE_KEY } from '../../../apps.config';
