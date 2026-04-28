@@ -175,10 +175,6 @@ body.cosmos-dark .slds-dropdown .slds-listbox__option[aria-selected="true"] {
 body.cosmos-dark .theme-switcher-card-wrapper {
     --slds-c-card-color-background: rgba(15, 15, 30, 0.92);
     --slds-c-card-color-border: rgba(255, 255, 255, 0.14);
-    -webkit-backdrop-filter: blur(24px);
-    backdrop-filter: blur(24px);
-    border-radius: 8px;
-    overflow: hidden;
 }
 
 /* ── Cosmos Light: frosted-glass surfaces ────────────────────────── */
@@ -269,8 +265,4 @@ body.cosmos-light .slds-dropdown {
 body.cosmos-light .theme-switcher-card-wrapper {
     --slds-c-card-color-background: rgba(255, 255, 255, 0.88);
     --slds-c-card-color-border: rgba(255, 255, 255, 0.8);
-    -webkit-backdrop-filter: blur(24px);
-    backdrop-filter: blur(24px);
-    border-radius: 8px;
-    overflow: hidden;
 }
