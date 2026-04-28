@@ -132,14 +132,14 @@ body.cosmos-dark lightning-datatable .slds-table {
 }
 
 body.cosmos-dark lightning-datatable .slds-table thead th {
-    background: rgba(255, 255, 255, 0.14);
-    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 body.cosmos-dark lightning-datatable .slds-table tbody td,
 body.cosmos-dark lightning-datatable .slds-table tbody th {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(255, 255, 255, 0.14);
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 body.cosmos-dark .slds-global-header,
@@ -151,8 +151,9 @@ body.cosmos-dark .slds-context-bar {
 
 body.cosmos-dark .slds-panel {
     background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 12px;
+    box-shadow: none;
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
 }
@@ -233,8 +234,8 @@ body.cosmos-light .slds-card {
 }
 
 body.cosmos-light lightning-datatable .slds-table {
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 12px;
     overflow: hidden;
     -webkit-backdrop-filter: blur(20px);
@@ -242,14 +243,14 @@ body.cosmos-light lightning-datatable .slds-table {
 }
 
 body.cosmos-light lightning-datatable .slds-table thead th {
-    background: rgba(255, 255, 255, 0.6);
-    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 body.cosmos-light lightning-datatable .slds-table tbody td,
 body.cosmos-light lightning-datatable .slds-table tbody th {
-    background: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.6);
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 body.cosmos-light .slds-global-header,
@@ -260,9 +261,10 @@ body.cosmos-light .slds-context-bar {
 }
 
 body.cosmos-light .slds-panel {
-    background: rgba(255, 255, 255, 0.5);
-    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 12px;
+    box-shadow: none;
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
 }
