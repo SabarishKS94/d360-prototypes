@@ -150,8 +150,35 @@ body.cosmos-dark .slds-panel {
 body.cosmos-dark lightning-input .slds-input,
 body.cosmos-dark lightning-textarea .slds-textarea,
 body.cosmos-dark lightning-combobox .slds-combobox__input {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+body.cosmos-dark lightning-combobox .slds-dropdown,
+body.cosmos-dark .slds-dropdown {
+    background: rgba(15, 15, 30, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+}
+
+body.cosmos-dark lightning-combobox .slds-listbox__option:hover,
+body.cosmos-dark .slds-dropdown .slds-listbox__option:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+body.cosmos-dark lightning-combobox .slds-listbox__option[aria-selected="true"],
+body.cosmos-dark .slds-dropdown .slds-listbox__option[aria-selected="true"] {
+    background: rgba(59, 130, 246, 0.3);
+}
+
+body.cosmos-dark .theme-switcher-card-wrapper {
+    --slds-c-card-color-background: rgba(15, 15, 30, 0.92);
+    --slds-c-card-color-border: rgba(255, 255, 255, 0.14);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 /* ── Cosmos Light: frosted-glass surfaces ────────────────────────── */
@@ -227,6 +254,23 @@ body.cosmos-light .slds-panel {
 body.cosmos-light lightning-input .slds-input,
 body.cosmos-light lightning-textarea .slds-textarea,
 body.cosmos-light lightning-combobox .slds-combobox__input {
-    background: rgba(255, 255, 255, 0.5);
-    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+body.cosmos-light lightning-combobox .slds-dropdown,
+body.cosmos-light .slds-dropdown {
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+}
+
+body.cosmos-light .theme-switcher-card-wrapper {
+    --slds-c-card-color-background: rgba(255, 255, 255, 0.88);
+    --slds-c-card-color-border: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    border-radius: 8px;
+    overflow: hidden;
 }
