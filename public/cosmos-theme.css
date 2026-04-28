@@ -276,7 +276,7 @@ body.cosmos-dark shell-app {
     box-sizing: border-box;
 }
 
-body.cosmos-light .app-body lightning-layout,
-body.cosmos-dark .app-body lightning-layout {
+body.cosmos-light .app-body > lightning-layout,
+body.cosmos-dark .app-body > lightning-layout {
     gap: var(--slds-g-spacing-4, 1rem);
 }
