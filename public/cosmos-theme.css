@@ -81,7 +81,6 @@ body.cosmos-dark.slds-color-scheme_dark {
 
 /* ── Cosmos Dark: frosted-glass surfaces ─────────────────────────── */
 
-body.cosmos-dark .global-header,
 body.cosmos-dark .global-shell {
     background: rgba(255, 255, 255, 0.04);
     border: 2px solid rgba(255, 255, 255, 0.06);
@@ -179,7 +178,6 @@ body.cosmos-dark .theme-switcher-card-wrapper {
 
 /* ── Cosmos Light: frosted-glass surfaces ────────────────────────── */
 
-body.cosmos-light .global-header,
 body.cosmos-light .global-shell {
     background: rgba(255, 255, 255, 0.12);
     border: 2px solid rgba(255, 255, 255, 0.14);
