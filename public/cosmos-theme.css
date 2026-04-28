@@ -122,24 +122,15 @@ body.cosmos-dark .slds-card {
     border-color: rgba(255, 255, 255, 0.06);
 }
 
-body.cosmos-dark lightning-datatable {
-    --_slds-c-datagrid-color-background: rgba(255, 255, 255, 0.04);
-    --_slds-c-datagrid-header-color-background: rgba(255, 255, 255, 0.08);
-    --_slds-c-datagrid-headercell-color-background-hover: rgba(255, 255, 255, 0.12);
-    --_slds-c-datagrid-row-color-background-hover: rgba(255, 255, 255, 0.08);
-    --_slds-c-datagrid-row-color-background-selected: rgba(255, 255, 255, 0.12);
-    --_slds-c-datagrid-cell-color-background-hover: rgba(255, 255, 255, 0.08);
-    --slds-g-color-neutral-base-100: rgba(255, 255, 255, 0.04);
-    --slds-g-color-neutral-base-95: rgba(255, 255, 255, 0.08);
+body.cosmos-dark lightning-datatable .slds-table_header-fixed_container {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
 }
 
 body.cosmos-dark lightning-datatable .slds-table {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 12px;
-    overflow: hidden;
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+    background: transparent;
 }
 
 body.cosmos-dark lightning-datatable .slds-table thead th {
@@ -244,24 +235,15 @@ body.cosmos-light .slds-card {
     border-color: rgba(255, 255, 255, 0.6);
 }
 
-body.cosmos-light lightning-datatable {
-    --_slds-c-datagrid-color-background: rgba(255, 255, 255, 0.25);
-    --_slds-c-datagrid-header-color-background: rgba(255, 255, 255, 0.15);
-    --_slds-c-datagrid-headercell-color-background-hover: rgba(255, 255, 255, 0.3);
-    --_slds-c-datagrid-row-color-background-hover: rgba(255, 255, 255, 0.2);
-    --_slds-c-datagrid-row-color-background-selected: rgba(255, 255, 255, 0.3);
-    --_slds-c-datagrid-cell-color-background-hover: rgba(255, 255, 255, 0.2);
-    --slds-g-color-neutral-base-100: rgba(255, 255, 255, 0.25);
-    --slds-g-color-neutral-base-95: rgba(255, 255, 255, 0.15);
+body.cosmos-light lightning-datatable .slds-table_header-fixed_container {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
 }
 
 body.cosmos-light lightning-datatable .slds-table {
-    background: rgba(255, 255, 255, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 12px;
-    overflow: hidden;
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
+    background: transparent;
 }
 
 body.cosmos-light lightning-datatable .slds-table thead th {
