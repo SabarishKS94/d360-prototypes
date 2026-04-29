@@ -76,6 +76,7 @@ export default class App extends LightningElement {
     @track _activeTheme = 'light';
     @track selectedPanel = 'agentforce_panel';
     @track isPanelOpen = false;
+    @track isNavOpen = true;
     @track _activeAppId = getDefaultApp().id;
     @track _authUser = null;
     @track _authChecked = false;
@@ -88,7 +89,7 @@ export default class App extends LightningElement {
     }
 
     get isVerticalNav() {
-        return this.activeApp.navType === 'vertical';
+        return this.activeApp.navType === 'vertical' && this.isNavOpen;
     }
 
     get componentCtor() {
@@ -238,6 +239,7 @@ export default class App extends LightningElement {
     handlePanelClose() {
         this.isPanelOpen = false;
     }
+
 
     get panelClasses() {
         return `slds-panel slds-size_medium slds-panel_docked slds-panel_docked-right ${

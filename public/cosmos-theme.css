@@ -212,13 +212,10 @@ body.cosmos-dark .app-body {
     padding-left: 20px;
     padding-right: 20px;
     position: absolute;
-    top: 0;
+    top: 140px;
     left: 0;
     right: 0;
     bottom: 0;
-}
-body.cosmos-dark .app-main {
-    padding-top: 140px;
 }
 
 body.cosmos-dark .vertical-nav {
@@ -299,6 +296,7 @@ body.cosmos-dark .slds-panel {
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
     position: relative;
+    height: 100%;
 }
 body.cosmos-dark .slds-panel::before {
     content: '';
@@ -339,7 +337,7 @@ body.cosmos-dark .slds-panel.slds-panel_docked-right {
     pointer-events: none;
     box-shadow: none;
     border-radius: 12px;
-    margin-top: 130px;
+    margin-top: 0;
     margin-left: 0;
     margin-right: 0;
     padding: 0;
@@ -351,10 +349,10 @@ body.cosmos-dark .slds-panel.slds-panel_docked-right.slds-is-open {
     overflow: visible;
     opacity: 1;
     pointer-events: auto;
-    margin-top: 130px;
+    margin-top: 0;
     margin-left: 20px;
     margin-right: 0;
-    height: calc(100% - 150px);
+    height: 100%;
 }
 
 body.cosmos-dark .intro-copy {
@@ -782,13 +780,10 @@ body.cosmos-light .app-body {
     padding-left: 20px;
     padding-right: 20px;
     position: absolute;
-    top: 0;
+    top: 140px;
     left: 0;
     right: 0;
     bottom: 0;
-}
-body.cosmos-light .app-main {
-    padding-top: 140px;
 }
 body.cosmos-light .vertical-nav {
     background: rgba(255, 255, 255, 0.30);
@@ -1086,13 +1081,10 @@ body.cosmos-light .app-body {
     padding-left: 20px;
     padding-right: 20px;
     position: absolute;
-    top: 0;
+    top: 140px;
     left: 0;
     right: 0;
     bottom: 0;
-}
-body.cosmos-light .app-main {
-    padding-top: 140px;
 }
 
 body.cosmos-light .vertical-nav {
@@ -1204,6 +1196,7 @@ body.cosmos-light .slds-panel {
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
     position: relative;
+    height: 100%;
 }
 body.cosmos-light .slds-panel::before {
     content: '';
@@ -1244,7 +1237,7 @@ body.cosmos-light .slds-panel.slds-panel_docked-right {
     box-shadow: none;
     border: none;
     border-radius: 12px;
-    margin-top: 130px;
+    margin-top: 0;
     margin-left: 0;
     margin-right: 0;
     padding: 0;
@@ -1256,10 +1249,10 @@ body.cosmos-light .slds-panel.slds-panel_docked-right.slds-is-open {
     overflow: visible;
     opacity: 1;
     pointer-events: auto;
-    margin-top: 130px;
+    margin-top: 0;
     margin-left: 20px;
     margin-right: 0;
-    height: calc(100% - 150px);
+    height: 100%;
 }
 
 body.cosmos-light .global-header {
