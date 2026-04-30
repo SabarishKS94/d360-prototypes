@@ -83,14 +83,10 @@ body.cosmos-dark {
 }
 
 /* SLDS sets color-scheme:only dark on <html> which gives it a near-black
-   UA background that sits behind body::before/::after, hiding the parallax.
-   Override it so the animated gradient is visible. */
-html:has(body.cosmos-dark) {
-    background-color: rgb(5, 15, 28);
-}
-
+   UA background. Reset it so the body::before parallax gradient is visible. */
+html:has(body.cosmos-dark),
 html:has(body.cosmos-light) {
-    background-color: rgb(227, 230, 253);
+    background-color: transparent;
 }
 
 body.cosmos-light .slds-container_x-large,
@@ -137,13 +133,13 @@ body.cosmos-dark .global-shell::before {
 /* Theme switcher card must stay opaque — it's a utility UI, not a content surface */
 body.cosmos-light shell-theme-switcher lightning-card,
 body.cosmos-dark shell-theme-switcher lightning-card {
-    --slds-c-card-color-background: var(--slds-g-color-surface-1, #ffffff);
-    --slds-c-card-color-border: var(--slds-g-color-border-1);
+    --slds-c-card-color-background: #ffffff;
+    --slds-c-card-color-border: #c9c9c9;
 }
 
 body.cosmos-light shell-theme-switcher .slds-card,
 body.cosmos-dark shell-theme-switcher .slds-card {
-    background: var(--slds-g-color-surface-1, #ffffff);
+    background: #ffffff !important;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
 }
@@ -151,6 +147,10 @@ body.cosmos-dark shell-theme-switcher .slds-card {
 body.cosmos-light shell-theme-switcher .slds-card::before,
 body.cosmos-dark shell-theme-switcher .slds-card::before {
     display: none;
+}
+
+body.cosmos-dark shell-theme-switcher .slds-card {
+    background: #1a1a2e !important;
 }
 
 /* ── Global header icon overrides ─────────────────────────────────── */
