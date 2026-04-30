@@ -84,6 +84,7 @@ export default class CosmosApp extends LightningElement {
 
     _redirectPath = '/';
     _unsubscribeAuth;
+    _headerObserver;
 
     get activeApp() {
         return getAppById(this._activeAppId);
@@ -150,18 +151,22 @@ export default class CosmosApp extends LightningElement {
     }
 
     renderedCallback() {
-        this._measureHeader();
+        this._observeHeader();
     }
 
-    _measureHeader() {
+    _observeHeader() {
+        if (this._headerObserver) return;
         const shell = this.template.querySelector('shell-global-shell');
         if (!shell) return;
-        const rect = shell.getBoundingClientRect();
-        const top = `${rect.bottom + COSMOS_INSET}px`;
-        if (this._lastHeaderTop !== top) {
-            this._lastHeaderTop = top;
-            this.template.host.style.setProperty('--cosmos-overlay-top', top);
-        }
+        this._headerObserver = new ResizeObserver(() => {
+            const rect = shell.getBoundingClientRect();
+            const top = `${rect.bottom + COSMOS_INSET}px`;
+            if (this._lastHeaderTop !== top) {
+                this._lastHeaderTop = top;
+                this.template.host.style.setProperty('--cosmos-overlay-top', top);
+            }
+        });
+        this._headerObserver.observe(shell);
     }
 
     connectedCallback() {
@@ -220,6 +225,8 @@ export default class CosmosApp extends LightningElement {
     disconnectedCallback() {
         this._unsubscribe?.();
         this._unsubscribeAuth?.();
+        this._headerObserver?.disconnect();
+        this._headerObserver = null;
     }
 
     handleApplyTheme(event) {
