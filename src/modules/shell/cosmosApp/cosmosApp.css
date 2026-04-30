@@ -1,0 +1,222 @@
+/* src/modules/shell/cosmosApp/cosmosApp.css — Cosmos Shell (glass effect)
+   Single source of truth for all cosmos shell chrome:
+   - Fixed header positioning + glass
+   - Fixed nav positioning + glass
+   - Content padding to clear fixed overlays
+   - Fixed panel overlay + glass
+*/
+
+:host {
+    --cosmos-inset: 20px;
+    --cosmos-overlay-top: 120px;
+    --cosmos-nav-width-expanded: 15rem;
+    --cosmos-nav-width-collapsed: 3rem;
+
+    display: block;
+    position: relative;
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+/* ── Fixed header ── */
+.cosmos-shell-header {
+    display: block;
+    position: fixed;
+    top: var(--cosmos-inset);
+    left: var(--cosmos-inset);
+    right: var(--cosmos-inset);
+    z-index: 10;
+    border-radius: 12px;
+    backdrop-filter: blur(20px) saturate(1.8);
+    -webkit-backdrop-filter: blur(20px) saturate(1.8);
+}
+
+/* ── Fixed vertical nav ── */
+.cosmos-shell-nav {
+    display: block;
+    position: fixed;
+    top: var(--cosmos-overlay-top);
+    left: var(--cosmos-inset);
+    bottom: var(--cosmos-inset);
+    z-index: 8;
+    border-radius: 12px;
+    overflow: hidden;
+    backdrop-filter: blur(20px) saturate(1.8);
+    -webkit-backdrop-filter: blur(20px) saturate(1.8);
+}
+
+/* ── Content area: scrolls behind fixed overlays ── */
+.cosmos-content {
+    height: 100%;
+    overflow: auto;
+    padding-top: var(--cosmos-overlay-top);
+    transition: padding-left 0.2s ease;
+}
+
+.cosmos-content_nav-expanded {
+    padding-left: calc(var(--cosmos-nav-width-expanded) + var(--cosmos-inset) + var(--cosmos-inset));
+}
+
+.cosmos-content_nav-collapsed {
+    padding-left: calc(var(--cosmos-nav-width-collapsed) + var(--cosmos-inset) + var(--cosmos-inset));
+}
+
+.cosmos-content__inner {
+    padding: var(--slds-g-spacing-4, 1rem);
+}
+
+/* ── Fixed right panel ── */
+.cosmos-panel-overlay {
+    position: fixed;
+    top: var(--cosmos-overlay-top);
+    right: var(--cosmos-inset);
+    bottom: var(--cosmos-inset);
+    width: 25rem;
+    z-index: 9;
+    transform: translateX(calc(100% + var(--cosmos-inset)));
+    transition: transform 0.25s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    backdrop-filter: blur(20px) saturate(1.8);
+    -webkit-backdrop-filter: blur(20px) saturate(1.8);
+}
+
+.cosmos-panel-overlay_open {
+    transform: translateX(0);
+}
+
+/* ── Dark theme glass surfaces ── */
+
+/* NOTE: Since this project uses synthetic shadow DOM, we rely on body class
+   selectors in cosmos-theme.css for token overrides. The glass treatment
+   here uses a simpler approach: default glass values that work for dark theme
+   (since cosmos-dark is the primary use case), with light overrides below. */
+
+.cosmos-shell-header {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.cosmos-shell-header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 2px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.20) 0%,
+        rgba(255, 255, 255, 0.04) 30%,
+        rgba(255, 255, 255, 0.04) 70%,
+        rgba(255, 255, 255, 0.20) 100%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.cosmos-shell-nav {
+    background: rgba(255, 255, 255, 0.04);
+    border: 2px solid rgba(255, 255, 255, 0.06);
+}
+
+.cosmos-panel-overlay {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.cosmos-panel-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 2px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.20) 0%,
+        rgba(255, 255, 255, 0.04) 30%,
+        rgba(255, 255, 255, 0.04) 70%,
+        rgba(255, 255, 255, 0.20) 100%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* ── Header icon/search overrides for Cosmos ── */
+
+.cosmos-shell-header .customize-slds-button lightning-layout {
+    gap: 4px;
+}
+
+.cosmos-shell-header .slds-global-header__item_search {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30rem;
+    max-width: 40%;
+}
+
+.cosmos-shell-header .slds-container_small.slds-container_center .slds-form-element,
+.cosmos-shell-header .slds-container_small.slds-container_center .slds-input {
+    border-radius: 50rem;
+}
+
+.cosmos-shell-header .slds-container_small.slds-container_center .slds-input__icon_left {
+    left: 0.75rem;
+}
+
+.cosmos-shell-header .slds-container_small.slds-container_center .slds-input_search,
+.cosmos-shell-header .slds-container_small.slds-container_center .slds-has-input-focus .slds-input {
+    padding-left: 2.25rem;
+}
+
+.cosmos-shell-header lightning-avatar img,
+.cosmos-shell-header .slds-avatar_circle,
+.cosmos-shell-header .slds-avatar {
+    border-radius: 8px;
+    --slds-c-avatar-radius-border: 8px;
+}
+
+/* Make internal global-header and global-shell transparent — cosmos shell owns the glass */
+.cosmos-shell-header .global-header,
+.cosmos-shell-header .slds-global-header {
+    background: transparent;
+    border: none;
+    border-bottom: none;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+.cosmos-shell-header .global-shell {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+.cosmos-shell-header .global-shell::before {
+    display: none;
+}
+
+/* Make internal vertical-nav transparent — cosmos shell owns the glass */
+.cosmos-shell-nav .vertical-nav {
+    background: transparent;
+    border-right: none;
+}

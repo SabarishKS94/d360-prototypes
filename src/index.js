@@ -3,14 +3,23 @@ import '@lwc/synthetic-shadow';
 
 import { createElement } from 'lwc';
 import App from 'shell/app';
+import CosmosApp from 'shell/cosmosApp';
 import { initSldsFromStorage } from './build/slds-loader.js';
 
 await initSldsFromStorage();
 
-// Create and mount the app component
+const SHELL_STORAGE_KEY = 'shell-mode';
+const params = new URLSearchParams(window.location.search);
+const shellParam = params.get('shell');
+if (shellParam) {
+    localStorage.setItem(SHELL_STORAGE_KEY, shellParam);
+}
+const shellMode = localStorage.getItem(SHELL_STORAGE_KEY) || 'standard';
+const isCosmos = shellMode === 'cosmos';
+
 try {
-    const app = createElement('shell-app', {
-        is: App
+    const app = createElement(isCosmos ? 'shell-cosmos-app' : 'shell-app', {
+        is: isCosmos ? CosmosApp : App
     });
     document.querySelector('#app').appendChild(app);
 } catch (err) {
@@ -18,5 +27,3 @@ try {
 } finally {
     document.getElementById('app')?.classList.add('is-ready');
 }
-
-// Icon templates are bundled during build, no need to import dynamically

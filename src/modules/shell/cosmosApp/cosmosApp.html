@@ -1,0 +1,50 @@
+<!-- src/modules/shell/cosmosApp/cosmosApp.html — Cosmos Shell (glass effect) -->
+<template>
+    <template lwc:if={isAuthenticated}>
+        <!-- Fixed overlay: global header + context bar -->
+        <shell-global-shell
+            class="cosmos-shell-header"
+            current-page={currentNavPage}
+            nav-items={navItems}
+            apps={allApps}
+            active-app-label={activeAppLabel}
+            active-app-id={activeAppId}
+            user={_authUser}
+            onnavigate={handleNavNavigate}
+            onappswitch={handleAppSwitch}
+            onpanelselect={handlePanelSelect}>
+        </shell-global-shell>
+
+        <!-- Fixed overlay: left nav -->
+        <template lwc:if={showVerticalNav}>
+            <shell-vertical-nav
+                class="cosmos-shell-nav"
+                nav-items={verticalNavItems}
+                current-page={currentNavPage}
+                onnavigate={handleNavNavigate}
+                oncollapsetoggle={handleNavCollapseToggle}>
+            </shell-vertical-nav>
+        </template>
+
+        <!-- Content: full-viewport base layer, scrolls behind fixed overlays -->
+        <main class={contentClasses}>
+            <div class="cosmos-content__inner">
+                <template lwc:if={componentCtor}>
+                    <lwc:component lwc:is={componentCtor} onnavigateback={handleNavigateBack}></lwc:component>
+                </template>
+            </div>
+            <shell-theme-switcher
+                active-theme={_activeTheme}
+                onapplytheme={handleApplyTheme}>
+            </shell-theme-switcher>
+        </main>
+
+        <!-- Fixed overlay: right panel (slides in/out) -->
+        <div class={panelOverlayClasses}>
+            <shell-panel selected-panel={selectedPanel} onpanelclose={handlePanelClose}></shell-panel>
+        </div>
+    </template>
+    <template lwc:elseif={isAuthChecked}>
+        <shell-login></shell-login>
+    </template>
+</template>

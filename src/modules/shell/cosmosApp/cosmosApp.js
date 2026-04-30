@@ -1,4 +1,4 @@
-// src/modules/shell/app/app.js
+// src/modules/shell/cosmosApp/cosmosApp.js — Cosmos Shell
 import { LightningElement, track } from 'lwc';
 import { subscribe, navigate } from '../../../router';
 import { routes } from '../../../routes.config';
@@ -70,15 +70,17 @@ const NAV_PAGE_TO_PATH = Object.fromEntries(
 );
 
 const STORAGE_KEY_THEME = 'slds-ui-theme';
+const COSMOS_INSET = 20;
 
-export default class App extends LightningElement {
+export default class CosmosApp extends LightningElement {
     @track route;
-    @track _activeTheme = 'light';
+    @track _activeTheme = 'cosmos-dark';
     @track selectedPanel = 'agentforce_panel';
     @track isPanelOpen = false;
     @track _activeAppId = getDefaultApp().id;
     @track _authUser = null;
     @track _authChecked = false;
+    @track _isNavCollapsed = localStorage.getItem('vertical-nav-collapsed') === 'true';
 
     _redirectPath = '/';
     _unsubscribeAuth;
@@ -95,10 +97,18 @@ export default class App extends LightningElement {
         return this.isVerticalNav;
     }
 
-    get panelClasses() {
-        return `slds-panel slds-size_medium slds-panel_docked slds-panel_docked-right ${
-            this.isPanelOpen ? 'slds-is-open' : ''
-        }`;
+    get contentClasses() {
+        let cls = 'cosmos-content';
+        if (this.isVerticalNav) {
+            cls += this._isNavCollapsed
+                ? ' cosmos-content_nav-collapsed'
+                : ' cosmos-content_nav-expanded';
+        }
+        return cls;
+    }
+
+    get panelOverlayClasses() {
+        return `cosmos-panel-overlay${this.isPanelOpen ? ' cosmos-panel-overlay_open' : ''}`;
     }
 
     get componentCtor() {
@@ -139,6 +149,21 @@ export default class App extends LightningElement {
         return this._authChecked;
     }
 
+    renderedCallback() {
+        this._measureHeader();
+    }
+
+    _measureHeader() {
+        const shell = this.template.querySelector('shell-global-shell');
+        if (!shell) return;
+        const rect = shell.getBoundingClientRect();
+        const top = `${rect.bottom + COSMOS_INSET}px`;
+        if (this._lastHeaderTop !== top) {
+            this._lastHeaderTop = top;
+            this.template.host.style.setProperty('--cosmos-overlay-top', top);
+        }
+    }
+
     connectedCallback() {
         this._restorePreferences();
         const savedAppId = localStorage.getItem(ACTIVE_APP_STORAGE_KEY);
@@ -146,7 +171,6 @@ export default class App extends LightningElement {
             this._activeAppId = getAppById(savedAppId).id;
         }
 
-        // Capture the URL the user wants to visit before auth check
         this._redirectPath = window.location.pathname || '/';
 
         if (isAuthDisabled()) {
@@ -154,16 +178,13 @@ export default class App extends LightningElement {
             this._authUser = { displayName: 'Local Prototype User' };
         } else {
             this._unsubscribeAuth = onAuthStateChanged((user) => {
-                // wasUnauthenticated is true only after we already confirmed no user was logged in
                 const wasUnauthenticated = this._authChecked && !this._authUser;
                 this._authChecked = true;
                 this._authUser = user;
                 if (user && wasUnauthenticated) {
-                    // User just signed in from the login screen — go to their intended destination
                     navigate(this._redirectPath);
                     this._redirectPath = '/';
                 } else if (!user) {
-                    // Capture current path so we can return here after sign-in
                     this._redirectPath = window.location.pathname || '/';
                 }
             });
@@ -223,7 +244,6 @@ export default class App extends LightningElement {
     }
 
     handleNavNavigate(event) {
-        // vertical nav fires { path }, horizontal nav fires { page } — check path first
         const { page, path } = event.detail ?? {};
         if (path) {
             navigate(path);
@@ -247,6 +267,10 @@ export default class App extends LightningElement {
 
     handlePanelClose() {
         this.isPanelOpen = false;
+    }
+
+    handleNavCollapseToggle() {
+        this._isNavCollapsed = !this._isNavCollapsed;
     }
 
     handleNavigateBack() {

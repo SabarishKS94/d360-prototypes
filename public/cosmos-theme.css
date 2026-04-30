@@ -158,74 +158,6 @@ body.cosmos-light .slds-icon-waffle .slds-r9 {
 
 /* ── Cosmos Dark: frosted-glass surfaces ─────────────────────────── */
 
-body.cosmos-dark .global-header {
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-}
-
-body.cosmos-dark .slds-global-header {
-    background: transparent;
-    border: none;
-    border-bottom: none;
-    box-shadow: none;
-}
-
-body.cosmos-dark .global-shell {
-    background: rgba(255, 255, 255, 0.04);
-    border: none;
-    border-radius: 12px;
-    margin: 20px 20px 0 20px;
-    -webkit-backdrop-filter: blur(40px);
-    backdrop-filter: blur(40px);
-    position: relative;
-}
-
-body.cosmos-dark .global-shell::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 12px;
-    padding: 2px;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.20) 0%,
-        rgba(255, 255, 255, 0.04) 30%,
-        rgba(255, 255, 255, 0.04) 70%,
-        rgba(255, 255, 255, 0.20) 100%
-    );
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    pointer-events: none;
-}
-
-body.cosmos-dark .app-body {
-    padding-left: 20px;
-    padding-right: 20px;
-    position: absolute;
-    top: 140px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-body.cosmos-dark .vertical-nav {
-    background: rgba(255, 255, 255, 0.04);
-    border: 2px solid rgba(255, 255, 255, 0.06);
-    border-radius: 12px;
-    -webkit-backdrop-filter: blur(40px);
-    backdrop-filter: blur(40px);
-}
-
 body.cosmos-dark .slds-section {
     background: rgba(255, 255, 255, 0.04);
     border-color: rgba(255, 255, 255, 0.06);
@@ -624,62 +556,6 @@ body.cosmos-dark .slds-modal__close:focus-visible {
     background: rgba(255, 255, 255, 0.10);
 }
 
-body.cosmos-dark .global-header {
-    position: relative;
-}
-body.cosmos-dark .global-header .customize-slds-button lightning-layout {
-    gap: 4px;
-}
-body.cosmos-dark .slds-global-header__item_search {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30rem;
-    max-width: 40%;
-}
-
-body.cosmos-dark .slds-container_small.slds-container_center .slds-form-element,
-body.cosmos-dark .slds-container_small.slds-container_center .slds-input {
-    border-radius: 50rem;
-}
-body.cosmos-dark .slds-container_small.slds-container_center .slds-input__icon_left {
-    left: 0.75rem;
-}
-body.cosmos-dark .slds-container_small.slds-container_center .slds-input_search,
-body.cosmos-dark .slds-container_small.slds-container_center .slds-has-input-focus .slds-input {
-    padding-left: 2.25rem;
-}
-
-body.cosmos-dark .global-header lightning-avatar img,
-body.cosmos-dark .global-header .slds-avatar_circle,
-body.cosmos-dark .global-header .slds-avatar {
-    border-radius: 8px !important;
-    --slds-c-avatar-radius-border: 8px;
-}
-
-body.cosmos-dark .global-header lightning-button-icon lightning-primitive-icon svg,
-body.cosmos-dark .global-header lightning-button-menu lightning-primitive-icon svg,
-body.cosmos-dark .global-header lightning-button-icon-stateful lightning-primitive-icon svg,
-body.cosmos-dark .global-header .slds-button__icon {
-    width: 20px !important;
-    height: 20px !important;
-    fill: rgba(255, 255, 255, 0.90) !important;
-    color: rgba(255, 255, 255, 0.90) !important;
-}
-body.cosmos-dark .global-header .slds-button__icon.slds-button__icon_x-small {
-    width: 14px !important;
-    height: 14px !important;
-}
-
-body.cosmos-dark .global-header .customize-slds-button lightning-button-icon:hover lightning-primitive-icon svg,
-body.cosmos-dark .global-header .customize-slds-button lightning-button-menu:hover lightning-primitive-icon svg,
-body.cosmos-dark .global-header .customize-slds-button lightning-button-icon-stateful:hover lightning-primitive-icon svg,
-body.cosmos-dark .global-header .customize-slds-button lightning-button-icon:hover .slds-button__icon,
-body.cosmos-dark .global-header .customize-slds-button lightning-button-menu:hover .slds-button__icon {
-    fill: var(--slds-g-color-accent-2, #4992fe) !important;
-    color: var(--slds-g-color-accent-2, #4992fe) !important;
-}
-
 body.cosmos-dark lightning-input .slds-input,
 body.cosmos-dark lightning-textarea .slds-textarea,
 body.cosmos-dark lightning-combobox .slds-combobox__input {
@@ -730,68 +606,6 @@ body.cosmos-dark .slds-listbox__option.slds-has-focus {
 
 /* ── Cosmos Light: frosted-glass surfaces ────────────────────────── */
 
-body.cosmos-light .global-header {
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-}
-body.cosmos-light .slds-global-header {
-    background: transparent;
-    border: none;
-    border-bottom: none;
-    box-shadow: none;
-}
-body.cosmos-light .global-shell {
-    background: rgba(255, 255, 255, 0.12);
-    border: none;
-    border-radius: 12px;
-    margin: 20px 20px 0 20px;
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-    position: relative;
-}
-body.cosmos-light .global-shell::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 12px;
-    padding: 2px;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.90) 0%,
-        rgba(255, 255, 255, 0.10) 30%,
-        rgba(255, 255, 255, 0.10) 70%,
-        rgba(255, 255, 255, 0.90) 100%
-    );
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    pointer-events: none;
-}
-body.cosmos-light .app-body {
-    padding-left: 20px;
-    padding-right: 20px;
-    position: absolute;
-    top: 140px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-body.cosmos-light .vertical-nav {
-    background: rgba(255, 255, 255, 0.30);
-    border: 2px solid rgba(255, 255, 255, 0.40);
-    border-radius: 12px;
-    -webkit-backdrop-filter: blur(40px);
-    backdrop-filter: blur(40px);
-}
 body.cosmos-light .slds-section {
     background: transparent;
     border: none;
@@ -1051,50 +865,6 @@ body.cosmos-light .slds-modal__close:focus-visible {
     border-color: rgba(255, 255, 255, 0.30);
 }
 
-body.cosmos-light .global-header {
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-}
-
-body.cosmos-light .slds-global-header {
-    background: transparent;
-    border: none;
-    border-bottom: none;
-    box-shadow: none;
-}
-
-body.cosmos-light .global-shell {
-    background: rgba(255, 255, 255, 0.12);
-    border: none;
-    border-radius: 12px;
-    margin: 20px 20px 0 20px;
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-    position: relative;
-}
-
-body.cosmos-light .app-body {
-    padding-left: 20px;
-    padding-right: 20px;
-    position: absolute;
-    top: 140px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-body.cosmos-light .vertical-nav {
-    background: rgba(255, 255, 255, 0.12);
-    border: 2px solid rgba(255, 255, 255, 0.14);
-    border-radius: 12px;
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-}
-
 body.cosmos-light .slds-section {
     background: rgba(255, 255, 255, 0.5);
     border-color: rgba(255, 255, 255, 0.6);
@@ -1253,84 +1023,6 @@ body.cosmos-light .slds-panel.slds-panel_docked-right.slds-is-open {
     margin-left: 20px;
     margin-right: 0;
     height: 100%;
-}
-
-body.cosmos-light .global-header {
-    position: relative;
-}
-body.cosmos-light .global-header .customize-slds-button lightning-layout {
-    gap: 4px;
-}
-body.cosmos-light .slds-global-header__item_search {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30rem;
-    max-width: 40%;
-}
-
-body.cosmos-light .slds-global-header__item_search .slds-input {
-    background: rgba(255, 255, 255, 0.0);
-    border: 1px solid rgba(0, 0, 0, 0.35);
-    border-radius: 50rem;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    color: rgba(0, 0, 0, 0.7);
-}
-body.cosmos-light .slds-global-header__item_search .slds-input::placeholder {
-    color: rgba(0, 0, 0, 0.4);
-}
-body.cosmos-light .slds-global-header__item_search .slds-input:hover {
-    background: rgba(0, 0, 0, 0.04);
-    border-color: rgba(0, 0, 0, 0.50);
-}
-body.cosmos-light .slds-global-header__item_search .slds-input:focus,
-body.cosmos-light .slds-global-header__item_search .slds-has-input-focus .slds-input {
-    background: rgba(0, 0, 0, 0.04);
-    border: 2px solid var(--slds-g-color-palette-blue-15, #03234d) !important;
-    box-shadow: 0 0 0 1px rgba(3, 35, 77, 0.12);
-}
-
-body.cosmos-light .slds-container_small.slds-container_center .slds-form-element,
-body.cosmos-light .slds-container_small.slds-container_center .slds-input {
-    border-radius: 50rem;
-}
-body.cosmos-light .slds-container_small.slds-container_center .slds-input__icon_left {
-    left: 0.75rem;
-}
-body.cosmos-light .slds-container_small.slds-container_center .slds-input_search,
-body.cosmos-light .slds-container_small.slds-container_center .slds-has-input-focus .slds-input {
-    padding-left: 2.25rem;
-}
-
-body.cosmos-light .global-header lightning-avatar img,
-body.cosmos-light .global-header .slds-avatar_circle,
-body.cosmos-light .global-header .slds-avatar {
-    border-radius: 8px !important;
-    --slds-c-avatar-radius-border: 8px;
-}
-
-body.cosmos-light .global-header lightning-button-icon lightning-primitive-icon svg,
-body.cosmos-light .global-header lightning-button-menu lightning-primitive-icon svg,
-body.cosmos-light .global-header lightning-button-icon-stateful lightning-primitive-icon svg,
-body.cosmos-light .global-header .slds-button__icon {
-    width: 20px !important;
-    height: 20px !important;
-    fill: rgba(0, 0, 0, 0.85) !important;
-    color: rgba(0, 0, 0, 0.85) !important;
-}
-body.cosmos-light .global-header .slds-button__icon.slds-button__icon_x-small {
-    width: 14px !important;
-    height: 14px !important;
-}
-
-body.cosmos-light .global-header .customize-slds-button lightning-button-icon:hover lightning-primitive-icon svg,
-body.cosmos-light .global-header .customize-slds-button lightning-button-menu:hover lightning-primitive-icon svg,
-body.cosmos-light .global-header .customize-slds-button lightning-button-icon-stateful:hover lightning-primitive-icon svg,
-body.cosmos-light .global-header .customize-slds-button lightning-button-icon:hover .slds-button__icon,
-body.cosmos-light .global-header .customize-slds-button lightning-button-menu:hover .slds-button__icon {
-    fill: var(--slds-g-color-accent-2, #0250d9) !important;
-    color: var(--slds-g-color-accent-2, #0250d9) !important;
 }
 
 body.cosmos-light lightning-input .slds-input,
