@@ -14,15 +14,22 @@
             <div class="theme-switcher-backdrop" onclick={handleBackdropClick} role="presentation"></div>
             <div class="theme-switcher-card-wrapper">
                 <lightning-card title="Theme" class="theme-switcher-card">
-                    <div class="slds-p-around_small">
+                    <div class="slds-p-around_small slds-grid slds-grid_vertical slds-grid_align-spread" style="gap: 0.75rem;">
                         <lightning-combobox
-                            label="Select theme"
-                            value={activeTheme}
-                            options={themeOptions}
-                            onchange={handleThemeChange}
-                            variant="label-hidden"
+                            label="Shell"
+                            value={activeShell}
+                            options={shellOptions}
+                            onchange={handleShellChange}
                             dropdown-alignment="bottom-right">
                         </lightning-combobox>
+                        <lightning-input
+                            type="toggle"
+                            label="Dark mode"
+                            checked={isDark}
+                            onchange={handleDarkToggle}
+                            message-toggle-active="On"
+                            message-toggle-inactive="Off">
+                        </lightning-input>
                     </div>
                 </lightning-card>
             </div>

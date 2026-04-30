@@ -1,21 +1,28 @@
 import { LightningElement, api, track } from 'lwc';
 
-const COSMOS_OPTIONS = [
-    { label: 'Light', value: 'cosmos-light' },
-    { label: 'Dark', value: 'cosmos-dark' }
+const SHELL_OPTIONS = [
+    { label: 'Standard', value: 'standard' },
+    { label: 'Glass', value: 'cosmos' },
 ];
 
-const STANDARD_OPTIONS = [
-    { label: 'Light', value: 'light' },
-    { label: 'Dark', value: 'dark' }
-];
+const SHELL_STORAGE_KEY = 'shell-mode';
 
 export default class ThemeSwitcher extends LightningElement {
     @api activeTheme = 'light';
     @track isCardOpen = false;
 
-    get themeOptions() {
-        return this.activeTheme?.startsWith('cosmos') ? COSMOS_OPTIONS : STANDARD_OPTIONS;
+    get shellOptions() {
+        return SHELL_OPTIONS;
+    }
+
+    // Derive active shell from the theme value
+    get activeShell() {
+        return this.activeTheme?.startsWith('cosmos') ? 'cosmos' : 'standard';
+    }
+
+    // Derive dark mode state from the theme value
+    get isDark() {
+        return this.activeTheme === 'dark' || this.activeTheme === 'cosmos-dark';
     }
 
     handleIconClick() {
@@ -26,13 +33,32 @@ export default class ThemeSwitcher extends LightningElement {
         this.isCardOpen = false;
     }
 
-    handleThemeChange(event) {
-        this.dispatchEvent(
-            new CustomEvent('applytheme', {
-                bubbles: true,
-                composed: true,
-                detail: { theme: event.detail.value }
-            })
-        );
+    handleShellChange(event) {
+        const newShell = event.detail.value;
+        if (newShell === this.activeShell) return;
+
+        // Persist shell choice and reload — shell is selected at boot time in index.js
+        localStorage.setItem(SHELL_STORAGE_KEY, newShell);
+
+        // Carry over current dark mode preference to the new shell
+        const theme = newShell === 'cosmos'
+            ? (this.isDark ? 'cosmos-dark' : 'cosmos-light')
+            : (this.isDark ? 'dark' : 'light');
+        localStorage.setItem('slds-ui-theme', theme);
+
+        window.location.reload();
+    }
+
+    handleDarkToggle(event) {
+        const dark = event.target.checked;
+        const theme = this.activeShell === 'cosmos'
+            ? (dark ? 'cosmos-dark' : 'cosmos-light')
+            : (dark ? 'dark' : 'light');
+
+        this.dispatchEvent(new CustomEvent('applytheme', {
+            bubbles: true,
+            composed: true,
+            detail: { theme }
+        }));
     }
 }
