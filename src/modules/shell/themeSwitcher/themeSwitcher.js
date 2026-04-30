@@ -46,7 +46,9 @@ export default class ThemeSwitcher extends LightningElement {
             : (this.isDark ? 'dark' : 'light');
         localStorage.setItem('slds-ui-theme', theme);
 
-        window.location.reload();
+        const url = new URL(window.location);
+        url.searchParams.delete('shell');
+        window.location.href = url.toString();
     }
 
     handleDarkToggle(event) {
