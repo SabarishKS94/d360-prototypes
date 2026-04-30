@@ -82,6 +82,17 @@ body.cosmos-dark {
     background-color: transparent !important;
 }
 
+/* SLDS sets color-scheme:only dark on <html> which gives it a near-black
+   UA background that sits behind body::before/::after, hiding the parallax.
+   Override it so the animated gradient is visible. */
+html:has(body.cosmos-dark) {
+    background-color: rgb(5, 15, 28);
+}
+
+html:has(body.cosmos-light) {
+    background-color: rgb(227, 230, 253);
+}
+
 body.cosmos-light .slds-container_x-large,
 body.cosmos-dark .slds-container_x-large,
 body.cosmos-light .slds-container_large,
@@ -97,6 +108,25 @@ body.cosmos-dark.slds-color-scheme_dark {
     --slds-g-color-surface-container-2: transparent;
     --slds-g-color-border-1: rgba(255, 255, 255, 0.06);
     --slds-g-color-border-2: rgba(255, 255, 255, 0.14);
+}
+
+/* ── Cosmos shell chrome: strip SLDS borders/shadows from inner components ── */
+/* These must be global (not scoped component CSS) to cross synthetic shadow boundaries */
+
+body.cosmos-light .slds-global-header,
+body.cosmos-dark .slds-global-header {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    border-bottom: none;
+}
+
+body.cosmos-light .slds-context-bar,
+body.cosmos-dark .slds-context-bar {
+    background: transparent;
+    background-color: transparent;
+    border-bottom: none;
+    box-shadow: none;
 }
 
 /* ── Global header icon overrides ─────────────────────────────────── */
