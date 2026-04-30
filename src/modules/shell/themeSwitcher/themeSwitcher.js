@@ -1,10 +1,13 @@
 import { LightningElement, api, track } from 'lwc';
 
-const THEME_OPTIONS = [
+const COSMOS_OPTIONS = [
+    { label: 'Light', value: 'cosmos-light' },
+    { label: 'Dark', value: 'cosmos-dark' }
+];
+
+const STANDARD_OPTIONS = [
     { label: 'Light', value: 'light' },
-    { label: 'Dark', value: 'dark' },
-    { label: 'Cosmos Light', value: 'cosmos-light' },
-    { label: 'Cosmos Dark', value: 'cosmos-dark' }
+    { label: 'Dark', value: 'dark' }
 ];
 
 export default class ThemeSwitcher extends LightningElement {
@@ -12,7 +15,7 @@ export default class ThemeSwitcher extends LightningElement {
     @track isCardOpen = false;
 
     get themeOptions() {
-        return THEME_OPTIONS;
+        return this.activeTheme?.startsWith('cosmos') ? COSMOS_OPTIONS : STANDARD_OPTIONS;
     }
 
     handleIconClick() {
