@@ -24,3 +24,10 @@
     box-shadow: var(--slds-g-shadow-4);
 }
 
+/* Opt out of cosmos glass theming — restore opaque surface tokens locally */
+.theme-switcher-card-wrapper {
+    --slds-g-color-surface-1: #ffffff;
+    --slds-g-color-surface-container-1: #ffffff;
+    --slds-g-color-surface-container-2: #ffffff;
+}
+
