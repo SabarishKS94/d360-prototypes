@@ -241,12 +241,17 @@ export default class CosmosApp extends LightningElement {
         const { classList } = document.body;
         classList.remove('slds-color-scheme_dark', 'cosmos-light', 'cosmos-dark');
 
+        const hostCL = this.template.host.classList;
+        hostCL.remove('cosmos-light', 'cosmos-dark');
+
         if (theme === 'dark') {
             classList.add('slds-color-scheme_dark');
         } else if (theme === 'cosmos-light') {
             classList.add('cosmos-light');
+            hostCL.add('cosmos-light');
         } else if (theme === 'cosmos-dark') {
             classList.add('slds-color-scheme_dark', 'cosmos-dark');
+            hostCL.add('cosmos-dark');
         }
     }
 
