@@ -114,6 +114,14 @@
         </lightning-layout-item>
 
         <lightning-layout-item size="12" class="slds-m-bottom_large">
+            <lightning-datatable
+                key-field="id"
+                data={datatableData}
+                columns={datatableColumns}>
+            </lightning-datatable>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" class="slds-m-bottom_large">
         <!-- Button Variants -->
         <lightning-card title="Button Variants">
             <div class="slds-button-group">

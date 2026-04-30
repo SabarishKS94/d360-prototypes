@@ -12,6 +12,23 @@ export default class Home extends LightningElement {
     @track toggleValue = false;
 
 
+    get datatableColumns() {
+        return [
+            { label: 'Work Plan Name', fieldName: 'name', type: 'text' },
+            { label: 'Quick Start Template', fieldName: 'template', type: 'text' },
+            { label: 'Work Plan Status', fieldName: 'status', type: 'text' },
+            { label: 'Last Used On', fieldName: 'lastUsed', type: 'text' },
+        ];
+    }
+
+    get datatableData() {
+        return [
+            { id: '1', name: 'Non Prof Customers Only', template: 'Publish a Campaign with CRM Data', status: 'In Progress', lastUsed: 'Jan 3, 2026 at 03:24 PM EST' },
+            { id: '2', name: 'My Test', template: 'Build a Campaign with External Data', status: '100% Complete', lastUsed: 'Jan 3, 2026 at 03:24 PM EST' },
+            { id: '3', name: 'Z_test', template: 'Build a Campaign with External Data', status: 'In Progress - 3 Errors', lastUsed: 'Jan 3, 2026 at 03:24 PM EST' },
+        ];
+    }
+
     get comboboxOptions() {
         return [
             { label: 'Option 1', value: 'option1' },
