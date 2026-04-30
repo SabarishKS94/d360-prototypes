@@ -130,6 +130,45 @@ body.cosmos-dark .global-shell::before {
     display: none;
 }
 
+body.cosmos-light .global-header,
+body.cosmos-dark .global-header {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+body.cosmos-dark .global-shell {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+body.cosmos-light .global-shell {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+body.cosmos-dark .vertical-nav {
+    background: transparent;
+    border-right: none;
+}
+
+body.cosmos-light .vertical-nav {
+    background: transparent;
+    border-right: none;
+}
 
 /* ── Global header icon overrides ─────────────────────────────────── */
 
