@@ -129,6 +129,11 @@ body.cosmos-dark .slds-context-bar {
     box-shadow: none;
 }
 
+body.cosmos-light .global-shell::before,
+body.cosmos-dark .global-shell::before {
+    display: none;
+}
+
 /* ── Global header icon overrides ─────────────────────────────────── */
 
 body.cosmos-dark .slds-icon.slds-icon_large,
