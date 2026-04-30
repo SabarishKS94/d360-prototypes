@@ -170,6 +170,196 @@ body.cosmos-light .vertical-nav {
     border-right: none;
 }
 
+/* ── Cosmos shell chrome: glass surfaces ─────────────────────────── */
+/* Dark theme defaults — light overrides further below */
+
+body.cosmos-dark .cosmos-shell-header,
+body.cosmos-light .cosmos-shell-header {
+    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
+}
+
+body.cosmos-dark .cosmos-shell-nav,
+body.cosmos-light .cosmos-shell-nav {
+    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
+}
+
+body.cosmos-dark .cosmos-panel-overlay,
+body.cosmos-light .cosmos-panel-overlay {
+    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
+}
+
+body.cosmos-dark .cosmos-shell-header {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+body.cosmos-dark .cosmos-shell-header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 2px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.20) 0%,
+        rgba(255, 255, 255, 0.04) 30%,
+        rgba(255, 255, 255, 0.04) 70%,
+        rgba(255, 255, 255, 0.20) 100%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+body.cosmos-dark .cosmos-shell-nav {
+    background: rgba(255, 255, 255, 0.04);
+    border: 2px solid rgba(255, 255, 255, 0.06);
+}
+
+body.cosmos-dark .cosmos-panel-overlay {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+body.cosmos-dark .cosmos-panel-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 2px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.20) 0%,
+        rgba(255, 255, 255, 0.04) 30%,
+        rgba(255, 255, 255, 0.04) 70%,
+        rgba(255, 255, 255, 0.20) 100%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* ── Cosmos shell chrome: light theme glass overrides ────────────── */
+
+body.cosmos-light .cosmos-shell-header {
+    background: rgba(255, 255, 255, 0.30);
+}
+
+body.cosmos-light .cosmos-shell-header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 2px;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.08) 0%,
+        rgba(0, 0, 0, 0.02) 30%,
+        rgba(0, 0, 0, 0.02) 70%,
+        rgba(0, 0, 0, 0.08) 100%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+body.cosmos-light .cosmos-shell-nav {
+    background: rgba(255, 255, 255, 0.12);
+    border: 2px solid rgba(255, 255, 255, 0.14);
+}
+
+body.cosmos-light .cosmos-panel-overlay {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+body.cosmos-light .cosmos-panel-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 2px;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.08) 0%,
+        rgba(0, 0, 0, 0.02) 30%,
+        rgba(0, 0, 0, 0.02) 70%,
+        rgba(0, 0, 0, 0.08) 100%
+    );
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* ── Cosmos shell chrome: header icon/search/avatar overrides ────── */
+
+body.cosmos-dark .cosmos-shell-header .customize-slds-button lightning-layout,
+body.cosmos-light .cosmos-shell-header .customize-slds-button lightning-layout {
+    gap: 4px;
+}
+
+body.cosmos-dark .cosmos-shell-header .slds-global-header__item_search,
+body.cosmos-light .cosmos-shell-header .slds-global-header__item_search {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30rem;
+    max-width: 40%;
+}
+
+body.cosmos-dark .cosmos-shell-header .slds-container_small.slds-container_center .slds-form-element,
+body.cosmos-dark .cosmos-shell-header .slds-container_small.slds-container_center .slds-input,
+body.cosmos-light .cosmos-shell-header .slds-container_small.slds-container_center .slds-form-element,
+body.cosmos-light .cosmos-shell-header .slds-container_small.slds-container_center .slds-input {
+    border-radius: 50rem;
+}
+
+body.cosmos-dark .cosmos-shell-header .slds-container_small.slds-container_center .slds-input__icon_left,
+body.cosmos-light .cosmos-shell-header .slds-container_small.slds-container_center .slds-input__icon_left {
+    left: 0.75rem;
+}
+
+body.cosmos-dark .cosmos-shell-header .slds-container_small.slds-container_center .slds-input_search,
+body.cosmos-dark .cosmos-shell-header .slds-container_small.slds-container_center .slds-has-input-focus .slds-input,
+body.cosmos-light .cosmos-shell-header .slds-container_small.slds-container_center .slds-input_search,
+body.cosmos-light .cosmos-shell-header .slds-container_small.slds-container_center .slds-has-input-focus .slds-input {
+    padding-left: 2.25rem;
+}
+
+body.cosmos-dark .cosmos-shell-header lightning-avatar img,
+body.cosmos-dark .cosmos-shell-header .slds-avatar_circle,
+body.cosmos-dark .cosmos-shell-header .slds-avatar,
+body.cosmos-light .cosmos-shell-header lightning-avatar img,
+body.cosmos-light .cosmos-shell-header .slds-avatar_circle,
+body.cosmos-light .cosmos-shell-header .slds-avatar {
+    border-radius: 8px;
+    --slds-c-avatar-radius-border: 8px;
+}
+
 /* ── Global header icon overrides ─────────────────────────────────── */
 
 body.cosmos-dark .slds-icon.slds-icon_large,
