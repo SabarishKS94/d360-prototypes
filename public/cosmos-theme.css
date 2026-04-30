@@ -134,6 +134,25 @@ body.cosmos-dark .global-shell::before {
     display: none;
 }
 
+/* Theme switcher card must stay opaque — it's a utility UI, not a content surface */
+body.cosmos-light shell-theme-switcher lightning-card,
+body.cosmos-dark shell-theme-switcher lightning-card {
+    --slds-c-card-color-background: var(--slds-g-color-surface-1, #ffffff);
+    --slds-c-card-color-border: var(--slds-g-color-border-1);
+}
+
+body.cosmos-light shell-theme-switcher .slds-card,
+body.cosmos-dark shell-theme-switcher .slds-card {
+    background: var(--slds-g-color-surface-1, #ffffff);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+body.cosmos-light shell-theme-switcher .slds-card::before,
+body.cosmos-dark shell-theme-switcher .slds-card::before {
+    display: none;
+}
+
 /* ── Global header icon overrides ─────────────────────────────────── */
 
 body.cosmos-dark .slds-icon.slds-icon_large,
