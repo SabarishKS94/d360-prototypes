@@ -44,9 +44,9 @@ body.cosmos-dark::after {
 body.cosmos-dark::before {
     background: linear-gradient(
         135deg,
-        #120a1f 0%,
-        #0d0d1a 50%,
-        #050f1c 100%
+        rgb(18, 10, 31) 0%,
+        rgb(13, 13, 26) 50%,
+        rgb(5, 15, 28) 100%
     );
 }
 
@@ -56,15 +56,15 @@ body.cosmos-dark::after {
 
 body.cosmos-light::before {
     background: linear-gradient(
-        150.6deg,
-        #ebe5f2 0%,
-        #eeebf5 35.7%,
-        #e7ebf8 71.4%
+        135deg,
+        rgb(215, 194, 251) 0%,
+        rgb(219, 219, 253) 50%,
+        rgb(227, 230, 253) 100%
     );
 }
 
 body.cosmos-light::after {
-    background: rgba(255, 255, 255, 0.45);
+    background: rgba(0, 0, 0, 0.12);
 }
 
 body.cosmos-light > #app,
@@ -324,7 +324,7 @@ body.cosmos-dark .slds-icon-waffle .slds-r6,
 body.cosmos-dark .slds-icon-waffle .slds-r7,
 body.cosmos-dark .slds-icon-waffle .slds-r8,
 body.cosmos-dark .slds-icon-waffle .slds-r9 {
-    background-color: #ffffff !important;
+    background-color: var(--slds-g-color-on-surface-2, rgba(255, 255, 255, 0.95));
 }
 
 body.cosmos-light .slds-icon-waffle .slds-r1,
