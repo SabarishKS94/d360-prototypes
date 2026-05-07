@@ -82,10 +82,15 @@ export default class CosmosApp extends LightningElement {
     @track _authUser = null;
     @track _authChecked = false;
     @track _isNavCollapsed = localStorage.getItem('vertical-nav-collapsed') === 'true';
+    @track _activeBrand = getStoredBrand();
 
     _redirectPath = '/';
     _unsubscribeAuth;
     _headerObserver;
+
+    get activeBrand() {
+        return this._activeBrand;
+    }
 
     get activeApp() {
         return getAppById(this._activeAppId);
@@ -281,6 +286,13 @@ export default class CosmosApp extends LightningElement {
 
     handlePanelClose() {
         this.isPanelOpen = false;
+    }
+
+    handleApplyBrand(event) {
+        const brand = event.detail?.brand;
+        if (brand) {
+            this._activeBrand = brand;
+        }
     }
 
     handleNavCollapseToggle() {

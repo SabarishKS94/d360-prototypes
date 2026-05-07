@@ -525,66 +525,119 @@ body.cosmos-dark .vertical-nav_collapsed {
     opacity: 0.85 !important;
 }
 
-/* ── Buttons ── */
+/* ── Buttons — glass with glow ── */
 
-body.cosmos-dark .slds-button_brand,
-body.cosmos-dark .slds-button--brand {
-    background: #4a5fc7 !important;
-    border-color: #4a5fc7 !important;
-    color: #ffffff !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
+body.cosmos-dark .slds-button.slds-button_brand {
+    background-color: rgba(51, 102, 242, 0.20) !important;
+    border: 1px solid rgba(77, 128, 255, 0.30) !important;
+    color: #fff !important;
+    border-radius: 24px !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.20),
+                0 4px 16px -2px rgba(0, 0, 0, 0.20) !important;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+body.cosmos-dark .slds-button.slds-button_brand:hover {
+    background-color: rgba(51, 102, 242, 0.70) !important;
+    border-color: rgba(77, 128, 255, 0.80) !important;
+    color: #fff !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.20),
+                0 4px 16px -2px rgba(0, 0, 0, 0.20),
+                0 0 35px 0 rgba(2, 80, 217, 0.50) !important;
+}
+body.cosmos-dark .slds-button.slds-button_brand:focus-visible {
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.20),
+                0 4px 16px -2px rgba(0, 0, 0, 0.20),
+                0 0 35px 0 rgba(2, 80, 217, 0.50) !important;
+}
+body.cosmos-dark .slds-button.slds-button_brand:active {
+    background-color: rgba(37, 73, 173, 0.70) !important;
+    border-color: rgba(33, 57, 117, 0.80) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.20),
+                0 4px 16px -2px rgba(0, 0, 0, 0.20),
+                0 0 15px 0 rgba(2, 80, 217, 0.50) !important;
 }
 
-body.cosmos-dark .slds-button_brand:hover,
-body.cosmos-dark .slds-button--brand:hover {
-    background: #5a6fd4 !important;
-    border-color: #5a6fd4 !important;
+body.cosmos-dark .slds-button.slds-button_success {
+    background-color: rgba(26, 179, 166, 0.20) !important;
+    border: 1px solid rgba(38, 204, 179, 0.30) !important;
+    color: #fff !important;
+    border-radius: 24px !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.20),
+                0 4px 16px -2px rgba(0, 0, 0, 0.20) !important;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+body.cosmos-dark .slds-button.slds-button_success:hover {
+    background-color: rgba(26, 179, 166, 0.40) !important;
+    border-color: rgba(38, 204, 179, 0.45) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+                0 6px 20px -2px rgba(0, 0, 0, 0.30),
+                0 0 24px 0 rgba(26, 179, 166, 0.10),
+                0 0 35px 0 rgba(6, 165, 154, 0.25) !important;
+}
+body.cosmos-dark .slds-button.slds-button_success:active {
+    background-color: rgba(26, 179, 166, 0.20) !important;
+    border-color: rgba(38, 204, 179, 0.10) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+                0 6px 20px -2px rgba(0, 0, 0, 0.30),
+                0 0 15px 0 rgba(6, 165, 154, 0.25) !important;
 }
 
-body.cosmos-dark .slds-button_neutral,
-body.cosmos-dark .slds-button--neutral {
-    background: rgba(255, 255, 255, 0.06) !important;
-    border: 1px solid rgba(255, 255, 255, 0.14) !important;
-    color: rgba(255, 255, 255, 0.85) !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    backdrop-filter: blur(10px) !important;
+body.cosmos-dark .slds-button.slds-button_destructive {
+    background-color: rgba(230, 51, 102, 0.15) !important;
+    border: 1px solid rgba(255, 77, 128, 0.25) !important;
+    color: #fff !important;
+    border-radius: 24px !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.20),
+                0 4px 16px -2px rgba(0, 0, 0, 0.20) !important;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+body.cosmos-dark .slds-button.slds-button_destructive:hover {
+    background-color: rgba(230, 51, 102, 0.40) !important;
+    border-color: rgba(255, 77, 128, 0.40) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+                0 6px 20px -2px rgba(0, 0, 0, 0.30),
+                0 0 24px 0 rgba(230, 51, 102, 0.10),
+                0 0 35px 0 rgba(254, 114, 152, 0.25) !important;
+}
+body.cosmos-dark .slds-button.slds-button_destructive:active {
+    background-color: rgba(230, 51, 102, 0.40) !important;
+    border-color: rgba(255, 77, 128, 0.20) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+                0 6px 20px -2px rgba(0, 0, 0, 0.30),
+                0 0 15px 0 rgba(254, 114, 152, 0.25) !important;
 }
 
-body.cosmos-dark .slds-button_neutral:hover,
-body.cosmos-dark .slds-button--neutral:hover {
-    background: rgba(255, 255, 255, 0.10) !important;
-    border-color: rgba(255, 255, 255, 0.25) !important;
+body.cosmos-dark .slds-button.slds-button_neutral {
+    background-color: rgba(255, 255, 255, 0.10) !important;
+    border: 1px solid rgba(255, 255, 255, 0.20) !important;
+    color: #fff !important;
+    border-radius: 24px !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+                0 4px 12px -2px rgba(0, 0, 0, 0.15) !important;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
-
-body.cosmos-dark .slds-button_destructive,
-body.cosmos-dark .slds-button--destructive {
-    background: #d04555 !important;
-    border-color: #d04555 !important;
-    color: #ffffff !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
+body.cosmos-dark .slds-button.slds-button_neutral:hover {
+    background-color: rgba(255, 255, 255, 0.20) !important;
+    border-color: rgba(255, 255, 255, 0.40) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+                0 6px 20px -2px rgba(0, 0, 0, 0.25),
+                0 0 16px 0 rgba(255, 255, 255, 0.06),
+                0 0 35px 0 rgba(147, 147, 147, 0.50) !important;
 }
-
-body.cosmos-dark .slds-button_destructive:hover,
-body.cosmos-dark .slds-button--destructive:hover {
-    background: #da5565 !important;
-    border-color: #da5565 !important;
-}
-
-body.cosmos-dark .slds-button_success {
-    background: #38956b !important;
-    border-color: #38956b !important;
-    color: #ffffff !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-}
-
-body.cosmos-dark .slds-button_success:hover {
-    background: #42a87a !important;
-    border-color: #42a87a !important;
+body.cosmos-dark .slds-button.slds-button_neutral:active {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.20) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+                0 6px 20px -2px rgba(0, 0, 0, 0.25),
+                0 0 15px 0 rgba(160, 160, 160, 0.25) !important;
 }
 
 body.cosmos-dark .slds-button.slds-button_icon-border,
@@ -992,62 +1045,126 @@ body.cosmos-light .slds-section {
     border: none;
 }
 
-/* ── Buttons — Indigo brand ── */
+/* ── Buttons — glass with glow ── */
 
-body.cosmos-light .slds-button_brand,
-body.cosmos-light .slds-button--brand {
-    background: #374182 !important;
-    border-color: #374182 !important;
-    color: #ffffff !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
+body.cosmos-light .slds-button.slds-button_brand {
+    background-color: rgba(51, 102, 242, 0.20) !important;
+    border: 1px solid rgba(77, 128, 255, 0.30) !important;
+    color: #fff !important;
+    border-radius: 24px !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.20),
+                0 4px 16px -2px rgba(0, 0, 0, 0.20) !important;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+body.cosmos-light .slds-button.slds-button_brand:hover {
+    background-color: rgba(51, 102, 242, 0.70) !important;
+    border-color: rgba(77, 128, 255, 0.80) !important;
+    color: #fff !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.20),
+                0 4px 16px -2px rgba(0, 0, 0, 0.20),
+                0 0 35px 0 rgba(73, 146, 254, 0.50) !important;
+}
+body.cosmos-light .slds-button.slds-button_brand:focus-visible {
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.20),
+                0 4px 16px -2px rgba(0, 0, 0, 0.20),
+                0 0 35px 0 rgba(73, 146, 254, 0.50) !important;
+}
+body.cosmos-light .slds-button.slds-button_brand:active {
+    background-color: rgba(37, 73, 173, 0.70) !important;
+    border-color: rgba(33, 57, 117, 0.80) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.20),
+                0 4px 16px -2px rgba(0, 0, 0, 0.20),
+                0 0 15px 0 rgba(73, 146, 254, 0.50) !important;
 }
 
-body.cosmos-light .slds-button_brand:hover,
-body.cosmos-light .slds-button--brand:hover {
-    background: #2d3569 !important;
-    border-color: #2d3569 !important;
+body.cosmos-light .slds-button.slds-button_success {
+    background-color: rgba(26, 179, 166, 0.20) !important;
+    border: 1px solid rgba(38, 204, 179, 0.30) !important;
+    color: #fff !important;
+    border-radius: 24px !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.20),
+                0 4px 16px -2px rgba(0, 0, 0, 0.20) !important;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+body.cosmos-light .slds-button.slds-button_success:hover {
+    background-color: rgba(26, 179, 166, 0.40) !important;
+    border-color: rgba(38, 204, 179, 0.45) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+                0 6px 20px -2px rgba(0, 0, 0, 0.30),
+                0 0 24px 0 rgba(26, 179, 166, 0.10),
+                0 0 35px 0 rgba(6, 165, 154, 0.25) !important;
+}
+body.cosmos-light .slds-button.slds-button_success:active {
+    background-color: rgba(26, 179, 166, 0.20) !important;
+    border-color: rgba(38, 204, 179, 0.10) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+                0 6px 20px -2px rgba(0, 0, 0, 0.30),
+                0 0 15px 0 rgba(6, 165, 154, 0.25) !important;
 }
 
-body.cosmos-light .slds-button_neutral,
-body.cosmos-light .slds-button--neutral {
-    background: rgba(255, 255, 255, 0.60) !important;
-    border: 1px solid #8e94ab !important;
-    color: #374182 !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    backdrop-filter: blur(10px) !important;
+body.cosmos-light .slds-button.slds-button_destructive {
+    background-color: rgba(230, 51, 102, 0.15) !important;
+    border: 1px solid rgba(255, 77, 128, 0.25) !important;
+    color: #fff !important;
+    border-radius: 24px !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.20),
+                0 4px 16px -2px rgba(0, 0, 0, 0.20) !important;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+body.cosmos-light .slds-button.slds-button_destructive:hover {
+    background-color: rgba(230, 51, 102, 0.40) !important;
+    border-color: rgba(255, 77, 128, 0.40) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+                0 6px 20px -2px rgba(0, 0, 0, 0.30),
+                0 0 24px 0 rgba(230, 51, 102, 0.10),
+                0 0 35px 0 rgba(254, 114, 152, 0.25) !important;
+}
+body.cosmos-light .slds-button.slds-button_destructive:active {
+    background-color: rgba(230, 51, 102, 0.40) !important;
+    border-color: rgba(255, 77, 128, 0.20) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+                0 6px 20px -2px rgba(0, 0, 0, 0.30),
+                0 0 15px 0 rgba(254, 114, 152, 0.25) !important;
 }
 
-body.cosmos-light .slds-button_neutral:hover,
-body.cosmos-light .slds-button--neutral:hover {
-    background: rgba(255, 255, 255, 0.80) !important;
-    border-color: #7c85b3 !important;
+body.cosmos-light .slds-button.slds-button_neutral {
+    background-color: rgba(255, 255, 255, 0.10) !important;
+    border: 1px solid rgba(255, 255, 255, 0.20) !important;
+    color: #fff !important;
+    border-radius: 24px !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+                0 4px 12px -2px rgba(0, 0, 0, 0.15) !important;
+    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
-
-body.cosmos-light .slds-button_destructive,
-body.cosmos-light .slds-button--destructive {
-    background: #c23d4b !important;
-    border-color: #c23d4b !important;
-    color: #ffffff !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
+body.cosmos-light .slds-button.slds-button_neutral:hover {
+    background-color: rgba(255, 255, 255, 0.20) !important;
+    border-color: rgba(255, 255, 255, 0.40) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+                0 6px 20px -2px rgba(0, 0, 0, 0.25),
+                0 0 16px 0 rgba(255, 255, 255, 0.06),
+                0 0 35px 0 rgba(147, 147, 147, 0.50) !important;
 }
-
-body.cosmos-light .slds-button_success {
-    background: #2e7d5b !important;
-    border-color: #2e7d5b !important;
-    color: #ffffff !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
+body.cosmos-light .slds-button.slds-button_neutral:active {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.20) !important;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+                0 6px 20px -2px rgba(0, 0, 0, 0.25),
+                0 0 15px 0 rgba(160, 160, 160, 0.25) !important;
 }
 
 body.cosmos-light .slds-button.slds-button_icon-border,
 body.cosmos-light .slds-button.slds-button_icon-border-filled {
-    background-color: rgba(255, 255, 255, 0.60);
-    border: 1px solid #8e94ab;
-    color: #374182;
+    background-color: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    color: rgba(0, 0, 0, 0.85);
     border-radius: 50%;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
@@ -1056,8 +1173,8 @@ body.cosmos-light .slds-button.slds-button_icon-border-filled {
 
 body.cosmos-light .slds-button.slds-button_icon-border:hover,
 body.cosmos-light .slds-button.slds-button_icon-border-filled:hover {
-    background-color: rgba(255, 255, 255, 0.80);
-    border-color: #7c85b3;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.40);
     color: var(--slds-g-color-accent-2, #0250d9);
 }
 
