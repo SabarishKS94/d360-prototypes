@@ -82,6 +82,7 @@
 
 /* Voice button */
 .voice-btn {
+    display: none;
     position: fixed;
     bottom: 20px;
     right: 250px;
