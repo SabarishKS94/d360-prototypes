@@ -44,28 +44,32 @@ body.cosmos-dark::after {
 body.cosmos-dark::before {
     background: linear-gradient(
         135deg,
-        rgb(18, 10, 31) 0%,
-        rgb(13, 13, 26) 50%,
-        rgb(5, 15, 28) 100%
+        #180f22 0%,
+        #12101a 50%,
+        #0a101e 100%
     );
 }
+
 
 body.cosmos-dark::after {
     background: rgba(59, 130, 246, 0.12);
 }
 
+
+
 body.cosmos-light::before {
     background: linear-gradient(
-        135deg,
-        rgb(215, 194, 251) 0%,
-        rgb(219, 219, 253) 50%,
-        rgb(227, 230, 253) 100%
+        150.6deg,
+        #f7e4d8 0%,
+        #f0dfe8 35.7%,
+        #dfe5f7 71.4%
     );
 }
 
 body.cosmos-light::after {
-    background: rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.45);
 }
+
 
 body.cosmos-light > #app,
 body.cosmos-dark > #app {
@@ -1458,6 +1462,172 @@ body.cosmos-dark .badge-default.slds-badge {
     border-color: transparent !important;
     font-size: 11px !important;
     font-weight: 500 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   GLASS TOAST — GLOBAL THEME STYLES
+   ══════════════════════════════════════════════════════════════════ */
+
+.glass-toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    font-size: 14px;
+    font-weight: 590;
+    position: relative;
+    max-width: 480px;
+}
+
+.toast-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: inherit;
+}
+
+.toast-icon lightning-icon svg {
+    fill: currentColor !important;
+}
+
+.toast-message {
+    flex: 1;
+}
+
+.toast-close {
+    margin-left: auto;
+    opacity: 0.7;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 4px;
+}
+.toast-close:hover {
+    opacity: 1;
+}
+
+/* ── Success toast ── */
+body.cosmos-dark .glass-toast-success {
+    background: rgba(26, 179, 166, 0.40);
+    border-color: rgba(38, 204, 179, 0.45);
+    color: #7df5e7;
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+        0 6px 20px -2px rgba(0, 0, 0, 0.30),
+        0 0 24px 0 rgba(26, 179, 166, 0.10),
+        0 0 35px 0 rgba(6, 165, 154, 0.25);
+}
+body.cosmos-dark .toast-icon-success {
+    background: rgba(6, 165, 154, 0.6);
+}
+
+body.cosmos-light .glass-toast-success {
+    background: rgba(26, 179, 166, 0.15);
+    border-color: rgba(38, 204, 179, 0.4);
+    color: #056764;
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.50),
+        0 4px 12px -2px rgba(0, 0, 0, 0.08),
+        0 0 20px 0 rgba(26, 179, 166, 0.06);
+}
+body.cosmos-light .toast-icon-success {
+    background: rgba(6, 165, 154, 0.2);
+}
+
+/* ── Info/Default toast ── */
+body.cosmos-dark .glass-toast-default {
+    background: rgba(59, 130, 246, 0.40);
+    border-color: rgba(73, 146, 254, 0.45);
+    color: #b8d4fe;
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+        0 6px 20px -2px rgba(0, 0, 0, 0.30),
+        0 0 24px 0 rgba(59, 130, 246, 0.10),
+        0 0 35px 0 rgba(59, 130, 246, 0.25);
+}
+body.cosmos-dark .toast-icon-default {
+    background: rgba(59, 130, 246, 0.6);
+}
+
+body.cosmos-light .glass-toast-default {
+    background: rgba(59, 130, 246, 0.12);
+    border-color: rgba(73, 146, 254, 0.35);
+    color: #0b5cab;
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.50),
+        0 4px 12px -2px rgba(0, 0, 0, 0.08),
+        0 0 20px 0 rgba(59, 130, 246, 0.06);
+}
+body.cosmos-light .toast-icon-default {
+    background: rgba(59, 130, 246, 0.2);
+}
+
+/* ── Warning toast ── */
+body.cosmos-dark .glass-toast-warning {
+    background: rgba(228, 162, 1, 0.35);
+    border-color: rgba(242, 183, 40, 0.45);
+    color: #f9e3b6;
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+        0 6px 20px -2px rgba(0, 0, 0, 0.30),
+        0 0 24px 0 rgba(228, 162, 1, 0.10),
+        0 0 35px 0 rgba(228, 162, 1, 0.20);
+}
+body.cosmos-dark .toast-icon-warning {
+    background: rgba(228, 162, 1, 0.55);
+}
+
+body.cosmos-light .glass-toast-warning {
+    background: rgba(228, 162, 1, 0.12);
+    border-color: rgba(242, 183, 40, 0.4);
+    color: #8c4b02;
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.50),
+        0 4px 12px -2px rgba(0, 0, 0, 0.08),
+        0 0 20px 0 rgba(228, 162, 1, 0.06);
+}
+body.cosmos-light .toast-icon-warning {
+    background: rgba(228, 162, 1, 0.18);
+}
+
+/* ── Error toast ── */
+body.cosmos-dark .glass-toast-error {
+    background: rgba(220, 50, 80, 0.38);
+    border-color: rgba(240, 80, 110, 0.45);
+    color: #fec0cf;
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+        0 6px 20px -2px rgba(0, 0, 0, 0.30),
+        0 0 24px 0 rgba(220, 50, 80, 0.10),
+        0 0 35px 0 rgba(220, 50, 80, 0.25);
+}
+body.cosmos-dark .toast-icon-error {
+    background: rgba(220, 50, 80, 0.55);
+}
+
+body.cosmos-light .glass-toast-error {
+    background: rgba(220, 50, 80, 0.12);
+    border-color: rgba(240, 80, 110, 0.35);
+    color: #b60554;
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.50),
+        0 4px 12px -2px rgba(0, 0, 0, 0.08),
+        0 0 20px 0 rgba(220, 50, 80, 0.06);
+}
+body.cosmos-light .toast-icon-error {
+    background: rgba(220, 50, 80, 0.15);
 }
 
 /* ── Overflow for dropdowns ─────────────────────────────────────── */
