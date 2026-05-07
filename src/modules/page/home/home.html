@@ -213,6 +213,34 @@
         </lightning-layout-item>
 
         <lightning-layout-item size="12" class="slds-m-bottom_large">
+        <!-- Toast Notifications -->
+        <lightning-card title="Toast Notifications">
+            <div class="slds-p-around_medium toast-demo-grid">
+                <ui-glass-toast
+                    variant="success"
+                    message="Record saved successfully."
+                    icon-name="utility:check">
+                </ui-glass-toast>
+                <ui-glass-toast
+                    variant="default"
+                    message="Your report is ready to view."
+                    icon-name="utility:info_alt">
+                </ui-glass-toast>
+                <ui-glass-toast
+                    variant="warning"
+                    message="This segment has no active members."
+                    icon-name="utility:warning">
+                </ui-glass-toast>
+                <ui-glass-toast
+                    variant="error"
+                    message="Connection failed. Please retry."
+                    icon-name="utility:error">
+                </ui-glass-toast>
+            </div>
+        </lightning-card>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" class="slds-m-bottom_large">
         <!-- Loading Spinner -->
         <lightning-card title="Loading Spinner">
             <div class="slds-align_absolute-center slds-is-relative spinner-demo">
