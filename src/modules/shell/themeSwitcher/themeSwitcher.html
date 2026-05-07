@@ -30,6 +30,13 @@
                             message-toggle-active="On"
                             message-toggle-inactive="Off">
                         </lightning-input>
+                        <lightning-combobox
+                            label="Brand"
+                            value={activeBrand}
+                            options={brandOptions}
+                            onchange={handleBrandChange}
+                            dropdown-alignment="bottom-right">
+                        </lightning-combobox>
                     </div>
                 </lightning-card>
             </div>

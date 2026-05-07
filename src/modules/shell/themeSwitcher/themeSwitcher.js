@@ -1,4 +1,5 @@
 import { LightningElement, api, track } from 'lwc';
+import { brands, getStoredBrand, applyBrand } from 'data/brands';
 
 const SHELL_OPTIONS = [
     { label: 'Standard', value: 'standard' },
@@ -10,17 +11,20 @@ const SHELL_STORAGE_KEY = 'shell-mode';
 export default class ThemeSwitcher extends LightningElement {
     @api activeTheme = 'light';
     @track isCardOpen = false;
+    @track activeBrand = getStoredBrand();
 
     get shellOptions() {
         return SHELL_OPTIONS;
     }
 
-    // Derive active shell from the theme value
+    get brandOptions() {
+        return brands.map(b => ({ label: b.label, value: b.value }));
+    }
+
     get activeShell() {
         return this.activeTheme?.startsWith('cosmos') ? 'cosmos' : 'standard';
     }
 
-    // Derive dark mode state from the theme value
     get isDark() {
         return this.activeTheme === 'dark' || this.activeTheme === 'cosmos-dark';
     }
@@ -37,10 +41,8 @@ export default class ThemeSwitcher extends LightningElement {
         const newShell = event.detail.value;
         if (newShell === this.activeShell) return;
 
-        // Persist shell choice and reload — shell is selected at boot time in index.js
         localStorage.setItem(SHELL_STORAGE_KEY, newShell);
 
-        // Carry over current dark mode preference to the new shell
         const theme = newShell === 'cosmos'
             ? (this.isDark ? 'cosmos-dark' : 'cosmos-light')
             : (this.isDark ? 'dark' : 'light');
@@ -61,6 +63,17 @@ export default class ThemeSwitcher extends LightningElement {
             bubbles: true,
             composed: true,
             detail: { theme }
+        }));
+    }
+
+    handleBrandChange(event) {
+        const brandValue = event.detail.value;
+        this.activeBrand = brandValue;
+        applyBrand(brandValue);
+        this.dispatchEvent(new CustomEvent('applybrand', {
+            bubbles: true,
+            composed: true,
+            detail: { brand: brandValue }
         }));
     }
 }

@@ -117,38 +117,5 @@
             box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.15) !important;
         }
     </style>
-    <script>
-    (function() {
-        var themes = ['cosmos-dark', 'cosmos-light'];
-        var current = 0;
-
-        function applyTheme(idx) {
-            current = idx;
-            var theme = themes[current];
-            document.body.classList.remove('slds-color-scheme_dark', 'cosmos-dark', 'cosmos-light');
-            document.body.classList.add(theme);
-            if (theme === 'cosmos-dark') document.body.classList.add('slds-color-scheme_dark');
-            document.documentElement.style.background = 'transparent';
-            document.body.style.background = 'transparent';
-            if (btn) {
-                btn.textContent = theme === 'cosmos-dark' ? '☀ Light' : '🌙 Dark';
-                btn.style.background = theme === 'cosmos-dark' ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.3)';
-            }
-        }
-
-        var btn = document.createElement('button');
-        btn.textContent = '☀ Light';
-        btn.style.cssText = 'position:fixed;bottom:20px;right:20px;z-index:99999;padding:8px 16px;border-radius:20px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.6);color:#fff;font-size:13px;cursor:pointer;backdrop-filter:blur(10px);font-family:system-ui;';
-        btn.onclick = function() {
-            applyTheme((current + 1) % themes.length);
-        };
-        document.body.appendChild(btn);
-        applyTheme(0);
-
-        setTimeout(function() { applyTheme(current); }, 500);
-        setTimeout(function() { applyTheme(current); }, 1500);
-        setTimeout(function() { applyTheme(current); }, 3000);
-    })();
-    </script>
 </body>
 </html>
