@@ -90,6 +90,18 @@ Production builds go to `dist/`.
 2. Add an entry to `src/routes.config.js`
 3. Add a nav entry in `shell/globalNav` if needed
 
+## Theme System Reference
+
+For detailed theme architecture rules (glass buttons, aurora background, brand system, CSS file responsibilities), see `.claude/commands/theme-audit.md`.
+
+**Run `/theme-audit` before committing any changes that touch:**
+- `public/cosmos-theme.css`
+- `public/cosmos-brand-*.css`
+- `src/modules/shell/cosmosApp/`
+- `src/modules/shell/themeSwitcher/`
+- `src/modules/ui/auroraBackground/`
+- Any component that sets `background`, `backdrop-filter`, or body classes
+
 ## Synthetic Shadow DOM
 
 Synthetic shadow is enabled in `vite.config.js` to mirror the Salesforce platform. This means:

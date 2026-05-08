@@ -5,6 +5,7 @@ import { routes } from '../../../routes.config';
 import { apps, getDefaultApp, getAppById, ACTIVE_APP_STORAGE_KEY } from '../../../apps.config';
 import { isAuthDisabled } from '../../../data/authMode.js';
 import { onAuthStateChanged } from '../../../data/firebaseAuth.js';
+import { getStoredBrand, applyBrand } from 'data/brands';
 import Home from 'page/home';
 import IconTest from 'page/iconTest';
 import Settings from 'page/settings';
@@ -81,10 +82,15 @@ export default class CosmosApp extends LightningElement {
     @track _authUser = null;
     @track _authChecked = false;
     @track _isNavCollapsed = localStorage.getItem('vertical-nav-collapsed') === 'true';
+    @track _activeBrand = getStoredBrand();
 
     _redirectPath = '/';
     _unsubscribeAuth;
     _headerObserver;
+
+    get activeBrand() {
+        return this._activeBrand;
+    }
 
     get activeApp() {
         return getAppById(this._activeAppId);
@@ -171,6 +177,7 @@ export default class CosmosApp extends LightningElement {
 
     connectedCallback() {
         this._restorePreferences();
+        applyBrand(getStoredBrand());
         const savedAppId = localStorage.getItem(ACTIVE_APP_STORAGE_KEY);
         if (savedAppId) {
             this._activeAppId = getAppById(savedAppId).id;
@@ -279,6 +286,13 @@ export default class CosmosApp extends LightningElement {
 
     handlePanelClose() {
         this.isPanelOpen = false;
+    }
+
+    handleApplyBrand(event) {
+        const brand = event.detail?.brand;
+        if (brand) {
+            this._activeBrand = brand;
+        }
     }
 
     handleNavCollapseToggle() {
