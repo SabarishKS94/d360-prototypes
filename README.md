@@ -81,6 +81,14 @@ Change **`.env`**, then restart the dev server.
 
 **Adding a page (high level):** new `src/modules/page/<name>/` → new row in `routes.config.js` → import in `app.js` `ROUTE_COMPONENTS`. Details: [**`docs/technical-reference.md`**](docs/technical-reference.md).
 
+## Theme Playground
+
+A **zero-dependency** HTML/CSS sandbox for iterating on the Cosmos theme without the full LWC/Vite stack lives in its own repo:
+
+**[salesforce-ux-emu/theme-playground](https://github.com/salesforce-ux-emu/theme-playground)**
+
+Open `index.html` in a browser, tweak tokens live, and export the resulting CSS back into this codebase's `public/` override files.
+
 ## More documentation
 
 | Doc | What |
@@ -88,6 +96,7 @@ Change **`.env`**, then restart the dev server.
 | [**`docs/technical-reference.md`**](docs/technical-reference.md) | Full LWC/Vite/SLDS project structure, routing, shadow DOM, icons, conventions, upstream links. |
 | [**`docs/setup-with-agent.md`**](docs/setup-with-agent.md) | Agent copy-paste prompt, Soma + GitHub remotes. |
 | [GitHub: `salesforce-ux-emu/data360-starter-kit`](https://github.com/salesforce-ux-emu/data360-starter-kit) | **Use this template**, Issues, history. |
+| [**Theme Playground**](https://github.com/salesforce-ux-emu/theme-playground) | Standalone theme sandbox — iterate on Cosmos tokens without the build pipeline. |
 | [`.cursor/rules/`](.cursor/rules/) (if present) | SLDS / LWC / icons guidance for this workspace. |
 
 ---
