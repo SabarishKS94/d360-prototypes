@@ -1527,3 +1527,170 @@ lightning-layout-item,
 .app-body__scroll-wrapper {
     overflow: visible !important;
 }
+
+/* ── Plan Builder ───────────────────────────────────────────────────── */
+
+.plan-builder-sidebar {
+    border-right: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.cosmos-light .plan-builder-sidebar {
+    border-right-color: rgba(0, 0, 0, 0.08);
+}
+
+.pb-divider:hover::after {
+    background: rgba(255, 255, 255, 0.20);
+    height: 48px;
+}
+
+.pb-divider.collapsed::after {
+    background: rgba(255, 255, 255, 0.15);
+    height: 36px;
+}
+
+.pb-divider.collapsed:hover::after {
+    background: rgba(255, 255, 255, 0.30);
+    height: 52px;
+}
+
+.cosmos-light .pb-divider:hover::after {
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.cosmos-light .pb-divider.collapsed::after {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.cosmos-light .pb-divider.collapsed:hover::after {
+    background: rgba(0, 0, 0, 0.18);
+}
+
+.pb-step {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.cosmos-light .pb-step {
+    color: #3e4a7a;
+}
+
+.pb-step:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.cosmos-light .pb-step:hover {
+    background: rgba(55, 65, 130, 0.06);
+}
+
+.pb-step.active {
+    background: rgba(59, 130, 246, 0.40);
+    border-color: rgba(73, 146, 254, 0.45);
+    color: #b8d4fe;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+                0 0 24px 0 rgba(59, 130, 246, 0.10),
+                0 0 35px 0 rgba(59, 130, 246, 0.25);
+}
+
+.pb-step.active:hover {
+    background: rgba(45, 110, 220, 0.55);
+    border-color: rgba(60, 130, 240, 0.60);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.35),
+                0 0 28px 0 rgba(59, 130, 246, 0.18),
+                0 0 40px 0 rgba(59, 130, 246, 0.32);
+}
+
+.cosmos-light .pb-step.active {
+    background: rgba(59, 130, 246, 0.20);
+    border-color: rgba(73, 146, 254, 0.50);
+    color: #0b5cab;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.60),
+                0 0 20px 0 rgba(59, 130, 246, 0.08),
+                0 0 30px 0 rgba(59, 130, 246, 0.15);
+}
+
+.cosmos-light .pb-step.active:hover {
+    background: rgba(45, 110, 220, 0.30);
+    border-color: rgba(60, 130, 240, 0.65);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.70),
+                0 0 24px 0 rgba(59, 130, 246, 0.14),
+                0 0 35px 0 rgba(59, 130, 246, 0.22);
+}
+
+.pb-step.disabled {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.10);
+}
+
+.pb-step.disabled:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
+}
+
+.cosmos-light .pb-step.disabled {
+    background: rgba(255, 255, 255, 0.30);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.50);
+}
+
+.cosmos-light .pb-step.disabled:hover {
+    background: rgba(255, 255, 255, 0.50);
+    border-color: rgba(0, 0, 0, 0.12);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.70);
+}
+
+.pb-title {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.cosmos-light .pb-title {
+    color: #1a1f36;
+}
+
+.pb-subtitle,
+.pb-search-label,
+.pb-connector-label,
+.pb-step-count {
+    color: rgba(255, 255, 255, 0.60);
+}
+
+.cosmos-light .pb-subtitle,
+.cosmos-light .pb-search-label,
+.cosmos-light .pb-connector-label,
+.cosmos-light .pb-step-count {
+    color: #3e4a7a;
+}
+
+.pb-btn-outline {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    color: #fff;
+}
+
+.pb-btn-outline:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.cosmos-light .pb-btn-outline {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #1a1f36;
+}
+
+.cosmos-light .pb-btn-outline:hover {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.30);
+}
+
+.pb-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cosmos-light .pb-footer {
+    border-top-color: rgba(0, 0, 0, 0.06);
+}
