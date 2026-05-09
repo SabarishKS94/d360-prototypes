@@ -9,7 +9,8 @@
     "dev": "node scripts/prebuild-icons.mjs && vite",
     "build": "node scripts/prebuild-icons.mjs && vite build",
     "preview": "vite preview",
-    "dev:native-shadow": "echo 'To use native shadow, set disableSyntheticShadowSupport: true in vite.config.js'"
+    "dev:native-shadow": "echo 'To use native shadow, set disableSyntheticShadowSupport: true in vite.config.js'",
+    "theme:validate-tokens": "node scripts/validate-tokens.mjs --tokens=../theme-playground/dist/tokens.json"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +25,7 @@
     "lwc": "^9.0.2"
   },
   "devDependencies": {
+    "css-tree": "^3.2.1",
     "vite": "^7.3.1",
     "vite-plugin-lwc": "^4.1.0"
   }
