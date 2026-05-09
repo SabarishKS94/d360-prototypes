@@ -17,6 +17,9 @@ src/build/generated/
 # Playwright MCP
 .playwright-mcp/
 
+# Visual regression output
+validation-output/
+
 # OS
 .DS_Store
 
