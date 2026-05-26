@@ -15,32 +15,32 @@
                 <div class="user-name slds-truncate">{userName}</div>
                 <div class="user-email slds-truncate">{userEmail}</div>
                 <div class="user-actions">
-                    <button class="user-action-link" disabled>Settings</button>
-                    <button class="user-action-link" onclick={handleSignOut}>Log Out</button>
+                    <button class="user-action-link" disabled>{labels.Settings}</button>
+                    <button class="user-action-link" onclick={handleSignOut}>{labels.LogOut}</button>
                 </div>
             </div>
 
             <!-- Display Density -->
             <div class="density-section slds-has-divider_top-space">
-                <div class="section-header">Display Density</div>
+                <div class="section-header">{labels.DisplayDensity}</div>
                 <div class="density-option">
-                    <lightning-icon icon-name="utility:check" size="xx-small" alternative-text="Selected"></lightning-icon>
-                    <span>Comfy</span>
+                    <lightning-icon icon-name="utility:check" size="xx-small" alternative-text={labels.Selected}></lightning-icon>
+                    <span>{labels.Comfy}</span>
                 </div>
                 <div class="density-option slds-p-left_medium">
-                    <span>Compact</span>
+                    <span>{labels.Compact}</span>
                 </div>
             </div>
 
             <!-- Options -->
             <div class="options-section slds-has-divider_top-space">
-                <div class="section-header">Options</div>
+                <div class="section-header">{labels.Options}</div>
                 <div class="options-link">
-                    <span>Switch to Salesforce Classic</span>
-                    <lightning-icon icon-name="utility:info" size="xx-small" alternative-text="Info"></lightning-icon>
+                    <span>{labels.SwitchToClassic}</span>
+                    <lightning-icon icon-name="utility:info" size="xx-small" alternative-text={labels.Info}></lightning-icon>
                 </div>
                 <div class="options-link">
-                    <span>Add Username</span>
+                    <span>{labels.AddUsername}</span>
                 </div>
             </div>
         </div>

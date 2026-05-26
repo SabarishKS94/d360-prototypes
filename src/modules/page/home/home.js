@@ -1,7 +1,15 @@
 import { LightningElement, track } from 'lwc';
 import DemoModal from 'ui/demoModal';
+import * as HomeLabels from 'data/labels/Home';
+import { Loading, Edit, Delete } from 'data/labels/Common';
 
 export default class Home extends LightningElement {
+    labels = {
+        ...HomeLabels,
+        Loading,
+        Edit,
+        Delete,
+    };
     @track inputValue = '';
     @track checkboxGroupValues = [];
     @track selectedRadioValue = 'option1';

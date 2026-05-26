@@ -1,4 +1,5 @@
 import { LightningElement } from 'lwc';
+import * as ChurnRateSegmentLabels from 'data/labels/ChurnRateSegment';
 
 const BASE_STEPS = [
     {
@@ -32,6 +33,7 @@ const BASE_STEPS = [
 ];
 
 export default class ChurnRateSegment extends LightningElement {
+    labels = ChurnRateSegmentLabels;
     supportingMaterials = [
         { id: 'support-1', title: 'Supporting Material', items: ['Snowflake requirements'] },
         { id: 'support-2', title: 'Supporting Material', items: ['Snowflake requirements'] },

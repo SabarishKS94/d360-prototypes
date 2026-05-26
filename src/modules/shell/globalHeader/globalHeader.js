@@ -1,6 +1,8 @@
 import { LightningElement, api } from 'lwc';
+import * as GlobalHeaderLabels from 'data/labels/GlobalHeader';
 
 export default class GlobalHeader extends LightningElement {
+    labels = GlobalHeaderLabels;
     @api user;
 
     handleAgentforceClick() {

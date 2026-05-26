@@ -11,8 +11,8 @@
                             <div class="slds-page-header__name">
                                 <div class="slds-page-header__name-title">
                                     <h1>
-                                        <span>Contacts</span>
-                                        <span class="slds-page-header__title slds-truncate" title="All Contacts">All Contacts</span>
+                                        <span>{labels.Contacts}</span>
+                                        <span class="slds-page-header__title slds-truncate" title={labels.AllContacts}>{labels.AllContacts}</span>
                                     </h1>
                                 </div>
                                 <div class="slds-page-header__name-switcher slds-is-relative slds-m-bottom_x-small">
@@ -20,8 +20,8 @@
                                         icon-name="utility:down"
                                         variant="bare"
                                         size="small"
-                                        alternative-text="Switch list view"
-                                        title="Switch list view">
+                                        alternative-text={labels.SwitchListView}
+                                        title={labels.SwitchListView}>
                                     </lightning-button-icon>
                                 </div>
                             </div>
@@ -32,19 +32,19 @@
                     <div class="slds-page-header__controls">
                         <div class="slds-page-header__control">
                             <lightning-button-group>
-                                <lightning-button label="New" variant="neutral"></lightning-button>
-                                <lightning-button label="Import" variant="neutral"></lightning-button>
-                                <lightning-button label="Add to Campaign" variant="neutral"></lightning-button>
-                                <lightning-button label="Send Email" variant="neutral"></lightning-button>
+                                <lightning-button label={labels.New} variant="neutral"></lightning-button>
+                                <lightning-button label={labels.Import} variant="neutral"></lightning-button>
+                                <lightning-button label={labels.AddToCampaign} variant="neutral"></lightning-button>
+                                <lightning-button label={labels.SendEmail} variant="neutral"></lightning-button>
                             </lightning-button-group>
                         </div>
                         <div class="slds-page-header__control">
                             <lightning-button-menu
-                                alternative-text="More Actions"
+                                alternative-text={labels.MoreActions}
                                 variant="border-filled"
                                 icon-size="medium"
                                 menu-alignment="right">
-                                <lightning-menu-item label="Printable View" value="printable"></lightning-menu-item>
+                                <lightning-menu-item label={labels.PrintableView} value="printable"></lightning-menu-item>
                             </lightning-button-menu>
                         </div>
                     </div>
@@ -59,9 +59,9 @@
                         <div class="slds-page-header__control">
                             <lightning-input
                                 type="search"
-                                label="Search contacts"
+                                label={labels.SearchContacts}
                                 variant="label-hidden"
-                                placeholder="Search this list..."
+                                placeholder={labels.SearchThisList}
                                 onchange={handleSearch}>
                             </lightning-input>
                         </div>
@@ -69,32 +69,32 @@
                             <lightning-button-icon
                                 icon-name="utility:settings"
                                 variant="border-filled"
-                                alternative-text="List View Controls"
-                                title="List View Controls">
+                                alternative-text={labels.ListViewControls}
+                                title={labels.ListViewControls}>
                             </lightning-button-icon>
                         </div>
                         <div class="slds-page-header__control">
                             <lightning-button-icon
                                 icon-name="utility:table"
                                 variant="border-filled"
-                                alternative-text="Change view"
-                                title="Change view">
+                                alternative-text={labels.ChangeView}
+                                title={labels.ChangeView}>
                             </lightning-button-icon>
                         </div>
                         <div class="slds-page-header__control">
                             <lightning-button-icon
                                 icon-name="utility:edit"
                                 variant="border-filled"
-                                alternative-text="Edit List"
-                                title="Edit List">
+                                alternative-text={labels.EditList}
+                                title={labels.EditList}>
                             </lightning-button-icon>
                         </div>
                         <div class="slds-page-header__control">
                             <lightning-button-icon
                                 icon-name="utility:refresh"
                                 variant="border-filled"
-                                alternative-text="Refresh List"
-                                title="Refresh List">
+                                alternative-text={labels.RefreshList}
+                                title={labels.RefreshList}>
                             </lightning-button-icon>
                         </div>
                         <div class="slds-page-header__control">
@@ -102,14 +102,14 @@
                                 <lightning-button-icon
                                     icon-name="utility:chart"
                                     variant="border-filled"
-                                    alternative-text="Charts"
-                                    title="Charts">
+                                    alternative-text={labels.Charts}
+                                    title={labels.Charts}>
                                 </lightning-button-icon>
                                 <lightning-button-icon
                                     icon-name="utility:filterList"
                                     variant="border-filled"
-                                    alternative-text="Filters"
-                                    title="Filters">
+                                    alternative-text={labels.Filters}
+                                    title={labels.Filters}>
                                 </lightning-button-icon>
                             </lightning-button-group>
                         </div>

@@ -1,6 +1,7 @@
 import { LightningElement, track } from 'lwc';
 import { navigate } from '../../../router';
 import { getAllContacts } from 'data/contacts';
+import * as ContactsLabels from 'data/labels/Contacts';
 
 const COLUMNS = [
     {
@@ -31,6 +32,7 @@ const COLUMNS = [
 ];
 
 export default class Contacts extends LightningElement {
+    labels = ContactsLabels;
     columns = COLUMNS;
     @track data = [];
     sortedBy = 'name';

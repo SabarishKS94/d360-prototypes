@@ -1,4 +1,5 @@
 import LightningModal from 'lightning/modal';
+import { Cancel, Confirm } from 'data/labels/Common';
 
 /**
  * Demo modal component that extends LightningModal.
@@ -6,6 +7,7 @@ import LightningModal from 'lightning/modal';
  * Use for demonstrating modal header, body, and footer with Lightning Base Components.
  */
 export default class DemoModal extends LightningModal {
+    labels = { Cancel, Confirm };
     handleCancel() {
         this.close();
     }

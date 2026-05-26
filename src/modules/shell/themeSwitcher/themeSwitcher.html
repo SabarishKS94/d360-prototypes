@@ -4,8 +4,8 @@
             icon-name="utility:palette"
             variant="border-filled"
             size="large"
-            alternative-text="Theme options"
-            title="Theme options"
+            alternative-text={labels.ThemeOptions}
+            title={labels.ThemeOptions}
             aria-haspopup="true"
             aria-expanded={isCardOpen}
             onclick={handleIconClick}>
@@ -13,10 +13,10 @@
         <template if:true={isCardOpen}>
             <div class="theme-switcher-backdrop" onclick={handleBackdropClick} role="presentation"></div>
             <div class="theme-switcher-card-wrapper">
-                <lightning-card title="Theme" class="theme-switcher-card">
+                <lightning-card title={labels.Theme} class="theme-switcher-card">
                     <div class="slds-p-around_small slds-grid slds-grid_vertical slds-grid_align-spread" style="gap: 0.75rem;">
                         <lightning-combobox
-                            label="Shell"
+                            label={labels.Shell}
                             value={activeShell}
                             options={shellOptions}
                             onchange={handleShellChange}
@@ -24,14 +24,14 @@
                         </lightning-combobox>
                         <lightning-input
                             type="toggle"
-                            label="Dark mode"
+                            label={labels.DarkMode}
                             checked={isDark}
                             onchange={handleDarkToggle}
                             message-toggle-active="On"
                             message-toggle-inactive="Off">
                         </lightning-input>
                         <lightning-combobox
-                            label="Brand"
+                            label={labels.Brand}
                             value={activeBrand}
                             options={brandOptions}
                             onchange={handleBrandChange}

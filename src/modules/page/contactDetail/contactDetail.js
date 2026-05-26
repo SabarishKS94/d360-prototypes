@@ -1,6 +1,7 @@
 import { LightningElement, track } from 'lwc';
 import { getCurrentRoute, navigate } from '../../../router';
 import { getContactById } from 'data/contacts';
+import * as ContactDetailLabels from 'data/labels/ContactDetail';
 
 const ACTIVITY_ITEMS = [
     { id: 'a1', type: 'call', iconName: 'standard:log_a_call', subject: 'Follow-up call', date: 'Mar 10, 2026', description: 'Discussed renewal timeline and next steps.' },
@@ -10,6 +11,7 @@ const ACTIVITY_ITEMS = [
 ];
 
 export default class ContactDetail extends LightningElement {
+    labels = ContactDetailLabels;
     @track contact = null;
     @track isFollowing = false;
     activityItems = ACTIVITY_ITEMS;

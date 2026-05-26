@@ -12,7 +12,7 @@
                             <div class="slds-page-header__name">
                                 <div class="slds-page-header__name-title">
                                     <h1>
-                                        <span>Contact</span>
+                                        <span>{labels.Contact}</span>
                                         <span class="slds-page-header__title slds-truncate" title={contactName}>{contactName}</span>
                                     </h1>
                                 </div>
@@ -32,17 +32,17 @@
                         </div>
                         <div class="slds-page-header__control">
                             <lightning-button-group>
-                                <lightning-button label="Edit" variant="neutral"></lightning-button>
-                                <lightning-button label="Delete" variant="neutral"></lightning-button>
-                                <lightning-button label="Clone" variant="neutral"></lightning-button>
+                                <lightning-button label={labels.Edit} variant="neutral"></lightning-button>
+                                <lightning-button label={labels.Delete} variant="neutral"></lightning-button>
+                                <lightning-button label={labels.Clone} variant="neutral"></lightning-button>
                                 <lightning-button-menu
-                                    alternative-text="More Actions"
+                                    alternative-text={labels.MoreActions}
                                     variant="border-filled"
                                     icon-size="medium"
                                     menu-alignment="right">
-                                    <lightning-menu-item label="Send Email" value="send_email"></lightning-menu-item>
-                                    <lightning-menu-item label="Log a Call" value="log_call"></lightning-menu-item>
-                                    <lightning-menu-item label="Create Task" value="create_task"></lightning-menu-item>
+                                    <lightning-menu-item label={labels.SendEmail} value="send_email"></lightning-menu-item>
+                                    <lightning-menu-item label={labels.LogCall} value="log_call"></lightning-menu-item>
+                                    <lightning-menu-item label={labels.CreateTask} value="create_task"></lightning-menu-item>
                                 </lightning-button-menu>
                             </lightning-button-group>
                         </div>
@@ -53,21 +53,21 @@
                 <div class="slds-page-header__col-details">
                     <ul class="slds-page-header__detail-row">
                         <li class="slds-page-header__detail-block">
-                            <div class="slds-text-title slds-truncate" title="Company">Company</div>
+                            <div class="slds-text-title slds-truncate" title={labels.Company}>{labels.Company}</div>
                             <div class="slds-truncate" title={contact.company}>{contact.company}</div>
                         </li>
                         <li class="slds-page-header__detail-block">
-                            <div class="slds-text-title slds-truncate" title="Title">Title</div>
+                            <div class="slds-text-title slds-truncate" title={labels.Title}>{labels.Title}</div>
                             <div class="slds-truncate" title={contact.title}>{contact.title}</div>
                         </li>
                         <li class="slds-page-header__detail-block">
-                            <div class="slds-text-title slds-truncate" title="Email">Email</div>
+                            <div class="slds-text-title slds-truncate" title={labels.Email}>{labels.Email}</div>
                             <div class="slds-truncate" title={contact.email}>
                                 <lightning-formatted-email value={contact.email}></lightning-formatted-email>
                             </div>
                         </li>
                         <li class="slds-page-header__detail-block">
-                            <div class="slds-text-title slds-truncate" title="Phone">Phone</div>
+                            <div class="slds-text-title slds-truncate" title={labels.Phone}>{labels.Phone}</div>
                             <div class="slds-truncate" title={contact.phone}>
                                 <lightning-formatted-phone value={contact.phone}></lightning-formatted-phone>
                             </div>
@@ -81,40 +81,40 @@
         <div class="slds-grid slds-gutters slds-m-top_medium">
             <!-- Left 2/3: Details Card -->
             <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12">
-                <lightning-card title="Contact Details">
+                <lightning-card title={labels.ContactDetails}>
                     <div class="slds-p-horizontal_small slds-p-bottom_small">
                         <div class="slds-grid slds-wrap slds-gutters_small">
                             <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
                                 <lightning-input
-                                    label="Full Name"
+                                    label={labels.FullName}
                                     value={contact.name}
                                     read-only>
                                 </lightning-input>
                             </div>
                             <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
                                 <lightning-input
-                                    label="Account Name"
+                                    label={labels.AccountName}
                                     value={contact.company}
                                     read-only>
                                 </lightning-input>
                             </div>
                             <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
                                 <lightning-input
-                                    label="Title"
+                                    label={labels.Title}
                                     value={contact.title}
                                     read-only>
                                 </lightning-input>
                             </div>
                             <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
                                 <lightning-input
-                                    label="Department"
+                                    label={labels.Department}
                                     value={contact.department}
                                     read-only>
                                 </lightning-input>
                             </div>
                             <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
                                 <lightning-input
-                                    label="Email"
+                                    label={labels.Email}
                                     value={contact.email}
                                     type="email"
                                     read-only>
@@ -122,7 +122,7 @@
                             </div>
                             <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
                                 <lightning-input
-                                    label="Phone"
+                                    label={labels.Phone}
                                     value={contact.phone}
                                     type="tel"
                                     read-only>
@@ -130,7 +130,7 @@
                             </div>
                             <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
                                 <lightning-input
-                                    label="Mobile"
+                                    label={labels.Mobile}
                                     value={contact.mobile}
                                     type="tel"
                                     read-only>
@@ -138,14 +138,14 @@
                             </div>
                             <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
                                 <lightning-input
-                                    label="Mailing Address"
+                                    label={labels.MailingAddress}
                                     value={mailingAddress}
                                     read-only>
                                 </lightning-input>
                             </div>
                             <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
                                 <lightning-textarea
-                                    label="Description"
+                                    label={labels.Description}
                                     value={contact.description}
                                     read-only>
                                 </lightning-textarea>
@@ -157,10 +157,10 @@
 
             <!-- Right 1/3: Activity Feed -->
             <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12">
-                <lightning-card title="Activity">
+                <lightning-card title={labels.Activity}>
                     <lightning-button-group slot="actions">
-                        <lightning-button label="Log a Call" variant="neutral"></lightning-button>
-                        <lightning-button label="New Task" variant="neutral"></lightning-button>
+                        <lightning-button label={labels.LogCall} variant="neutral"></lightning-button>
+                        <lightning-button label={labels.NewTask} variant="neutral"></lightning-button>
                     </lightning-button-group>
                     <div class="slds-p-horizontal_small slds-p-bottom_small">
                         <ul class="slds-timeline">
@@ -197,9 +197,9 @@
 
     <template lwc:else>
         <div class="slds-illustration slds-illustration_small slds-p-around_large slds-text-align_center">
-            <p class="slds-text-heading_medium">Contact not found</p>
+            <p class="slds-text-heading_medium">{labels.ContactNotFound}</p>
             <p class="slds-m-top_small">
-                <lightning-button label="Back to Contacts" variant="brand" onclick={handleBackToList}></lightning-button>
+                <lightning-button label={labels.BackToContacts} variant="brand" onclick={handleBackToList}></lightning-button>
             </p>
         </div>
     </template>

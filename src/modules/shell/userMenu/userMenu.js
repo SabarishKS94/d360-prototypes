@@ -1,7 +1,9 @@
 import { LightningElement, api } from 'lwc';
 import { signOut } from '../../../data/firebaseAuth.js';
+import * as UserMenuLabels from 'data/labels/UserMenu';
 
 export default class UserMenu extends LightningElement {
+    labels = UserMenuLabels;
     @api user;
     _isOpen = false;
 

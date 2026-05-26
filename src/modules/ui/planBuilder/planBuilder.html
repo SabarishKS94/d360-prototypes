@@ -1,5 +1,5 @@
 <template>
-    <lightning-card title="Plan Builder">
+    <lightning-card title={labels.PlanBuilder}>
         <div class="plan-builder-layout">
             <div class={sidebarClass}>
                 <template for:each={steps} for:item="step">
@@ -13,7 +13,7 @@
                     </div>
                 </template>
             </div>
-            <div class={dividerClass} onclick={handleDividerClick} role="separator" aria-label="Toggle sidebar"></div>
+            <div class={dividerClass} onclick={handleDividerClick} role="separator" aria-label={labels.ToggleSidebar}></div>
             <div class="plan-builder-main">
                 <div class="pb-header">
                     <div>

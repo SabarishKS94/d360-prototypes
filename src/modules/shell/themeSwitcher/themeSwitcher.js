@@ -1,5 +1,6 @@
 import { LightningElement, api, track } from 'lwc';
 import { brands, getStoredBrand, applyBrand } from 'data/brands';
+import * as ThemeSwitcherLabels from 'data/labels/ThemeSwitcher';
 
 const SHELL_OPTIONS = [
     { label: 'Standard', value: 'standard' },
@@ -9,6 +10,7 @@ const SHELL_OPTIONS = [
 const SHELL_STORAGE_KEY = 'shell-mode';
 
 export default class ThemeSwitcher extends LightningElement {
+    labels = ThemeSwitcherLabels;
     @api activeTheme = 'light';
     @track isCardOpen = false;
     @track activeBrand = getStoredBrand();

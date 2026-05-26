@@ -7,14 +7,14 @@
                 <div class="slds-context-bar__icon-action">
                     <lightning-dynamic-icon
                         type="waffle"
-                        alternative-text="App Launcher"
+                        alternative-text={labels.AppLauncher}
                         onclick={handleWaffleOpen}>
                     </lightning-dynamic-icon>
                 </div>
                 <div
                     class="slds-dropdown slds-dropdown_left app-launcher-dropdown"
                     role="menu"
-                    aria-label="App Launcher"
+                    aria-label={labels.AppLauncher}
                     if:true={isWaffleMenuOpen}
                     onkeydown={handleWaffleMenuKeydown}>
                     <ul class="slds-dropdown__list" role="group">
