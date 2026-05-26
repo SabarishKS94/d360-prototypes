@@ -51,7 +51,7 @@ Checks **Node.js**, creates **`.env`** from **`.env.example`** when missing, run
 npm run dev
 ```
 
-Open **http://localhost:3000**.
+Open **http://localhost:4360**.
 
 ```bash
 npm run build

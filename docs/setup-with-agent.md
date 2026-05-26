@@ -52,7 +52,7 @@ Please:
 1. Confirm we are in the project root (`package.json` and `scripts/setup.sh` should exist). If I’m in the wrong directory, say what path I should `cd` to, or that I need to `git clone` my repo’s URL from GitHub (Code button) first.
 2. Run `sh scripts/setup.sh` from the repo root. If it fails, give the exact fix (e.g. install Node, wrong folder).
 3. If setup succeeded, run `npm run build` once. Report pass/fail.
-4. Tell me to run `npm run dev` and open http://localhost:3000.
+4. Tell me to run `npm run dev` and open http://localhost:4360.
 
 If you cannot run shell commands, give a short manual checklist: clone my repo (URL from the GitHub “Code” button) → `cd` → `sh scripts/setup.sh` → `npm run dev`.
 ````
@@ -62,7 +62,7 @@ If you cannot run shell commands, give a short manual checklist: clone my repo (
 ## Shorter follow-up (if setup already ran)
 
 ````
-Confirm `npm run dev` works at http://localhost:3000. If the dev server fails, show the error and the minimal fix.
+Confirm `npm run dev` works at http://localhost:4360. If the dev server fails, show the error and the minimal fix.
 ````
 
 ---

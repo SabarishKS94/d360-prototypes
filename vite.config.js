@@ -41,7 +41,7 @@ export default defineConfig({
   ],
   appType: 'spa',
   server: {
-    port: 3000,
+    port: 4360,
     open: false,
   },
   optimizeDeps: {

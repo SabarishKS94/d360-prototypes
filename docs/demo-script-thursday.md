@@ -9,7 +9,7 @@ cd ~/Code/data360/data360-starter-kit
 npm run dev
 ```
 
-Open http://localhost:3000 in a browser. Have Claude Code open in a terminal side-by-side.
+Open http://localhost:4360 in a browser. Have Claude Code open in a terminal side-by-side.
 
 ---
 
