@@ -14,7 +14,9 @@
     "theme:validate-tokens": "node scripts/validate-tokens.mjs --tokens=../theme-playground/dist/tokens.json",
     "theme:validate-selectors": "node scripts/validate-selectors.mjs --profile=../theme-playground/target-profiles/lwc-slds.json",
     "theme:validate-visual": "node scripts/validate-visual.mjs --references=../theme-playground/dist/screenshots",
-    "lint:arch": "node scripts/lint-architecture-rules.mjs"
+    "lint:arch": "node scripts/lint-architecture-rules.mjs",
+    "install-hooks": "node scripts/install-hooks.mjs",
+    "postinstall": "node scripts/install-hooks.mjs"
   },
   "keywords": [],
   "author": "",
