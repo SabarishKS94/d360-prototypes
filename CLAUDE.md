@@ -14,9 +14,8 @@ npm run dev          # Start dev server at http://localhost:3000 (auto-runs icon
 npm run build        # Production build to dist/
 npm run preview      # Preview production bundle locally
 npm run clean        # Remove dist, .vite, node_modules
+npm run lint:arch    # Check architecture rules (namespace, CSS, labels)
 ```
-
-There are no lint or test commands configured.
 
 ## Architecture
 
@@ -107,3 +106,48 @@ For detailed theme architecture rules (glass buttons, aurora background, brand s
 Synthetic shadow is enabled in `vite.config.js` to mirror the Salesforce platform. This means:
 - Global SLDS styles penetrate components (by design)
 - To switch to native shadow: set `disableSyntheticShadowSupport: true` in `vite.config.js`
+
+## Mandatory Skill Gates for LWC Work
+
+These skills MUST be invoked before taking the associated action. Do not skip them or act first and check later.
+
+| Trigger | Skill to invoke | When |
+|---------|----------------|------|
+| Creating any new component under `src/modules/` | `lwc-new-component:lwc-new-component` | Before creating any files |
+| Writing or editing `.html`, `.css`, `.js` in `src/modules/` | `lwc-ui-checklist:lwc-ui-checklist` | Before writing any markup, styling, or logic |
+| Editing `cosmos-theme.css`, `cosmosApp.css`, or brand CSS | `/theme-audit` | Before writing any change |
+| Adding a new page or nav item | `add-nav-item:add-nav-item` | Before creating route or nav entry |
+
+These gates exist to ensure SLDS compliance, correct LWC patterns, and theme architecture rules are applied from the start, not retrofitted after the fact.
+
+## i18n-Ready Label Pattern
+
+No hardcoded user-facing strings in component templates. All user-visible text must be imported from `src/modules/data/labels/<FeatureArea>.js`.
+
+**Label module pattern:**
+```javascript
+// src/modules/data/labels/Contacts.js
+export const PageTitle = 'Contacts';
+export const SearchPlaceholder = 'Search contacts...';
+```
+
+**Component usage:**
+```javascript
+import { PageTitle, SearchPlaceholder } from 'data/labels/Contacts';
+export default class PageContacts extends LightningElement {
+    labels = { PageTitle, SearchPlaceholder };
+}
+```
+
+**Template binding:**
+```html
+<h1>{labels.PageTitle}</h1>
+<lightning-input label={labels.SearchPlaceholder}></lightning-input>
+```
+
+**Rules:**
+- One file per page or feature area (`Home.js`, `Contacts.js`, `ChurnRateSegment.js`)
+- Shared labels ("Cancel", "Save", "Close") go in `Common.js`
+- Template binds via `{labels.MyLabel}`, never inline text
+- Mirrors core's `@salesforce/label/` pattern — porting is a path swap
+- The lint hook (`scripts/lint-architecture-rules.mjs`) warns on hardcoded strings in `title`, `label`, `placeholder`, `alternative-text`, `aria-label` attributes
