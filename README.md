@@ -81,6 +81,48 @@ Change **`.env`**, then restart the dev server.
 
 **Adding a page (high level):** new `src/modules/page/<name>/` → new row in `routes.config.js` → import in `app.js` `ROUTE_COMPONENTS`. Details: [**`docs/technical-reference.md`**](docs/technical-reference.md).
 
+## Quality guardrails
+
+This repo enforces patterns automatically so prototypes stay production-portable.
+
+### Lint hooks (run automatically)
+
+| Hook | What it checks | Blocking? |
+|------|----------------|-----------|
+| `lint-architecture-rules` | Namespace placement, CSS file responsibility, hardcoded labels, component completeness | Namespace = blocking; others = warnings |
+| `lint-import-boundaries` | Namespace dependency rules (e.g., `ui/` can't import from `shell/`) | Blocking |
+
+Both run as **PostToolUse hooks** in Claude Code (after every Write/Edit) and as a **pre-push git hook** (blocks pushes with violations). Install hooks manually if needed: `npm run install-hooks`.
+
+### i18n-ready labels
+
+User-facing strings live in `src/modules/data/labels/<FeatureArea>.js`, not hardcoded in templates. This mirrors core's `@salesforce/label/` — porting is a path swap.
+
+```javascript
+import { PageTitle } from 'data/labels/Contacts';
+export default class PageContacts extends LightningElement {
+    labels = { PageTitle };
+}
+```
+
+### Claude Code skill gates
+
+When using Claude Code, these skills fire automatically before specific actions:
+
+| Action | Skill |
+|--------|-------|
+| New component | `lwc-new-component` |
+| Edit UI markup/CSS/JS | `lwc-ui-checklist` |
+| Edit theme CSS | `/theme-audit` |
+| Add page or nav item | `add-nav-item` |
+
+### Available lint commands
+
+```bash
+npm run lint:arch        # Architecture rules (namespace, CSS, labels)
+npm run lint:boundaries  # Import dependency rules
+```
+
 ## Theme Playground
 
 A **zero-dependency** HTML/CSS sandbox for iterating on the Cosmos theme without the full LWC/Vite stack lives in its own repo:
