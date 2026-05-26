@@ -10,6 +10,7 @@
     "build": "node scripts/prebuild-icons.mjs && vite build",
     "preview": "vite preview",
     "dev:native-shadow": "echo 'To use native shadow, set disableSyntheticShadowSupport: true in vite.config.js'",
+    "lint:boundaries": "node scripts/lint-import-boundaries.mjs",
     "theme:validate-tokens": "node scripts/validate-tokens.mjs --tokens=../theme-playground/dist/tokens.json",
     "theme:validate-selectors": "node scripts/validate-selectors.mjs --profile=../theme-playground/target-profiles/lwc-slds.json",
     "theme:validate-visual": "node scripts/validate-visual.mjs --references=../theme-playground/dist/screenshots",
