@@ -7,6 +7,10 @@
           {
             "type": "command",
             "command": "node scripts/lint-architecture-rules.mjs --hook"
+          },
+          {
+            "type": "command",
+            "command": "node scripts/lint-import-boundaries.mjs --hook"
           }
         ]
       }
