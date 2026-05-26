@@ -1,4 +1,5 @@
 import { LightningElement, track } from 'lwc';
+import * as PlanBuilderLabels from 'data/labels/PlanBuilder';
 
 const STEPS = [
     { id: 0, label: 'Add Your Data', dotColor: 'blue', title: 'Add Your Data', subtitle: 'Add data sources for your plan.' },
@@ -9,6 +10,7 @@ const STEPS = [
 ];
 
 export default class PlanBuilder extends LightningElement {
+    labels = PlanBuilderLabels;
     @track activeStepId = 0;
     @track sidebarCollapsed = false;
     @track completedSteps = [];

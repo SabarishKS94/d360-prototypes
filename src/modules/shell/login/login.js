@@ -1,7 +1,9 @@
 import { LightningElement, track } from 'lwc';
 import { signInWithGoogle } from '../../../data/firebaseAuth.js';
+import { SignInWithGoogle } from 'data/labels/Login';
 
 export default class Login extends LightningElement {
+    labels = { SignInWithGoogle };
     @track errorMessage = '';
     @track isLoading = false;
 

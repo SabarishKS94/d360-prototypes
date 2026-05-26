@@ -17,3 +17,6 @@ export const SliderControl = 'Slider Control';
 export const TextArea = 'Text Area';
 export const EnableFeature = 'Enable Feature';
 export const FooterText = 'Built with Vite + LWC + Lightning Base Components + SLDS';
+export const Download = 'Download';
+export const Refresh = 'Refresh';
+export const OpenDemoModal = 'Open demo modal';
