@@ -1,8 +1,8 @@
 import { LightningElement, api, track } from 'lwc';
-import { AppLauncher } from 'data/labels/GlobalNavigation';
+import { AppLauncher, AppNavigation } from 'data/labels/GlobalNavigation';
 
 export default class GlobalNavigation extends LightningElement {
-    labels = { AppLauncher };
+    labels = { AppLauncher, AppNavigation };
     @api currentPage = 'home';
     @api navItems = [];
     @api apps = [];

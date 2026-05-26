@@ -31,21 +31,21 @@
                         <a href="#">Select Specific Data</a>
                     </div>
                     <lightning-input
-                        label="Data search"
+                        label={labels.DataSearch}
                         variant="label-hidden"
-                        placeholder="Describe the data you want...">
+                        placeholder={labels.DescribeDataPlaceholder}>
                     </lightning-input>
                     <div class="pb-connector-label">Connectors to search across:</div>
                     <lightning-input
-                        label="Connector search"
+                        label={labels.ConnectorSearch}
                         variant="label-hidden"
-                        placeholder="Select or search a connector...">
+                        placeholder={labels.SelectConnectorPlaceholder}>
                     </lightning-input>
                 </div>
                 <div class="pb-footer">
                     <span class="pb-step-count">{stepCountLabel}</span>
                     <lightning-button
-                        label="Search For Data"
+                        label={labels.SearchForData}
                         variant="brand"
                         onclick={handleSearch}>
                     </lightning-button>

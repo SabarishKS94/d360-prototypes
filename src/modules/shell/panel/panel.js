@@ -1,6 +1,8 @@
 import { LightningElement, api } from 'lwc';
+import * as Labels from 'data/labels/Panel';
 
 export default class Panel extends LightningElement {
+    labels = Labels;
     @api selectedPanel = 'agentforce_panel';
 
     get showAgentforcePanel() {

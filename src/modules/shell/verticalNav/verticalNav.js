@@ -1,9 +1,11 @@
 // src/modules/shell/verticalNav/verticalNav.js
 import { LightningElement, api, track } from 'lwc';
+import * as Labels from 'data/labels/VerticalNav';
 
 const STORAGE_KEY = 'vertical-nav-collapsed';
 
 export default class VerticalNav extends LightningElement {
+    labels = Labels;
     // TODO: wire active-item highlighting when real routes are assigned to nav items
     @api currentPage = '';
     @api navItems = [];

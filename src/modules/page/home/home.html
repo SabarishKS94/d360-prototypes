@@ -17,7 +17,7 @@
                     <lightning-layout-item size="12" medium-device-size="6" padding="horizontal-small">
                     <lightning-input
                         label={labels.TextInput}
-                        placeholder="Enter some text..."
+                        placeholder={labels.EnterSomeText}
                         value={inputValue}
                         onchange={handleInputChange}>
                     </lightning-input>
@@ -26,7 +26,7 @@
                     <lightning-input
                         type="email"
                         label={labels.EmailInput}
-                        placeholder="user@example.com">
+                        placeholder={labels.EmailPlaceholder}>
                     </lightning-input>
                 </lightning-layout-item>
                 <lightning-layout-item size="12" medium-device-size="6" padding="horizontal-small" class="slds-m-top_small">
@@ -54,7 +54,7 @@
             <lightning-layout multiple-rows="true" pull-to-boundary="small">
                 <lightning-layout-item size="12" medium-device-size="6" padding="horizontal-small">
                     <lightning-checkbox-group
-                        label="Checkbox Group"
+                        label={labels.CheckboxGroup}
                         options={checkboxOptions}
                         value={checkboxGroupValues}
                         onchange={handleCheckboxChange}>
@@ -62,7 +62,7 @@
                 </lightning-layout-item>
                 <lightning-layout-item size="12" medium-device-size="6" padding="horizontal-small" class="slds-m-top_small home-input-item-second">
                     <lightning-radio-group
-                        label="Radio Group"
+                        label={labels.RadioGroup}
                         options={radioOptions}
                         value={selectedRadioValue}
                         onchange={handleRadioChange}>
@@ -70,8 +70,8 @@
                 </lightning-layout-item>
                 <lightning-layout-item size="12" medium-device-size="6" padding="horizontal-small" class="slds-m-top_small">
                     <lightning-combobox
-                        label="Combobox"
-                        placeholder="Select an option"
+                        label={labels.Combobox}
+                        placeholder={labels.SelectAnOption}
                         options={comboboxOptions}
                         value={selectedComboboxValue}
                         onchange={handleComboboxChange}>
@@ -110,7 +110,7 @@
             </div>
             <lightning-textarea
                 label={labels.TextArea}
-                placeholder="Enter multiple lines of text..."
+                placeholder={labels.EnterMultipleLines}
                 value={textAreaValue}
                 onchange={handleTextAreaChange}>
             </lightning-textarea>
@@ -131,30 +131,30 @@
             <div class="slds-button-group">
                 <lightning-button
                     class="slds-m-right_x-small"
-                    label="Base Button"
+                    label={labels.BaseButton}
                     onclick={handleButtonClick}>
                 </lightning-button>
                 <lightning-button
                     class="slds-m-right_x-small"
                     variant="brand"
-                    label="Brand Button"
+                    label={labels.BrandButton}
                     onclick={handleBrandButton}>
                 </lightning-button>
                 <lightning-button
                     class="slds-m-right_x-small"
                     variant="success"
-                    label="Success Button"
+                    label={labels.SuccessButton}
                     onclick={handleSuccessButton}>
                 </lightning-button>
                 <lightning-button
                     class="slds-m-right_x-small"
                     variant="neutral"
-                    label="Neutral Button"
+                    label={labels.NeutralButton}
                     onclick={handleNeutralButton}>
                 </lightning-button>
                 <lightning-button
                     variant="destructive"
-                    label="Destructive Button">
+                    label={labels.DestructiveButton}>
                 </lightning-button>
             </div>
         </lightning-card>
@@ -194,10 +194,10 @@
         <lightning-layout-item size="12" class="slds-m-bottom_large">
         <!-- Badges -->
         <lightning-card title={labels.Badges}>
-            <lightning-badge label="Default Badge" class="badge-default"></lightning-badge>
-            <lightning-badge label="Success Badge" class="slds-m-left_small badge-success"></lightning-badge>
-            <lightning-badge label="Warning Badge" class="slds-m-left_small badge-warning"></lightning-badge>
-            <lightning-badge label="Error Badge" class="slds-m-left_small badge-error"></lightning-badge>
+            <lightning-badge label={labels.DefaultBadge} class="badge-default"></lightning-badge>
+            <lightning-badge label={labels.SuccessBadge} class="slds-m-left_small badge-success"></lightning-badge>
+            <lightning-badge label={labels.WarningBadge} class="slds-m-left_small badge-warning"></lightning-badge>
+            <lightning-badge label={labels.ErrorBadge} class="slds-m-left_small badge-error"></lightning-badge>
         </lightning-card>
         </lightning-layout-item>
 

@@ -1,12 +1,12 @@
 <!-- src/modules/shell/verticalNav/verticalNav.html -->
 <template>
-    <nav class={navClass} aria-label="App navigation">
+    <nav class={navClass} aria-label={labels.AppNavigation}>
         <div class="vertical-nav__search">
             <lightning-input
                 type="search"
-                label="Quick find"
+                label={labels.QuickFind}
                 variant="label-hidden"
-                placeholder="Quick find"
+                placeholder={labels.QuickFind}
                 value={quickFindValue}
                 onchange={handleQuickFindChange}>
             </lightning-input>

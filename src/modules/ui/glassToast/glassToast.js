@@ -1,6 +1,8 @@
 import { LightningElement, api } from 'lwc';
+import { Close } from 'data/labels/GlassToast';
 
 export default class GlassToast extends LightningElement {
+    labels = { Close };
     @api variant = 'default';
     @api message = '';
     @api iconName = '';
