@@ -214,6 +214,7 @@ body.cosmos-dark .cosmos-shell-nav {
     -webkit-backdrop-filter: blur(40px);
     backdrop-filter: blur(40px);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.30), 0 1px 3px rgba(0, 0, 0, 0.20);
+    height: 83vh;
 }
 
 body.cosmos-dark .cosmos-panel-overlay {
@@ -240,6 +241,7 @@ body.cosmos-light .cosmos-shell-nav {
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
     box-shadow: 0 2px 8px rgba(26, 31, 54, 0.10), 0 1px 3px rgba(26, 31, 54, 0.06);
+    height: 83vh;
 }
 
 body.cosmos-light .cosmos-panel-overlay {
@@ -353,6 +355,81 @@ body.cosmos-dark .slds-context-bar__app-name .slds-truncate {
 body.cosmos-light .slds-context-bar__app-name .slds-truncate {
     font-weight: 600 !important;
     color: #1a1f36 !important;
+}
+
+/* ── Minimal nav/header bridge deltas ─────────────────────────────── */
+
+body.cosmos-dark .vertical-nav__footer-link_active {
+    color: rgba(255, 255, 255, 0.95) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: inset 2px 0 0 var(--slds-g-color-border-accent-1, #4992fe) !important;
+}
+
+body.cosmos-light .vertical-nav__footer-link_active {
+    color: #1a1f36 !important;
+    background: rgba(55, 65, 130, 0.06) !important;
+    box-shadow: inset 2px 0 0 var(--slds-g-color-border-accent-1, #0250d9) !important;
+}
+
+body.cosmos-dark .vertical-nav_collapsed .vertical-nav__search .slds-button.slds-button_icon-border-filled {
+    border-color: rgba(255, 255, 255, 0.20) !important;
+}
+
+body.cosmos-dark .vertical-nav_collapsed .vertical-nav__search .slds-button.slds-button_icon-border-filled:hover {
+    border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+body.cosmos-light .vertical-nav_collapsed .vertical-nav__search .slds-button.slds-button_icon-border-filled {
+    border-color: rgba(0, 0, 0, 0.30) !important;
+}
+
+body.cosmos-light .vertical-nav_collapsed .vertical-nav__search .slds-button.slds-button_icon-border-filled:hover {
+    border-color: rgba(0, 0, 0, 0.45) !important;
+}
+
+body.cosmos-dark .globalNavigation-dropdownItem > a,
+body.cosmos-light .globalNavigation-dropdownItem > a {
+    color: inherit;
+}
+
+body.cosmos-dark .vertical-nav lightning-icon svg,
+body.cosmos-dark .vertical-nav .slds-button__icon {
+    fill: rgba(255, 255, 255, 0.85) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+body.cosmos-light .vertical-nav lightning-icon svg,
+body.cosmos-light .vertical-nav .slds-button__icon {
+    fill: rgba(0, 0, 0, 0.78) !important;
+    color: rgba(0, 0, 0, 0.78) !important;
+}
+
+body.cosmos-dark .vertical-nav .vertical-nav__footer-link_active lightning-icon svg,
+body.cosmos-dark .vertical-nav .vertical-nav__footer-link_active .slds-button__icon {
+    fill: var(--slds-g-color-accent-2, #4992fe) !important;
+    color: var(--slds-g-color-accent-2, #4992fe) !important;
+}
+
+body.cosmos-light .vertical-nav .vertical-nav__footer-link_active lightning-icon svg,
+body.cosmos-light .vertical-nav .vertical-nav__footer-link_active .slds-button__icon {
+    fill: var(--slds-g-color-accent-2, #0250d9) !important;
+    color: var(--slds-g-color-accent-2, #0250d9) !important;
+}
+
+body.cosmos-dark .global-header lightning-button-icon lightning-primitive-icon svg,
+body.cosmos-dark .global-header lightning-button-menu lightning-primitive-icon svg,
+body.cosmos-dark .global-header lightning-button-icon-stateful lightning-primitive-icon svg,
+body.cosmos-dark .global-header .slds-button__icon {
+    fill: rgba(255, 255, 255, 0.90) !important;
+    color: rgba(255, 255, 255, 0.90) !important;
+}
+
+body.cosmos-light .global-header lightning-button-icon lightning-primitive-icon svg,
+body.cosmos-light .global-header lightning-button-menu lightning-primitive-icon svg,
+body.cosmos-light .global-header lightning-button-icon-stateful lightning-primitive-icon svg,
+body.cosmos-light .global-header .slds-button__icon {
+    fill: rgba(0, 0, 0, 0.82) !important;
+    color: rgba(0, 0, 0, 0.82) !important;
 }
 
 .slds-card__header-title,

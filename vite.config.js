@@ -49,6 +49,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      'data/labels': path.resolve('./src/modules/data/labels'),
       '@salesforce-ux/design-system': path.resolve('./node_modules/@salesforce-ux/design-system'),
       '@salesforce-ux/design-system-2': path.resolve('./node_modules/@salesforce-ux/design-system-2'),
       ...iconTemplateAliases,

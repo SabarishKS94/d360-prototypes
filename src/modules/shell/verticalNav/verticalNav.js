@@ -63,7 +63,13 @@ export default class VerticalNav extends LightningElement {
     }
 
     get collapseLabel() {
-        return this.isCollapsed ? 'Expand' : 'Collapse';
+        return this.isCollapsed ? this.labels.Expand : this.labels.Collapse;
+    }
+
+    get quickStartLinkClass() {
+        const base = 'vertical-nav__footer-link';
+        const isActiveHome = this.currentPage === 'home';
+        return isActiveHome ? `${base} vertical-nav__footer-link_active` : base;
     }
 
     handleQuickFindChange(event) {
@@ -93,5 +99,17 @@ export default class VerticalNav extends LightningElement {
     handleCollapseToggle() {
         this.isCollapsed = !this.isCollapsed;
         localStorage.setItem(STORAGE_KEY, String(this.isCollapsed));
+    }
+
+    handleCollapsedSearchClick() {
+        if (!this.isCollapsed) return;
+        this.isCollapsed = false;
+        localStorage.setItem(STORAGE_KEY, 'false');
+        requestAnimationFrame(() => {
+            const input = this.template.querySelector('.vertical-nav__search lightning-input');
+            if (input && typeof input.focus === 'function') {
+                input.focus();
+            }
+        });
     }
 }

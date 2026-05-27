@@ -20,8 +20,8 @@ export default class GlobalNavigation extends LightningElement {
             ...app,
             isActive: app.id === this.activeAppId,
             itemClass: app.id === this.activeAppId
-                ? 'slds-dropdown__item slds-is-selected'
-                : 'slds-dropdown__item',
+                ? 'slds-dropdown__item slds-is-selected globalNavigation-dropdownItem'
+                : 'slds-dropdown__item globalNavigation-dropdownItem',
         }));
     }
 

@@ -1,9 +1,9 @@
 import { LightningElement } from 'lwc';
 import { getCurrentRoute } from '../../../router';
-import { User } from 'data/labels/User';
+import { User as UserLabel } from 'data/labels/User';
 
 export default class User extends LightningElement {
-    labels = { User };
+    labels = { User: UserLabel };
     get route() {
         return getCurrentRoute();
     }

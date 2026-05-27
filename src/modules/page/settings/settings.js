@@ -1,6 +1,6 @@
 import { LightningElement } from 'lwc';
-import { Settings } from 'data/labels/Settings';
+import { Settings as SettingsLabel } from 'data/labels/Settings';
 
 export default class Settings extends LightningElement {
-    labels = { Settings };
+    labels = { Settings: SettingsLabel };
 }

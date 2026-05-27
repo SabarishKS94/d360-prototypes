@@ -2,7 +2,7 @@
     min-width: 180px;
 }
 
-.slds-dropdown__item > a {
+.globalNavigation-dropdownItem > a {
     display: flex;
     align-items: center;
     width: 100%;

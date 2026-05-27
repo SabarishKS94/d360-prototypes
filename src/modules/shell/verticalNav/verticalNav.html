@@ -2,14 +2,25 @@
 <template>
     <nav class={navClass} aria-label={labels.AppNavigation}>
         <div class="vertical-nav__search">
-            <lightning-input
-                type="search"
-                label={labels.QuickFind}
-                variant="label-hidden"
-                placeholder={labels.QuickFind}
-                value={quickFindValue}
-                onchange={handleQuickFindChange}>
-            </lightning-input>
+            <template if:false={isCollapsed}>
+                <lightning-input
+                    type="search"
+                    label={labels.QuickFind}
+                    variant="label-hidden"
+                    placeholder={labels.QuickFind}
+                    value={quickFindValue}
+                    onchange={handleQuickFindChange}>
+                </lightning-input>
+            </template>
+            <template if:true={isCollapsed}>
+                <lightning-button-icon
+                    icon-name="utility:search"
+                    variant="border-filled"
+                    alternative-text={labels.QuickFind}
+                    title={labels.QuickFind}
+                    onclick={handleCollapsedSearchClick}>
+                </lightning-button-icon>
+            </template>
         </div>
 
         <div class="vertical-nav__body">
@@ -55,12 +66,12 @@
         <div class="vertical-nav__footer">
             <a
                 href="/"
-                class="vertical-nav__footer-link"
+                class={quickStartLinkClass}
                 onclick={handleItemClick}
                 data-path="/">
                 <lightning-icon icon-name="utility:apex" size="x-small" class="slds-m-right_x-small"></lightning-icon>
                 <template if:false={isCollapsed}>
-                    <span class="slds-truncate">Quick Start Library</span>
+                    <span class="slds-truncate">{labels.QuickStartLibrary}</span>
                 </template>
             </a>
             <button
@@ -69,7 +80,7 @@
                 title={collapseLabel}>
                 <lightning-icon icon-name={collapseIcon} size="x-small"></lightning-icon>
                 <template if:false={isCollapsed}>
-                    <span class="slds-m-left_x-small">Collapse</span>
+                    <span class="slds-m-left_x-small">{labels.Collapse}</span>
                 </template>
             </button>
         </div>
