@@ -14,6 +14,9 @@ src/build/generated/
 # Worktrees
 .worktrees/
 
+# Local-only files (not shared via git)
+.local/
+
 # Playwright MCP
 .playwright-mcp/
 
