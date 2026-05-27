@@ -374,14 +374,35 @@ body.cosmos-dark > #app {
     z-index: 1;
 }
 
-/* ── Shared: make SLDS surfaces transparent ──────────────────────── */
+/* ── SLDS global token overrides ──────────────────────────────────
+   Remap platform tokens so all components (custom + Lightning base)
+   auto-theme in cosmos mode without per-component property overrides. */
 
-body.cosmos-light,
 body.cosmos-dark {
-    --slds-g-color-surface-2: transparent;
     --slds-g-color-surface-1: transparent;
+    --slds-g-color-surface-2: var(--cos-color-surface-interactive);
     --slds-g-color-surface-container-1: transparent;
     --slds-g-color-surface-container-2: transparent;
+    --slds-g-color-border-1: var(--cos-color-border-subtle);
+    --slds-g-color-border-2: var(--cos-color-border-medium);
+    --slds-g-color-on-surface-1: var(--cos-color-on-surface);
+    --slds-g-color-on-surface-2: var(--cos-color-on-surface-secondary);
+    --slds-g-shadow-2: none;
+    --slds-g-shadow-4: var(--cos-shadow);
+    background-color: transparent !important;
+}
+
+body.cosmos-light {
+    --slds-g-color-surface-1: transparent;
+    --slds-g-color-surface-2: var(--cos-color-surface-interactive);
+    --slds-g-color-surface-container-1: transparent;
+    --slds-g-color-surface-container-2: transparent;
+    --slds-g-color-border-1: var(--cos-color-border-subtle);
+    --slds-g-color-border-2: var(--cos-color-border-medium);
+    --slds-g-color-on-surface-1: var(--cos-color-on-surface);
+    --slds-g-color-on-surface-2: var(--cos-color-on-surface-secondary);
+    --slds-g-shadow-2: none;
+    --slds-g-shadow-4: var(--cos-shadow);
     background-color: transparent !important;
 }
 
@@ -397,13 +418,16 @@ body.cosmos-dark .slds-container_large {
     max-width: 100%;
 }
 
+/* Higher specificity needed to beat .slds-color-scheme_dark from SLDS 2 */
 body.cosmos-dark.slds-color-scheme_dark {
     --slds-g-color-surface-1: transparent;
-    --slds-g-color-surface-2: transparent;
+    --slds-g-color-surface-2: var(--cos-color-surface-interactive);
     --slds-g-color-surface-container-1: transparent;
     --slds-g-color-surface-container-2: transparent;
     --slds-g-color-border-1: var(--cos-color-border-subtle);
     --slds-g-color-border-2: var(--cos-color-border-medium);
+    --slds-g-color-on-surface-1: var(--cos-color-on-surface);
+    --slds-g-color-on-surface-2: var(--cos-color-on-surface-secondary);
 }
 
 /* ── Shell chrome: strip SLDS defaults ───────────────────────────── */
@@ -427,25 +451,6 @@ body.cosmos-dark .slds-context-bar {
 body.cosmos-light .global-shell::before,
 body.cosmos-dark .global-shell::before {
     display: none;
-}
-
-body.cosmos-light .global-header,
-body.cosmos-dark .global-header,
-body.cosmos-light .global-shell,
-body.cosmos-dark .global-shell {
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    margin: 0;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-}
-
-body.cosmos-light .vertical-nav,
-body.cosmos-dark .vertical-nav {
-    background: transparent;
-    border-right: none;
 }
 
 /* Entire header interior — uniform transparent */
