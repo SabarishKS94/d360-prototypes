@@ -122,6 +122,15 @@ These skills MUST be invoked before taking the associated action. Do not skip th
 
 These gates exist to ensure SLDS compliance, correct LWC patterns, and theme architecture rules are applied from the start, not retrofitted after the fact.
 
+## Responding to Hook Failures
+
+When a PostToolUse hook exits non-zero (e.g., the lint architecture hook flags a violation):
+
+1. **Do not ignore it.** The edit persisted but violates project rules.
+2. **Ask the user** if they would like you to fix the violations the correct way. Present the specific violation and explain how to fix it (e.g., "Move this string to `data/labels/X.js` and use a binding").
+3. **Do not silently re-attempt the same edit.** The user explicitly asked for the change — respect that intent while surfacing the conflict.
+4. If the user says to proceed anyway, leave the violation in place — they own the decision.
+
 ## i18n-Ready Label Pattern
 
 No hardcoded user-facing strings in component templates. All user-visible text must be imported from `src/modules/data/labels/<FeatureArea>.js`.

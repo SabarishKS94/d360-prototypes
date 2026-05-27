@@ -207,12 +207,14 @@ function checkLabelEnforcement(filePath, content) {
           continue;
         }
 
+        const componentName = relativePath.split('/').slice(-2, -1)[0];
+        const labelModule = componentName.charAt(0).toUpperCase() + componentName.slice(1);
         addIssue(
           'blocking',
           'LabelEnforcement',
           relativePath,
           idx + 1,
-          `Hardcoded string in ${attr}="${value}" (should use label from data/labels/)`
+          `Hardcoded string in ${attr}="${value}". Fix: add to data/labels/${labelModule}.js and use {labels.YourLabel} binding`
         );
       }
     }
@@ -382,11 +384,13 @@ function outputResults(isHook) {
   const hasWarnings = issues.warnings.length > 0;
 
   if (hasBlocking) {
-    console.log(`❌ lint-architecture-rules: ${issues.blocking.length} violation(s)`);
+    console.error(`❌ lint-architecture-rules: ${issues.blocking.length} violation(s)`);
     for (const issue of issues.blocking) {
-      console.log(`[${issue.check}] ${issue.file}:${issue.line}`);
-      console.log(`→ ${issue.message}`);
+      console.error(`  [${issue.check}] ${issue.file}:${issue.line}`);
+      console.error(`  → ${issue.message}`);
     }
+    console.error('');
+    console.error('Ask the user if they would like you to fix these violations.');
     process.exit(1);
   }
 
