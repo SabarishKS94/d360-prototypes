@@ -208,7 +208,7 @@ function checkLabelEnforcement(filePath, content) {
         }
 
         addIssue(
-          'warning',
+          'blocking',
           'LabelEnforcement',
           relativePath,
           idx + 1,

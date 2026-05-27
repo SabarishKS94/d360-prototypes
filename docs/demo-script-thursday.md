@@ -30,7 +30,7 @@ Open http://localhost:4360 in a browser. Have Claude Code open in a terminal sid
 
 In Claude Code, type:
 
-> "Create a new page called data-sources that shows a datatable of sample data sources with columns: Name, Type, Status, Last Synced"
+> "Create a new page called data-sources that shows a datatable of sample data sources with columns: Name, Type, Status, Last Synced. Wire it up as the first item under Connect & Unify in the vertical nav."
 
 **What the audience sees:**
 - `lwc-new-component` skill fires (show the gate triggering)
@@ -43,20 +43,19 @@ In Claude Code, type:
 
 In Claude Code, type:
 
-> "In the data-sources page, change the title attribute on the card to a hardcoded string: title="Data Sources""
+> "In the data-sources page, change the alternative-text on the lightning-icon to a hardcoded string: alternative-text="Data Sources""
 
 **What the audience sees:**
 - The PostToolUse hook fires
-- Warning appears: `[LabelEnforcement] ... title="Data Sources" — import from data/labels/`
-- Say: "The hook caught it. Let me fix it."
+- Error blocks: `❌ [LabelEnforcement] ... alternative-text="Data Sources" — import from data/labels/`
+- Say: "The hook caught it and blocked the change. Let me fix it."
 
 Then type:
 
 > "Fix the label warning — use the label pattern"
 
 **What the audience sees:**
-- Label moves to `data/labels/DataSources.js`
-- Template uses `{labels.DataSourcesTitle}`
+- Template switches back to `alternative-text={labels.PageTitle}`
 - Hook runs again — clean
 
 ### 5. Show pre-push (30 sec)
