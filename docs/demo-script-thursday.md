@@ -48,15 +48,8 @@ In Claude Code, type:
 **What the audience sees:**
 - The PostToolUse hook fires
 - Error blocks: `❌ [LabelEnforcement] ... alternative-text="Data Sources" — import from data/labels/`
-- Say: "The hook caught it and blocked the change. Let me fix it."
-
-Then type:
-
-> "Fix the label warning — use the label pattern"
-
-**What the audience sees:**
-- Template switches back to `alternative-text={labels.PageTitle}`
-- Hook runs again — clean
+- **The edit is automatically reverted** — the bad pattern never lands in the file
+- Say: "It wouldn't even let me do it. The label pattern is enforced automatically — hardcoded strings can't get past the guardrail."
 
 ### 5. Show pre-push (30 sec)
 
