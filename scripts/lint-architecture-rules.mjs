@@ -105,6 +105,7 @@ function checkCssResponsibility(filePath, content) {
   if (!isCosmosApp && !isCosmosTheme) return;
 
   const lines = content.split('\n');
+  let currentSelector = '';
 
   lines.forEach((line, idx) => {
     const trimmed = line.trim();
@@ -114,13 +115,23 @@ function checkCssResponsibility(filePath, content) {
       return;
     }
 
+    // Track current selector (lines ending with '{' are selectors)
+    if (trimmed.endsWith('{')) {
+      currentSelector = trimmed;
+    } else if (trimmed === '}') {
+      currentSelector = '';
+    }
+
     if (isCosmosApp) {
-      // Check for visual properties
       for (const prop of VISUAL_PROPS) {
         const regex = new RegExp(`^${prop}\\s*:`);
         if (regex.test(trimmed)) {
-          // Check for exceptions: transparent and inherit
-          if (trimmed.includes('transparent') || trimmed.includes('inherit')) {
+          // Allow: transparent, inherit, var(--cos-*) token consumption
+          if (
+            trimmed.includes('transparent') ||
+            trimmed.includes('inherit') ||
+            trimmed.includes('var(--cos-')
+          ) {
             continue;
           }
           addIssue(
@@ -135,10 +146,21 @@ function checkCssResponsibility(filePath, content) {
     }
 
     if (isCosmosTheme) {
-      // Check for layout properties
       for (const prop of LAYOUT_PROPS) {
         const regex = new RegExp(`^${prop}\\s*:`);
         if (regex.test(trimmed)) {
+          // Allow layout props when targeting SLDS/Lightning internals, body pseudo-elements,
+          // or global shell elements that require cross-shadow reset
+          const selectorTargetsSlds =
+            currentSelector.includes('.slds-') ||
+            currentSelector.includes('lightning-') ||
+            currentSelector.includes('::before') ||
+            currentSelector.includes('::after') ||
+            currentSelector.includes('> #app') ||
+            currentSelector.includes('.global-');
+          if (selectorTargetsSlds) {
+            continue;
+          }
           addIssue(
             'warning',
             'CssResponsibility',
