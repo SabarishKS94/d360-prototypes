@@ -48,13 +48,15 @@ Two app shells exist: `shell/app` (standard) and `shell/cosmosApp` (glass). The 
 
 | File | Owns | Reason |
 |------|------|--------|
-| `public/cosmos-theme.css` | **All visual styling** — backgrounds, borders, backdrop-filter, gradients, transparency overrides, light/dark color values, button/card/panel/datatable glass treatments | Global CSS can cross synthetic shadow boundaries to reach child component internals (`.global-header`, `.vertical-nav`, `.slds-card`, etc.) |
-| `src/modules/shell/cosmosApp/cosmosApp.css` | **Layout only** — fixed positioning, z-index, dimensions, padding, transforms, transitions, CSS custom properties (`--cosmos-*`) | Scoped to the host component; never put visual glass properties here |
+| `public/cosmos-theme.css` | **Semantic tokens** (`--cos-*`) + **SLDS/Lightning base component overrides** — targets `.slds-card`, `.slds-button_brand`, `.slds-modal__*`, etc. | Global CSS must cross synthetic shadow to reach child Lightning base component internals |
+| `src/modules/shell/cosmosApp/cosmosApp.css` | **Layout + visual for `.cosmos-shell-*` elements** owned by this component | Component owns its own DOM; consumes `var(--cos-*)` tokens |
+| Component CSS (`ui/glassToast`, `ui/planBuilder`, etc.) | **Visual + layout for classes they own** | Components consume `var(--cos-*)` tokens; no `body.cosmos-*` prefix needed |
 
 **Rules:**
-- Never put `background`, `backdrop-filter`, `border` (visual), or color values in `cosmosApp.css` — they won't reach child components and will silently fail
+- SLDS/Lightning base component overrides go in `cosmos-theme.css` (global reach needed)
+- Custom component classes go in their own CSS file, consuming `var(--cos-*)` tokens
 - Never put layout/positioning rules in `cosmos-theme.css` — those are component-scoped concerns
-- When comparing against the `cosmos-glass-theme` branch, `cosmos-theme.css` is the file to diff — it's the single source of truth for all glass visuals
+- When comparing against the `cosmos-glass-theme` branch, `cosmos-theme.css` is the file to diff — it's the single source of truth for all glass visuals and token definitions
 
 ### Icon System
 

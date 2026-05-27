@@ -1,7 +1,5 @@
-/* cosmosApp.css — Layout only.
-   All visual glass styling (backgrounds, borders, backdrop-filter,
-   gradients, light/dark overrides) lives in public/cosmos-theme.css
-   so it can cross synthetic shadow boundaries. */
+/* cosmosApp.css — Layout + visual glass for elements owned by this component.
+   Consumes semantic tokens from public/cosmos-theme.css (set on body). */
 
 :host {
     --cosmos-inset: 20px;
@@ -26,6 +24,11 @@
     right: var(--cosmos-inset);
     z-index: 10;
     border-radius: 12px;
+    background: var(--cos-color-surface);
+    border: 1px solid var(--cos-color-border);
+    -webkit-backdrop-filter: var(--cos-shell-blur, var(--cos-blur-heavy));
+    backdrop-filter: var(--cos-shell-blur, var(--cos-blur-heavy));
+    box-shadow: var(--cos-shadow-lg);
 }
 
 /* ── Fixed vertical nav ── */
@@ -38,6 +41,12 @@
     z-index: 8;
     border-radius: 12px;
     overflow: hidden;
+    height: 83vh;
+    background: var(--cos-color-surface);
+    border: 1px solid var(--cos-color-border);
+    -webkit-backdrop-filter: var(--cos-shell-blur, var(--cos-blur-heavy));
+    backdrop-filter: var(--cos-shell-blur, var(--cos-blur-heavy));
+    box-shadow: var(--cos-shadow-lg);
 }
 
 /* ── Content area: scrolls behind fixed overlays ── */
@@ -72,6 +81,11 @@
     transition: transform 0.25s ease;
     border-radius: 12px;
     overflow: hidden;
+    background: var(--cos-color-surface);
+    border: 1px solid var(--cos-color-border);
+    -webkit-backdrop-filter: var(--cos-blur);
+    backdrop-filter: var(--cos-blur);
+    box-shadow: var(--cos-shadow);
 }
 
 .cosmos-panel-overlay_open {
