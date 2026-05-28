@@ -4,15 +4,18 @@ A **Data 360–aligned** app shell for **Lightning Web Components (LWC)** in the
 
 **In short:** use this to prototype the **D360** experience, test navigation and pages, and hand patterns to eng when the design is ready.
 
-## GitHub template (how you’re expected to use this)
+## Getting started (fork this repo)
 
-This repository is a **source template** on GitHub. For a real project, use **Use this template** to create *your* repository, then build there. **Changes to the starter itself** are made by the maintainers in the upstream repo; most people **do not** push app work here — they work in their own repo and can **pull** or cherry-pick from upstream when they want updates.
+This repository is meant to be **forked**, not used as a template. Forking keeps a link back to the upstream so you can pull shell, nav, theme, and architecture improvements as they land.
 
 | If you are… | What to do |
 |-------------|------------|
-| **Starting a new prototype** | On GitHub: **Use this template** → create *your* repo (your org, your name) → `git clone` **that** URL. Rename and customize inside your copy. |
-| **Using soma only** | Create the repo from the template on **GitHub EMU** first (or get a copy from the soma mirror), then work from your own remote on soma if your team standardizes on that. |
-| **Maintaining the starter** | Commit and push to the **upstream** repos below; keep **Template repository** enabled in GitHub repo **Settings → General** so the green **Use this template** button stays available. |
+| **Starting a new prototype** | On GitHub: click **Fork** → choose your org/account → `git clone` your fork. Build your pages there. |
+| **Pulling upstream updates** | In your fork on GitHub: click **Sync fork** → **Update branch**. Or locally: `git fetch upstream && git merge upstream/main`. |
+| **Using soma only** | Fork from the **soma mirror** URL below, or add it as a second remote on your GitHub EMU fork. |
+| **Maintaining the starter** | Push to the **upstream** repos below. |
+
+**Why fork instead of template?** A fork keeps the “Sync fork” button on GitHub, so your team automatically sees when new shell features, lint rules, or architecture improvements are available — and can pull them in with one click. Template-generated repos are fully disconnected copies with no upstream link.
 
 **Where this comes from** — The same LWC + Vite + SLDS “starter” pattern is used across Salesforce UI tooling; this repo is expanded for D360. **Deeper, generic notes** (routing table details, icon pipeline, synthetic shadow, full folder tree) live in [**`docs/technical-reference.md`**](docs/technical-reference.md). A larger app on the same pattern is **d360-qsl-ux-prototype** (internal).
 
@@ -22,16 +25,14 @@ This repository is a **source template** on GitHub. For a real project, use **Us
 - **Internal teammates** with access to **git.soma** but not the GitHub EMU.  
 - Engineers who want a **vibe-coded** starting point and will align later with the platform’s deployment model.
 
-## Upstream source (for “Use this template” and soma)
-
-These URLs point at the **maintained** starter, not at your project after you template it.
+## Upstream source (fork from here)
 
 | | URL |
 |---|-----|
-| **GitHub EMU (canonical: create new repos with “Use this template”)** | [github.com/salesforce-ux-emu/data360-starter-kit](https://github.com/salesforce-ux-emu/data360-starter-kit) |
-| **Soma mirror (partners without GitHub EMU; maintainer push)** | `https://git.soma.salesforce.com/dvora/d360-starter-template.git` |
+| **GitHub EMU (canonical — fork from here)** | [github.com/salesforce-ux-emu/data360-starter-kit](https://github.com/salesforce-ux-emu/data360-starter-kit) |
+| **Soma mirror (partners without GitHub EMU)** | `https://git.soma.salesforce.com/dvora/d360-starter-template.git` |
 
-After you **Use this template** and name your app, clone **your** repository’s URL, then run setup below. You **push only to your repo** (`origin`); you do not need a `soma` remote for normal work. To **merge improvements from upstream** later, add a `remote` and `pull` / cherry-pick as you prefer. **Maintainers** who publish the mirror to soma: [Maintainers (Soma mirror)](docs/setup-with-agent.md#maintainers-soma-mirror). The same file explains [using an agent after you clone *your* repo](docs/setup-with-agent.md).
+After you fork and clone, run setup below. You **push only to your fork** (`origin`); the upstream remote is already configured by GitHub. **Maintainers** who publish the mirror to soma: [Maintainers (Soma mirror)](docs/setup-with-agent.md#maintainers-soma-mirror). The same file explains [using an agent after you clone *your* repo](docs/setup-with-agent.md).
 
 ## First-time setup
 
@@ -137,7 +138,7 @@ Open `index.html` in a browser, tweak tokens live, and export the resulting CSS 
 |-----|------|
 | [**`docs/technical-reference.md`**](docs/technical-reference.md) | Full LWC/Vite/SLDS project structure, routing, shadow DOM, icons, conventions, upstream links. |
 | [**`docs/setup-with-agent.md`**](docs/setup-with-agent.md) | Agent copy-paste prompt, Soma + GitHub remotes. |
-| [GitHub: `salesforce-ux-emu/data360-starter-kit`](https://github.com/salesforce-ux-emu/data360-starter-kit) | **Use this template**, Issues, history. |
+| [GitHub: `salesforce-ux-emu/data360-starter-kit`](https://github.com/salesforce-ux-emu/data360-starter-kit) | **Fork from here**, Issues, history. |
 | [**Theme Playground**](https://github.com/salesforce-ux-emu/theme-playground) | Standalone theme sandbox — iterate on Cosmos tokens without the build pipeline. |
 | [`.cursor/rules/`](.cursor/rules/) (if present) | SLDS / LWC / icons guidance for this workspace. |
 
