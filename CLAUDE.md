@@ -126,11 +126,16 @@ Production builds go to `dist/`.
 - Do not add CSS that bleeds across component boundaries
 - Use `lightning-layout` / `lightning-layout-item` for layout instead of custom flex/grid where possible
 
-**Adding a new page:**
+**Adding a new page (registration steps for this codebase):**
 1. Create `src/modules/data/services/myPageService.js` with typed async functions
 2. Create `src/modules/page/myPage/myPage.{html,js}` — imports from `data/services/` only
-3. Add an entry to `src/routes.config.js`
-4. Add a nav entry in `shell/globalNav` if needed
+3. Add an entry to `src/routes.config.js` (format: `{ path, component, title, navPage?, navHighlight? }`)
+4. Register in **both** shell apps — import the page component and add to `ROUTE_COMPONENTS` in:
+   - `src/modules/shell/app/app.js` (Template App / horizontal nav)
+   - `src/modules/shell/cosmosApp/cosmosApp.js` (Data 360 app / vertical nav)
+5. Add a nav entry if needed (set `navPage` in routes.config for a tab, `navHighlight` for child routes)
+
+If you only register in one shell file, the page will render blank in the other app.
 
 **Data access rules (enforced by hooks):**
 - `page/` imports from `data/services/` and `data/labels/` — never raw `data/*`
