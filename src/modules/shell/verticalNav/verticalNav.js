@@ -30,6 +30,7 @@ export default class VerticalNav extends LightningElement {
     get filteredGroups() {
         const query = (this.quickFindValue || '').toLowerCase().trim();
         const activePath = this.currentPath;
+        const collapsed = this.isCollapsed;
         return (this.navItems || []).reduce((acc, group) => {
             const filteredChildren = query
                 ? group.children.filter((item) =>
@@ -45,10 +46,16 @@ export default class VerticalNav extends LightningElement {
             if (!isGroupVisible) return acc;
 
             const hasActiveChild = filteredChildren.some((item) => item.path === activePath);
-            const isExpanded = !!this._expandedGroups[group.id] || hasActiveChild;
+            const isExpanded = !collapsed && (!!this._expandedGroups[group.id] || hasActiveChild);
+            const headerBase = 'slds-button slds-button_reset vertical-nav__group-header';
+            const headerClass = (collapsed && hasActiveChild)
+                ? `${headerBase} vertical-nav__group-header_active`
+                : headerBase;
             acc.push({
                 ...group,
                 isExpanded,
+                showChildren: isExpanded && !collapsed,
+                headerClass,
                 chevronIcon: isExpanded ? 'utility:chevrondown' : 'utility:chevronright',
                 filteredChildren: filteredChildren.map((item) => {
                     const isActive = item.path === activePath;
