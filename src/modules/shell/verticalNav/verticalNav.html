@@ -13,13 +13,12 @@
                 </lightning-input>
             </template>
             <template if:true={isCollapsed}>
-                <lightning-button-icon
-                    icon-name="utility:search"
-                    variant="bare"
-                    alternative-text={labels.QuickFind}
+                <button
+                    class="slds-button slds-button_reset vertical-nav__search-icon"
                     title={labels.QuickFind}
                     onclick={handleCollapsedSearchClick}>
-                </lightning-button-icon>
+                    <lightning-icon icon-name="utility:search" size="x-small"></lightning-icon>
+                </button>
             </template>
         </div>
 
