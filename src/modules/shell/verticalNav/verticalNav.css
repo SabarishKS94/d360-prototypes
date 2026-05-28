@@ -77,6 +77,15 @@
     display: none;
 }
 
+.vertical-nav_collapsed .vertical-nav__group-header {
+    justify-content: center;
+    padding: var(--slds-g-spacing-2, 0.5rem);
+}
+
+.vertical-nav_collapsed .vertical-nav__group-header lightning-icon {
+    margin-right: 0;
+}
+
 .vertical-nav_collapsed .vertical-nav__group-header_active {
     box-shadow: inset 3px 0 0 var(--slds-g-color-border-accent-1, #0176d3);
 }
