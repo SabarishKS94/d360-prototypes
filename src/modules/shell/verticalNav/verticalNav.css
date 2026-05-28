@@ -88,7 +88,8 @@
 
 .vertical-nav_collapsed .vertical-nav__group-header_active {
     box-shadow: inset 3px 0 0 var(--slds-g-color-border-accent-1, #0176d3);
-    background-color: var(--slds-g-color-brand-base-10, #eef4ff);
+    background-color: var(--slds-g-color-brand-base-90, #eef4ff);
+    border-radius: 0px;
 }
 
 .vertical-nav__footer {
