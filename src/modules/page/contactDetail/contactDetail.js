@@ -1,6 +1,6 @@
 import { LightningElement, track } from 'lwc';
 import { getCurrentRoute, navigate } from '../../../router';
-import { getContactById } from 'data/contacts';
+import { getContact } from 'data/services/contactService';
 import * as ContactDetailLabels from 'data/labels/ContactDetail';
 
 const ACTIVITY_ITEMS = [
@@ -16,11 +16,11 @@ export default class ContactDetail extends LightningElement {
     @track isFollowing = false;
     activityItems = ACTIVITY_ITEMS;
 
-    connectedCallback() {
+    async connectedCallback() {
         const route = getCurrentRoute();
         const id = route?.params?.id;
         if (id) {
-            this.contact = getContactById(id);
+            this.contact = await getContact(id);
         }
     }
 

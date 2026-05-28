@@ -26,15 +26,55 @@ All LWC components live under `src/modules/` organized by namespace:
 | Namespace | Tag Prefix | Purpose |
 |-----------|------------|---------|
 | `shell/`  | `shell-*`  | App chrome: header, nav, theme switcher |
-| `page/`   | `page-*`   | Route-level views — one component per URL |
-| `ui/`     | `ui-*`     | Reusable building blocks |
-| `data/`   | (import)   | Plain JS modules (fixtures, helpers) — not LWC tags |
+| `page/`   | `page-*`   | Route-level **containers** — fetch data via services, pass to `ui/` children |
+| `ui/`     | `ui-*`     | Reusable **presentational** components — props in, events out |
+| `data/`   | (import)   | Plain JS modules — not LWC tags |
+| `data/services/` | (import) | Typed async service layer — the client-server boundary |
+| `data/labels/` | (import) | i18n-ready label constants |
 
 ### Routing
 
 - `src/routes.config.js` — single source of truth for all routes; add new routes here
 - `src/router.js` — client-side History API router with path param support (`:id`)
 - `shell/app` reads routes and dynamically renders the matching `page-*` component
+
+### Service Layer (Client-Server Boundary)
+
+Every data operation a page component needs goes through a **service module** in `data/services/`. This is the seam where a real backend slots in — the service is an async function today backed by local fixtures, and becomes a Connect API client or `@wire` adapter when porting to core.
+
+**Import rules (enforced by `lint-import-boundaries.mjs`):**
+- `page/` can import from `data/services/` and `data/labels/` only — never raw `data/*`
+- `ui/` can import from `data/labels/` only — never `data/services/` or raw `data/*`
+- `data/services/` can import from any `data/` module (it wraps them)
+
+**Service module pattern:**
+```javascript
+// data/services/contactService.js
+import { getAllContacts as _getAll } from 'data/contacts';
+
+/** @typedef {Object} Contact
+ *  @property {string} id
+ *  @property {string} name
+ *  ... every field declared with its type */
+
+/** @returns {Promise<Contact[]>} */
+export async function listContacts() { return _getAll(); }
+```
+
+The `@typedef` block is the **data contract** — it declares the shape that flows between client and server. When porting, core engineers read these typedefs to design Connect API representations.
+
+### Container / Presentational Pattern
+
+- **`page/` = container** — calls services, manages loading/error state, passes data down as props, handles events from children, owns navigation
+- **`ui/` = presentational** — receives all data via `@api` props, dispatches `CustomEvent` for actions, never fetches data or navigates directly
+
+When a `ui/` component needs to trigger navigation:
+```javascript
+this.dispatchEvent(new CustomEvent('navigate', {
+    detail: { route: '/target' }, bubbles: true, composed: true
+}));
+```
+The parent `page/` container listens and calls `navigate()`.
 
 ### SLDS Theme System
 
@@ -87,9 +127,15 @@ Production builds go to `dist/`.
 - Use `lightning-layout` / `lightning-layout-item` for layout instead of custom flex/grid where possible
 
 **Adding a new page:**
-1. Create `src/modules/page/myPage/myPage.{html,js}`
-2. Add an entry to `src/routes.config.js`
-3. Add a nav entry in `shell/globalNav` if needed
+1. Create `src/modules/data/services/myPageService.js` with typed async functions
+2. Create `src/modules/page/myPage/myPage.{html,js}` — imports from `data/services/` only
+3. Add an entry to `src/routes.config.js`
+4. Add a nav entry in `shell/globalNav` if needed
+
+**Data access rules (enforced by hooks):**
+- `page/` imports from `data/services/` and `data/labels/` — never raw `data/*`
+- `ui/` imports from `data/labels/` only — receives all other data as `@api` props
+- `ui/` dispatches `CustomEvent` for actions — never calls `navigate()` or mutates data directly
 
 ## Theme System Reference
 
