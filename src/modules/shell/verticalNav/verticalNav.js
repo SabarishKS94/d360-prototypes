@@ -6,8 +6,8 @@ const STORAGE_KEY = 'vertical-nav-collapsed';
 
 export default class VerticalNav extends LightningElement {
     labels = Labels;
-    // TODO: wire active-item highlighting when real routes are assigned to nav items
     @api currentPage = '';
+    @api currentPath = '/';
     @api navItems = [];
 
     quickFindValue = '';
@@ -29,6 +29,7 @@ export default class VerticalNav extends LightningElement {
 
     get filteredGroups() {
         const query = (this.quickFindValue || '').toLowerCase().trim();
+        const activePath = this.currentPath;
         return (this.navItems || []).reduce((acc, group) => {
             const filteredChildren = query
                 ? group.children.filter((item) =>
@@ -43,12 +44,23 @@ export default class VerticalNav extends LightningElement {
 
             if (!isGroupVisible) return acc;
 
-            const isExpanded = !!this._expandedGroups[group.id];
+            const hasActiveChild = filteredChildren.some((item) => item.path === activePath);
+            const isExpanded = !!this._expandedGroups[group.id] || hasActiveChild;
             acc.push({
                 ...group,
                 isExpanded,
                 chevronIcon: isExpanded ? 'utility:chevrondown' : 'utility:chevronright',
-                filteredChildren: filteredChildren.map((item) => ({ ...item })),
+                filteredChildren: filteredChildren.map((item) => {
+                    const isActive = item.path === activePath;
+                    return {
+                        ...item,
+                        isActive,
+                        itemClass: isActive
+                            ? 'slds-nav-vertical__item slds-is-active'
+                            : 'slds-nav-vertical__item',
+                        ariaCurrent: isActive ? 'page' : undefined,
+                    };
+                }),
             });
             return acc;
         }, []);

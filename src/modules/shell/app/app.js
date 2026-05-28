@@ -109,7 +109,11 @@ export default class App extends LightningElement {
 
     get currentNavPage() {
         const name = this.route?.component;
-        return name ? (ROUTE_TO_NAV_PAGE[name] ?? 'home') : 'home';
+        return name ? (ROUTE_TO_NAV_PAGE[name] ?? '') : 'home';
+    }
+
+    get currentPath() {
+        return window.location.pathname;
     }
 
     get navItems() {

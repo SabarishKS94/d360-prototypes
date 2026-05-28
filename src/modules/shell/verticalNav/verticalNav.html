@@ -47,10 +47,11 @@
                     <template if:true={group.isExpanded}>
                         <ul class="slds-nav-vertical__items">
                             <template for:each={group.filteredChildren} for:item="item">
-                                <li key={item.id} class="slds-nav-vertical__item">
+                                <li key={item.id} class={item.itemClass}>
                                     <a
                                         href={item.path}
                                         class="slds-nav-vertical__action"
+                                        aria-current={item.ariaCurrent}
                                         data-path={item.path}
                                         onclick={handleItemClick}>
                                         <span class="slds-truncate">{item.label}</span>
