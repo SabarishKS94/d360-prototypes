@@ -38,12 +38,13 @@ const RULES = {
     },
     page: {
         canImport: ['data', 'ui'],
+        allowedDataPaths: ['data/services/', 'data/labels/'],
         allowedSpecialPaths: ['src/router.js', 'src/routes.config.js'],
         cannotImport: ['shell', 'page']
     },
     ui: {
         canImport: ['ui'], // ui can import other ui components
-        allowedDataPaths: ['data/labels'], // ui can only import data/labels/
+        allowedDataPaths: ['data/labels/'], // ui can only import data/labels/
         cannotImport: ['page', 'shell']
     },
     data: {
@@ -252,10 +253,11 @@ function checkImport(importInfo, currentNamespace, currentFilePath) {
 
     // Check if target namespace is allowed
     if (rules.canImport.includes(targetNamespace)) {
-        // Special case: ui/ can only import data/labels/, not other data/
-        if (currentNamespace === 'ui' && targetNamespace === 'data') {
-            if (!importPath.startsWith('data/labels/') && !rules.allowedDataPaths?.some(p => importPath.startsWith(p))) {
-                return `${currentNamespace}/ can only import data/labels/, not ${importPath}`;
+        // Namespaces with allowedDataPaths can only import from those paths, not arbitrary data/
+        if (targetNamespace === 'data' && rules.allowedDataPaths) {
+            if (!rules.allowedDataPaths.some(p => importPath.startsWith(p))) {
+                const allowed = rules.allowedDataPaths.join(' or ');
+                return `${currentNamespace}/ can only import from ${allowed}, not ${importPath}. Move data access into a service module (data/services/).`;
             }
         }
         return null;

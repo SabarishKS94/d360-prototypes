@@ -1,6 +1,6 @@
 import { LightningElement, track } from 'lwc';
 import { navigate } from '../../../router';
-import { getAllContacts } from 'data/contacts';
+import { listContacts } from 'data/services/contactService';
 import * as ContactsLabels from 'data/labels/Contacts';
 
 const COLUMNS = [
@@ -39,8 +39,8 @@ export default class Contacts extends LightningElement {
     sortedDirection = 'asc';
     searchTerm = '';
 
-    connectedCallback() {
-        this.data = getAllContacts();
+    async connectedCallback() {
+        this.data = await listContacts();
     }
 
     get filteredData() {
