@@ -9,3 +9,4 @@ export const GuidanceCenter = 'Guidance Center';
 export const SalesforceHelp = 'Salesforce Help';
 export const Setup = 'Setup';
 export const Notifications = 'Notifications';
+export const MenuItemOne = 'Menu Item One';
