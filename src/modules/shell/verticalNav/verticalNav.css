@@ -61,6 +61,7 @@
     letter-spacing: 0.0625rem;
     color: var(--slds-g-color-on-surface-2, #444);
     transition: background-color 0.1s ease;
+    border-radius: 0px;
 }
 
 .vertical-nav__group-header:hover {

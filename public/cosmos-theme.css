@@ -8,7 +8,64 @@
    These define the design language; component rules consume them.
    ══════════════════════════════════════════════════════════════════ */
 
+/* ── Global header icon button overrides (all modes) ─────────────── */
+
+.header-icon-button .slds-button__icon {
+    fill: light-dark(var(--slds-g-color-palette-neutral-60, #747474), var(--slds-g-color-palette-neutral-40, #aeaeae));
+}
+
+.header-icon-button:hover .slds-button__icon {
+    fill: light-dark(var(--slds-g-color-palette-neutral-50, #5a5a5a), var(--slds-g-color-palette-neutral-30, #c9c9c9));
+}
+
+.header-icon-button lightning-primitive-icon:nth-of-type(2) {
+    display: none;
+}
+
+.header-icon-button .slds-button_icon-container-more {
+    line-height: inherit;
+}
+
+/* ── Interactive icon token contract ──────────────────────────────── */
+
+/* Base defaults — applies to standard (non-glass) mode where no
+   body.cosmos-* class is present. Keeps icon buttons neutral grey
+   instead of falling through to the SLDS brand blue default. */
+:root {
+    --slds-c-button-icon-color-foreground: var(--slds-g-color-palette-neutral-60, #747474);
+    --slds-c-button-icon-color-foreground-hover: var(--slds-g-color-palette-neutral-50, #5a5a5a);
+    --slds-c-button-icon-color-foreground-active: var(--slds-g-color-palette-neutral-50, #5a5a5a);
+    --slds-c-button-icon-color-foreground-focus: var(--slds-g-color-palette-neutral-50, #5a5a5a);
+}
+
+/* Glass mode — adds the full token system for cosmos themes.
+   Light-mode defaults here; dark overrides below in body.cosmos-dark. */
+body.cosmos-dark,
+body.cosmos-light {
+    --cosmos-icon-interactive-rest: rgba(0, 0, 0, 0.55);
+    --cosmos-icon-interactive-hover: rgba(0, 0, 0, 0.75);
+    --cosmos-icon-interactive-active: rgba(0, 0, 0, 0.85);
+    --cosmos-icon-interactive-focus: var(--slds-g-color-border-accent-1, #0176d3);
+
+    --slds-c-button-icon-color-foreground: var(--cosmos-icon-interactive-rest);
+    --slds-c-button-icon-color-foreground-hover: var(--cosmos-icon-interactive-hover);
+    --slds-c-button-icon-color-foreground-active: var(--cosmos-icon-interactive-active);
+    --slds-c-button-icon-color-foreground-focus: var(--cosmos-icon-interactive-hover);
+    --slds-c-button-text-color: var(--cosmos-icon-interactive-rest);
+    --slds-c-button-text-color-hover: var(--cosmos-icon-interactive-hover);
+    --slds-c-button-text-color-active: var(--cosmos-icon-interactive-active);
+    --slds-c-button-stateful-color-text: var(--cosmos-icon-interactive-rest);
+    --slds-c-button-stateful-color-text-hover: var(--cosmos-icon-interactive-hover);
+    --slds-c-button-stateful-color-text-selected: var(--cosmos-icon-interactive-active);
+}
+
 body.cosmos-dark {
+    /* ── Icon interactive (dark overrides) ─────────────────────────── */
+    --cosmos-icon-interactive-rest: rgba(255, 255, 255, 0.75);
+    --cosmos-icon-interactive-hover: rgba(255, 255, 255, 0.95);
+    --cosmos-icon-interactive-active: rgba(255, 255, 255, 1);
+    --cosmos-icon-interactive-focus: rgba(167, 139, 250, 0.75);
+
     /* ── Surface (background fills) ────────────────────────────────── */
     --cos-color-surface:                  rgba(255, 255, 255, 0.04);
     --cos-color-surface-interactive:      rgba(255, 255, 255, 0.06);
@@ -480,9 +537,20 @@ body.cosmos-light .slds-context-bar__vertical-divider {
 
 /* ── Header icon/search/avatar overrides ─────────────────────────── */
 
-body.cosmos-dark .cosmos-shell-header .customize-slds-button lightning-layout,
-body.cosmos-light .cosmos-shell-header .customize-slds-button lightning-layout {
-    gap: 4px;
+body.cosmos-dark .header-icon-button .slds-button__icon {
+    fill: var(--cosmos-icon-interactive-rest) !important;
+}
+
+body.cosmos-dark .header-icon-button:hover .slds-button__icon {
+    fill: var(--cosmos-icon-interactive-hover) !important;
+}
+
+body.cosmos-light .header-icon-button .slds-button__icon {
+    fill: var(--cosmos-icon-interactive-rest) !important;
+}
+
+body.cosmos-light .header-icon-button:hover .slds-button__icon {
+    fill: var(--cosmos-icon-interactive-hover) !important;
 }
 
 body.cosmos-dark .cosmos-shell-header .slds-global-header__item_search,
@@ -616,17 +684,6 @@ body.cosmos-light .vertical-nav .vertical-nav__footer-link_active .slds-button__
     color: var(--cos-color-accent) !important;
 }
 
-body.cosmos-dark .global-header lightning-button-icon lightning-primitive-icon svg,
-body.cosmos-dark .global-header lightning-button-menu lightning-primitive-icon svg,
-body.cosmos-dark .global-header lightning-button-icon-stateful lightning-primitive-icon svg,
-body.cosmos-dark .global-header .slds-button__icon,
-body.cosmos-light .global-header lightning-button-icon lightning-primitive-icon svg,
-body.cosmos-light .global-header lightning-button-menu lightning-primitive-icon svg,
-body.cosmos-light .global-header lightning-button-icon-stateful lightning-primitive-icon svg,
-body.cosmos-light .global-header .slds-button__icon {
-    fill: var(--cos-color-on-surface-strong) !important;
-    color: var(--cos-color-on-surface-strong) !important;
-}
 
 .slds-card__header-title,
 .slds-card__header-title .slds-text-heading--label,
@@ -918,12 +975,10 @@ body.cosmos-light .slds-button_success:hover {
 }
 
 body.cosmos-dark .slds-button.slds-button_icon-border,
-body.cosmos-dark .slds-button.slds-button_icon-border-filled,
-body.cosmos-light .slds-button.slds-button_icon-border,
-body.cosmos-light .slds-button.slds-button_icon-border-filled {
-    background-color: var(--cos-btn-icon-bg, var(--cos-color-surface-interactive));
-    border: 1px solid var(--cos-btn-icon-border, var(--cos-color-border-medium));
-    color: var(--cos-color-on-surface-default);
+body.cosmos-dark .slds-button.slds-button_icon-border-filled {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: var(--cosmos-icon-interactive-rest);
     border-radius: 50%;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
@@ -931,24 +986,113 @@ body.cosmos-light .slds-button.slds-button_icon-border-filled {
 }
 
 body.cosmos-dark .slds-button.slds-button_icon-border:hover,
-body.cosmos-dark .slds-button.slds-button_icon-border-filled:hover,
-body.cosmos-light .slds-button.slds-button_icon-border:hover,
-body.cosmos-light .slds-button.slds-button_icon-border-filled:hover {
-    background-color: var(--cos-btn-icon-hover-bg, var(--cos-color-surface-interactive-hover));
-    border-color: var(--cos-btn-icon-hover-border, var(--cos-color-border-stronger));
-    color: var(--cos-color-accent);
+body.cosmos-dark .slds-button.slds-button_icon-border-filled:hover {
+    background-color: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: var(--cosmos-icon-interactive-hover);
 }
 
 body.cosmos-dark .slds-button.slds-button_icon-border:hover lightning-primitive-icon svg,
 body.cosmos-dark .slds-button.slds-button_icon-border-filled:hover lightning-primitive-icon svg,
 body.cosmos-dark .slds-button.slds-button_icon-border:hover .slds-button__icon,
-body.cosmos-dark .slds-button.slds-button_icon-border-filled:hover .slds-button__icon,
+body.cosmos-dark .slds-button.slds-button_icon-border-filled:hover .slds-button__icon {
+    fill: var(--cosmos-icon-interactive-hover) !important;
+    color: var(--cosmos-icon-interactive-hover) !important;
+}
+
+body.cosmos-light .slds-button.slds-button_icon-border,
+body.cosmos-light .slds-button.slds-button_icon-border-filled {
+    background-color: var(--cos-btn-icon-bg, rgba(255, 255, 255, 0.10));
+    border: 1px solid var(--cos-btn-icon-border, rgba(255, 255, 255, 0.20));
+    color: var(--cosmos-icon-interactive-rest);
+    border-radius: 50%;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+body.cosmos-light .slds-button.slds-button_icon-border:hover,
+body.cosmos-light .slds-button.slds-button_icon-border-filled:hover {
+    background-color: var(--cos-btn-icon-hover-bg, rgba(255, 255, 255, 0.25));
+    border-color: var(--cos-btn-icon-hover-border, rgba(255, 255, 255, 0.40));
+    color: var(--cosmos-icon-interactive-hover);
+}
+
 body.cosmos-light .slds-button.slds-button_icon-border:hover lightning-primitive-icon svg,
 body.cosmos-light .slds-button.slds-button_icon-border-filled:hover lightning-primitive-icon svg,
 body.cosmos-light .slds-button.slds-button_icon-border:hover .slds-button__icon,
 body.cosmos-light .slds-button.slds-button_icon-border-filled:hover .slds-button__icon {
-    fill: var(--cos-color-accent) !important;
-    color: var(--cos-color-accent) !important;
+    fill: var(--cosmos-icon-interactive-hover) !important;
+    color: var(--cosmos-icon-interactive-hover) !important;
+}
+
+/* Normalize icon-bearing button controls (icon/container/menu triggers). */
+body.cosmos-dark .slds-button_icon,
+body.cosmos-dark .slds-button_icon-container,
+body.cosmos-dark .slds-button_icon-border,
+body.cosmos-dark .slds-button_icon-border-filled,
+body.cosmos-dark .slds-button_icon-bare,
+body.cosmos-dark .slds-button_icon-more {
+    color: var(--cosmos-icon-interactive-rest) !important;
+}
+
+body.cosmos-dark .slds-button_icon:hover,
+body.cosmos-dark .slds-button_icon-container:hover,
+body.cosmos-dark .slds-button_icon-border:hover,
+body.cosmos-dark .slds-button_icon-border-filled:hover,
+body.cosmos-dark .slds-button_icon-bare:hover,
+body.cosmos-dark .slds-button_icon-more:hover {
+    color: var(--cosmos-icon-interactive-hover) !important;
+}
+
+body.cosmos-dark .slds-button_icon .slds-button__icon,
+body.cosmos-dark .slds-button_icon-container .slds-button__icon,
+body.cosmos-dark .slds-button_icon-border .slds-button__icon,
+body.cosmos-dark .slds-button_icon-border-filled .slds-button__icon,
+body.cosmos-dark .slds-button_icon-bare .slds-button__icon,
+body.cosmos-dark .slds-button_icon-more .slds-button__icon,
+body.cosmos-dark .slds-button_icon lightning-primitive-icon svg,
+body.cosmos-dark .slds-button_icon-container lightning-primitive-icon svg,
+body.cosmos-dark .slds-button_icon-border lightning-primitive-icon svg,
+body.cosmos-dark .slds-button_icon-border-filled lightning-primitive-icon svg,
+body.cosmos-dark .slds-button_icon-bare lightning-primitive-icon svg,
+body.cosmos-dark .slds-button_icon-more lightning-primitive-icon svg {
+    fill: currentColor !important;
+    color: currentColor !important;
+}
+
+body.cosmos-light .slds-button_icon,
+body.cosmos-light .slds-button_icon-container,
+body.cosmos-light .slds-button_icon-border,
+body.cosmos-light .slds-button_icon-border-filled,
+body.cosmos-light .slds-button_icon-bare,
+body.cosmos-light .slds-button_icon-more {
+    color: var(--cosmos-icon-interactive-rest) !important;
+}
+
+body.cosmos-light .slds-button_icon:hover,
+body.cosmos-light .slds-button_icon-container:hover,
+body.cosmos-light .slds-button_icon-border:hover,
+body.cosmos-light .slds-button_icon-border-filled:hover,
+body.cosmos-light .slds-button_icon-bare:hover,
+body.cosmos-light .slds-button_icon-more:hover {
+    color: var(--cosmos-icon-interactive-hover) !important;
+}
+
+body.cosmos-light .slds-button_icon .slds-button__icon,
+body.cosmos-light .slds-button_icon-container .slds-button__icon,
+body.cosmos-light .slds-button_icon-border .slds-button__icon,
+body.cosmos-light .slds-button_icon-border-filled .slds-button__icon,
+body.cosmos-light .slds-button_icon-bare .slds-button__icon,
+body.cosmos-light .slds-button_icon-more .slds-button__icon,
+body.cosmos-light .slds-button_icon lightning-primitive-icon svg,
+body.cosmos-light .slds-button_icon-container lightning-primitive-icon svg,
+body.cosmos-light .slds-button_icon-border lightning-primitive-icon svg,
+body.cosmos-light .slds-button_icon-border-filled lightning-primitive-icon svg,
+body.cosmos-light .slds-button_icon-bare lightning-primitive-icon svg,
+body.cosmos-light .slds-button_icon-more lightning-primitive-icon svg {
+    fill: currentColor !important;
+    color: currentColor !important;
 }
 
 /* ── Inputs ── */

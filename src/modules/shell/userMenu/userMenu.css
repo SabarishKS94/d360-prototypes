@@ -3,6 +3,10 @@
     display: inline-block;
 }
 
+.user-menu-trigger .slds-button {
+    line-height: 1;
+}
+
 .user-menu-dropdown {
     position: absolute;
     right: 0;
