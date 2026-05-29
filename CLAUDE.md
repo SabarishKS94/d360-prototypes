@@ -76,6 +76,27 @@ this.dispatchEvent(new CustomEvent('navigate', {
 ```
 The parent `page/` container listens and calls `navigate()`.
 
+### SLDS Version Policy — SLDS 2 (Cosmos) is the Default
+
+**All new code MUST use SLDS 2 (Cosmos) patterns, classes, and tokens.** Do not use SLDS 1 class patterns (`slds-tabs_default`, `slds-tabs--default`, etc.) when an SLDS 2 equivalent or Lightning Base Component exists.
+
+When the `explore_slds_blueprints` MCP tool returns SLDS 1 markup, **do not use it verbatim**. Instead:
+1. First check if a Lightning Base Component exists (e.g., `<lightning-tabset>` instead of raw `slds-tabs_default` markup)
+2. If no LBC exists, use SLDS 2 / Cosmos class naming conventions and styling hooks
+3. Only fall back to SLDS 1 classes if there is genuinely no SLDS 2 equivalent AND no LBC
+
+**Common SLDS 1 → SLDS 2 / LBC mappings (never use the left column):**
+
+| SLDS 1 (DO NOT USE) | Use Instead |
+|---------------------|-------------|
+| `slds-tabs_default`, `slds-tabs--default` | `<lightning-tabset>` / `<lightning-tab>` |
+| `slds-tabs_scoped` | `<lightning-tabset variant="scoped">` |
+| `slds-button` raw markup | `<lightning-button>` |
+| `slds-card` raw markup | `<lightning-card>` |
+| `slds-modal` raw markup | Extend `LightningModal` |
+| `slds-spinner` raw markup | `<lightning-spinner>` |
+| `slds-badge` raw markup | `<lightning-badge>` |
+
 ### SLDS Theme System
 
 - `src/build/slds-loader.js` handles stylesheet injection; SLDS 2 (Cosmos) is default, SLDS 1 loaded lazily
