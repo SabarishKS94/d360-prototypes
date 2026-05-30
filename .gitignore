@@ -17,6 +17,9 @@ src/build/generated/
 # Local-only files (not shared via git)
 .local/
 
+# Synced Cursor rules (fetched via npm run skills:sync)
+.cursor/rules/d360/
+
 # Playwright MCP
 .playwright-mcp/
 
