@@ -17,7 +17,7 @@
     "lint:arch": "node scripts/lint-architecture-rules.mjs",
     "install-hooks": "node scripts/install-hooks.mjs",
     "skills:sync": "node scripts/sync-d360-skills.mjs",
-    "postinstall": "node scripts/install-hooks.mjs"
+    "postinstall": "node scripts/install-hooks.mjs && node scripts/sync-d360-skills.mjs"
   },
   "keywords": [],
   "author": "",
