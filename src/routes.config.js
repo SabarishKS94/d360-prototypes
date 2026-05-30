@@ -152,4 +152,9 @@ export const routes = [
     component: 'page-segment-act3',
     title: 'Segment & Act — Item 3',
   },
+  {
+    path: '*',
+    component: 'page-not-found',
+    title: 'Page Not Found',
+  },
 ];

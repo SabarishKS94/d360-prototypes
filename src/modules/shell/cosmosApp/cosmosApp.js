@@ -31,6 +31,7 @@ import AnalyzePredict3 from 'page/analyzePredict3';
 import SegmentAct1 from 'page/segmentAct1';
 import SegmentAct2 from 'page/segmentAct2';
 import SegmentAct3 from 'page/segmentAct3';
+import NotFound from 'page/notFound';
 
 const ROUTE_COMPONENTS = {
     'page-home': Home,
@@ -58,6 +59,7 @@ const ROUTE_COMPONENTS = {
     'page-segment-act1': SegmentAct1,
     'page-segment-act2': SegmentAct2,
     'page-segment-act3': SegmentAct3,
+    'page-not-found': NotFound,
 };
 
 const ROUTE_TO_NAV_PAGE = Object.fromEntries(

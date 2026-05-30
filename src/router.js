@@ -12,6 +12,10 @@ const listeners = new Set();
 
 function matchRoute(path) {
   for (const route of routes) {
+    if (route.path === '*') {
+      return { ...route, params: {} };
+    }
+
     const keys = [];
     const pattern = route.path.replace(/:([^/]+)/g, (_, key) => {
       keys.push(key);
