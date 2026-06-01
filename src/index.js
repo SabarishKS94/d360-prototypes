@@ -8,6 +8,13 @@ import { initSldsFromStorage } from './build/slds-loader.js';
 
 await initSldsFromStorage();
 
+// Inject global stylesheet after SLDS using new URL() to bypass LWC plugin.
+const globalCssUrl = new URL('./styles/global.css', import.meta.url).href;
+const globalLink = document.createElement('link');
+globalLink.rel = 'stylesheet';
+globalLink.href = globalCssUrl;
+document.head.appendChild(globalLink);
+
 const SHELL_STORAGE_KEY = 'shell-mode';
 const params = new URLSearchParams(window.location.search);
 const shellParam = params.get('shell');
