@@ -107,3 +107,9 @@ export function activeSLDSVersion() {
     const slds2 = getLink(SLDS2_KEY);
     return slds2 && slds2.media !== 'not all' ? 2 : 1;
 }
+
+export function activeSldsLink() {
+    const slds2 = getLink(SLDS2_KEY);
+    if (slds2 && slds2.media !== 'not all') return slds2;
+    return getLink(SLDS1_KEY);
+}
