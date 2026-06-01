@@ -25,6 +25,21 @@ const SOURCE_DIR = 'cursor-rules';
 
 const isPostInstall = process.env.npm_lifecycle_event === 'postinstall';
 
+function isCursorInstalled() {
+    // Check if the .cursor/rules directory already exists in the project (user has used Cursor before)
+    if (fs.existsSync(path.join(REPO_ROOT, '.cursor', 'rules'))) {
+        return true;
+    }
+    // Check if the Cursor app config directory exists (macOS / Linux / Windows)
+    const home = os.homedir();
+    const cursorConfigPaths = [
+        path.join(home, '.cursor'),                           // macOS / Linux
+        path.join(home, 'Library', 'Application Support', 'Cursor'), // macOS app
+        path.join(home, 'AppData', 'Roaming', 'Cursor'),     // Windows
+    ];
+    return cursorConfigPaths.some(p => fs.existsSync(p));
+}
+
 function printFailure(reason) {
     console.error('');
     console.error('╭──────────────────────────────────────────────────────────────────╮');
@@ -62,6 +77,12 @@ function runGit(args) {
         throw new Error(stderr || `git ${args[0]} exited with code ${result.status}`);
     }
     return result;
+}
+
+if (isPostInstall && !isCursorInstalled()) {
+    console.log('sync-d360-skills: Cursor not detected, skipping rules sync.');
+    console.log('  (Run `npm run skills:sync` manually if you install Cursor later.)');
+    process.exit(0);
 }
 
 const tmpBase = fs.mkdtempSync(path.join(os.tmpdir(), 'd360-skills-'));
