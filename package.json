@@ -18,8 +18,8 @@
     "theme:validate-visual": "node scripts/validate-visual.mjs --references=../theme-playground/dist/screenshots",
     "lint:arch": "node scripts/lint-architecture-rules.mjs",
     "install-hooks": "node scripts/install-hooks.mjs",
-    "skills:sync": "node scripts/sync-d360-skills.mjs",
-    "postinstall": "node scripts/install-hooks.mjs && node scripts/sync-d360-skills.mjs"
+    "skills:sync": "node scripts/sync-d360-skills.mjs && node scripts/sync-afv-skills.mjs",
+    "postinstall": "node scripts/install-hooks.mjs && node scripts/sync-d360-skills.mjs && node scripts/sync-afv-skills.mjs"
   },
   "keywords": [],
   "author": "",
