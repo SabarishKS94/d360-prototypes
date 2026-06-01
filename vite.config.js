@@ -7,8 +7,8 @@ import {
   iconTemplateAliases,
 } from './vite-plugins/icon-templates.js';
 
-export default defineConfig({
-  base: '/',
+export default defineConfig(({ mode }) => ({
+  base: mode === 'gh-pages' ? './' : '/',
   build: {
     outDir: 'dist',
   },
@@ -56,4 +56,4 @@ export default defineConfig({
       ...iconTemplateAliases,
     },
   },
-});
+}));
