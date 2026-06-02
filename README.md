@@ -30,7 +30,7 @@ This repository is meant to be **forked**, not used as a template. Forking keeps
 | | URL |
 |---|-----|
 | **GitHub EMU (canonical — fork from here)** | [github.com/salesforce-ux-emu/data360-starter-kit](https://github.com/salesforce-ux-emu/data360-starter-kit) |
-| **Soma mirror (partners without GitHub EMU)** | `https://git.soma.salesforce.com/dvora/d360-starter-template.git` |
+| **Soma mirror (partners without GitHub EMU)** | `https://git.soma.salesforce.com/a360/d360-prototype-starter.git` |
 
 After you fork and clone, run setup below. You **push only to your fork** (`origin`); the upstream remote is already configured by GitHub. **Maintainers** who publish the mirror to soma: [Maintainers (Soma mirror)](docs/setup-with-agent.md#maintainers-soma-mirror). The same file explains [using an agent after you clone *your* repo](docs/setup-with-agent.md).
 

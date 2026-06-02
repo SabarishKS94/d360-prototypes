@@ -31,7 +31,7 @@ Then:
 You do **not** need to add a `soma` remote to work on your app. `origin` should point at **your** repo, where you **can** push. The maintained template URLs in this doc are only for **finding** the starter and for **maintainers** who update mirrors.
 
 **Canonical template (read-only for most people):** [github.com/salesforce-ux-emu/data360-starter-kit](https://github.com/salesforce-ux-emu/data360-starter-kit).  
-**Soma mirror (read/clone for some partners; push = maintainers only):** `https://git.soma.salesforce.com/dvora/d360-starter-template.git` — see [Maintainers (Soma)](#maintainers-soma-mirror).
+**Soma mirror (read/clone for some partners; push = maintainers only):** `https://git.soma.salesforce.com/a360/d360-prototype-starter.git` — see [Maintainers (Soma)](#maintainers-soma-mirror).
 
 ---
 
@@ -93,13 +93,13 @@ Pushing the **source** repo to **Soma** over HTTPS is easiest with the **GitHub 
 4. From a clone that has the commits you want on the mirror:
 
    ```bash
-   git remote add soma https://git.soma.salesforce.com/dvora/d360-starter-template.git
-   # or: git remote set-url soma https://git.soma.salesforce.com/dvora/d360-starter-template.git
+   git remote add soma https://git.soma.salesforce.com/a360/d360-prototype-starter.git
+   # or: git remote set-url soma https://git.soma.salesforce.com/a360/d360-prototype-starter.git
    git push -u soma main
    ```
 
 5. `gh auth status --hostname git.soma.salesforce.com` should show you’re logged in.
 
-**SSH (no `gh`):** `git remote add soma git@git.soma.salesforce.com:dvora/d360-starter-template.git` then `git push -u soma main`.
+**SSH (no `gh`):** `git remote add soma git@git.soma.salesforce.com:a360/d360-prototype-starter.git` then `git push -u soma main`.
 
 The empty repo on Soma must already exist, and you need access.

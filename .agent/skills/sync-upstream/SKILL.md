@@ -67,7 +67,7 @@ For each commit (or group of related commits) worth incorporating:
 2. Cherry-pick or manually apply the change
 3. Verify it builds: `npm run build`
 4. Push to soma: `git push soma upstream/<short-description>`
-5. Create a PR: `GH_HOST=git.soma.salesforce.com gh pr create --repo dvora/d360-starter-template ...`
+5. Create a PR: `GH_HOST=git.soma.salesforce.com gh pr create --repo a360/d360-prototype-starter ...`
 
 ### 5. Report
 
