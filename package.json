@@ -21,7 +21,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "SEE LICENSE IN LICENSE.txt",
   "type": "module",
   "dependencies": {
     "@lwc/synthetic-shadow": "^9.0.2",
