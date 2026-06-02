@@ -1,5 +1,5 @@
 .global-header {
-    background: var(--slds-g-color-surface-container-1, #ffffff);
+    --_slds-c-globalheader-color-background: var(--slds-g-color-surface-container-1, #ffffff);
 }
 
 .header-icon-button {
