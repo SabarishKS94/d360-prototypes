@@ -1,7 +1,8 @@
 /**
  * Mini router for LWC – declarative routes, dynamic params, History API.
  * No page refresh; back/forward supported.
- * Routes are defined in routes.config.js.
+ * Routes are defined in routes.config.js; apps (URL prefixes that scope a set
+ * of routes) are defined in apps.config.js.
  *
  * Supports two URL modes:
  *   - pathname (default): uses pushState, requires server-side SPA fallback
@@ -11,6 +12,14 @@
  */
 
 import { routes } from './routes.config.js';
+import {
+  getAppById,
+  getAppForPath,
+  stripAppPrefix,
+  withAppPrefix,
+  getPersistedAppId,
+  DEFAULT_APP_ID,
+} from './apps.config.js';
 
 const DEFAULT_TITLE = 'Salesforce';
 
@@ -18,26 +27,101 @@ const HASH_MODE = import.meta.env.VITE_ROUTER_MODE === 'hash';
 
 const listeners = new Set();
 
+let _currentAppId = getPersistedAppId();
+
+export function setCurrentAppForLinks(appId) {
+  if (appId && getAppById(appId)) {
+    _currentAppId = appId;
+  }
+}
+
+function getActiveAppForBuild() {
+  return getAppById(_currentAppId) || getAppById(DEFAULT_APP_ID);
+}
+
+function normalizeLogicalPath(path) {
+  let normalized =
+    !path || path === '/' ? '/' : path.startsWith('/') ? path : `/${path}`;
+  if (normalized.length > 1 && normalized.endsWith('/')) {
+    normalized = normalized.slice(0, -1);
+  }
+  return normalized;
+}
+
+function getLogicalPath() {
+  if (!HASH_MODE) {
+    return normalizeLogicalPath(window.location.pathname);
+  }
+  const locationHash = window.location.hash;
+  if (!locationHash || locationHash === '#' || locationHash === '#/') {
+    return '/';
+  }
+  if (locationHash.startsWith('#/')) {
+    const afterHashSlash = locationHash.slice(2);
+    const fragmentBeforeQuery = afterHashSlash.split('?')[0];
+    const rawLogical = fragmentBeforeQuery ? `/${fragmentBeforeQuery}` : '/';
+    return normalizeLogicalPath(rawLogical);
+  }
+  return '/';
+}
+
+function hashUrlFromLogicalPath(logicalPath) {
+  const fragmentBody = logicalPath === '/' ? '' : logicalPath.slice(1);
+  return `#/${fragmentBody}`;
+}
+
+function writeUrl(logicalPath, replace = false) {
+  const url = HASH_MODE ? hashUrlFromLogicalPath(logicalPath) : logicalPath;
+  if (replace) {
+    history.replaceState({}, '', url);
+  } else {
+    history.pushState({}, '', url);
+  }
+}
+
+/**
+ * `href` for anchors (nav, copy link). When `logicalPath` already includes a
+ * known app prefix it is preserved; otherwise the active app's prefix is
+ * prepended so callers can keep using logical paths from routes.config.js.
+ */
+export function linkHref(logicalPath, appId) {
+  const path = normalizeLogicalPath(logicalPath);
+  const existingApp = getAppForPath(path);
+  const finalPath = existingApp
+    ? path
+    : withAppPrefix(
+        path,
+        (appId && getAppById(appId)) || getActiveAppForBuild()
+      );
+  if (!HASH_MODE) {
+    return finalPath;
+  }
+  return hashUrlFromLogicalPath(finalPath);
+}
+
 function matchRoute(path) {
+  const app = getAppForPath(path);
+  if (!app) return null;
+  const subPath = stripAppPrefix(path, app);
+
   for (const route of routes) {
     if (route.path === '*') {
-      return { ...route, params: {} };
+      return { ...route, params: {}, app: app.id };
     }
 
     const keys = [];
-    const pattern = route.path.replace(/:([^/]+)/g, (_, key) => {
-      keys.push(key);
+    const pattern = route.path.replace(/:([^/]+)/g, (_match, paramName) => {
+      keys.push(paramName);
       return '([^/]+)';
     });
 
     const regex = new RegExp(`^${pattern}$`);
-    const match = path.match(regex);
+    const match = subPath.match(regex);
 
     if (match) {
       const params = {};
-      keys.forEach((k, i) => (params[k] = match[i + 1]));
-
-      return { ...route, params };
+      keys.forEach((paramKey, i) => (params[paramKey] = match[i + 1]));
+      return { ...route, params, app: app.id };
     }
   }
 
@@ -51,50 +135,39 @@ function getTitleForRoute(route) {
     : route.title;
 }
 
-function getLogicalPath() {
-  if (!HASH_MODE) {
-    return window.location.pathname;
-  }
-  const hash = window.location.hash;
-  if (!hash || hash === '#' || hash === '#/') return '/';
-  if (hash.startsWith('#/')) {
-    const body = hash.slice(2).split('?')[0];
-    return body ? `/${body}` : '/';
-  }
-  return '/';
-}
-
-function writeUrl(path, replace = false) {
-  const url = HASH_MODE ? `#/${path === '/' ? '' : path.slice(1)}` : path;
-  if (replace) {
-    history.replaceState({}, '', url);
-  } else {
-    history.pushState({}, '', url);
-  }
-}
-
-/**
- * Returns an href string suitable for anchor tags and programmatic navigation.
- * Consumers should use this instead of hardcoding paths so links work in both modes.
- */
-export function linkHref(path) {
-  if (HASH_MODE) {
-    return `#/${path === '/' ? '' : path.slice(1)}`;
-  }
-  return path;
-}
-
 function notify() {
-  const route = matchRoute(getLogicalPath());
+  const path = getLogicalPath();
+  const app = getAppForPath(path);
+
+  if (!app) {
+    const target = getActiveAppForBuild().defaultPath;
+    if (!getAppForPath(target)) {
+      console.error(
+        `[router] defaultPath "${target}" does not match any app prefix. Check apps.config.js.`
+      );
+      return;
+    }
+    writeUrl(target, true);
+    return notify();
+  }
+
+  _currentAppId = app.id;
+
+  const route = matchRoute(path);
   document.title = getTitleForRoute(route);
-  listeners.forEach((cb) => cb(route));
+  listeners.forEach((listener) => listener(route));
 }
 
 export function navigate(path) {
-  if (!path || path === getLogicalPath()) {
+  const normalized = normalizeLogicalPath(path);
+  const existingApp = getAppForPath(normalized);
+  const logical = existingApp
+    ? normalized
+    : withAppPrefix(normalized, getActiveAppForBuild());
+  if (logical === getLogicalPath()) {
     return;
   }
-  writeUrl(path);
+  writeUrl(logical);
   notify();
 }
 
@@ -104,12 +177,19 @@ export function getCurrentRoute() {
 
 export function subscribe(callback) {
   listeners.add(callback);
+  const initialPath = getLogicalPath();
+  if (!getAppForPath(initialPath)) {
+    writeUrl(getActiveAppForBuild().defaultPath, true);
+  }
   const route = matchRoute(getLogicalPath());
   document.title = getTitleForRoute(route);
+  if (route?.app) _currentAppId = route.app;
   callback(route);
 
   return () => listeners.delete(callback);
 }
 
 window.addEventListener('popstate', notify);
-window.addEventListener('hashchange', notify);
+if (HASH_MODE) {
+  window.addEventListener('hashchange', notify);
+}

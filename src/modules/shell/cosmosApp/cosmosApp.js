@@ -1,8 +1,8 @@
 // src/modules/shell/cosmosApp/cosmosApp.js — Cosmos Shell
 import { LightningElement, track } from 'lwc';
-import { subscribe, navigate } from '../../../router';
+import { subscribe, navigate, setCurrentAppForLinks } from '../../../router';
 import { routes } from '../../../routes.config';
-import { apps, getDefaultApp, getAppById, ACTIVE_APP_STORAGE_KEY } from '../../../apps.config';
+import { apps, getAppById, getPersistedAppId, persistAppId } from '../../../apps.config';
 import { isAuthDisabled } from '../../../data/authMode.js';
 import { onAuthStateChanged } from '../../../data/firebaseAuth.js';
 import { getStoredBrand, applyBrand } from 'data/brands';
@@ -80,7 +80,7 @@ export default class CosmosApp extends LightningElement {
     @track _activeTheme = 'cosmos-dark';
     @track selectedPanel = 'agentforce_panel';
     @track isPanelOpen = false;
-    @track _activeAppId = getDefaultApp().id;
+    @track _activeAppId = getPersistedAppId();
     @track _authUser = null;
     @track _authChecked = false;
     @track _isNavCollapsed = localStorage.getItem('vertical-nav-collapsed') === 'true';
@@ -99,7 +99,7 @@ export default class CosmosApp extends LightningElement {
     }
 
     get isVerticalNav() {
-        return this.activeApp.navType === 'vertical';
+        return this.activeApp?.variant === 'vertical';
     }
 
     get showVerticalNav() {
@@ -135,7 +135,9 @@ export default class CosmosApp extends LightningElement {
     }
 
     get navItems() {
-        return this.activeApp.contextBarItems;
+        return routes
+            .filter((r) => r.navPage && this.activeApp?.pages?.includes(r.navPage))
+            .map((r) => ({ page: r.navPage, label: r.navLabel, path: r.navPath ?? r.path }));
     }
 
     get verticalNavItems() {
@@ -184,10 +186,7 @@ export default class CosmosApp extends LightningElement {
     connectedCallback() {
         this._restorePreferences();
         applyBrand(getStoredBrand());
-        const savedAppId = localStorage.getItem(ACTIVE_APP_STORAGE_KEY);
-        if (savedAppId) {
-            this._activeAppId = getAppById(savedAppId).id;
-        }
+        setCurrentAppForLinks(this._activeAppId);
 
         this._redirectPath = window.location.pathname || '/';
 
@@ -279,9 +278,11 @@ export default class CosmosApp extends LightningElement {
 
     handleAppSwitch(event) {
         const appId = event.detail?.appId;
-        if (appId) {
-            this._activeAppId = getAppById(appId).id;
-            localStorage.setItem(ACTIVE_APP_STORAGE_KEY, this._activeAppId);
+        if (appId && getAppById(appId)) {
+            this._activeAppId = appId;
+            persistAppId(appId);
+            setCurrentAppForLinks(appId);
+            navigate(getAppById(appId).defaultPath);
         }
     }
 
