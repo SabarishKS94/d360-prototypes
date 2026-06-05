@@ -107,7 +107,7 @@ This project is for **local prototyping** and design-system-aligned UI; deployin
 ## Upstream and related
 
 - [LWC (open source) / `vite-plugin-lwc`](https://github.com/salesforce/lwc) — framework and Vite integration
-- [salesforce-ux-emu / data360-starter-kit (GitHub)](https://github.com/salesforce-ux-emu/data360-starter-kit) — **source template** on EMU: use **Use this template** for new projects; direct changes to the starter are for **maintainers**. Soma mirror: `https://git.soma.salesforce.com/a360/d360-prototype-starter.git` (partners / maintainers who push there).
+- **a360/d360-prototype-starter** on Soma (`https://git.soma.salesforce.com/a360/d360-prototype-starter.git`) — canonical starter: clone directly for new projects (see [setup-with-agent.md](setup-with-agent.md) for the remote rename workflow); direct changes are for **maintainers**.
 - A larger app built on the same pattern: **d360-qsl-ux-prototype** (internal) — QSL flow prototype; see that repo for a more involved `setup.sh` and app surface area
 
 ## References (external)
