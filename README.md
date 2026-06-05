@@ -14,7 +14,6 @@ A **Data 360–aligned** app shell for **Lightning Web Components (LWC)** in the
 Clone the starter directly, then set up your own GitHub repo for team collaboration.
 
 **1. Clone and rename the remote:**
-
 ```bash
 git clone https://git.soma.salesforce.com/a360/d360-prototype-starter.git my-project
 cd my-project
@@ -22,7 +21,6 @@ git remote rename origin starter
 ```
 
 **2. Create a new GitHub repo** for your project, then add it as `origin` and push:
-
 ```bash
 git remote add origin https://github.com/MY-ORG/MY-PROJECT.git
 git push -u origin main
@@ -58,7 +56,6 @@ npm run preview
 ```
 
 **Auth for local work** — `.env` (create via setup or from `.env.example`):
-
 - **`VITE_AUTH_MODE=none`** — default: no Google login; a placeholder user in the header.  
 - **`VITE_AUTH_MODE=salesforce`** + **`VITE_FIREBASE_*`** — real Firebase / Google for `@salesforce.com`.  
 - **`VITE_REQUIRE_AUTH=false`** — same as `none` (legacy).
@@ -68,7 +65,6 @@ Change **`.env`**, then restart the dev server.
 ## Syncing starter improvements into your project
 
 When the template ships new shell components, lint rules, or improvements, pull them into your project:
-
 ```bash
 git fetch starter
 git merge starter/main
@@ -103,7 +99,6 @@ Your component's full history lives in your project repo — the starter only ne
 
 ## Where the important files are
 
-
 | Area                                 | Path                                                               |
 | ------------------------------------ | ------------------------------------------------------------------ |
 | Route table                          | `src/routes.config.js` — paths, `navPage` / `navHighlight`, titles |
@@ -115,7 +110,6 @@ Your component's full history lives in your project repo — the starter only ne
 | Apps / top-level nav (Data 360 apps) | `src/apps.config.js`                                               |
 | Vite + LWC                           | `vite.config.js`                                                   |
 
-
 **Adding a page (high level):** new `src/modules/page/<name>/` → new row in `routes.config.js` → import in `app.js` `ROUTE_COMPONENTS`. Details: [**`docs/technical-reference.md`**](docs/technical-reference.md).
 
 ## Quality guardrails
@@ -124,12 +118,10 @@ This repo enforces patterns automatically so prototypes stay production-portable
 
 ### Lint hooks (run automatically)
 
-
 | Hook                      | What it checks                                                                         | Blocking?                               |
 | ------------------------- | -------------------------------------------------------------------------------------- | --------------------------------------- |
 | `lint-architecture-rules` | Namespace placement, CSS file responsibility, hardcoded labels, component completeness | Namespace = blocking; others = warnings |
 | `lint-import-boundaries`  | Namespace dependency rules (e.g., `ui/` can't import from `shell/`)                    | Blocking                                |
-
 
 Both run as **PostToolUse hooks** in Claude Code (after every Write/Edit) and as a **pre-push git hook** (blocks pushes with violations). Install hooks manually if needed: `npm run install-hooks`.
 
@@ -148,14 +140,12 @@ export default class PageContacts extends LightningElement {
 
 When using Claude Code, these skills fire automatically before specific actions:
 
-
 | Action                | Skill               |
 | --------------------- | ------------------- |
 | New component         | `lwc-new-component` |
 | Edit UI markup/CSS/JS | `lwc-ui-checklist`  |
 | Edit theme CSS        | `/theme-audit`      |
 | Add page or nav item  | `add-nav-item`      |
-
 
 ### Available lint commands
 
@@ -166,13 +156,11 @@ npm run lint:boundaries  # Import dependency rules
 
 ## More documentation
 
-
 | Doc                                                              | What                                                                                           |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | [**`docs/technical-reference.md`**](docs/technical-reference.md) | Full LWC/Vite/SLDS project structure, routing, shadow DOM, icons, conventions, upstream links. |
 | [**`docs/setup-with-agent.md`**](docs/setup-with-agent.md)       | Agent copy-paste prompt, remote setup, syncing workflow.                                       |
 | [`.cursor/rules/`](.cursor/rules/) (if present)                  | SLDS / LWC / icons guidance for this workspace.                                                |
-
 
 ### Theme playground
 

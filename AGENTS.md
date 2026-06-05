@@ -24,7 +24,6 @@ npm run skills:sync  # Sync D360 UX rules for Cursor (pulls from central repo)
 
 All LWC components live under `src/modules/` organized by namespace:
 
-
 | Namespace        | Tag Prefix | Purpose                                                                      |
 | ---------------- | ---------- | ---------------------------------------------------------------------------- |
 | `shell/`         | `shell-*`  | App chrome: header, nav, theme switcher                                      |
@@ -33,7 +32,6 @@ All LWC components live under `src/modules/` organized by namespace:
 | `data/`          | (import)   | Plain JS modules — not LWC tags                                              |
 | `data/services/` | (import)   | Typed async service layer — the client-server boundary                       |
 | `data/labels/`   | (import)   | i18n-ready label constants                                                   |
-
 
 ### Routing
 
@@ -46,13 +44,11 @@ All LWC components live under `src/modules/` organized by namespace:
 Every data operation goes through a service module in `data/services/`. Services are async functions backed by local fixtures today, becoming Connect API clients when porting to core.
 
 **Import rules:**
-
 - `page/` can import from `data/services/` and `data/labels/` only — never raw `data/*`
 - `ui/` can import from `data/labels/` only — never `data/services/` or raw `data/*`
 - `data/services/` can import from any `data/` module (it wraps them)
 
 **Service module pattern:**
-
 ```javascript
 // data/services/contactService.js
 import { getAllContacts as _getAll } from 'data/contacts';
@@ -71,7 +67,6 @@ export async function listContacts() { return _getAll(); }
 - **`ui/`** = presentational — receives data via `@api` props, dispatches `CustomEvent` for actions, never fetches or navigates
 
 When `ui/` needs navigation:
-
 ```javascript
 this.dispatchEvent(new CustomEvent('navigate', {
     detail: { route: '/target' }, bubbles: true, composed: true
@@ -82,7 +77,6 @@ this.dispatchEvent(new CustomEvent('navigate', {
 
 All new code MUST use SLDS 2 (Cosmos). Do not use SLDS 1 class patterns when a Lightning Base Component or SLDS 2 equivalent exists.
 
-
 | SLDS 1 (DO NOT USE)       | Use Instead                              |
 | ------------------------- | ---------------------------------------- |
 | `slds-tabs_default`       | `<lightning-tabset>` / `<lightning-tab>` |
@@ -92,9 +86,7 @@ All new code MUST use SLDS 2 (Cosmos). Do not use SLDS 1 class patterns when a L
 | `slds-spinner` raw markup | `<lightning-spinner>`                    |
 | `slds-badge` raw markup   | `<lightning-badge>`                      |
 
-
 ### Cosmos Glass Theme — CSS Split
-
 
 | File                                        | Owns                                                            |
 | ------------------------------------------- | --------------------------------------------------------------- |
@@ -102,9 +94,7 @@ All new code MUST use SLDS 2 (Cosmos). Do not use SLDS 1 class patterns when a L
 | `src/modules/shell/cosmosApp/cosmosApp.css` | Layout + visual for `.cosmos-shell-*` elements                  |
 | Component CSS                               | Visual + layout for classes they own, consuming `var(--cos-*)`  |
 
-
 Rules:
-
 - SLDS/LBC overrides go in `cosmos-theme.css`
 - Custom component classes go in their own CSS file
 - Never put layout/positioning in `cosmos-theme.css`
@@ -123,21 +113,18 @@ Rules:
 ## Key Conventions
 
 **Component hierarchy (prefer in this order):**
-
 1. Lightning Base Components (`lightning-button`, `lightning-card`, etc.)
 2. SLDS utility classes
 3. SLDS styling hooks (CSS custom properties)
 4. Custom CSS as last resort
 
 **Styling:**
-
 - No `!important`
 - No inline styles
 - No CSS that bleeds across component boundaries
 - Use `lightning-layout` / `lightning-layout-item` for layout where possible
 
 **Adding a new page:**
-
 1. Create `src/modules/data/services/myPageService.js` with typed async functions
 2. Create `src/modules/page/myPage/myPage.{html,js}` — imports from `data/services/` only
 3. Add entry to `src/routes.config.js`
@@ -147,7 +134,6 @@ Rules:
 If you only register in one shell file, the page will render blank in the other app.
 
 **Data access rules:**
-
 - `page/` imports from `data/services/` and `data/labels/` — never raw `data/*`
 - `ui/` imports from `data/labels/` only — receives all other data as `@api` props
 - `ui/` dispatches `CustomEvent` for actions — never calls `navigate()` or mutates data directly
@@ -172,7 +158,6 @@ export default class PageContacts extends LightningElement {
 ```
 
 Rules:
-
 - One file per page or feature area
 - Shared labels ("Cancel", "Save") go in `Common.js`
 - Template binds via `{labels.MyLabel}`, never inline text
@@ -188,12 +173,10 @@ Synthetic shadow is enabled in `vite.config.js` to mirror the Salesforce platfor
 ## D360 UX Skills
 
 This project uses a central set of UX skills for design/development guidance. They're available as:
-
 - **Claude Code plugins** — auto-loaded from the `d360-ux-skills` marketplace (see `.claude/settings.json`)
 - **Cursor rules** — synced via `npm run skills:sync` into `.cursor/rules/d360/`
 
 ### Skill Reference
-
 
 | Skill                          | Purpose                                                             | When to use                                                                                 |
 | ------------------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
@@ -205,7 +188,6 @@ This project uses a central set of UX skills for design/development guidance. Th
 | **a11y-audit**                 | WCAG 2.1 AA accessibility audit                                     | After building, before feature is considered complete                                       |
 | **design-architectural-audit** | Simplicity + Outcome maturity audit                                 | Before building — evaluate the design before committing to implementation                   |
 | **salesforce-mcp-tools**       | MCP tool usage guide                                                | When looking up SLDS blueprints                                                             |
-
 
 ### Feature development workflow
 
@@ -222,7 +204,6 @@ At key points in the dev process, suggest these skills to the user — do not in
 ### For UI work
 
 Before writing any HTML, CSS, or component JS, follow the **lwc-ui-checklist** decision tree:
-
 1. Does a Lightning Base Component exist? Use it.
 2. Does an SLDS Blueprint exist? Wrap it in a `ui-*` LWC.
 3. Does an SLDS Utility Class cover it? Apply in template.
@@ -236,7 +217,6 @@ After editing files, run `npm run lint:arch` to check for violations.
 ## Theme System Reference
 
 For detailed glass theme rules, see `.claude/commands/theme-audit.md`. Run a theme audit before touching:
-
 - `public/cosmos-theme.css`
 - `public/cosmos-brand-*.css`
 - `src/modules/shell/cosmosApp/`
