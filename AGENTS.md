@@ -24,14 +24,14 @@ npm run skills:sync  # Sync D360 UX rules for Cursor (pulls from central repo)
 
 All LWC components live under `src/modules/` organized by namespace:
 
-| Namespace | Tag Prefix | Purpose |
-|-----------|------------|---------|
-| `shell/`  | `shell-*`  | App chrome: header, nav, theme switcher |
-| `page/`   | `page-*`   | Route-level **containers** — fetch data via services, pass to `ui/` children |
-| `ui/`     | `ui-*`     | Reusable **presentational** components — props in, events out |
-| `data/`   | (import)   | Plain JS modules — not LWC tags |
-| `data/services/` | (import) | Typed async service layer — the client-server boundary |
-| `data/labels/` | (import) | i18n-ready label constants |
+| Namespace        | Tag Prefix | Purpose                                                                      |
+| ---------------- | ---------- | ---------------------------------------------------------------------------- |
+| `shell/`         | `shell-*`  | App chrome: header, nav, theme switcher                                      |
+| `page/`          | `page-*`   | Route-level **containers** — fetch data via services, pass to `ui/` children |
+| `ui/`            | `ui-*`     | Reusable **presentational** components — props in, events out                |
+| `data/`          | (import)   | Plain JS modules — not LWC tags                                              |
+| `data/services/` | (import)   | Typed async service layer — the client-server boundary                       |
+| `data/labels/`   | (import)   | i18n-ready label constants                                                   |
 
 ### Routing
 
@@ -63,8 +63,8 @@ export async function listContacts() { return _getAll(); }
 
 ### Container / Presentational Pattern
 
-- **`page/` = container** — calls services, manages loading/error state, passes data down, handles events, owns navigation
-- **`ui/` = presentational** — receives data via `@api` props, dispatches `CustomEvent` for actions, never fetches or navigates
+- **`page/`** = container — calls services, manages loading/error state, passes data down, handles events, owns navigation
+- **`ui/`** = presentational — receives data via `@api` props, dispatches `CustomEvent` for actions, never fetches or navigates
 
 When `ui/` needs navigation:
 ```javascript
@@ -77,22 +77,22 @@ this.dispatchEvent(new CustomEvent('navigate', {
 
 All new code MUST use SLDS 2 (Cosmos). Do not use SLDS 1 class patterns when a Lightning Base Component or SLDS 2 equivalent exists.
 
-| SLDS 1 (DO NOT USE) | Use Instead |
-|---------------------|-------------|
-| `slds-tabs_default` | `<lightning-tabset>` / `<lightning-tab>` |
-| `slds-button` raw markup | `<lightning-button>` |
-| `slds-card` raw markup | `<lightning-card>` |
-| `slds-modal` raw markup | Extend `LightningModal` |
-| `slds-spinner` raw markup | `<lightning-spinner>` |
-| `slds-badge` raw markup | `<lightning-badge>` |
+| SLDS 1 (DO NOT USE)       | Use Instead                              |
+| ------------------------- | ---------------------------------------- |
+| `slds-tabs_default`       | `<lightning-tabset>` / `<lightning-tab>` |
+| `slds-button` raw markup  | `<lightning-button>`                     |
+| `slds-card` raw markup    | `<lightning-card>`                       |
+| `slds-modal` raw markup   | Extend `LightningModal`                  |
+| `slds-spinner` raw markup | `<lightning-spinner>`                    |
+| `slds-badge` raw markup   | `<lightning-badge>`                      |
 
 ### Cosmos Glass Theme — CSS Split
 
-| File | Owns |
-|------|------|
-| `public/cosmos-theme.css` | Semantic tokens (`--cos-*`) + SLDS/LBC overrides (global reach) |
-| `src/modules/shell/cosmosApp/cosmosApp.css` | Layout + visual for `.cosmos-shell-*` elements |
-| Component CSS | Visual + layout for classes they own, consuming `var(--cos-*)` |
+| File                                        | Owns                                                            |
+| ------------------------------------------- | --------------------------------------------------------------- |
+| `public/cosmos-theme.css`                   | Semantic tokens (`--cos-*`) + SLDS/LBC overrides (global reach) |
+| `src/modules/shell/cosmosApp/cosmosApp.css` | Layout + visual for `.cosmos-shell-*` elements                  |
+| Component CSS                               | Visual + layout for classes they own, consuming `var(--cos-*)`  |
 
 Rules:
 - SLDS/LBC overrides go in `cosmos-theme.css`
@@ -173,22 +173,33 @@ Synthetic shadow is enabled in `vite.config.js` to mirror the Salesforce platfor
 ## D360 UX Skills
 
 This project uses a central set of UX skills for design/development guidance. They're available as:
-
 - **Claude Code plugins** — auto-loaded from the `d360-ux-skills` marketplace (see `.claude/settings.json`)
 - **Cursor rules** — synced via `npm run skills:sync` into `.cursor/rules/d360/`
 
 ### Skill Reference
 
-| Skill | Purpose | When to use |
-|-------|---------|-------------|
-| **lwc-ui-checklist** | 5-step UI decision tree (LBC > Blueprint > Utility > Hook > Custom) | Before writing any markup, styling, or logic |
-| **lwc-new-component** | Component scaffolding workflow | Before creating any new component |
-| **add-nav-item** | Page + nav wiring workflow | Before adding a new page or nav entry |
-| **new-app** | Full app scaffolding | Before adding a new top-level app |
-| **d360-eou** | Ease of Use principles evaluation | When evaluating UI/UX quality |
-| **a11y-audit** | WCAG 2.1 AA accessibility audit | Before production or when adding new UI |
-| **design-architectural-audit** | Simplicity + Outcome maturity audit | Before architecture decisions |
-| **salesforce-mcp-tools** | MCP tool usage guide | When looking up SLDS blueprints |
+| Skill                          | Purpose                                                             | When to use                                                                                 |
+| ------------------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| **lwc-ui-checklist**           | 5-step UI decision tree (LBC > Blueprint > Utility > Hook > Custom) | Before writing any markup, styling, or logic                                                |
+| **lwc-new-component**          | Component scaffolding workflow                                      | Before creating any new component                                                           |
+| **add-nav-item**               | Page + nav wiring workflow                                          | Before adding a new page or nav entry                                                       |
+| **new-app**                    | Full app scaffolding                                                | Before adding a new top-level app                                                           |
+| **d360-eou**                   | Ease of Use principles evaluation                                   | Before building (PRD/plan/Figma) or after (code) — at least once before feature is complete |
+| **a11y-audit**                 | WCAG 2.1 AA accessibility audit                                     | After building, before feature is considered complete                                       |
+| **design-architectural-audit** | Simplicity + Outcome maturity audit                                 | Before building — evaluate the design before committing to implementation                   |
+| **salesforce-mcp-tools**       | MCP tool usage guide                                                | When looking up SLDS blueprints                                                             |
+
+### Feature development workflow
+
+At key points in the dev process, suggest these skills to the user — do not invoke them automatically.
+
+**Before building** — suggest:
+- `/design-architectural-audit` — to review the design for simplicity and outcome maturity before committing to an implementation
+- `/d360-eou` — to evaluate a planning document or Figma design against Data 360 Ease of Use principles
+
+**Before considering a feature complete** — suggest:
+- `/a11y-audit` — to check WCAG 2.1 AA compliance
+- `/d360-eou` — if not already run before building, to evaluate the finished UI
 
 ### For UI work
 
@@ -212,3 +223,4 @@ For detailed glass theme rules, see `.claude/commands/theme-audit.md`. Run a the
 - `src/modules/shell/themeSwitcher/`
 - `src/modules/ui/auroraBackground/`
 - Any component that sets `background`, `backdrop-filter`, or body classes
+
