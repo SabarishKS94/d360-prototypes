@@ -38,7 +38,7 @@ You now have two remotes: `**origin**` (your project — push daily work here) a
 sh scripts/setup.sh
 ```
 
-Checks **Node.js**, creates `**.env`** from `**.env.example`** when missing, runs `**npm install`**. Re-run any time.
+Checks **Node.js**, creates **`.env`** from **`.env.example`** when missing, runs **`npm install`**. Re-run any time.
 
 **Or ask an agent:** paste the **base prompt** from `**[docs/setup-with-agent.md](docs/setup-with-agent.md)`** into Cursor, Claude Code, or similar — it will run setup for you.
 

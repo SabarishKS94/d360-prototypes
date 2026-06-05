@@ -11,17 +11,17 @@ The agent’s job is **local setup only** inside a folder that is **already a cl
 Clone the starter directly and set up your own GitHub repo for team collaboration. Do **not** use GitHub’s Fork button — forked repos auto-link PR numbers to the upstream template’s issues, which confuses your team’s PR history.
 
 1. Clone the starter and rename the remote:
-  ```bash
+   ```bash
    git clone https://git.soma.salesforce.com/a360/d360-prototype-starter.git my-project
    cd my-project
    git remote rename origin starter
-  ```
+   ```
 2. Create a **new, empty repo** in GitHub for your project (no README, no `.gitignore`).
 3. Add it as `origin` and push:
-  ```bash
+   ```bash
    git remote add origin https://github.com/MY-ORG/MY-PROJECT.git
    git push -u origin main
-  ```
+   ```
 
 You now have two remotes: `**origin**` (your project — push daily work here) and `**starter**` (the template — fetch from here occasionally to pull improvements).
 

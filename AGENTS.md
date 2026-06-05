@@ -29,7 +29,7 @@ All LWC components live under `src/modules/` organized by namespace:
 | ---------------- | ---------- | ---------------------------------------------------------------------------- |
 | `shell/`         | `shell-*`  | App chrome: header, nav, theme switcher                                      |
 | `page/`          | `page-*`   | Route-level **containers** — fetch data via services, pass to `ui/` children |
-| `ui/`            | `ui-`*     | Reusable **presentational** components — props in, events out                |
+| `ui/`            | `ui-*`     | Reusable **presentational** components — props in, events out                |
 | `data/`          | (import)   | Plain JS modules — not LWC tags                                              |
 | `data/services/` | (import)   | Typed async service layer — the client-server boundary                       |
 | `data/labels/`   | (import)   | i18n-ready label constants                                                   |
@@ -39,7 +39,7 @@ All LWC components live under `src/modules/` organized by namespace:
 
 - `src/routes.config.js` — single source of truth for all routes
 - `src/router.js` — client-side History API router with path param support (`:id`)
-- `shell/app` reads routes and dynamically renders the matching `page-`* component
+- `shell/app` reads routes and dynamically renders the matching `page-*` component
 
 ### Service Layer (Client-Server Boundary)
 
@@ -47,7 +47,7 @@ Every data operation goes through a service module in `data/services/`. Services
 
 **Import rules:**
 
-- `page/` can import from `data/services/` and `data/labels/` only — never raw `data/`*
+- `page/` can import from `data/services/` and `data/labels/` only — never raw `data/*`
 - `ui/` can import from `data/labels/` only — never `data/services/` or raw `data/*`
 - `data/services/` can import from any `data/` module (it wraps them)
 
@@ -148,7 +148,7 @@ If you only register in one shell file, the page will render blank in the other 
 
 **Data access rules:**
 
-- `page/` imports from `data/services/` and `data/labels/` — never raw `data/`*
+- `page/` imports from `data/services/` and `data/labels/` — never raw `data/*`
 - `ui/` imports from `data/labels/` only — receives all other data as `@api` props
 - `ui/` dispatches `CustomEvent` for actions — never calls `navigate()` or mutates data directly
 
@@ -224,7 +224,7 @@ At key points in the dev process, suggest these skills to the user — do not in
 Before writing any HTML, CSS, or component JS, follow the **lwc-ui-checklist** decision tree:
 
 1. Does a Lightning Base Component exist? Use it.
-2. Does an SLDS Blueprint exist? Wrap it in a `ui-`* LWC.
+2. Does an SLDS Blueprint exist? Wrap it in a `ui-*` LWC.
 3. Does an SLDS Utility Class cover it? Apply in template.
 4. Does an SLDS Styling Hook cover it? Use CSS var with fallback.
 5. Only then: use a hard-coded CSS value.
