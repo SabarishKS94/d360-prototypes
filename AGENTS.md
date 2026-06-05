@@ -67,8 +67,8 @@ export async function listContacts() { return _getAll(); }
 
 ### Container / Presentational Pattern
 
-- `**page/` = container** — calls services, manages loading/error state, passes data down, handles events, owns navigation
-- `**ui/` = presentational** — receives data via `@api` props, dispatches `CustomEvent` for actions, never fetches or navigates
+- **`page/`** = container — calls services, manages loading/error state, passes data down, handles events, owns navigation
+- **`ui/`** = presentational — receives data via `@api` props, dispatches `CustomEvent` for actions, never fetches or navigates
 
 When `ui/` needs navigation:
 

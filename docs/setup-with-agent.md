@@ -23,7 +23,7 @@ Clone the starter directly and set up your own GitHub repo for team collaboratio
    git push -u origin main
    ```
 
-You now have two remotes: `**origin**` (your project — push daily work here) and `**starter**` (the template — fetch from here occasionally to pull improvements).
+You now have two remotes: **`origin`** (your project — push daily work here) and **`starter`** (the template — fetch from here occasionally to pull improvements).
 
 Open that folder in your editor and **then** use the base prompt below (or run `sh scripts/setup.sh` yourself).
 

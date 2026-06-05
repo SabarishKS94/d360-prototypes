@@ -28,7 +28,7 @@ git remote add origin https://github.com/MY-ORG/MY-PROJECT.git
 git push -u origin main
 ```
 
-You now have two remotes: `**origin**` (your project — push daily work here) and `**starter**` (the template — fetch from here to pull improvements).
+You now have two remotes: **`origin`** (your project — push daily work here) and **`starter`** (the template — fetch from here to pull improvements).
 
 **Why not fork?** GitHub forks auto-link PR numbers to the upstream template's issues. Your project's `Merge pull request #5` links to the *starter's* PR #5, not yours — confusing for your team. A direct clone avoids this entirely.
 
@@ -40,7 +40,7 @@ sh scripts/setup.sh
 
 Checks **Node.js**, creates **`.env`** from **`.env.example`** when missing, runs **`npm install`**. Re-run any time.
 
-**Or ask an agent:** paste the **base prompt** from `**[docs/setup-with-agent.md](docs/setup-with-agent.md)`** into Cursor, Claude Code, or similar — it will run setup for you.
+**Or ask an agent:** paste the **base prompt** from [**`docs/setup-with-agent.md`**](docs/setup-with-agent.md) into Cursor, Claude Code, or similar — it will run setup for you.
 
 > **QSL** (`d360-qsl-ux-prototype`) has a heftier `setup.sh` (Homebrew, `gh` to git.soma, Claude plugins). This starter keeps setup **portable** for anyone with Node.
 
@@ -59,11 +59,11 @@ npm run preview
 
 **Auth for local work** — `.env` (create via setup or from `.env.example`):
 
-- `**VITE_AUTH_MODE=none`** — default: no Google login; a placeholder user in the header.  
-- `**VITE_AUTH_MODE=salesforce` + `VITE_FIREBASE_*`** — real Firebase / Google for `@salesforce.com`.  
-- `**VITE_REQUIRE_AUTH=false`** — same as `none` (legacy).
+- **`VITE_AUTH_MODE=none`** — default: no Google login; a placeholder user in the header.  
+- **`VITE_AUTH_MODE=salesforce`** + **`VITE_FIREBASE_*`** — real Firebase / Google for `@salesforce.com`.  
+- **`VITE_REQUIRE_AUTH=false`** — same as `none` (legacy).
 
-Change `**.env`**, then restart the dev server.
+Change **`.env`**, then restart the dev server.
 
 ## Syncing starter improvements into your project
 
@@ -116,7 +116,7 @@ Your component's full history lives in your project repo — the starter only ne
 | Vite + LWC                           | `vite.config.js`                                                   |
 
 
-**Adding a page (high level):** new `src/modules/page/<name>/` → new row in `routes.config.js` → import in `app.js` `ROUTE_COMPONENTS`. Details: `**[docs/technical-reference.md](docs/technical-reference.md)`**.
+**Adding a page (high level):** new `src/modules/page/<name>/` → new row in `routes.config.js` → import in `app.js` `ROUTE_COMPONENTS`. Details: [**`docs/technical-reference.md`**](docs/technical-reference.md).
 
 ## Quality guardrails
 
@@ -169,9 +169,9 @@ npm run lint:boundaries  # Import dependency rules
 
 | Doc                                                              | What                                                                                           |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `**[docs/technical-reference.md](docs/technical-reference.md)`** | Full LWC/Vite/SLDS project structure, routing, shadow DOM, icons, conventions, upstream links. |
-| `**[docs/setup-with-agent.md](docs/setup-with-agent.md)`**       | Agent copy-paste prompt, remote setup, syncing workflow.                                       |
-| `[.cursor/rules/](.cursor/rules/)` (if present)                  | SLDS / LWC / icons guidance for this workspace.                                                |
+| [**`docs/technical-reference.md`**](docs/technical-reference.md) | Full LWC/Vite/SLDS project structure, routing, shadow DOM, icons, conventions, upstream links. |
+| [**`docs/setup-with-agent.md`**](docs/setup-with-agent.md)       | Agent copy-paste prompt, remote setup, syncing workflow.                                       |
+| [`.cursor/rules/`](.cursor/rules/) (if present)                  | SLDS / LWC / icons guidance for this workspace.                                                |
 
 
 ### Theme playground
