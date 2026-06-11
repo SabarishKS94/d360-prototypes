@@ -96,6 +96,11 @@ export default class VerticalNav extends LightningElement {
     }
 
     handleGroupToggle(event) {
+        if (this.isCollapsed) {
+            this.isCollapsed = false;
+            localStorage.setItem(STORAGE_KEY, 'false');
+            return;
+        }
         const groupId = event.currentTarget.dataset.groupId;
         this._expandedGroups = {
             ...this._expandedGroups,
@@ -105,6 +110,11 @@ export default class VerticalNav extends LightningElement {
 
     handleItemClick(event) {
         event.preventDefault();
+        if (this.isCollapsed) {
+            this.isCollapsed = false;
+            localStorage.setItem(STORAGE_KEY, 'false');
+            return;
+        }
         const path = event.currentTarget.dataset.path;
         this.dispatchEvent(
             new CustomEvent('navigate', {
