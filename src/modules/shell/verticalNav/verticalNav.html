@@ -16,11 +16,11 @@
                 <button
                     class="slds-button slds-button_reset slds-grid slds-align-items-center slds-align_absolute-center vertical-nav__search-icon"
                     title={labels.QuickFind}
+                    data-tooltip-text={labels.QuickFind}
+                    onmouseenter={handleTooltipShow}
+                    onmouseleave={handleTooltipHide}
                     onclick={handleCollapsedSearchClick}>
                     <lightning-icon icon-name="utility:search" size="x-small"></lightning-icon>
-                    <div class="slds-popover slds-popover_tooltip slds-nubbin_left vertical-nav__tooltip" role="tooltip">
-                        <div class="slds-popover__body">{labels.QuickFind}</div>
-                    </div>
                 </button>
             </template>
         </div>
@@ -32,6 +32,9 @@
                         class={group.headerClass}
                         onclick={handleGroupToggle}
                         data-group-id={group.id}
+                        data-tooltip-text={group.description}
+                        onmouseenter={handleTooltipShow}
+                        onmouseleave={handleTooltipHide}
                         aria-expanded={group.isExpanded}>
                         <lightning-icon
                             icon-name={group.icon}
@@ -43,11 +46,6 @@
                             size="xx-small"
                             class="vertical-nav__chevron">
                         </lightning-icon>
-                        <template if:true={group.description}>
-                            <div class="slds-popover slds-popover_tooltip slds-nubbin_left vertical-nav__tooltip" role="tooltip">
-                                <div class="slds-popover__body">{group.description}</div>
-                            </div>
-                        </template>
                     </button>
 
                     <template if:true={group.showChildren}>
@@ -75,31 +73,35 @@
                 href="/"
                 class={quickStartLinkClass}
                 onclick={handleItemClick}
-                data-path="/">
+                data-path="/"
+                data-tooltip-text={labels.QuickStartLibrary}
+                onmouseenter={handleTooltipShow}
+                onmouseleave={handleTooltipHide}>
                 <lightning-icon icon-name="utility:light_bulb" size="x-small"></lightning-icon>
                 <template if:false={isCollapsed}>
                     <span class="slds-truncate">{labels.QuickStartLibrary}</span>
-                </template>
-                <template if:true={isCollapsed}>
-                    <div class="slds-popover slds-popover_tooltip slds-nubbin_left vertical-nav__tooltip" role="tooltip">
-                        <div class="slds-popover__body">{labels.QuickStartLibrary}</div>
-                    </div>
                 </template>
             </a>
             <button
                 class="slds-button slds-button_reset slds-grid slds-align-items-center slds-p-vertical_x-small slds-p-horizontal_small vertical-nav__collapse-btn"
                 onclick={handleCollapseToggle}
-                title={collapseLabel}>
+                title={collapseLabel}
+                data-tooltip-text={collapseLabel}
+                onmouseenter={handleTooltipShow}
+                onmouseleave={handleTooltipHide}>
                 <lightning-icon icon-name={collapseIcon} size="x-small"></lightning-icon>
                 <template if:false={isCollapsed}>
                     <span>{labels.Collapse}</span>
                 </template>
-                <template if:true={isCollapsed}>
-                    <div class="slds-popover slds-popover_tooltip slds-nubbin_left vertical-nav__tooltip" role="tooltip">
-                        <div class="slds-popover__body">{labels.Expand}</div>
-                    </div>
-                </template>
             </button>
         </div>
+
+        <template if:true={_tooltip}>
+            <div class="slds-popover slds-popover_tooltip slds-nubbin_left vertical-nav__tooltip"
+                 role="tooltip"
+                 style={tooltipStyle}>
+                <div class="slds-popover__body">{tooltipText}</div>
+            </div>
+        </template>
     </nav>
 </template>

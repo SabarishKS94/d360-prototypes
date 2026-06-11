@@ -29,7 +29,6 @@
 .vertical-nav__search-icon {
     cursor: pointer;
     color: var(--slds-g-color-on-surface-2, #444);
-    position: relative;
 }
 
 .vertical-nav__body {
@@ -46,7 +45,6 @@
     gap: var(--slds-g-spacing-2, 0.5rem);
     color: var(--slds-g-color-on-surface-2, #444);
     transition: background-color 0.1s ease;
-    position: relative;
 }
 
 .vertical-nav__group-header:hover,
@@ -120,21 +118,11 @@
 /* ── Tooltips ── */
 
 .vertical-nav__tooltip {
-    display: none;
-    position: absolute;
-    left: calc(100% + var(--slds-g-spacing-2, 0.5rem));
-    top: 50%;
-    transform: translateY(-50%);
+    position: fixed;
     width: max-content;
     max-width: 16rem;
     z-index: 9100;
     pointer-events: none;
     white-space: normal;
-}
-
-.vertical-nav__group-header:hover .vertical-nav__tooltip,
-.vertical-nav__search-icon:hover .vertical-nav__tooltip,
-.vertical-nav__footer-link:hover .vertical-nav__tooltip,
-.vertical-nav__collapse-btn:hover .vertical-nav__tooltip {
-    display: block;
+    transform: translateY(-50%);
 }
