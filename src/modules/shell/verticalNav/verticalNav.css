@@ -92,6 +92,7 @@
 }
 
 .vertical-nav__footer-link {
+    padding-inline-start: var(--slds-g-spacing-3, 0.75rem);
     text-decoration: none;
     border-bottom: 1px solid var(--slds-g-color-border-1, #c9c9c9);
 }
