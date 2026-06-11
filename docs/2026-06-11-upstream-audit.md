@@ -2,7 +2,7 @@
 
 **Date:** 2026-06-11
 **Upstream remote:** `git@git.soma.salesforce.com:a-guevara/design-system-2-starter-kit.git`
-**Commits audited:** 54
+**Commits audited:** 56 (54 previously synced + 2 new pending from 2026-06-11 sync)
 
 ---
 
@@ -10,6 +10,8 @@
 
 | Hash | Commit Title | Status | Notes |
 |------|-------------|--------|-------|
+| `85fa9cc` | Add standalone Builder app (#21) | Missing | Not yet reviewed or applied — pending from 2026-06-11 sync |
+| `f870fe3` | chore: ignore .claude/settings.local.json (#19) | Missing | Not yet reviewed or applied — pending from 2026-06-11 sync |
 | `d6ce071` | fix: remove redundant horizontal padding inside contact detail cards | Missing | Fork's contactDetail has different structure; no horizontal padding on Details grid or timeline wrappers |
 | `833bc87` | Fix card padding for SLDS2 v2, refactor icon page, remove user page (#18) | Missing | `--slds-c-card-body-spacing-inline` not set on home.css or themeSwitcher.css; iconTest still uses raw `slds-card` HTML; user page and route still present |
 | `a34b08d` | feat(update-slds2): bump slds2 package dep & import path (#9) | Applied | `^2.0.0` in package.json; `bundled/slds2.cosmos.css` path in slds-loader.js both correct |
@@ -73,13 +75,33 @@
 |--------|-------|
 | Applied | 38 |
 | Partial | 2 |
-| Missing | 4 |
+| Missing | 6 |
 | Skipped (intentional) | 10 |
-| **Total** | **54** |
+| **Total** | **56** |
 
 ---
 
 ## Needs Action
+
+### 0a. `f870fe3` — chore: ignore .claude/settings.local.json (#19)
+
+**What the upstream change was:** Added `.claude/settings.local.json` to `.gitignore` so personal Claude Code settings aren't accidentally committed.
+
+**What to check:** `.gitignore` in project root.
+
+**What is missing:** The `.gitignore` entry for `.claude/settings.local.json`. Low-risk, direct apply.
+
+---
+
+### 0b. `85fa9cc` — Add standalone Builder app (#21)
+
+**What the upstream change was:** Added a new `page/builder` page with a header, resizable panels, and a canvas. Also updated `shell/app` to support registering it, and modified `shell/panel` component.
+
+**Files changed upstream:** `src/apps.config.js`, `src/modules/page/builder/` (new), `src/modules/shell/app/app.{css,html,js}`, `src/modules/shell/panel/panel.html`, `src/modules/ui/builderHeader/` (new).
+
+**What is missing:** This commit has not been reviewed yet — needs a decision on whether to adopt the Builder app as-is, adapt it, or skip it. Inspect with `git show 85fa9cc`.
+
+---
 
 ### 1. `d6ce071` — fix: remove redundant horizontal padding inside contact detail cards
 
