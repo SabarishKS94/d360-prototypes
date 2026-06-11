@@ -69,20 +69,22 @@
         </div>
 
         <div class="vertical-nav__footer">
-            <a
-                href="/"
-                class={quickStartLinkClass}
-                onclick={handleItemClick}
-                data-path="/"
-                data-tooltip-text={labels.QuickStartLibrary}
-                data-tooltip-collapsed-only
-                onmouseenter={handleTooltipShow}
-                onmouseleave={handleTooltipHide}>
-                <lightning-icon icon-name="utility:light_bulb" size="x-small"></lightning-icon>
-                <template if:false={isCollapsed}>
-                    <span class="slds-truncate">{labels.QuickStartLibrary}</span>
-                </template>
-            </a>
+            <div class={quickStartLinkClass}>
+                <a
+                    href="/"
+                    class="slds-nav-vertical__action slds-grid slds-align-items-center slds-m-bottom_xx-small vertical-nav__footer-link"
+                    onclick={handleItemClick}
+                    data-path="/"
+                    data-tooltip-text={labels.QuickStartLibrary}
+                    data-tooltip-collapsed-only
+                    onmouseenter={handleTooltipShow}
+                    onmouseleave={handleTooltipHide}>
+                    <lightning-icon icon-name="utility:light_bulb" size="x-small"></lightning-icon>
+                    <template if:false={isCollapsed}>
+                        <span class="slds-truncate">{labels.QuickStartLibrary}</span>
+                    </template>
+                </a>
+            </div>
             <button
                 class="slds-button slds-button_reset slds-grid slds-align-items-center slds-p-vertical_x-small slds-p-horizontal_small vertical-nav__collapse-btn"
                 onclick={handleCollapseToggle}
