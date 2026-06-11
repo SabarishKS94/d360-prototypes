@@ -144,6 +144,7 @@ export default class VerticalNav extends LightningElement {
         const btn = event.currentTarget;
         const text = btn.dataset.tooltipText;
         if (!text) return;
+        if (btn.dataset.tooltipCollapsedOnly !== undefined && !this.isCollapsed) return;
         const rect = btn.getBoundingClientRect();
         const GAP = 8;
         this._tooltip = {

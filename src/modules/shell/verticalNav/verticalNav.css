@@ -48,9 +48,9 @@
 }
 
 .vertical-nav__group-header:hover,
-.vertical-nav__footer-link:hover,
-.vertical-nav__collapse-btn:hover {
-    background-color: var(--slds-g-color-surface-2, #f3f3f3);
+.vertical-nav__footer-link:hover {
+    background-color: var(--slds-g-color-brand-base-95, #f2f4f8);
+    box-shadow: inset 2px 0 0 var(--slds-g-color-border-accent-1, #0176d3);
 }
 
 /* ── Collapsed nav row overrides ── */
@@ -82,7 +82,7 @@
 
 .vertical-nav_collapsed .vertical-nav__group-header_active {
     box-shadow: inset 3px 0 0 var(--slds-g-color-border-accent-1, #0176d3);
-    background-color: var(--slds-g-color-brand-base-90, #eef4ff);
+    background-color: var(--slds-g-color-brand-base-95, #f2f4f8);
     border-radius: 0px;
 }
 
@@ -105,6 +105,7 @@
 .vertical-nav__footer-link_active {
     color: var(--slds-g-color-on-surface-1, #181818);
     box-shadow: inset 3px 0 0 var(--slds-g-color-border-accent-1, #0176d3);
+    background-color: var(--slds-g-color-brand-base-95, #f2f4f8);
 }
 
 /* ── Collapse button ── */

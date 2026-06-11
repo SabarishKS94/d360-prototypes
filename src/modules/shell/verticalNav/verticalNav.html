@@ -75,6 +75,7 @@
                 onclick={handleItemClick}
                 data-path="/"
                 data-tooltip-text={labels.QuickStartLibrary}
+                data-tooltip-collapsed-only
                 onmouseenter={handleTooltipShow}
                 onmouseleave={handleTooltipHide}>
                 <lightning-icon icon-name="utility:light_bulb" size="x-small"></lightning-icon>
@@ -87,6 +88,7 @@
                 onclick={handleCollapseToggle}
                 title={collapseLabel}
                 data-tooltip-text={collapseLabel}
+                data-tooltip-collapsed-only
                 onmouseenter={handleTooltipShow}
                 onmouseleave={handleTooltipHide}>
                 <lightning-icon icon-name={collapseIcon} size="x-small"></lightning-icon>
