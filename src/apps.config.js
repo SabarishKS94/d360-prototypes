@@ -31,7 +31,7 @@ export const apps = [
       {
         id: 'connect-unify',
         label: 'Connect & Unify',
-        icon: 'utility:connected_apps',
+        icon: 'utility:data_mapping',
         children: [
           { id: 'cu-item-1', label: 'Item 1', path: '/connect-unify/item-1', component: 'page-connect-unify1' },
           { id: 'cu-item-2', label: 'Item 2', path: '/connect-unify/item-2', component: 'page-connect-unify2' },
@@ -61,7 +61,7 @@ export const apps = [
       {
         id: 'explore-optimize',
         label: 'Explore & Optimize',
-        icon: 'utility:search',
+        icon: 'utility:table',
         children: [
           { id: 'eo-item-1', label: 'Item 1', path: '/explore-optimize/item-1', component: 'page-explore-optimize1' },
           { id: 'eo-item-2', label: 'Item 2', path: '/explore-optimize/item-2', component: 'page-explore-optimize2' },
