@@ -47,7 +47,7 @@ export default class VerticalNav extends LightningElement {
 
             const hasActiveChild = filteredChildren.some((item) => item.path === activePath);
             const isExpanded = !collapsed && (!!this._expandedGroups[group.id] || hasActiveChild);
-            const headerBase = 'slds-button slds-button_reset vertical-nav__group-header';
+            const headerBase = 'slds-button slds-button_reset slds-grid slds-align-items-center slds-p-vertical_x-small slds-p-horizontal_small vertical-nav__group-header';
             const headerClass = (collapsed && hasActiveChild)
                 ? `${headerBase} vertical-nav__group-header_active`
                 : headerBase;
@@ -78,7 +78,7 @@ export default class VerticalNav extends LightningElement {
     }
 
     get collapseIcon() {
-        return this.isCollapsed ? 'utility:right' : 'utility:left';
+        return this.isCollapsed ? 'utility:arrow_right' : 'utility:arrow_left';
     }
 
     get collapseLabel() {
@@ -86,7 +86,7 @@ export default class VerticalNav extends LightningElement {
     }
 
     get quickStartLinkClass() {
-        const base = 'vertical-nav__footer-link';
+        const base = 'slds-grid slds-align-items-center slds-p-vertical_x-small slds-p-horizontal_small slds-m-bottom_xx-small vertical-nav__footer-link';
         const isActiveHome = this.currentPage === 'home';
         return isActiveHome ? `${base} vertical-nav__footer-link_active` : base;
     }
