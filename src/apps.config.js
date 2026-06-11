@@ -32,6 +32,7 @@ export const apps = [
         id: 'connect-unify',
         label: 'Connect & Unify',
         icon: 'utility:data_mapping',
+        description: 'Connect or ingest data. Then, transform, harmonize, and unify it.',
         children: [
           { id: 'cu-item-1', label: 'Item 1', path: '/connect-unify/item-1', component: 'page-connect-unify1' },
           { id: 'cu-item-2', label: 'Item 2', path: '/connect-unify/item-2', component: 'page-connect-unify2' },
@@ -42,6 +43,7 @@ export const apps = [
         id: 'govern-secure',
         label: 'Govern & Secure',
         icon: 'utility:shield',
+        description: 'Define access, security, and governance for your Data 360 data.',
         children: [
           { id: 'gs-item-1', label: 'Item 1', path: '/govern-secure/item-1', component: 'page-govern-secure1' },
           { id: 'gs-item-2', label: 'Item 2', path: '/govern-secure/item-2', component: 'page-govern-secure2' },
@@ -52,6 +54,7 @@ export const apps = [
         id: 'process-enrich',
         label: 'Process & Enrich',
         icon: 'utility:process',
+        description: 'Intelligently identify, analyze, and categorize data for use with AI.',
         children: [
           { id: 'pe-item-1', label: 'Item 1', path: '/process-enrich/item-1', component: 'page-process-enrich1' },
           { id: 'pe-item-2', label: 'Item 2', path: '/process-enrich/item-2', component: 'page-process-enrich2' },
@@ -62,6 +65,7 @@ export const apps = [
         id: 'explore-optimize',
         label: 'Explore & Optimize',
         icon: 'utility:table',
+        description: 'View, query, and optimize data across large datasets.',
         children: [
           { id: 'eo-item-1', label: 'Item 1', path: '/explore-optimize/item-1', component: 'page-explore-optimize1' },
           { id: 'eo-item-2', label: 'Item 2', path: '/explore-optimize/item-2', component: 'page-explore-optimize2' },
@@ -72,6 +76,7 @@ export const apps = [
         id: 'analyze-predict',
         label: 'Analyze & Predict',
         icon: 'utility:chart',
+        description: 'Explore your data and build predictive AI models.',
         children: [
           { id: 'ap-item-1', label: 'Item 1', path: '/analyze-predict/item-1', component: 'page-analyze-predict1' },
           { id: 'ap-item-2', label: 'Item 2', path: '/analyze-predict/item-2', component: 'page-analyze-predict2' },
@@ -82,6 +87,7 @@ export const apps = [
         id: 'segment-act',
         label: 'Segment & Act',
         icon: 'utility:segments',
+        description: 'Segment your data. Take action on data and share it externally.',
         children: [
           { id: 'sa-item-1', label: 'Item 1', path: '/segment-act/item-1', component: 'page-segment-act1' },
           { id: 'sa-item-2', label: 'Item 2', path: '/segment-act/item-2', component: 'page-segment-act2' },
