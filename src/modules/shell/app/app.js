@@ -2,7 +2,7 @@
 import { LightningElement, track } from 'lwc';
 import { subscribe, navigate, setCurrentAppForLinks } from '../../../router';
 import { routes } from '../../../routes.config';
-import { apps, getAppById, getPersistedAppId, persistAppId } from '../../../apps.config';
+import { apps, getAppById, getPersistedAppId, persistAppId, stripAppPrefix } from '../../../apps.config';
 import { isAuthDisabled } from '../../../data/authMode.js';
 import { onAuthStateChanged } from '../../../data/firebaseAuth.js';
 import { getStoredBrand, applyBrand } from 'data/brands';
@@ -115,7 +115,7 @@ export default class App extends LightningElement {
     }
 
     get currentPath() {
-        return window.location.pathname;
+        return stripAppPrefix(window.location.pathname, this.activeApp);
     }
 
     get navItems() {
