@@ -96,9 +96,9 @@ export default class VerticalNav extends LightningElement {
     }
 
     get quickStartLinkClass() {
-        const base = 'slds-grid slds-align-items-center slds-p-vertical_x-small slds-p-horizontal_small slds-m-bottom_xx-small vertical-nav__footer-link';
+        const base = 'slds-nav-vertical__item slds-nav-vertical__action slds-grid slds-align-items-center slds-m-bottom_xx-small vertical-nav__footer-link';
         const isActiveHome = this.currentPage === 'home';
-        return isActiveHome ? `${base} vertical-nav__footer-link_active` : base;
+        return isActiveHome ? `${base} slds-is-active` : base;
     }
 
     handleQuickFindChange(event) {
