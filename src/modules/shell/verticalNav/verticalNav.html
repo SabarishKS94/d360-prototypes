@@ -18,6 +18,9 @@
                     title={labels.QuickFind}
                     onclick={handleCollapsedSearchClick}>
                     <lightning-icon icon-name="utility:search" size="x-small"></lightning-icon>
+                    <div class="slds-popover slds-popover_tooltip slds-nubbin_left vertical-nav__tooltip" role="tooltip">
+                        <div class="slds-popover__body">{labels.QuickFind}</div>
+                    </div>
                 </button>
             </template>
         </div>
@@ -77,6 +80,11 @@
                 <template if:false={isCollapsed}>
                     <span class="slds-truncate">{labels.QuickStartLibrary}</span>
                 </template>
+                <template if:true={isCollapsed}>
+                    <div class="slds-popover slds-popover_tooltip slds-nubbin_left vertical-nav__tooltip" role="tooltip">
+                        <div class="slds-popover__body">{labels.QuickStartLibrary}</div>
+                    </div>
+                </template>
             </a>
             <button
                 class="slds-button slds-button_reset slds-grid slds-align-items-center slds-p-vertical_x-small slds-p-horizontal_small vertical-nav__collapse-btn"
@@ -85,6 +93,11 @@
                 <lightning-icon icon-name={collapseIcon} size="x-small"></lightning-icon>
                 <template if:false={isCollapsed}>
                     <span>{labels.Collapse}</span>
+                </template>
+                <template if:true={isCollapsed}>
+                    <div class="slds-popover slds-popover_tooltip slds-nubbin_left vertical-nav__tooltip" role="tooltip">
+                        <div class="slds-popover__body">{labels.Expand}</div>
+                    </div>
                 </template>
             </button>
         </div>
