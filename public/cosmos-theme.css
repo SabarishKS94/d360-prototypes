@@ -869,6 +869,11 @@ body.cosmos-light .vertical-nav__group-header {
     color: var(--cos-color-on-surface-weak) !important;
 }
 
+body.cosmos-dark .vertical-nav__group-header:hover,
+body.cosmos-light .vertical-nav__group-header:hover {
+    background: var(--cos-nav-action-hover-bg, var(--cos-color-surface-interactive)) !important;
+}
+
 body.cosmos-dark .vertical-nav__footer,
 body.cosmos-light .vertical-nav__footer {
     border-top-color: var(--cos-color-border-subtle) !important;

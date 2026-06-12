@@ -55,6 +55,7 @@
 /* ── Collapsed nav row overrides ── */
 
 .vertical-nav_collapsed .vertical-nav__group-header,
+.vertical-nav_collapsed .vertical-nav__footer-link,
 .vertical-nav_collapsed .vertical-nav__collapse-btn {
     justify-content: center;
     padding: var(--slds-g-spacing-2, 0.5rem);
