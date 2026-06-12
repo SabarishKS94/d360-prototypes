@@ -685,10 +685,14 @@ body.cosmos-light .vertical-nav .vertical-nav__footer-link_active .slds-button__
 }
 
 
-.slds-card__header-title,
-.slds-card__header-title .slds-text-heading--label,
-.slds-card__header-title .slds-text-heading_label,
-.slds-card__header-link {
+body.cosmos-dark .slds-card__header-title,
+body.cosmos-dark .slds-card__header-title .slds-text-heading--label,
+body.cosmos-dark .slds-card__header-title .slds-text-heading_label,
+body.cosmos-dark .slds-card__header-link,
+body.cosmos-light .slds-card__header-title,
+body.cosmos-light .slds-card__header-title .slds-text-heading--label,
+body.cosmos-light .slds-card__header-title .slds-text-heading_label,
+body.cosmos-light .slds-card__header-link {
     font-weight: 600 !important;
 }
 
@@ -863,6 +867,11 @@ body.cosmos-light .vertical-nav__search {
 body.cosmos-dark .vertical-nav__group-header,
 body.cosmos-light .vertical-nav__group-header {
     color: var(--cos-color-on-surface-weak) !important;
+}
+
+body.cosmos-dark .vertical-nav__group-header:hover,
+body.cosmos-light .vertical-nav__group-header:hover {
+    background: var(--cos-nav-action-hover-bg, var(--cos-color-surface-interactive)) !important;
 }
 
 body.cosmos-dark .vertical-nav__footer,
@@ -1449,20 +1458,5 @@ body.cosmos-light .badge-default.slds-badge {
 }
 
 /* Glass toast styles live in ui/glassToast/glassToast.css */
-
-/* ── Overflow for dropdowns ─────────────────────────────────────── */
-
-lightning-card,
-.slds-card,
-.slds-card__body,
-lightning-layout,
-.slds-grid,
-.slds-wrap,
-lightning-layout-item,
-.slds-col,
-.app-body__content-cell,
-.app-body__scroll-wrapper {
-    overflow: visible !important;
-}
 
 /* Plan builder styles live in ui/planBuilder/planBuilder.css */

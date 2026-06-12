@@ -32,6 +32,11 @@ const ICON_SETS = [
         dir: 'node_modules/lightning-base-components/src/lightning/iconSvgTemplatesAction/buildTemplates/action',
         output: 'src/build/generated/iconSvgAction.js',
     },
+    {
+        name: 'custom',
+        dir: 'node_modules/lightning-base-components/src/lightning/iconSvgTemplatesCustom/buildTemplates/custom',
+        output: 'src/build/generated/iconSvgCustom.js',
+    },
 ];
 
 // Ensure output directory exists

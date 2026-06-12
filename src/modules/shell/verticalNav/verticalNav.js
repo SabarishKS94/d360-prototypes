@@ -13,6 +13,7 @@ export default class VerticalNav extends LightningElement {
     quickFindValue = '';
     @track _expandedGroups = {};
     isCollapsed = false;
+    _tooltip = null;
 
     connectedCallback() {
         this.isCollapsed = localStorage.getItem(STORAGE_KEY) === 'true';
@@ -47,7 +48,7 @@ export default class VerticalNav extends LightningElement {
 
             const hasActiveChild = filteredChildren.some((item) => item.path === activePath);
             const isExpanded = !collapsed && (!!this._expandedGroups[group.id] || hasActiveChild);
-            const headerBase = 'slds-button slds-button_reset vertical-nav__group-header';
+            const headerBase = 'slds-button slds-button_reset slds-grid slds-align-items-center slds-p-vertical_x-small slds-p-horizontal_small vertical-nav__group-header';
             const headerClass = (collapsed && hasActiveChild)
                 ? `${headerBase} vertical-nav__group-header_active`
                 : headerBase;
@@ -78,17 +79,25 @@ export default class VerticalNav extends LightningElement {
     }
 
     get collapseIcon() {
-        return this.isCollapsed ? 'utility:right' : 'utility:left';
+        return this.isCollapsed ? 'utility:arrow_right' : 'utility:arrow_left';
     }
 
     get collapseLabel() {
         return this.isCollapsed ? this.labels.Expand : this.labels.Collapse;
     }
 
+    get tooltipStyle() {
+        if (!this._tooltip) return '';
+        return `top:${this._tooltip.top}px;left:${this._tooltip.left}px`;
+    }
+
+    get tooltipText() {
+        return this._tooltip ? this._tooltip.text : '';
+    }
+
     get quickStartLinkClass() {
-        const base = 'vertical-nav__footer-link';
         const isActiveHome = this.currentPage === 'home';
-        return isActiveHome ? `${base} vertical-nav__footer-link_active` : base;
+        return isActiveHome ? 'slds-nav-vertical__item slds-is-active' : 'slds-nav-vertical__item';
     }
 
     handleQuickFindChange(event) {
@@ -96,6 +105,11 @@ export default class VerticalNav extends LightningElement {
     }
 
     handleGroupToggle(event) {
+        if (this.isCollapsed) {
+            this.isCollapsed = false;
+            localStorage.setItem(STORAGE_KEY, 'false');
+            return;
+        }
         const groupId = event.currentTarget.dataset.groupId;
         this._expandedGroups = {
             ...this._expandedGroups,
@@ -105,6 +119,11 @@ export default class VerticalNav extends LightningElement {
 
     handleItemClick(event) {
         event.preventDefault();
+        if (this.isCollapsed) {
+            this.isCollapsed = false;
+            localStorage.setItem(STORAGE_KEY, 'false');
+            return;
+        }
         const path = event.currentTarget.dataset.path;
         this.dispatchEvent(
             new CustomEvent('navigate', {
@@ -118,6 +137,24 @@ export default class VerticalNav extends LightningElement {
     handleCollapseToggle() {
         this.isCollapsed = !this.isCollapsed;
         localStorage.setItem(STORAGE_KEY, String(this.isCollapsed));
+    }
+
+    handleTooltipShow(event) {
+        const btn = event.currentTarget;
+        const text = btn.dataset.tooltipText;
+        if (!text) return;
+        if (btn.dataset.tooltipCollapsedOnly !== undefined && !this.isCollapsed) return;
+        const rect = btn.getBoundingClientRect();
+        const GAP = 8;
+        this._tooltip = {
+            text,
+            top: rect.top + rect.height / 2,
+            left: rect.right + GAP,
+        };
+    }
+
+    handleTooltipHide() {
+        this._tooltip = null;
     }
 
     handleCollapsedSearchClick() {
