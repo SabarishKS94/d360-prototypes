@@ -70,3 +70,14 @@ shell-theme-switcher {
 lightning-badge {
     display: inline-block;
 }
+
+/* ── Portaled nav tooltip ── */
+.app-nav-tooltip {
+    position: fixed;
+    width: max-content;
+    max-width: 16rem;
+    z-index: 9100;
+    pointer-events: none;
+    white-space: normal;
+    transform: translateY(-50%);
+}

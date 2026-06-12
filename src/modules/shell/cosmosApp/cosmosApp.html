@@ -26,8 +26,19 @@
                 current-page={currentNavPage}
                 current-path={currentPath}
                 onnavigate={handleNavNavigate}
-                oncollapsetoggle={handleNavCollapseToggle}>
+                oncollapsetoggle={handleNavCollapseToggle}
+                ontooltipshow={handleNavTooltipShow}
+                ontooltiphide={handleNavTooltipHide}>
             </shell-vertical-nav>
+        </template>
+
+        <!-- Portaled nav tooltip (rendered outside backdrop-filter container) -->
+        <template lwc:if={_navTooltip}>
+            <div class="cosmos-nav-tooltip slds-popover slds-popover_tooltip slds-nubbin_left"
+                 role="tooltip"
+                 style={navTooltipStyle}>
+                <div class="slds-popover__body">{_navTooltip.text}</div>
+            </div>
         </template>
 
         <!-- Content: full-viewport base layer, scrolls behind fixed overlays -->
