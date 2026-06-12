@@ -13,7 +13,7 @@ export default class VerticalNav extends LightningElement {
     quickFindValue = '';
     @track _expandedGroups = {};
     isCollapsed = false;
-    _tooltip = null;
+
 
     connectedCallback() {
         this.isCollapsed = localStorage.getItem(STORAGE_KEY) === 'true';
@@ -86,14 +86,6 @@ export default class VerticalNav extends LightningElement {
         return this.isCollapsed ? this.labels.Expand : this.labels.Collapse;
     }
 
-    get tooltipStyle() {
-        if (!this._tooltip) return '';
-        return `top:${this._tooltip.top}px;left:${this._tooltip.left}px`;
-    }
-
-    get tooltipText() {
-        return this._tooltip ? this._tooltip.text : '';
-    }
 
     get quickStartLinkClass() {
         const isActiveHome = this.currentPage === 'home';
@@ -146,15 +138,26 @@ export default class VerticalNav extends LightningElement {
         if (btn.dataset.tooltipCollapsedOnly !== undefined && !this.isCollapsed) return;
         const rect = btn.getBoundingClientRect();
         const GAP = 8;
-        this._tooltip = {
-            text,
-            top: rect.top + rect.height / 2,
-            left: rect.right + GAP,
-        };
+        this.dispatchEvent(
+            new CustomEvent('tooltipshow', {
+                detail: {
+                    text,
+                    top: rect.top + rect.height / 2,
+                    left: rect.right + GAP,
+                },
+                bubbles: true,
+                composed: true,
+            })
+        );
     }
 
     handleTooltipHide() {
-        this._tooltip = null;
+        this.dispatchEvent(
+            new CustomEvent('tooltiphide', {
+                bubbles: true,
+                composed: true,
+            })
+        );
     }
 
     handleCollapsedSearchClick() {

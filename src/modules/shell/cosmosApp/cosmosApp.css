@@ -91,3 +91,14 @@
 .cosmos-panel-overlay_open {
     transform: translateX(0);
 }
+
+/* ── Portaled nav tooltip (outside backdrop-filter container) ── */
+.cosmos-nav-tooltip {
+    position: fixed;
+    width: max-content;
+    max-width: 16rem;
+    z-index: 9100;
+    pointer-events: none;
+    white-space: normal;
+    transform: translateY(-50%);
+}

@@ -82,6 +82,7 @@ export default class App extends LightningElement {
     @track _activeAppId = getPersistedAppId();
     @track _authUser = null;
     @track _authChecked = false;
+    @track _navTooltip = null;
 
     _redirectPath = '/';
     _unsubscribeAuth;
@@ -260,5 +261,18 @@ export default class App extends LightningElement {
 
     handleNavigateBack() {
         history.back();
+    }
+
+    get navTooltipStyle() {
+        if (!this._navTooltip) return '';
+        return `top:${this._navTooltip.top}px;left:${this._navTooltip.left}px`;
+    }
+
+    handleNavTooltipShow(event) {
+        this._navTooltip = event.detail;
+    }
+
+    handleNavTooltipHide() {
+        this._navTooltip = null;
     }
 }
