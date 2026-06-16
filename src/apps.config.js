@@ -78,6 +78,7 @@ export const apps = [
         icon: 'utility:chart',
         description: 'Explore your data and build predictive AI models.',
         children: [
+          { id: 'ap-nba', label: 'NBA Card', path: '/nba-model-detail', component: 'page-nba-model-detail' },
           { id: 'ap-item-1', label: 'Item 1', path: '/analyze-predict/item-1', component: 'page-analyze-predict1' },
           { id: 'ap-item-2', label: 'Item 2', path: '/analyze-predict/item-2', component: 'page-analyze-predict2' },
           { id: 'ap-item-3', label: 'Item 3', path: '/analyze-predict/item-3', component: 'page-analyze-predict3' },

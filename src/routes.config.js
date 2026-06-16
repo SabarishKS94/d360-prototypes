@@ -123,6 +123,13 @@ export const routes = [
     title: 'Explore & Optimize — Item 3',
   },
   {
+    path: '/nba-model-detail',
+    component: 'page-nba-model-detail',
+    title: 'NBA — Model Detail',
+    navPage: 'nba-model-detail',
+    navLabel: 'NBA Card',
+  },
+  {
     path: '/analyze-predict/item-1',
     component: 'page-analyze-predict1',
     title: 'Analyze & Predict — Item 1',
