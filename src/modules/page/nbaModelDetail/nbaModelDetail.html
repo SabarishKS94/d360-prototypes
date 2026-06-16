@@ -1,10 +1,23 @@
 <template>
+    <!-- Prototype State Switcher -->
+    <div class="prototype-toolbar slds-p-around_small slds-theme_shade slds-border_bottom">
+        <lightning-combobox
+            name="nbaState"
+            label={labels.ComboboxLabel}
+            placeholder={labels.ComboboxPlaceholder}
+            options={stateOptions}
+            value={selectedStateId}
+            onchange={handleStateChange}
+            variant="label-inline"
+        ></lightning-combobox>
+    </div>
+
     <div class="page-wrapper">
         <!-- Page Header -->
         <div class="page-header">
             <div class="header-row">
                 <div class="header-left">
-                    <lightning-icon icon-name="standard:predictions" size="medium" class="header-icon"></lightning-icon>
+                    <lightning-icon icon-name="standard:data_model" size="medium" class="header-icon"></lightning-icon>
                     <div class="header-title-block">
                         <span class="header-breadcrumb">{labels.PageBreadcrumb}</span>
                         <h1 class="header-title">{labels.PageTitle}</h1>
@@ -22,8 +35,7 @@
                 <div class="detail-item">
                     <span class="detail-label">{labels.LabelStatus}</span>
                     <div class="detail-badges">
-                        <lightning-badge label={labels.StatusInactive} class="badge-light"></lightning-badge>
-                        <lightning-badge label={labels.StatusTraining} icon-name="utility:spinner" icon-position="start"></lightning-badge>
+                        <lightning-badge label={headerStatusLabel}></lightning-badge>
                     </div>
                 </div>
                 <div class="detail-item">
@@ -60,7 +72,7 @@
                                 <lightning-button-group>
                                     <lightning-button label={labels.VersionTitle} variant="neutral" icon-name="utility:down" icon-position="right"></lightning-button>
                                 </lightning-button-group>
-                                <lightning-button label={labels.ActivateButton} variant="brand"></lightning-button>
+                                <lightning-button label={versionButtonLabel} variant={versionButtonVariant}></lightning-button>
                             </div>
 
                             <div class="version-body">

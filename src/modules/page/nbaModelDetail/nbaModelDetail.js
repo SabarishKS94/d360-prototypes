@@ -1,4 +1,4 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, track } from 'lwc';
 import {
     PageBreadcrumb, PageTitle, MetaAuthor, MetaDate,
     StatusInactive, StatusTraining, LabelGoal, LabelCapability, LabelStatus,
@@ -10,6 +10,8 @@ import {
     DescriptionValue, DateValue, AuthorLink,
     DataSpaceValue, DataModelObjectsValue, RecordsFieldsValue, FilteringValue
 } from 'data/labels/NbaModelDetail';
+import { ComboboxLabel, ComboboxPlaceholder } from 'data/labels/NbaStates';
+import { getNbaStateOptions, getNbaStateById } from 'data/services/nbaStatesService';
 
 export default class NbaModelDetail extends LightningElement {
     labels = {
@@ -21,15 +23,71 @@ export default class NbaModelDetail extends LightningElement {
         LabelDescription, LabelLastModified, LabelLastModifiedBy, LabelCreatedOn, LabelCreatedBy,
         VersionDetailsTitle, LabelDataSpace, LabelDataModelObjects, LabelRecordsFields, LabelFiltering,
         DescriptionValue, DateValue, AuthorLink,
-        DataSpaceValue, DataModelObjectsValue, RecordsFieldsValue, FilteringValue
+        DataSpaceValue, DataModelObjectsValue, RecordsFieldsValue, FilteringValue,
+        ComboboxLabel, ComboboxPlaceholder
     };
 
-    nbaCurrentStage = 2;
-    nbaStageCompletionDates = { training: '14 days ago' };
-    nbaTitleText = 'Training complete. Activate your best version to start predictions';
-    nbaDescriptionText = 'v3 achieved 0.92 AUC – best across all versions. Ready for production.';
-    nbaCtaLabel = 'Activate Now';
-    nbaRefreshedText = 'Refreshed 6 days ago';
+    @track selectedStateId = 'training-in-progress';
+
+    get stateOptions() {
+        return getNbaStateOptions();
+    }
+
+    get selectedState() {
+        return getNbaStateById(this.selectedStateId);
+    }
+
+    get nbaCurrentStage() {
+        return this.selectedState?.stage ?? 1;
+    }
+
+    get nbaStageCompletionDates() {
+        return this.selectedState?.dates ?? {};
+    }
+
+    get nbaTitleText() {
+        return this.selectedState?.title ?? '';
+    }
+
+    get nbaDescriptionText() {
+        return this.selectedState?.description ?? '';
+    }
+
+    get nbaCtaLabel() {
+        return this.selectedState?.ctaLabel ?? '';
+    }
+
+    get nbaRefreshedText() {
+        return this.selectedState?.refreshed ?? '';
+    }
+
+    get isModelActive() {
+        return this.selectedState?.isActive ?? false;
+    }
+
+    get headerStatusLabel() {
+        return this.selectedState?.statusLabel ?? 'Inactive';
+    }
+
+    get headerActionLabel() {
+        return this.isModelActive ? 'Deactivate' : 'Activate';
+    }
+
+    get headerActionVariant() {
+        return this.isModelActive ? 'destructive' : 'brand';
+    }
+
+    get versionButtonLabel() {
+        return this.isModelActive ? 'Deactivate' : 'Activate';
+    }
+
+    get versionButtonVariant() {
+        return this.isModelActive ? 'destructive-text' : 'brand';
+    }
+
+    handleStateChange(event) {
+        this.selectedStateId = event.detail.value;
+    }
 
     handleNbaCtaClick() {
         // Navigate to activation flow
