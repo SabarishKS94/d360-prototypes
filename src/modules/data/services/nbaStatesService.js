@@ -19,6 +19,30 @@
 
 const NBA_STATES = [
     {
+        id: 'feature-not-enabled',
+        label: '0. Feature Not Enabled',
+        stage: 0,
+        dates: {},
+        title: 'Unlock AI-powered guidance for this model',
+        description: 'Get recommendations on what to do next at every stage — from training to monitoring. Enable in Settings to activate.',
+        ctaLabel: 'Go to Settings',
+        refreshed: '',
+        isActive: false,
+        statusLabel: 'Inactive'
+    },
+    {
+        id: 'feature-just-enabled',
+        label: '0b. Feature Just Enabled',
+        stage: 1,
+        dates: { training: '10 hours left' },
+        title: 'AI recommendations are now active for this model',
+        description: 'You\'ll receive guidance at every lifecycle stage. Your first recommendation will appear once training completes.',
+        ctaLabel: '',
+        refreshed: 'Enabled just now',
+        isActive: false,
+        statusLabel: 'Training'
+    },
+    {
         id: 'training-in-progress',
         label: '1. Training In Progress',
         stage: 1,

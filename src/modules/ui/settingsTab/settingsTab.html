@@ -1,14 +1,18 @@
 <template>
     <div class="settings-container">
 
-        <!-- Scoped Notification: Org not enabled -->
-        <template lwc:if={showOrgNotification}>
-            <div class="scoped-notification">
-                <lightning-icon icon-name="utility:info" size="x-small" variant="inverse" class="notification-icon"></lightning-icon>
-                <span class="notification-text">{labels.ScopedNotificationText}</span>
-                <a href="#" class="notification-link" onclick={handleEnableNow}>{labels.ScopedNotificationLink}</a>
-            </div>
-        </template>
+        <!-- Hero Section -->
+        <div class="settings-hero">
+            <h2 class="hero-headline">{labels.HeroHeadline}</h2>
+            <p class="hero-subtext">{labels.HeroSubtext}</p>
+            <template lwc:if={showOrgNotification}>
+                <div class="org-callout">
+                    <lightning-icon icon-name="utility:alert" size="xx-small" class="org-callout-icon"></lightning-icon>
+                    <span class="org-callout-text">{labels.OrgCalloutText}</span>
+                    <a href="#" class="org-callout-link" onclick={handleEnableNow}>{labels.OrgCalloutLinkText}</a>
+                </div>
+            </template>
+        </div>
 
         <!-- Feature Card: Drift Tracking -->
         <div class="feature-card">

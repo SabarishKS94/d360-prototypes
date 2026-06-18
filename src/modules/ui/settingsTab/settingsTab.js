@@ -4,7 +4,9 @@ import {
     DriftTrackingTitle, DriftTrackingDescription,
     NbaTitle, NbaDescription,
     EnableButton, DisableButton, EnabledBadge,
-    OrgNotEnabledMessage, OpenSetupLink
+    OrgNotEnabledMessage, OpenSetupLink,
+    HeroHeadline, HeroSubtext, OrgCalloutText, OrgCalloutLinkText,
+    ToastDriftEnabled, ToastDriftDisabled, ToastNbaEnabled, ToastNbaDisabled
 } from 'data/labels/SettingsTab';
 
 export default class SettingsTab extends LightningElement {
@@ -18,7 +20,8 @@ export default class SettingsTab extends LightningElement {
         DriftTrackingTitle, DriftTrackingDescription,
         NbaTitle, NbaDescription,
         EnableButton, DisableButton, EnabledBadge,
-        OrgNotEnabledMessage, OpenSetupLink
+        OrgNotEnabledMessage, OpenSetupLink,
+        HeroHeadline, HeroSubtext, OrgCalloutText, OrgCalloutLinkText
     };
 
     get showOrgNotification() {
@@ -52,12 +55,24 @@ export default class SettingsTab extends LightningElement {
     handleDriftToggle() {
         if (this.orgLevelEnabled) {
             this.driftEnabled = !this.driftEnabled;
+            const message = this.driftEnabled ? ToastDriftEnabled : ToastDriftDisabled;
+            this.dispatchEvent(new CustomEvent('featureenabled', {
+                detail: { featureName: 'drift', enabled: this.driftEnabled, message },
+                bubbles: true,
+                composed: true
+            }));
         }
     }
 
     handleNbaToggle() {
         if (this.orgLevelEnabled) {
             this.nbaEnabled = !this.nbaEnabled;
+            const message = this.nbaEnabled ? ToastNbaEnabled : ToastNbaDisabled;
+            this.dispatchEvent(new CustomEvent('featureenabled', {
+                detail: { featureName: 'nba', enabled: this.nbaEnabled, message },
+                bubbles: true,
+                composed: true
+            }));
         }
     }
 

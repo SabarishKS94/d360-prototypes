@@ -29,6 +29,10 @@ export default class NbaModelDetail extends LightningElement {
 
     @track selectedStateId = 'training-in-progress';
     @track orgLevelEnabled = false;
+    @track toastMessage = '';
+    @track showToast = false;
+
+    _toastTimer = null;
 
     get stateOptions() {
         return getNbaStateOptions();
@@ -100,5 +104,16 @@ export default class NbaModelDetail extends LightningElement {
 
     handleOrgToggle(event) {
         this.orgLevelEnabled = event.target.checked;
+    }
+
+    handleFeatureEnabled(event) {
+        const { message } = event.detail;
+        this.toastMessage = message;
+        this.showToast = true;
+    }
+
+    handleToastDismiss() {
+        this.showToast = false;
+        this.toastMessage = '';
     }
 }

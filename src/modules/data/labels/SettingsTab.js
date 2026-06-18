@@ -12,3 +12,15 @@ export const OrgNotEnabledMessage = 'Requires org-level enablement in Data Cloud
 export const OpenSetupLink = 'Open in Data Cloud Setup';
 export const FeatureManagerNavLabel = 'Feature Manager';
 export const PremiumFeatureLabel = 'Premium Feature';
+
+// Hero section
+export const HeroHeadline = 'Premium AI Features';
+export const HeroSubtext = 'Enhance your models with real-time drift detection and AI-guided recommendations. Requires Agentforce credits.';
+export const OrgCalloutText = 'Your admin needs to enable these in Data Cloud Setup';
+export const OrgCalloutLinkText = 'Data Cloud Setup →';
+
+// Toast messages
+export const ToastDriftEnabled = 'Drift Tracking enabled. You\'ll see alerts when model performance degrades.';
+export const ToastDriftDisabled = 'Drift Tracking disabled.';
+export const ToastNbaEnabled = 'Next Best Actions enabled. Recommendations will appear in the Overview tab.';
+export const ToastNbaDisabled = 'Next Best Actions disabled.';

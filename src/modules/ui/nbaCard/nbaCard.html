@@ -10,32 +10,34 @@
 
         <div class="card-body">
             <!-- Model Lifecycle Progress Bar -->
-            <div class="mlc-progress">
-                <div class="mlc-track">
-                    <template for:each={steps} for:item="step">
-                        <div key={step.key} class="mlc-step">
-                            <div class={step.dotClass}>
-                                <template lwc:if={step.showCheck}>
-                                    <lightning-icon icon-name="utility:check" size="xx-small" variant="inverse"></lightning-icon>
+            <template lwc:if={showProgressBar}>
+                <div class="mlc-progress">
+                    <div class="mlc-track">
+                        <template for:each={steps} for:item="step">
+                            <div key={step.key} class="mlc-step">
+                                <div class={step.dotClass}>
+                                    <template lwc:if={step.showCheck}>
+                                        <lightning-icon icon-name="utility:check" size="xx-small" variant="inverse"></lightning-icon>
+                                    </template>
+                                </div>
+                                <template lwc:if={step.showBar}>
+                                    <div class={step.barClass}></div>
                                 </template>
                             </div>
-                            <template lwc:if={step.showBar}>
-                                <div class={step.barClass}></div>
-                            </template>
-                        </div>
-                    </template>
+                        </template>
+                    </div>
+                    <div class="mlc-labels">
+                        <template for:each={steps} for:item="step">
+                            <div key={step.key} class="mlc-label-item">
+                                <span class="mlc-label-text">{step.label}</span>
+                                <template lwc:if={step.showSublabel}>
+                                    <span class="mlc-sublabel">{step.sublabel}</span>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
                 </div>
-                <div class="mlc-labels">
-                    <template for:each={steps} for:item="step">
-                        <div key={step.key} class="mlc-label-item">
-                            <span class="mlc-label-text">{step.label}</span>
-                            <template lwc:if={step.showSublabel}>
-                                <span class="mlc-sublabel">{step.sublabel}</span>
-                            </template>
-                        </div>
-                    </template>
-                </div>
-            </div>
+            </template>
 
             <!-- NBA Recommendation -->
             <div class="nba-row">

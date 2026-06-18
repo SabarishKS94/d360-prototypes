@@ -147,10 +147,19 @@
                 <lightning-tab label={labels.TabIntegrations} value="integrations"></lightning-tab>
                 <lightning-tab label={labels.TabVersions} value="versions"></lightning-tab>
                 <lightning-tab label={labels.TabSettings} value="settings">
-                    <ui-settings-tab
-                        org-level-enabled={orgLevelEnabled}
-                        onenableorg={handleEnableOrg}
-                    ></ui-settings-tab>
+                    <div class="tab-body">
+                        <ui-toast-message
+                            message={toastMessage}
+                            variant="success"
+                            visible={showToast}
+                            ondismiss={handleToastDismiss}
+                        ></ui-toast-message>
+                        <ui-settings-tab
+                            org-level-enabled={orgLevelEnabled}
+                            onenableorg={handleEnableOrg}
+                            onfeatureenabled={handleFeatureEnabled}
+                        ></ui-settings-tab>
+                    </div>
                 </lightning-tab>
             </lightning-tabset>
         </div>
