@@ -21,7 +21,7 @@ export default class NbaCard extends LightningElement {
     labels = { CardTitle };
 
     get showProgressBar() {
-        return this.currentStage !== 0;
+        return this.currentStage > 0 && this.currentStage <= 5;
     }
 
     get showCta() {

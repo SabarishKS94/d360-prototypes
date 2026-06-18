@@ -1,0 +1,15 @@
+<template>
+    <div class="page-wrapper">
+        <ui-settings-tab
+            org-level-enabled={orgLevelEnabled}
+            onenableorg={handleEnableOrg}
+            onfeatureenabled={handleFeatureEnabled}
+        ></ui-settings-tab>
+    </div>
+    <ui-toast-message
+        message={toastMessage}
+        variant="success"
+        visible={showToast}
+        ondismiss={handleToastDismiss}
+    ></ui-toast-message>
+</template>

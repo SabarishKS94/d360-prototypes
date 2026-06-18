@@ -1,10 +1,12 @@
 /* Prototype Control Toolbar */
 .prototype-toolbar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9000;
     background: var(--slds-g-color-surface-container-1, #e5e5e5);
-    border-bottom: 1px solid var(--slds-g-color-border-1, #c9c9c9);
+    overflow: visible;
 }
 
 .toolbar-controls {

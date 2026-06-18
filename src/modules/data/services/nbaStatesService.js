@@ -201,7 +201,7 @@ const NBA_STATES = [
     {
         id: 'post-lifecycle-done',
         label: '8. Post-Lifecycle — All Complete',
-        stage: 5,
+        stage: 6,
         dates: { training: '60 days ago', activation: '45 days ago', inferenceSetup: '30 days ago', inferenceExecution: '1 day ago', monitoring: 'Active' },
         title: 'Model fully operational. All lifecycle stages complete.',
         description: 'Your model is trained, activated, running inference, and being monitored. Performance stable at 0.91 AUC.',

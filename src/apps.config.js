@@ -55,6 +55,15 @@ export const apps = [
           { id: 'aim-topic', label: 'Topic Classification', path: '/aim-topic', component: 'page-nba-model-detail' },
         ],
       },
+      {
+        id: 'ai-settings',
+        label: 'Settings',
+        icon: '',
+        description: '',
+        children: [
+          { id: 'aim-feature-manager', label: 'Feature Manager', path: '/aim-feature-manager', component: 'page-feature-manager' },
+        ],
+      },
     ],
     navItems: [
       {

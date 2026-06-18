@@ -110,3 +110,14 @@
     width: 100%;
 }
 
+
+.nav-item-icon {
+    --slds-c-icon-color-foreground-default: var(--slds-g-color-on-surface-1, #5c5c5c);
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.slds-nav-vertical__action {
+    display: flex;
+    align-items: center;
+}

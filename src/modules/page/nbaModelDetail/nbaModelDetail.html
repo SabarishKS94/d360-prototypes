@@ -1,26 +1,4 @@
 <template>
-    <!-- Prototype State Switcher -->
-    <div class="prototype-toolbar slds-p-around_small slds-theme_shade slds-border_bottom">
-        <div class="toolbar-controls">
-            <lightning-combobox
-                name="nbaState"
-                label={labels.ComboboxLabel}
-                placeholder={labels.ComboboxPlaceholder}
-                options={stateOptions}
-                value={selectedStateId}
-                onchange={handleStateChange}
-                variant="label-inline"
-            ></lightning-combobox>
-            <lightning-input
-                type="toggle"
-                label={labels.OrgToggleLabel}
-                checked={orgLevelEnabled}
-                onchange={handleOrgToggle}
-                variant="label-inline"
-            ></lightning-input>
-        </div>
-    </div>
-
     <div class="page-wrapper">
         <!-- Page Header -->
         <div class="page-header">
@@ -156,12 +134,43 @@
                         ></ui-toast-message>
                         <ui-settings-tab
                             org-level-enabled={orgLevelEnabled}
+                            show-preview={showPreview}
                             onenableorg={handleEnableOrg}
                             onfeatureenabled={handleFeatureEnabled}
                         ></ui-settings-tab>
                     </div>
                 </lightning-tab>
             </lightning-tabset>
+        </div>
+    </div>
+
+    <!-- Prototype State Switcher -->
+    <div class="prototype-toolbar slds-p-around_small slds-theme_shade slds-border_top">
+        <div class="toolbar-controls">
+            <lightning-combobox
+                name="nbaState"
+                label={labels.ComboboxLabel}
+                placeholder={labels.ComboboxPlaceholder}
+                options={stateOptions}
+                value={selectedStateId}
+                onchange={handleStateChange}
+                variant="label-inline"
+                dropdown-alignment="bottom-left"
+            ></lightning-combobox>
+            <lightning-input
+                type="toggle"
+                label={labels.OrgToggleLabel}
+                checked={orgLevelEnabled}
+                onchange={handleOrgToggle}
+                variant="label-inline"
+            ></lightning-input>
+            <lightning-input
+                type="toggle"
+                label={labels.PreviewToggleLabel}
+                checked={showPreview}
+                onchange={handlePreviewToggle}
+                variant="label-inline"
+            ></lightning-input>
         </div>
     </div>
 </template>

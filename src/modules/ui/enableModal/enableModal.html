@@ -13,11 +13,11 @@
                 ></lightning-button-icon>
             </div>
             <div class="modal-body">
-                <p class="modal-body-text">{labels.BodyText}</p>
+                <p class="modal-body-text">{bodyText}</p>
                 <div class="modal-checkbox">
                     <lightning-input
                         type="checkbox"
-                        label={labels.CheckboxLabel}
+                        label={checkboxLabel}
                         checked={agreed}
                         onchange={handleCheckboxChange}
                     ></lightning-input>
@@ -30,10 +30,10 @@
                     onclick={handleCancel}
                 ></lightning-button>
                 <lightning-button
-                    label={labels.EnableButton}
+                    label={confirmButtonLabel}
                     variant="brand"
-                    disabled={isEnableDisabled}
-                    onclick={handleEnable}
+                    disabled={isConfirmDisabled}
+                    onclick={handleConfirm}
                 ></lightning-button>
             </div>
         </div>

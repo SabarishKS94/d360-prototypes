@@ -14,10 +14,15 @@ export const FeatureManagerNavLabel = 'Feature Manager';
 export const PremiumFeatureLabel = 'Premium Feature';
 
 // Hero section
-export const HeroHeadline = 'Premium AI Features';
-export const HeroSubtext = 'Enhance your models with real-time drift detection and AI-guided recommendations. Requires Agentforce credits.';
-export const OrgCalloutText = 'Your admin needs to enable these in Data Cloud Setup';
-export const OrgCalloutLinkText = 'Data Cloud Setup →';
+export const HeroHeadline = 'Available Features';
+export const HeroSubtext = 'Available features for AI models. Requires Agentforce credits.';
+export const OrgCalloutText = 'These features require org-level setup. Enable them in the Feature Manager first.';
+export const OrgCalloutLinkText = 'Go to Feature Manager';
+
+// Preview section
+export const PreviewTitle = 'Preview';
+export const DriftPreviewText = 'Monitor prediction stability across versions to detect performance decay.';
+export const NbaPreviewText = 'AI-powered recommendations guide you through every model lifecycle stage.';
 
 // Toast messages
 export const ToastDriftEnabled = 'Drift Tracking enabled. You\'ll see alerts when model performance degrades.';

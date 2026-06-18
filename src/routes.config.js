@@ -169,6 +169,7 @@ export const routes = [
   { path: '/aim-retrieve', component: 'page-nba-model-detail', title: 'AI Models — Retrieve' },
   { path: '/aim-sentiment', component: 'page-nba-model-detail', title: 'AI Models — Sentiment' },
   { path: '/aim-topic', component: 'page-nba-model-detail', title: 'AI Models — Topic Classification' },
+  { path: '/aim-feature-manager', component: 'page-feature-manager', title: 'AI Models — Feature Manager' },
   {
     path: '*',
     component: 'page-not-found',

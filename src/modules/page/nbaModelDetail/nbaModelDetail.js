@@ -3,7 +3,7 @@ import {
     PageBreadcrumb, PageTitle, MetaAuthor, MetaDate,
     StatusInactive, StatusTraining, LabelGoal, LabelCapability, LabelStatus,
     GoalValue, CapabilityValue, EditButton,
-    TabOverview, TabTrainingMetrics, TabIntegrations, TabVersions, TabSettings, OrgToggleLabel,
+    TabOverview, TabTrainingMetrics, TabIntegrations, TabVersions, TabSettings, OrgToggleLabel, PreviewToggleLabel,
     VersionTitle, ActivateButton, EditAltText, CollapseAltText,
     LabelDescription, LabelLastModified, LabelLastModifiedBy, LabelCreatedOn, LabelCreatedBy,
     VersionDetailsTitle, LabelDataSpace, LabelDataModelObjects, LabelRecordsFields, LabelFiltering,
@@ -24,11 +24,12 @@ export default class NbaModelDetail extends LightningElement {
         VersionDetailsTitle, LabelDataSpace, LabelDataModelObjects, LabelRecordsFields, LabelFiltering,
         DescriptionValue, DateValue, AuthorLink,
         DataSpaceValue, DataModelObjectsValue, RecordsFieldsValue, FilteringValue,
-        TabSettings, OrgToggleLabel, ComboboxLabel, ComboboxPlaceholder
+        TabSettings, OrgToggleLabel, PreviewToggleLabel, ComboboxLabel, ComboboxPlaceholder
     };
 
     @track selectedStateId = 'training-in-progress';
     @track orgLevelEnabled = false;
+    @track showPreview = true;
     @track toastMessage = '';
     @track showToast = false;
 
@@ -106,6 +107,10 @@ export default class NbaModelDetail extends LightningElement {
 
     handleOrgToggle(event) {
         this.orgLevelEnabled = event.target.checked;
+    }
+
+    handlePreviewToggle(event) {
+        this.showPreview = event.target.checked;
     }
 
     handleFeatureEnabled(event) {

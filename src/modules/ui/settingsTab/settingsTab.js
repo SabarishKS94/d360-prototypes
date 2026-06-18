@@ -6,11 +6,13 @@ import {
     EnableButton, DisableButton, EnabledBadge,
     OrgNotEnabledMessage, OpenSetupLink,
     HeroHeadline, HeroSubtext, OrgCalloutText, OrgCalloutLinkText,
+    PreviewTitle, DriftPreviewText, NbaPreviewText,
     ToastDriftEnabled, ToastDriftDisabled, ToastNbaEnabled, ToastNbaDisabled
 } from 'data/labels/SettingsTab';
 
 export default class SettingsTab extends LightningElement {
     @api orgLevelEnabled = false;
+    @api showPreview = false;
 
     @track driftEnabled = false;
     @track nbaEnabled = false;
@@ -21,7 +23,8 @@ export default class SettingsTab extends LightningElement {
         NbaTitle, NbaDescription,
         EnableButton, DisableButton, EnabledBadge,
         OrgNotEnabledMessage, OpenSetupLink,
-        HeroHeadline, HeroSubtext, OrgCalloutText, OrgCalloutLinkText
+        HeroHeadline, HeroSubtext, OrgCalloutText, OrgCalloutLinkText,
+        PreviewTitle, DriftPreviewText, NbaPreviewText
     };
 
     get showOrgNotification() {
@@ -46,63 +49,54 @@ export default class SettingsTab extends LightningElement {
 
     @track showModal = false;
     @track pendingFeature = '';
+    @track isDisabling = false;
 
     handleDriftToggle() {
         if (this.orgLevelEnabled) {
-            if (!this.driftEnabled) {
-                this.pendingFeature = 'drift';
-                this.showModal = true;
-            } else {
-                this.driftEnabled = false;
-                this.dispatchEvent(new CustomEvent('featureenabled', {
-                    detail: { featureName: 'drift', enabled: false, message: ToastDriftDisabled },
-                    bubbles: true,
-                    composed: true
-                }));
-            }
+            this.pendingFeature = 'drift';
+            this.isDisabling = this.driftEnabled;
+            this.showModal = true;
         }
     }
 
     handleNbaToggle() {
         if (this.orgLevelEnabled) {
-            if (!this.nbaEnabled) {
-                this.pendingFeature = 'nba';
-                this.showModal = true;
-            } else {
-                this.nbaEnabled = false;
-                this.dispatchEvent(new CustomEvent('featureenabled', {
-                    detail: { featureName: 'nba', enabled: false, message: ToastNbaDisabled },
-                    bubbles: true,
-                    composed: true
-                }));
-            }
+            this.pendingFeature = 'nba';
+            this.isDisabling = this.nbaEnabled;
+            this.showModal = true;
         }
     }
 
     handleModalClose() {
         this.showModal = false;
         this.pendingFeature = '';
+        this.isDisabling = false;
     }
 
     handleModalConfirm(event) {
         this.showModal = false;
         const feature = event.detail.featureName;
+        const wasDisabling = event.detail.isDisabling;
+
         if (feature === 'drift') {
-            this.driftEnabled = true;
+            this.driftEnabled = !wasDisabling;
+            const message = this.driftEnabled ? ToastDriftEnabled : ToastDriftDisabled;
             this.dispatchEvent(new CustomEvent('featureenabled', {
-                detail: { featureName: 'drift', enabled: true, message: ToastDriftEnabled },
+                detail: { featureName: 'drift', enabled: this.driftEnabled, message },
                 bubbles: true,
                 composed: true
             }));
         } else if (feature === 'nba') {
-            this.nbaEnabled = true;
+            this.nbaEnabled = !wasDisabling;
+            const message = this.nbaEnabled ? ToastNbaEnabled : ToastNbaDisabled;
             this.dispatchEvent(new CustomEvent('featureenabled', {
-                detail: { featureName: 'nba', enabled: true, message: ToastNbaEnabled },
+                detail: { featureName: 'nba', enabled: this.nbaEnabled, message },
                 bubbles: true,
                 composed: true
             }));
         }
         this.pendingFeature = '';
+        this.isDisabling = false;
     }
 
     handleOpenSetup() {
@@ -110,6 +104,10 @@ export default class SettingsTab extends LightningElement {
     }
 
     handleEnableNow() {
-        this.dispatchEvent(new CustomEvent('enableorg', { bubbles: true, composed: true }));
+        this.dispatchEvent(new CustomEvent('navigate', {
+            detail: { route: '/aim-feature-manager' },
+            bubbles: true,
+            composed: true
+        }));
     }
 }

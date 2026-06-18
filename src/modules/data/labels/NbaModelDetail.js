@@ -37,3 +37,4 @@ export const RecordsFieldsValue = '5.1K Records';
 export const FilteringValue = '100K records excluded';
 export const TabSettings = 'Settings';
 export const OrgToggleLabel = 'Org-level features enabled';
+export const PreviewToggleLabel = 'Show feature previews';

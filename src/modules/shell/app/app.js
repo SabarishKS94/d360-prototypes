@@ -26,6 +26,7 @@ import ExploreOptimize1 from 'page/exploreOptimize1';
 import ExploreOptimize2 from 'page/exploreOptimize2';
 import ExploreOptimize3 from 'page/exploreOptimize3';
 import NbaModelDetail from 'page/nbaModelDetail';
+import FeatureManager from 'page/featureManager';
 import AnalyzePredict1 from 'page/analyzePredict1';
 import AnalyzePredict2 from 'page/analyzePredict2';
 import AnalyzePredict3 from 'page/analyzePredict3';
@@ -55,6 +56,7 @@ const ROUTE_COMPONENTS = {
     'page-explore-optimize2': ExploreOptimize2,
     'page-explore-optimize3': ExploreOptimize3,
     'page-nba-model-detail': NbaModelDetail,
+    'page-feature-manager': FeatureManager,
     'page-analyze-predict1': AnalyzePredict1,
     'page-analyze-predict2': AnalyzePredict2,
     'page-analyze-predict3': AnalyzePredict3,

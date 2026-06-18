@@ -1,22 +1,39 @@
 import { LightningElement, api, track } from 'lwc';
 import {
-    DriftTitle, NbaTitle, BodyText, CheckboxLabel,
-    CancelButton, EnableButton, CloseAltText
+    DriftEnableTitle, NbaEnableTitle, EnableBodyText, EnableCheckboxLabel,
+    DriftDisableTitle, NbaDisableTitle, DisableBodyText, DisableCheckboxLabel,
+    CancelButton, EnableButton, DisableButton, CloseAltText
 } from 'data/labels/EnableModal';
 
 export default class EnableModal extends LightningElement {
     @api featureName = '';
     @api visible = false;
+    @api isDisabling = false;
 
     @track agreed = false;
 
-    labels = { BodyText, CheckboxLabel, CancelButton, EnableButton, CloseAltText };
+    labels = { CancelButton, EnableButton, DisableButton, CloseAltText };
 
     get modalTitle() {
-        return this.featureName === 'drift' ? DriftTitle : NbaTitle;
+        if (this.isDisabling) {
+            return this.featureName === 'drift' ? DriftDisableTitle : NbaDisableTitle;
+        }
+        return this.featureName === 'drift' ? DriftEnableTitle : NbaEnableTitle;
     }
 
-    get isEnableDisabled() {
+    get bodyText() {
+        return this.isDisabling ? DisableBodyText : EnableBodyText;
+    }
+
+    get checkboxLabel() {
+        return this.isDisabling ? DisableCheckboxLabel : EnableCheckboxLabel;
+    }
+
+    get confirmButtonLabel() {
+        return this.isDisabling ? DisableButton : EnableButton;
+    }
+
+    get isConfirmDisabled() {
         return !this.agreed;
     }
 
@@ -34,10 +51,10 @@ export default class EnableModal extends LightningElement {
         this.dispatchEvent(new CustomEvent('close'));
     }
 
-    handleEnable() {
+    handleConfirm() {
         this.agreed = false;
         this.dispatchEvent(new CustomEvent('confirm', {
-            detail: { featureName: this.featureName }
+            detail: { featureName: this.featureName, isDisabling: this.isDisabling }
         }));
     }
 }
