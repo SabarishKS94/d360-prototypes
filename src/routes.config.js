@@ -125,9 +125,9 @@ export const routes = [
   {
     path: '/nba-model-detail',
     component: 'page-nba-model-detail',
-    title: 'NBA — Model Detail',
+    title: 'AI Models — Predict',
     navPage: 'nba-model-detail',
-    navLabel: 'NBA Card',
+    navLabel: 'AI Models',
   },
   {
     path: '/analyze-predict/item-1',

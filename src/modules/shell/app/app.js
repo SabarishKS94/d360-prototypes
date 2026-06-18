@@ -128,6 +128,12 @@ export default class App extends LightningElement {
     }
 
     get verticalNavItems() {
+        const isAiModelsPage = this.currentNavPage === 'nba-model-detail' ||
+            this.currentPath?.startsWith('/aim-') ||
+            this.currentPath === '/nba-model-detail';
+        if (isAiModelsPage && this.activeApp.aiModelsNavItems) {
+            return this.activeApp.aiModelsNavItems;
+        }
         return this.activeApp.navItems;
     }
 
