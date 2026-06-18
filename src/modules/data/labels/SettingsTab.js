@@ -1,0 +1,14 @@
+export const TabTitle = 'Settings';
+export const ScopedNotificationText = 'Enable in feature manager';
+export const ScopedNotificationLink = 'Enable now';
+export const DriftTrackingTitle = 'Predictive Model Drift Tracking';
+export const DriftTrackingDescription = 'Detect shifts in data early and take corrective actions to keep models aligned with Production data.';
+export const NbaTitle = 'Einstein Next Best Actions';
+export const NbaDescription = 'Get AI-powered recommendations to guide your models from training to production. Consumes Agentforce credits per generation.';
+export const EnableButton = 'Enable';
+export const DisableButton = 'Disable';
+export const EnabledBadge = 'Enabled';
+export const OrgNotEnabledMessage = 'Requires org-level enablement in Data Cloud Setup before model-level features can be activated.';
+export const OpenSetupLink = 'Open in Data Cloud Setup';
+export const FeatureManagerNavLabel = 'Feature Manager';
+export const PremiumFeatureLabel = 'Premium Feature';

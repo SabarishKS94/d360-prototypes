@@ -3,7 +3,7 @@ import {
     PageBreadcrumb, PageTitle, MetaAuthor, MetaDate,
     StatusInactive, StatusTraining, LabelGoal, LabelCapability, LabelStatus,
     GoalValue, CapabilityValue, EditButton,
-    TabOverview, TabTrainingMetrics, TabIntegrations, TabVersions,
+    TabOverview, TabTrainingMetrics, TabIntegrations, TabVersions, TabSettings, OrgToggleLabel,
     VersionTitle, ActivateButton, EditAltText, CollapseAltText,
     LabelDescription, LabelLastModified, LabelLastModifiedBy, LabelCreatedOn, LabelCreatedBy,
     VersionDetailsTitle, LabelDataSpace, LabelDataModelObjects, LabelRecordsFields, LabelFiltering,
@@ -24,10 +24,11 @@ export default class NbaModelDetail extends LightningElement {
         VersionDetailsTitle, LabelDataSpace, LabelDataModelObjects, LabelRecordsFields, LabelFiltering,
         DescriptionValue, DateValue, AuthorLink,
         DataSpaceValue, DataModelObjectsValue, RecordsFieldsValue, FilteringValue,
-        ComboboxLabel, ComboboxPlaceholder
+        TabSettings, OrgToggleLabel, ComboboxLabel, ComboboxPlaceholder
     };
 
     @track selectedStateId = 'training-in-progress';
+    @track orgLevelEnabled = false;
 
     get stateOptions() {
         return getNbaStateOptions();
@@ -91,5 +92,13 @@ export default class NbaModelDetail extends LightningElement {
 
     handleNbaCtaClick() {
         // Navigate to activation flow
+    }
+
+    handleEnableOrg() {
+        this.orgLevelEnabled = true;
+    }
+
+    handleOrgToggle(event) {
+        this.orgLevelEnabled = event.target.checked;
     }
 }

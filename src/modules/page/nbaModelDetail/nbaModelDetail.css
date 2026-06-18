@@ -7,6 +7,12 @@
     border-bottom: 1px solid var(--slds-g-color-border-1, #c9c9c9);
 }
 
+.toolbar-controls {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
 .page-wrapper {
     padding: 0 1rem;
 }

@@ -35,3 +35,5 @@ export const DataSpaceValue = 'default';
 export const DataModelObjectsValue = 'Object A, Object B, Object C';
 export const RecordsFieldsValue = '5.1K Records';
 export const FilteringValue = '100K records excluded';
+export const TabSettings = 'Settings';
+export const OrgToggleLabel = 'Org-level features enabled';

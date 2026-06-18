@@ -1,0 +1,104 @@
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+/* Scoped Notification */
+.scoped-notification {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    background: var(--slds-g-color-brand-base-90, #d6e6ff);
+    border-radius: 0.25rem;
+}
+
+.notification-icon {
+    --slds-c-icon-color-foreground-default: var(--slds-g-color-brand-base-50, #0176d3);
+}
+
+.notification-text {
+    font-size: 0.8125rem;
+    color: var(--slds-g-color-on-surface-3, #03234d);
+}
+
+.notification-link {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--slds-g-color-accent-2, #0250d9);
+    text-decoration: underline;
+}
+
+/* Feature Cards */
+.feature-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 1px solid var(--slds-g-color-border-1, #c9c9c9);
+    border-radius: 0.75rem;
+    background: var(--slds-g-color-surface-container-1, #ffffff);
+}
+
+.feature-card-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.feature-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.375rem;
+}
+
+.feature-title {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--slds-g-color-on-surface-3, #03234d);
+    line-height: 1.75rem;
+}
+
+.feature-description {
+    font-size: 0.8125rem;
+    color: var(--slds-g-color-on-surface-1, #5c5c5c);
+    line-height: 1.25rem;
+    margin: 0;
+}
+
+.feature-card-action {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.enabled-badge {
+    --slds-c-badge-color-background: var(--slds-g-color-success-base-90, #cdefc4);
+    --slds-c-badge-text-color: var(--slds-g-color-success-base-30, #194e31);
+}
+
+/* Setup Link */
+.setup-link-row {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding-top: 0.5rem;
+}
+
+.setup-link-icon {
+    --slds-c-icon-color-foreground-default: var(--slds-g-color-on-surface-1, #5c5c5c);
+}
+
+.setup-link {
+    font-size: 0.8125rem;
+    color: var(--slds-g-color-on-surface-1, #5c5c5c);
+    text-decoration: none;
+}
+
+.setup-link:hover {
+    text-decoration: underline;
+}

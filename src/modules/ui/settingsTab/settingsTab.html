@@ -1,0 +1,59 @@
+<template>
+    <div class="settings-container">
+
+        <!-- Scoped Notification: Org not enabled -->
+        <template lwc:if={showOrgNotification}>
+            <div class="scoped-notification">
+                <lightning-icon icon-name="utility:info" size="x-small" variant="inverse" class="notification-icon"></lightning-icon>
+                <span class="notification-text">{labels.ScopedNotificationText}</span>
+                <a href="#" class="notification-link" onclick={handleEnableNow}>{labels.ScopedNotificationLink}</a>
+            </div>
+        </template>
+
+        <!-- Feature Card: Drift Tracking -->
+        <div class="feature-card">
+            <div class="feature-card-content">
+                <div class="feature-card-header">
+                    <lightning-icon icon-name="standard:shipment" size="small" class="feature-icon"></lightning-icon>
+                    <span class="feature-title">{labels.DriftTrackingTitle}</span>
+                </div>
+                <p class="feature-description">{labels.DriftTrackingDescription}</p>
+            </div>
+            <div class="feature-card-action">
+                <lightning-badge lwc:if={driftEnabled} label={labels.EnabledBadge} class="enabled-badge"></lightning-badge>
+                <lightning-button
+                    label={driftButtonLabel}
+                    variant={driftButtonVariant}
+                    disabled={isDriftDisabled}
+                    onclick={handleDriftToggle}
+                ></lightning-button>
+            </div>
+        </div>
+
+        <!-- Feature Card: NBA -->
+        <div class="feature-card">
+            <div class="feature-card-content">
+                <div class="feature-card-header">
+                    <lightning-icon icon-name="standard:agent_astro" size="small" class="feature-icon"></lightning-icon>
+                    <span class="feature-title">{labels.NbaTitle}</span>
+                </div>
+                <p class="feature-description">{labels.NbaDescription}</p>
+            </div>
+            <div class="feature-card-action">
+                <lightning-badge lwc:if={nbaEnabled} label={labels.EnabledBadge} class="enabled-badge"></lightning-badge>
+                <lightning-button
+                    label={nbaButtonLabel}
+                    variant={nbaButtonVariant}
+                    disabled={isNbaDisabled}
+                    onclick={handleNbaToggle}
+                ></lightning-button>
+            </div>
+        </div>
+
+        <!-- Link to full Setup -->
+        <div class="setup-link-row">
+            <lightning-icon icon-name="utility:new_window" size="xx-small" class="setup-link-icon"></lightning-icon>
+            <a href="#" class="setup-link" onclick={handleOpenSetup}>{labels.OpenSetupLink}</a>
+        </div>
+    </div>
+</template>

@@ -1,15 +1,24 @@
 <template>
     <!-- Prototype State Switcher -->
     <div class="prototype-toolbar slds-p-around_small slds-theme_shade slds-border_bottom">
-        <lightning-combobox
-            name="nbaState"
-            label={labels.ComboboxLabel}
-            placeholder={labels.ComboboxPlaceholder}
-            options={stateOptions}
-            value={selectedStateId}
-            onchange={handleStateChange}
-            variant="label-inline"
-        ></lightning-combobox>
+        <div class="toolbar-controls">
+            <lightning-combobox
+                name="nbaState"
+                label={labels.ComboboxLabel}
+                placeholder={labels.ComboboxPlaceholder}
+                options={stateOptions}
+                value={selectedStateId}
+                onchange={handleStateChange}
+                variant="label-inline"
+            ></lightning-combobox>
+            <lightning-input
+                type="toggle"
+                label={labels.OrgToggleLabel}
+                checked={orgLevelEnabled}
+                onchange={handleOrgToggle}
+                variant="label-inline"
+            ></lightning-input>
+        </div>
     </div>
 
     <div class="page-wrapper">
@@ -137,6 +146,12 @@
                 <lightning-tab label={labels.TabTrainingMetrics} value="metrics"></lightning-tab>
                 <lightning-tab label={labels.TabIntegrations} value="integrations"></lightning-tab>
                 <lightning-tab label={labels.TabVersions} value="versions"></lightning-tab>
+                <lightning-tab label={labels.TabSettings} value="settings">
+                    <ui-settings-tab
+                        org-level-enabled={orgLevelEnabled}
+                        onenableorg={handleEnableOrg}
+                    ></ui-settings-tab>
+                </lightning-tab>
             </lightning-tabset>
         </div>
     </div>
