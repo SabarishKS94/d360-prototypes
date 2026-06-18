@@ -1,0 +1,121 @@
+---
+alwaysApply: true
+---
+
+# Architecture Guardrails
+
+These rules enforce production-portable patterns. After editing any file in `src/modules/`, run `npm run lint:arch && npm run lint:boundaries` and fix any violations before moving on.
+
+---
+
+## Mandatory Skill Gates
+
+Before taking any of these actions, complete the associated checklist:
+
+| Action | Checklist |
+|--------|-----------|
+| Creating a new component under `src/modules/` | Follow the "New Component Checklist" below |
+| Editing `.html`, `.css`, `.js` in `src/modules/` | Follow the "UI Code Checklist" in `slds-rules.mdc` |
+| Editing `cosmos-theme.css`, `cosmosApp.css`, or `cosmos-brand-*.css` | Follow the "Theme CSS Rules" below |
+| Adding a new page or nav item | Follow the "New Page Checklist" below |
+
+---
+
+## Namespace Rules
+
+All components live in `src/modules/` under exactly one of these namespaces:
+
+| Namespace | Tag Prefix | Can import from | Cannot import from |
+|-----------|------------|-----------------|-------------------|
+| `shell/` | `shell-*` | `data/`, `ui/`, `src/router.js` | `page/` |
+| `page/` | `page-*` | `data/`, `ui/` | `shell/`, other `page/` |
+| `ui/` | `ui-*` | `data/labels/`, other `ui/` | `page/`, `shell/`, `data/*` (except labels) |
+| `data/` | (import only) | other `data/` | `shell/`, `page/`, `ui/` |
+
+Never create components outside these four namespaces.
+
+---
+
+## i18n-Ready Label Pattern
+
+**No hardcoded user-facing strings in templates.** All text in `title`, `label`, `placeholder`, `alternative-text`, and `aria-label` attributes must come from label modules.
+
+**Pattern:**
+
+```javascript
+// src/modules/data/labels/MyFeature.js
+export const PageTitle = 'My Feature';
+export const SearchPlaceholder = 'Search...';
+```
+
+```javascript
+// Component JS
+import { PageTitle, SearchPlaceholder } from 'data/labels/MyFeature';
+export default class PageMyFeature extends LightningElement {
+    labels = { PageTitle, SearchPlaceholder };
+}
+```
+
+```html
+<!-- Template -->
+<lightning-card title={labels.PageTitle}>
+<lightning-input placeholder={labels.SearchPlaceholder}>
+```
+
+**Rules:**
+- One file per page or feature area (`Home.js`, `Contacts.js`)
+- Shared labels ("Cancel", "Save", "Close") go in `Common.js`
+- This mirrors `@salesforce/label/` — porting to core is a path swap
+
+---
+
+## Theme CSS Rules
+
+Two files, strict separation:
+
+| File | Owns | Never put here |
+|------|------|----------------|
+| `public/cosmos-theme.css` | All visual styling: backgrounds, borders, backdrop-filter, gradients, colors, glass treatments | position, z-index, width, height, padding, margin, display, flex, grid |
+| `src/modules/shell/cosmosApp/cosmosApp.css` | Layout only: positioning, z-index, dimensions, padding, transforms, transitions, `--cosmos-*` properties | background, backdrop-filter, border-color, box-shadow, color, fill, stroke |
+
+**Why:** `cosmos-theme.css` is global and crosses synthetic shadow boundaries. `cosmosApp.css` is scoped to the host — visual properties placed here silently fail to reach child components.
+
+---
+
+## New Component Checklist
+
+1. Determine the correct namespace (`page/` for routes, `ui/` for reusable, `shell/` for app chrome, `data/` for JS-only)
+2. Create `src/modules/<namespace>/<componentName>/<componentName>.{html,js}`
+3. Create a label file at `src/modules/data/labels/<ComponentName>.js` for all user-facing strings
+4. If `page/`: add route to `src/routes.config.js` and register in `shell/app/app.js` `ROUTE_COMPONENTS`
+5. Run `npm run lint:arch && npm run lint:boundaries`
+
+---
+
+## New Page Checklist
+
+1. Create `src/modules/page/<pageName>/<pageName>.{html,js,css}`
+2. Create `src/modules/data/labels/<PageName>.js` with all user-facing strings
+3. Add route entry to `src/routes.config.js`:
+   ```javascript
+   {
+     path: '/<page-name>',
+     component: 'page-<pageName>',
+     title: '<Page Title>',
+     navPage: '<page-name>',
+     navLabel: '<Nav Label>',
+   }
+   ```
+4. Import and register the component in `src/modules/shell/app/app.js` under `ROUTE_COMPONENTS`
+5. If it should appear in nav: add entry in `shell/globalNavigation` or `shell/verticalNav`
+6. Run `npm run lint:arch && npm run lint:boundaries`
+
+---
+
+## After Every Edit
+
+After modifying any file in `src/modules/` or `public/`:
+
+1. Run `npm run lint:arch` — fix any blocking violations (namespace), address warnings (labels, CSS)
+2. Run `npm run lint:boundaries` — fix any import boundary violations
+3. Verify the dev server still renders correctly at `http://localhost:4360`

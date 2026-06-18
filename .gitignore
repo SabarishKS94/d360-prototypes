@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+dist-ssr/
+src/build/generated/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Worktrees
+.worktrees/
+
+# Local-only files (not shared via git)
+.local/
+
+# Synced skills (fetched via npm run skills:sync)
+.cursor/rules/d360/
+.agent/skills/afv-library/
+
+# Playwright MCP
+.playwright-mcp/
+
+# Visual regression output
+validation-output/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+deploy.sh

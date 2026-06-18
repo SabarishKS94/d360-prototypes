@@ -1,0 +1,37 @@
+{
+  "extraKnownMarketplaces": {
+    "d360-ux-skills": {
+      "source": {
+        "source": "git",
+        "url": "git@git.soma.salesforce.com:lizzie-li/d360-ux-skills.git"
+      },
+      "autoUpdate": true
+    }
+  },
+  "enabledPlugins": {
+    "lwc-ui-checklist@d360-ux-skills": true,
+    "lwc-new-component@d360-ux-skills": true,
+    "add-nav-item@d360-ux-skills": true,
+    "salesforce-mcp-tools@d360-ux-skills": true,
+    "d360-eou@d360-ux-skills": true,
+    "a11y-audit@d360-ux-skills": true,
+    "design-architectural-audit@d360-ux-skills": true
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node scripts/lint-architecture-rules.mjs --hook"
+          },
+          {
+            "type": "command",
+            "command": "node scripts/lint-import-boundaries.mjs --hook"
+          }
+        ]
+      }
+    ]
+  }
+}
