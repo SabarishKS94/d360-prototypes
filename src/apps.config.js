@@ -98,6 +98,43 @@ export const apps = [
     ],
   },
   {
+    id: 'aimodels',
+    label: 'AI Models',
+    variant: 'vertical',
+    pathPrefix: '/aimodels',
+    defaultPath: '/aimodels',
+    pages: ['nba-model-detail'],
+    navItems: [
+      {
+        id: 'ai-models-general',
+        label: 'AI Models',
+        icon: 'utility:back',
+        description: '',
+        children: [
+          { id: 'aim-home', label: 'Home', path: '/aim-home', component: 'page-nba-model-detail' },
+          { id: 'aim-job-monitor', label: 'Job Monitor', path: '/aim-job-monitor', component: 'page-nba-model-detail' },
+          { id: 'aim-library', label: 'Library', path: '/aim-library', component: 'page-nba-model-detail' },
+        ],
+      },
+      {
+        id: 'ai-functions',
+        label: 'AI Functions',
+        icon: 'utility:chevronup',
+        description: '',
+        children: [
+          { id: 'aim-cluster', label: 'Cluster', path: '/aim-cluster', component: 'page-nba-model-detail' },
+          { id: 'aim-forecast', label: 'Forecast', path: '/aim-forecast', component: 'page-nba-model-detail' },
+          { id: 'aim-generate', label: 'Generate', path: '/aim-generate', component: 'page-nba-model-detail' },
+          { id: 'aim-optimize', label: 'Optimize', path: '/aim-optimize', component: 'page-nba-model-detail' },
+          { id: 'aim-predict', label: 'Predict', path: '/nba-model-detail', component: 'page-nba-model-detail' },
+          { id: 'aim-retrieve', label: 'Retrieve', path: '/aim-retrieve', component: 'page-nba-model-detail' },
+          { id: 'aim-sentiment', label: 'Sentiment', path: '/aim-sentiment', component: 'page-nba-model-detail' },
+          { id: 'aim-topic', label: 'Topic Classification', path: '/aim-topic', component: 'page-nba-model-detail' },
+        ],
+      },
+    ],
+  },
+  {
     id: 'template',
     label: 'Template App',
     variant: 'standard',

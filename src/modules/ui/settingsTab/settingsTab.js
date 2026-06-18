@@ -28,20 +28,12 @@ export default class SettingsTab extends LightningElement {
         return !this.orgLevelEnabled;
     }
 
-    get driftButtonLabel() {
-        return this.driftEnabled ? DisableButton : EnableButton;
+    get driftButtonClass() {
+        return this.driftEnabled ? 'feature-toggle-btn feature-toggle-btn_enabled' : 'feature-toggle-btn';
     }
 
-    get driftButtonVariant() {
-        return this.driftEnabled ? 'destructive-text' : 'brand-outline';
-    }
-
-    get nbaButtonLabel() {
-        return this.nbaEnabled ? DisableButton : EnableButton;
-    }
-
-    get nbaButtonVariant() {
-        return this.nbaEnabled ? 'destructive-text' : 'brand-outline';
+    get nbaButtonClass() {
+        return this.nbaEnabled ? 'feature-toggle-btn feature-toggle-btn_enabled' : 'feature-toggle-btn';
     }
 
     get isDriftDisabled() {
@@ -52,28 +44,65 @@ export default class SettingsTab extends LightningElement {
         return !this.orgLevelEnabled;
     }
 
+    @track showModal = false;
+    @track pendingFeature = '';
+
     handleDriftToggle() {
         if (this.orgLevelEnabled) {
-            this.driftEnabled = !this.driftEnabled;
-            const message = this.driftEnabled ? ToastDriftEnabled : ToastDriftDisabled;
-            this.dispatchEvent(new CustomEvent('featureenabled', {
-                detail: { featureName: 'drift', enabled: this.driftEnabled, message },
-                bubbles: true,
-                composed: true
-            }));
+            if (!this.driftEnabled) {
+                this.pendingFeature = 'drift';
+                this.showModal = true;
+            } else {
+                this.driftEnabled = false;
+                this.dispatchEvent(new CustomEvent('featureenabled', {
+                    detail: { featureName: 'drift', enabled: false, message: ToastDriftDisabled },
+                    bubbles: true,
+                    composed: true
+                }));
+            }
         }
     }
 
     handleNbaToggle() {
         if (this.orgLevelEnabled) {
-            this.nbaEnabled = !this.nbaEnabled;
-            const message = this.nbaEnabled ? ToastNbaEnabled : ToastNbaDisabled;
+            if (!this.nbaEnabled) {
+                this.pendingFeature = 'nba';
+                this.showModal = true;
+            } else {
+                this.nbaEnabled = false;
+                this.dispatchEvent(new CustomEvent('featureenabled', {
+                    detail: { featureName: 'nba', enabled: false, message: ToastNbaDisabled },
+                    bubbles: true,
+                    composed: true
+                }));
+            }
+        }
+    }
+
+    handleModalClose() {
+        this.showModal = false;
+        this.pendingFeature = '';
+    }
+
+    handleModalConfirm(event) {
+        this.showModal = false;
+        const feature = event.detail.featureName;
+        if (feature === 'drift') {
+            this.driftEnabled = true;
             this.dispatchEvent(new CustomEvent('featureenabled', {
-                detail: { featureName: 'nba', enabled: this.nbaEnabled, message },
+                detail: { featureName: 'drift', enabled: true, message: ToastDriftEnabled },
+                bubbles: true,
+                composed: true
+            }));
+        } else if (feature === 'nba') {
+            this.nbaEnabled = true;
+            this.dispatchEvent(new CustomEvent('featureenabled', {
+                detail: { featureName: 'nba', enabled: true, message: ToastNbaEnabled },
                 bubbles: true,
                 composed: true
             }));
         }
+        this.pendingFeature = '';
     }
 
     handleOpenSetup() {

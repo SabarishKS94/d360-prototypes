@@ -24,13 +24,15 @@
                 <p class="feature-description">{labels.DriftTrackingDescription}</p>
             </div>
             <div class="feature-card-action">
-                <lightning-badge lwc:if={driftEnabled} label={labels.EnabledBadge} class="enabled-badge"></lightning-badge>
-                <lightning-button
-                    label={driftButtonLabel}
-                    variant={driftButtonVariant}
-                    disabled={isDriftDisabled}
-                    onclick={handleDriftToggle}
-                ></lightning-button>
+                <button class={driftButtonClass} disabled={isDriftDisabled} onclick={handleDriftToggle}>
+                    <template lwc:if={driftEnabled}>
+                        <span class="btn-enabled-state">&#10003; {labels.EnabledBadge}</span>
+                        <span class="btn-hover-state">&#10005; {labels.DisableButton}</span>
+                    </template>
+                    <template lwc:else>
+                        <span>{labels.EnableButton}</span>
+                    </template>
+                </button>
             </div>
         </div>
 
@@ -44,13 +46,15 @@
                 <p class="feature-description">{labels.NbaDescription}</p>
             </div>
             <div class="feature-card-action">
-                <lightning-badge lwc:if={nbaEnabled} label={labels.EnabledBadge} class="enabled-badge"></lightning-badge>
-                <lightning-button
-                    label={nbaButtonLabel}
-                    variant={nbaButtonVariant}
-                    disabled={isNbaDisabled}
-                    onclick={handleNbaToggle}
-                ></lightning-button>
+                <button class={nbaButtonClass} disabled={isNbaDisabled} onclick={handleNbaToggle}>
+                    <template lwc:if={nbaEnabled}>
+                        <span class="btn-enabled-state">&#10003; {labels.EnabledBadge}</span>
+                        <span class="btn-hover-state">&#10005; {labels.DisableButton}</span>
+                    </template>
+                    <template lwc:else>
+                        <span>{labels.EnableButton}</span>
+                    </template>
+                </button>
             </div>
         </div>
 
@@ -59,5 +63,13 @@
             <lightning-icon icon-name="utility:new_window" size="xx-small" class="setup-link-icon"></lightning-icon>
             <a href="#" class="setup-link" onclick={handleOpenSetup}>{labels.OpenSetupLink}</a>
         </div>
+
+        <!-- Enable Confirmation Modal -->
+        <ui-enable-modal
+            feature-name={pendingFeature}
+            visible={showModal}
+            onclose={handleModalClose}
+            onconfirm={handleModalConfirm}
+        ></ui-enable-modal>
     </div>
 </template>

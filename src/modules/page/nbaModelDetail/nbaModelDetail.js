@@ -95,7 +95,9 @@ export default class NbaModelDetail extends LightningElement {
     }
 
     handleNbaCtaClick() {
-        // Navigate to activation flow
+        if (this.selectedStateId === 'feature-not-enabled') {
+            this.template.querySelector('lightning-tabset').activeTabValue = 'settings';
+        }
     }
 
     handleEnableOrg() {

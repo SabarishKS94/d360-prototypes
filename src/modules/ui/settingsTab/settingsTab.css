@@ -101,9 +101,57 @@
     margin-left: 1rem;
 }
 
-.enabled-badge {
-    --slds-c-badge-color-background: var(--slds-g-color-success-base-90, #cdefc4);
-    --slds-c-badge-text-color: var(--slds-g-color-success-base-30, #194e31);
+/* Feature Toggle Button — 3 states */
+.feature-toggle-btn {
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--slds-g-color-border-1, #c9c9c9);
+    border-radius: 2rem;
+    background: var(--slds-g-color-surface-container-1, #ffffff);
+    color: var(--slds-g-color-brand-base-50, #0176d3);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.feature-toggle-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.feature-toggle-btn:not(:disabled):hover {
+    border-color: var(--slds-g-color-brand-base-50, #0176d3);
+}
+
+/* Enabled state — blue filled */
+.feature-toggle-btn_enabled {
+    background: var(--slds-g-color-brand-base-50, #0176d3);
+    border-color: var(--slds-g-color-brand-base-50, #0176d3);
+    color: #ffffff;
+}
+
+.feature-toggle-btn_enabled .btn-enabled-state {
+    display: inline;
+}
+
+.feature-toggle-btn_enabled .btn-hover-state {
+    display: none;
+}
+
+/* Hover on enabled — show Disable */
+.feature-toggle-btn_enabled:hover {
+    background: var(--slds-g-color-surface-container-1, #ffffff);
+    border-color: var(--slds-g-color-error-base-40, #ba0517);
+    color: var(--slds-g-color-error-base-40, #ba0517);
+}
+
+.feature-toggle-btn_enabled:hover .btn-enabled-state {
+    display: none;
+}
+
+.feature-toggle-btn_enabled:hover .btn-hover-state {
+    display: inline;
 }
 
 /* Setup Link */
