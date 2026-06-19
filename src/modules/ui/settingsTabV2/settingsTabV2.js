@@ -1,42 +1,33 @@
 import { LightningElement, api, track } from 'lwc';
 import {
-    ScopedNotificationText, ScopedNotificationLink,
     DriftTrackingTitle, DriftTrackingDescription,
     NbaTitle, NbaDescription,
     EnableButton, DisableButton, EnabledBadge,
-    OrgNotEnabledMessage, OpenSetupLink,
     HeroHeadline, HeroSubtext, OrgCalloutText, OrgCalloutLinkText,
     PreviewTitle, DriftPreviewText, NbaPreviewText,
     ToastDriftEnabled, ToastDriftDisabled, ToastNbaEnabled, ToastNbaDisabled
 } from 'data/labels/SettingsTab';
 
-export default class SettingsTab extends LightningElement {
+export default class SettingsTabV2 extends LightningElement {
     @api orgLevelEnabled = false;
     @api showPreview = false;
 
     @track driftEnabled = false;
     @track nbaEnabled = false;
+    @track showModal = false;
+    @track pendingFeature = '';
+    @track isDisabling = false;
 
     labels = {
-        ScopedNotificationText, ScopedNotificationLink,
         DriftTrackingTitle, DriftTrackingDescription,
         NbaTitle, NbaDescription,
         EnableButton, DisableButton, EnabledBadge,
-        OrgNotEnabledMessage, OpenSetupLink,
         HeroHeadline, HeroSubtext, OrgCalloutText, OrgCalloutLinkText,
         PreviewTitle, DriftPreviewText, NbaPreviewText
     };
 
     get showOrgNotification() {
         return !this.orgLevelEnabled;
-    }
-
-    get driftButtonClass() {
-        return this.driftEnabled ? 'feature-toggle-btn feature-toggle-btn_enabled' : 'feature-toggle-btn';
-    }
-
-    get nbaButtonClass() {
-        return this.nbaEnabled ? 'feature-toggle-btn feature-toggle-btn_enabled' : 'feature-toggle-btn';
     }
 
     get isDriftDisabled() {
@@ -47,9 +38,13 @@ export default class SettingsTab extends LightningElement {
         return !this.orgLevelEnabled;
     }
 
-    @track showModal = false;
-    @track pendingFeature = '';
-    @track isDisabling = false;
+    get driftActionsClass() {
+        return this.driftEnabled ? 'actions-toggle actions-toggle_enabled' : 'actions-toggle';
+    }
+
+    get nbaActionsClass() {
+        return this.nbaEnabled ? 'actions-toggle actions-toggle_enabled' : 'actions-toggle';
+    }
 
     handleDriftToggle() {
         if (this.orgLevelEnabled) {
@@ -97,10 +92,6 @@ export default class SettingsTab extends LightningElement {
         }
         this.pendingFeature = '';
         this.isDisabling = false;
-    }
-
-    handleOpenSetup() {
-        this.dispatchEvent(new CustomEvent('opensetup', { bubbles: true, composed: true }));
     }
 
     handleEnableNow() {
