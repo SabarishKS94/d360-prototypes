@@ -1,11 +1,18 @@
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.settings-container lightning-card {
+    margin-bottom: 0;
+}
+
 .card-title-slot {
     display: flex;
     align-items: center;
 }
 
-.notification-icon {
-    --slds-c-icon-color-foreground-default: var(--slds-g-color-brand-base-50, #0176d3);
-}
 
 .preview-img-container {
     max-width: 450px;

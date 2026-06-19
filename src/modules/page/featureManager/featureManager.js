@@ -2,6 +2,7 @@ import { LightningElement, track } from 'lwc';
 
 export default class FeatureManager extends LightningElement {
     @track orgLevelEnabled = true;
+    @track showPreview = true;
     @track toastMessage = '';
     @track showToast = false;
 

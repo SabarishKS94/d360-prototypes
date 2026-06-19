@@ -94,7 +94,8 @@ export default class SettingsTabV2 extends LightningElement {
         this.isDisabling = false;
     }
 
-    handleEnableNow() {
+    handleEnableNow(event) {
+        event.preventDefault();
         this.dispatchEvent(new CustomEvent('navigate', {
             detail: { route: '/aim-feature-manager' },
             bubbles: true,
