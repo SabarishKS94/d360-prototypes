@@ -150,3 +150,10 @@
     line-height: 1.4;
     margin: 0;
 }
+
+/* Onboarding Actions */
+.onboarding-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}

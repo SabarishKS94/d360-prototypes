@@ -11,9 +11,19 @@ import {
 export default class SettingsTabV2 extends LightningElement {
     @api orgLevelEnabled = false;
     @api showPreview = false;
+    @api autoEnabled = false;
 
     @track driftEnabled = false;
     @track nbaEnabled = false;
+    _autoApplied = false;
+
+    renderedCallback() {
+        if (this.autoEnabled && !this._autoApplied) {
+            this._autoApplied = true;
+            this.driftEnabled = true;
+            this.nbaEnabled = true;
+        }
+    }
     @track showModal = false;
     @track pendingFeature = '';
     @track isDisabling = false;

@@ -30,6 +30,12 @@ export default class NbaModelDetail extends LightningElement {
     @track selectedStateId = 'training-in-progress';
     @track orgLevelEnabled = false;
     @track showPreview = true;
+    @track autoEnabled = false;
+    @track termsAccepted = false;
+    @track showTermsModal = false;
+    @track termsAgreed = false;
+    @track showDisableModal = false;
+    @track nbaDisabled = false;
     @track toastMessage = '';
     @track showToast = false;
 
@@ -67,6 +73,14 @@ export default class NbaModelDetail extends LightningElement {
         return this.selectedState?.refreshed ?? '';
     }
 
+    get showOnboarding() {
+        return this.autoEnabled && !this.termsAccepted;
+    }
+
+    get showNbaCard() {
+        return !this.nbaDisabled;
+    }
+
     get isModelActive() {
         return this.selectedState?.isActive ?? false;
     }
@@ -96,6 +110,10 @@ export default class NbaModelDetail extends LightningElement {
     }
 
     handleNbaCtaClick() {
+        if (this.showOnboarding) {
+            this.showTermsModal = true;
+            return;
+        }
         if (this.selectedStateId === 'feature-not-enabled') {
             this.template.querySelector('lightning-tabset').activeTabValue = 'settings';
         }
@@ -111,6 +129,52 @@ export default class NbaModelDetail extends LightningElement {
 
     handlePreviewToggle(event) {
         this.showPreview = event.target.checked;
+    }
+
+    handleAutoEnabledToggle(event) {
+        this.autoEnabled = event.target.checked;
+        if (this.autoEnabled) {
+            this.orgLevelEnabled = true;
+            this.termsAccepted = false;
+            this.nbaDisabled = false;
+        }
+    }
+
+    handleNbaOnboardingContinue() {
+        this.showTermsModal = true;
+    }
+
+    handleNbaDisable() {
+        this.showDisableModal = true;
+    }
+
+    handleDisableModalClose() {
+        this.showDisableModal = false;
+    }
+
+    handleDisableConfirmed() {
+        this.showDisableModal = false;
+        this.nbaDisabled = true;
+    }
+
+    handleTermsModalClose() {
+        this.showTermsModal = false;
+        this.termsAgreed = false;
+    }
+
+    handleTermsCheckbox(event) {
+        this.termsAgreed = event.target.checked;
+    }
+
+    get isTermsDisabled() {
+        return !this.termsAgreed;
+    }
+
+    handleTermsAccepted() {
+        this.showTermsModal = false;
+        this.termsAccepted = true;
+        this.termsAgreed = false;
+        this.selectedStateId = 'feature-just-enabled';
     }
 
     handleFeatureEnabled(event) {

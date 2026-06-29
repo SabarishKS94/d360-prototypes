@@ -17,11 +17,16 @@ export default class NbaCard extends LightningElement {
     @api nbaDescription = '';
     @api ctaLabel = '';
     @api refreshedText = '';
+    @api isOnboarding = false;
 
     labels = { CardTitle };
 
+    get showNormalState() {
+        return !this.isOnboarding;
+    }
+
     get showProgressBar() {
-        return this.currentStage > 0 && this.currentStage <= 5;
+        return !this.isOnboarding && this.currentStage > 0 && this.currentStage <= 5;
     }
 
     get showCta() {
@@ -51,5 +56,9 @@ export default class NbaCard extends LightningElement {
 
     handleCtaClick() {
         this.dispatchEvent(new CustomEvent('ctaclick', { bubbles: true, composed: true }));
+    }
+
+    handleDisableClick() {
+        this.dispatchEvent(new CustomEvent('disableclick', { bubbles: true, composed: true }));
     }
 }

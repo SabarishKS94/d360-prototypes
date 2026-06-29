@@ -6,6 +6,8 @@ import { apps, getAppById, getPersistedAppId, persistAppId, stripAppPrefix } fro
 import { isAuthDisabled } from '../../../data/authMode.js';
 import { onAuthStateChanged } from '../../../data/firebaseAuth.js';
 import { getStoredBrand, applyBrand } from 'data/brands';
+import { hasApiKey } from 'data/llmGateway';
+import ApiKeyModal from 'ui/apiKeyModal';
 import Home from 'page/home';
 import IconTest from 'page/iconTest';
 import Settings from 'page/settings';
@@ -170,6 +172,7 @@ export default class App extends LightningElement {
         if (isAuthDisabled()) {
             this._authChecked = true;
             this._authUser = { displayName: 'Local Prototype User' };
+            this._promptForApiKeyIfNeeded();
         } else {
             this._unsubscribeAuth = onAuthStateChanged((user) => {
                 // wasUnauthenticated is true only after we already confirmed no user was logged in
@@ -177,9 +180,11 @@ export default class App extends LightningElement {
                 this._authChecked = true;
                 this._authUser = user;
                 if (user && wasUnauthenticated) {
-                    // User just signed in from the login screen — go to their intended destination
                     navigate(this._redirectPath);
                     this._redirectPath = '/';
+                    this._promptForApiKeyIfNeeded();
+                } else if (user && !wasUnauthenticated) {
+                    this._promptForApiKeyIfNeeded();
                 } else if (!user) {
                     // Capture current path so we can return here after sign-in
                     this._redirectPath = window.location.pathname || '/';
@@ -267,6 +272,20 @@ export default class App extends LightningElement {
 
     handlePanelClose() {
         this.isPanelOpen = false;
+    }
+
+    handleRequestApiKey() {
+        this._openApiKeyModal();
+    }
+
+    async _openApiKeyModal() {
+        await ApiKeyModal.open({ size: 'small' });
+    }
+
+    _promptForApiKeyIfNeeded() {
+        if (!hasApiKey()) {
+            this._openApiKeyModal();
+        }
     }
 
     handleNavigateBack() {

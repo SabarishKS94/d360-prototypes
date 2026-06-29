@@ -77,6 +77,8 @@
     bottom: var(--cosmos-inset);
     width: 25rem;
     z-index: 9;
+    display: flex;
+    flex-direction: column;
     transform: translateX(calc(100% + var(--cosmos-inset)));
     transition: transform 0.25s ease;
     border-radius: 12px;

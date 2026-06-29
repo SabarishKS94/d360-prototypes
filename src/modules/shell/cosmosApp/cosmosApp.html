@@ -57,7 +57,7 @@
 
         <!-- Fixed overlay: right panel (slides in/out) -->
         <div class={panelOverlayClasses}>
-            <shell-panel selected-panel={selectedPanel} onpanelclose={handlePanelClose}></shell-panel>
+            <shell-panel selected-panel={selectedPanel} onpanelclose={handlePanelClose} onrequestapikey={handleRequestApiKey}></shell-panel>
         </div>
     </template>
     <template lwc:elseif={isAuthChecked}>
