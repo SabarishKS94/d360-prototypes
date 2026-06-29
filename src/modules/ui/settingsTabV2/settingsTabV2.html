@@ -73,8 +73,14 @@
                     <lightning-accordion allow-multiple-sections-open active-section-name="nba-preview">
                         <lightning-accordion-section name="nba-preview" label={labels.PreviewTitle}>
                             <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small">{labels.NbaPreviewText}</p>
-                            <div class="preview-img-container">
-                                <img src="./images/preview-nba.svg" alt="NBA Card Preview" class="preview-img">
+                            <div class="preview-component-container">
+                                <ui-nba-card
+                                    current-stage="2"
+                                    nba-title="Model idle for 14 days. Activate now. Retrain later for better accuracy."
+                                    nba-description="Version 1 achieved 0.38 AUC — below random (0.50). Safe to test on a small segment."
+                                    cta-label="Activate Now"
+                                    refreshed-text="Refreshed 6 days ago"
+                                ></ui-nba-card>
                             </div>
                         </lightning-accordion-section>
                     </lightning-accordion>
